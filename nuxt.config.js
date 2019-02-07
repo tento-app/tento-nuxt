@@ -89,6 +89,10 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+   filenames: {
+      app: '[name].js',
+      chunk: '[name].js'
+    },
     extend(config, ctx) {
       
     }

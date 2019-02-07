@@ -1,1 +1,10 @@
-{}
+{
+    "name": "tento",
+    "verson": 0.1,
+    "alias": [
+      "tento"
+    ],
+    "builds": [
+        { "src": "nuxt.config.js", "use": "@bluebeel/nuxt" }
+    ]
+  }

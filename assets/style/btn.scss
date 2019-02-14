@@ -1,0 +1,48 @@
+@import '_color';
+
+.btn{
+  background-color: #fff;
+  border-radius: 6px;
+  color: #333;
+  padding: 12px;
+  box-shadow: $box_shadow01;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  i{
+    color: $main_color;
+  }
+  &:hover{
+    transition: 0.3s;
+    box-shadow: $box_shadow02;
+  }
+  &:active{
+    transition: 0.05s;
+    box-shadow: $box_shadow03;
+    background-color: #f8f8f8;
+  }
+  &:disabled{
+    box-shadow: none;
+    color: #007369;
+  }
+}
+
+.sub_btn{
+  background-color: #302D2C;
+  border-radius: 99px;
+  color: #fff;
+  padding: 12px;
+  box-shadow: $box_shadow01;
+  font-size: 14px;
+  transition: 0.3s;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  &:hover{
+    transition: 0.3s;
+    box-shadow: $box_shadow02;
+  }
+}

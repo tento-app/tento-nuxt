@@ -95,7 +95,7 @@ const pkg = require('./package')
         chunk: '[name].js'
       },
       extend(config, ctx) {
-        
+
       }
     }
   }

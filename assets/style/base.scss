@@ -6,8 +6,11 @@ body{
   font-family: "Noto Sans JP",'Rubik','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
 
   .content{
-    margin: 80px auto 0;
-    padding:0 30px;
+    margin: 0px auto 0;
+    &.item{
+      margin-top: 80px;
+      padding:0 30px;
+    }
   }
   a{
     text-decoration: none;

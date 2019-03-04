@@ -1,5 +1,5 @@
 <template id="">
-  <div class="content">
+  <div class="content item">
       <div class="cards_list">
         <a href="#" class="card_link">
           <div class="card">

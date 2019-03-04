@@ -1,0 +1,9 @@
+{
+  allTags{
+    edges{
+      node{
+        name
+      }
+    }
+  }
+}

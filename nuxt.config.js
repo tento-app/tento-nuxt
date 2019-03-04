@@ -1,19 +1,27 @@
 module.exports = () => {
 
-const pkg = require('./package')
+  const pkg = require('./package')
 
   return {
     mode: 'universal',
 
     /*
-    ** Headers of the page
-    */
+     ** Headers of the page
+     */
     head: {
       title: 'Tento',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '新たな学生コミュニティ' },
+      meta: [{
+          charset: 'utf-8'
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: '新たな学生コミュニティ'
+        },
         {
           hid: 'og:site_name',
           property: 'og:site_name',
@@ -54,45 +62,55 @@ const pkg = require('./package')
           content: '@tento_app'
         }
       ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
-      ]
+      link: [{
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.png'
+      }]
     },
 
     /*
-    ** Customize the progress-bar color
-    */
-    loading: { color: '#fff' },
+     ** Customize the progress-bar color
+     */
+    loading: {
+      color: '#fff'
+    },
 
     /*
-    ** Global CSS
-    */
+     ** Global CSS
+     */
     css: [
       'swiper/dist/css/swiper.css'
     ],
 
     /*
-    ** Plugins to load before mounting the App
-    */
-    plugins: [
-      { src: '~/plugins/swiper.js', ssr:false },
-    ],
+     ** Plugins to load before mounting the App
+     */
+    plugins: [{
+      src: '~/plugins/swiper.js',
+      ssr: false
+    }, ],
 
     /*
-    ** Nuxt.js modules
-    */
+     ** Nuxt.js modules
+     */
     modules: [,
-      '@nuxtjs/pwa'
+      '@nuxtjs/apollo'
     ],
 
+    apollo: {
+      clientConfigs: {
+        default: '~/apollo/client-configs/default.js'
+      }
+    },
     /*
-    ** Build configuration
-    */
+     ** Build configuration
+     */
     build: {
       /*
-      ** You can extend webpack config here
-      */
-    filenames: {
+       ** You can extend webpack config here
+       */
+      filenames: {
         app: '[name].js',
         chunk: '[name].js'
       },

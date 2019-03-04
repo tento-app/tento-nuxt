@@ -452,3 +452,58 @@
     }
 }
 </style>
+<script>
+export default {
+  data() {
+    return {
+      "data": {
+        "allProjects": {
+          "edges": [
+            {
+              "node": {
+                "id": "UHJvamVjdE5vZGU6MQ==",
+                "name": "アプリケーション開発RTA",
+                "createdAt": "2019-02-14T04:55:36+00:00"
+              }
+            },
+            {
+              "node": {
+                "id": "UHJvamVjdE5vZGU6Mg==",
+                "name": "INIADポスターデザインRTA",
+                "createdAt": "2019-02-14T08:04:24.671208+00:00"
+              }
+            },
+            {
+              "node": {
+                "id": "UHJvamVjdE5vZGU6Mw==",
+                "name": "project1-1",
+                "createdAt": "2019-02-21T06:43:09.422173+00:00"
+              }
+            },
+            {
+              "node": {
+                "id": "UHJvamVjdE5vZGU6NA==",
+                "name": "ARG cgサークル　説明会",
+                "createdAt": "2019-02-27T04:51:42.362104+00:00"
+              }
+            },
+            {
+              "node": {
+                "id": "UHJvamVjdE5vZGU6NQ==",
+                "name": "vueでアプリ開発",
+                "createdAt": "2019-02-27T05:05:03.307944+00:00"
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+            "endCursor": "YXJyYXljb25uZWN0aW9uOjQ="
+          }
+        }
+      }
+    }
+  }
+}
+</script>

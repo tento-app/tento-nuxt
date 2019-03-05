@@ -19,6 +19,7 @@
 </script>
 
 <style lang="scss">
+@import "~/assets/style/_color.scss";
   .account{
     max-width: 840px;
     margin: 0px auto 0;
@@ -34,6 +35,7 @@
         border-radius: 12px;
         position: relative;
         .icon{
+          background-color: #fff;
           background-image: url("../static/icon.jpg");
           background-position: center;
           background-size: cover;
@@ -53,15 +55,17 @@
         .name{
           font-size: 18px;
           font-weight: bold;
+          line-height: 1;
         }
         .position{
           font-size: 14px;
           color: #ccc;
         }
         .intro{
-          margin: 0 auto;
+          margin: 0.5rem auto 0;
           text-align: left;
           max-width: 300px;
+          font-size: 14px;
         }
       }
     }

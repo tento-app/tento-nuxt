@@ -4,6 +4,9 @@ body{
   margin: 0;
   color: #555;
   font-family: "Noto Sans JP",'Rubik','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+  input,textarea,select,button{
+    font-family: "Noto Sans JP",'Rubik','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+  }
 
   .content{
     margin: 0px auto 0;

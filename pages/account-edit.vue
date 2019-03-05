@@ -6,7 +6,6 @@
         <AccountEdit />
       </div>
     </div>
-    <Footer />
   </section>
 </template>
 
@@ -28,15 +27,6 @@ export default {
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
 
-.main{
-  .account_header{
 
-  }
-  .skill_container{
-    padding: 80px 0;
-    margin-top: 80px;
-    background-color: #fafafa;
-  }
-}
 
 </style>

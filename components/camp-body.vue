@@ -1,5 +1,4 @@
 <template id="">
-  <div class="">
     <!-- <div class="camp_body_eyecatch background_img_03"></div> -->
     <div class="content camp_body">
       <div class="camp_body_text">
@@ -22,7 +21,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script type="text/javascript">
@@ -44,7 +42,8 @@ export default {
     max-width: 840px;
     // &_eyecatch{
     //   height: 280px;
-    // }
+    //
+    padding: 80px 0;
     &_text{
       &_tag{
         width: 80px;

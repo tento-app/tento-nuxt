@@ -40,6 +40,7 @@ export default {
   .profile{
     max-width: 840px;
     margin: 0 auto;
+    padding: 80px 0;
     &_contents{
       border: 1px solid #aaa;
       border-radius: 5px;

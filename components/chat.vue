@@ -81,6 +81,7 @@ export default {
     max-width: 840px;
     display: flex;
     margin: 0 auto;
+    padding: 80px 0;
     &_members{
       background-color: #FFFFFF;
       box-shadow: $box_shadow01;

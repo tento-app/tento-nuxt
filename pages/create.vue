@@ -17,6 +17,7 @@
         <div class="create_body_content">
           <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea>
         </div>
+        <skill />
       </div>
     </div>
 
@@ -26,9 +27,12 @@
 
 <script>
 import Header from '~/layouts/Header.vue';
+import skill from '~/components/skill.vue';
+
 export default {
   components: {
-    Header
+    Header,
+    skill
   }
 }
 </script>

@@ -2,16 +2,22 @@
   <div class="content chat">
     <div class="chat_members">
       <h2>参加メンバー(4)</h2>
-      <ul>
-        <li><user /></li>
-        <li><user /></li>
-        <li><user /></li>
-        <li><user /></li>
-      </ul>
+      <div class="chat_members_list">
+        <ul>
+          <li><user /></li>
+          <li><user /></li>
+          <li><user /></li>
+          <li><user /></li>
+          <li><user /></li>
+          <li><user /></li>
+          <li><user /></li>
+        </ul>
+      </div>
     </div>
     <div class="chat_contents">
       <h2>質問/備考</h2>
       <ul>
+        <div class="div">
         <li>
           <div class="chat_contents_detail">
             <div class="user_img"></div>
@@ -25,6 +31,47 @@
             </div>
           </div>
         </li>
+
+        <li>
+          <div class="chat_contents_detail">
+            <div class="user_img"></div>
+            <div class="chat_contents_user">
+              <div class="chat_contents_user_info">
+                <p class="chat_contents_user_info_name">リンゴスター</p>
+                <p class="chat_contents_user_info_time">10:24</p>
+              </div>
+                <p>おはようございます。
+                   今日の会議は何時ごろスタートですか~？22</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="chat_contents_detail">
+            <div class="user_img"></div>
+            <div class="chat_contents_user">
+              <div class="chat_contents_user_info">
+                <p class="chat_contents_user_info_name">リンゴスター</p>
+                <p class="chat_contents_user_info_time">10:24</p>
+              </div>
+                <p>おはようございます。
+                   今日の会議は何時ごろスタートですか~？42</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="chat_contents_detail">
+            <div class="user_img"></div>
+            <div class="chat_contents_user">
+              <div class="chat_contents_user_info">
+                <p class="chat_contents_user_info_name">リンゴスター</p>
+                <p class="chat_contents_user_info_time">10:24</p>
+              </div>
+                <p>おはようございます。
+                   今日の会議は何時ごろスタートですか~？52</p>
+            </div>
+          </div>
+        </li>
+
         <li>
           <div class="chat_contents_detail">
             <div class="user_img"></div>
@@ -34,6 +81,9 @@
                 <p class="chat_contents_user_info_time">10:24</p>
               </div>
                 <p>おはようございます！
+
+
+
                    12:30から始めますよーー</p>
             </div>
           </div>
@@ -50,14 +100,47 @@
             </div>
           </div>
         </li>
+        <li>
+          <div class="chat_contents_detail">
+            <div class="user_img"></div>
+            <div class="chat_contents_user">
+              <div class="chat_contents_user_info">
+                <p class="chat_contents_user_info_name">リンゴスター</p>
+                <p class="chat_contents_user_info_time">10:24</p>
+              </div>
+                <p>ありがとうございます！</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="chat_contents_detail">
+            <div class="user_img"></div>
+            <div class="chat_contents_user">
+              <div class="chat_contents_user_info">
+                <p class="chat_contents_user_info_name">リンゴスター</p>
+                <p class="chat_contents_user_info_time">10:24</p>
+              </div>
+                <p>ありがとうございます！</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="chat_contents_detail">
+            <div class="user_img"></div>
+            <div class="chat_contents_user">
+              <div class="chat_contents_user_info">
+                <p class="chat_contents_user_info_name">リンゴスター</p>
+                <p class="chat_contents_user_info_time">10:24</p>
+              </div>
+                <p>ありがとうございます！</p>
+            </div>
+          </div>
+        </li>
+        </div>
       </ul>
       <div class="comment">
-        <div class="comment_form">
-          <input type="text" name="" value="コメントする">
-        </div>
-        <div class="comment_form_btn">
-          <input type="submit" value="送信">
-        </div>
+        <textarea type="text" name="" placeholder="コメントする"></textarea>
+        <button type="button" name="button"></button>
       </div>
     </div>
   </div>
@@ -79,6 +162,7 @@ export default {
 @media (min-width:840px) {
   .chat{
     max-width: 840px;
+    height: 500px;
     display: flex;
     margin: 0 auto;
     padding: 80px 0;
@@ -88,31 +172,60 @@ export default {
       width: 30%;
       margin-right: 20px;
       border-radius: 5px;
+      overflow: visible scroll;
+      position: relative;
       h2{
-        color: $main_color;
+        color: #00BE93;
         font-size: 12px;
         padding: 14px;
         border-bottom: 1px solid #CCCCCC;
+        position: sticky;
+        top: 0;
+        background-color: #FFFFFF;
+        border-radius: 5px 5px 0 0;
+      }
+      ul{
+        padding: 0;
       }
       li{
-        margin: 8px 8px 0 8px;
-        padding: 8px;
+        padding: 12px;
+        margin: 0 8px;
       }
       li:not(:last-child){
-        border-bottom: 1px solid #CCCCCC;
+        border-bottom: 1px solid #eaeaea;
       }
     }
+    .chat_members::-webkit-scrollbar{
+      display: none;
+    }
     &_contents{
+      position: relative;
       background-color: #FFFFFF;
       box-shadow: $box_shadow01;
       width: 70%;
       border-radius: 5px;
       h2{
-        color: $sub_color;
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        color: #00BE93;
         font-size: 12px;
         padding: 14px;
         border-bottom: 1px solid #CCCCCC;
-        font-size: normal;
+        border-radius: 5px 5px 0 0;
+      }
+      ul{
+        padding: 0px;
+        display: flex;
+        overflow: visible scroll;
+        height: 247px;
+        .div{
+          margin-top: auto;
+          display: flex;
+          flex-direction: column;
+        }
+        li{
+        }
       }
       &_detail{
         display: flex;
@@ -143,19 +256,38 @@ export default {
           }
           + p{
             font-size: 12px;
+            white-space: pre-line;
           }
         }
       }
       .comment{
+        bottom: 0;
         display: flex;
-        &_form{
-          width: 90%;
-          &_btn{
-            width: 10%;
+        width: 100%;
+          textarea{
+            outline: none;
+            width: 90%;
+            border: 0px;
+            background-color: #FAFAFA;
+            padding-left: 14px;
+            padding-top: 14px;
+            font-size: 12px;
+            border-radius: 0 0 0 5px;
           }
-        }
-      }
+          button{
+            background-color: #00BE93;
+            border: 0px;
+            width: 10%;
+            border-radius: 0 0 5px 0;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+          }
+       }
     }
+  }
+  .chat_contents::-webkit-scrollbar{
+    display: none;
   }
 }
 </style>

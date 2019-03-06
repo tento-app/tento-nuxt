@@ -1,0 +1,9 @@
+{
+  joinTeams(token: "xxxx") {
+    edges {
+      node {
+        name
+      }
+    }
+  }
+}

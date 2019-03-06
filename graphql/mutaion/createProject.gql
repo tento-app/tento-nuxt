@@ -1,0 +1,9 @@
+{
+    mutation($token: String!,$ProjectInput: ProjectInput!) {
+        createProject(token:$token,projectData:$ProjectInput){
+            project{
+            name
+            }
+        }
+    }
+}

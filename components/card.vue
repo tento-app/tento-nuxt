@@ -1,7 +1,7 @@
 <template id="">
   <div class="content item">
     <div class="cards_list">
-      <a href="#" class="card_link" v-for="project in allProjects.edges" :key="project.node.name">
+      <nuxt-link to="/camp-detail" class="card_link" v-for="project in allProjects.edges" :key="project.node.name">
         <div class="card">
           <div class="card_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
             <p
@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-      </a>
+      </nuxt-link>
     </div>
     <div class="card_loader">
       <div class="sub_btn more">

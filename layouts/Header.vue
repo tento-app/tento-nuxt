@@ -2,24 +2,24 @@
   <header>
     <div class="content">
       <div class="layer"></div>
-      <a href="" class="logo">
+      <nuxt-link to='/top' class="logo">
         <img src="../static/logo_w.png" alt="">
-      </a>
+      </nuxt-link>
       <div class="left">
         <div class="account" id="account">
           <div class="account_menu" id="account_menu">
             <ul>
-              <a href="" class="sp">
+              <nuxt-link to="/create" class="sp">
                 <li><i class="fas fa-campground"></i>
                   <p>New camp</p>
                 </li>
-              </a>
-              <a href="">
+              </nuxt-link>
+              <nuxt-link to="/account">
                 <li><i class="far fa-user"></i>
                   <p>マイページ</p>
                 </li>
-              </a>
-              <a href="#">
+              </nuxt-link>
+              <a to="" class="sp">
                 <li><i class="far fa-bookmark"></i>
                   <p>保存したキャンプ</p>
                 </li>
@@ -37,12 +37,12 @@
             <i class="far fa-envelope"></i>
           </div>
         </a>
-        <a href="#">
+        <nuxt-link to="/create">
           <div class="submit btn">
             <i class="fas fa-plus"></i>
             <p>New Camp</p>
           </div>
-        </a>
+        </nuxt-link>
       </div>
     </div>
 

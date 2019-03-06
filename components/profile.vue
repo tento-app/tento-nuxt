@@ -15,7 +15,7 @@
               <p class="profile_contents_wrapper_text">私は元the beatlesのメンバーで今はマーケターとして働いています。</p>
             </li>
             <li class="profile_view_more sub_btn">
-              <a href="#">View page &gt;</a>
+              <nuxt-link to="/account">View page &gt;</nuxt-link >
             </li>
           </ul>
         </div>

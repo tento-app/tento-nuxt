@@ -1,5 +1,5 @@
 <template id="">
-  <div class="">
+  <div class="" id="skill">
   <div class="skill">
     <div class="skill_item">
       <div class="skill_item_img"></div>
@@ -31,31 +31,38 @@
       <p>adobe XD5</p>
     </div>
 
-    <div class="skill_item skill_add">
+    <div class="skill_item skill_add" @click="openModal">
       <div class=""></div>
       <p>スキルを追加</p>
     </div>
   </div>
+  <skillModal v-if="showModal">
 
-  <div class="skill_modal">
-    <div class="header">
-      <div class="img"></div>
-      <h3>Skill</h3>
-    </div>
-    <p>あなたのスキルを追加しましょう。</p>
-    <div class="input">
-      <input type="text" name="" value="">
-    </div>
+  </skillModal>
+  <p>{{showModal}}</p>
 
-    <div class="skill_modal_btn">
-      <p>キャンセル</p>
-      <button type="button" name="button" class="btn">追加する</button>
-    </div>
   </div>
   </div>
 </template>
 
 <script>
+import SkillModal from '~/components/skill-modal.vue';
+export default {
+  el:"#skill",
+  components: {
+    SkillModal
+  },
+  data() {
+    return {
+      showModal: false
+    }
+  },
+  methods: {
+    openModal: function () {
+      this.showModal = true
+    }
+  }
+}
 
 </script>
 

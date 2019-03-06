@@ -1,0 +1,37 @@
+{
+  allProjects(first:9, after: ""){
+    edges{
+      node{
+        header
+        logo
+        url
+        name
+        content
+        user{
+          username
+        }
+        tags{
+          edges{
+            node{
+              name
+            }
+          }
+        }
+        users{
+          edges{
+            node{
+              username
+            }
+          }
+        }
+        updatedAt
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

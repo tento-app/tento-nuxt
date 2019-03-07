@@ -36,10 +36,8 @@
       <p>スキルを追加</p>
     </div>
   </div>
-  <skillModal v-if="showModal">
-
-  </skillModal>
-  <p>{{showModal}}</p>
+  <button type="button" name="button" v-on:click="openModal">showmodal</button>
+  <SkillModal v-if="showModal" />
 
   </div>
   </div>
@@ -48,7 +46,6 @@
 <script>
 import SkillModal from '~/components/skill-modal.vue';
 export default {
-  el:"#skill",
   components: {
     SkillModal
   },
@@ -58,7 +55,7 @@ export default {
     }
   },
   methods: {
-    openModal: function () {
+    openModal: function() {
       this.showModal = true
     }
   }

@@ -1,29 +1,27 @@
 <template id="modal-template">
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <div class="skill_modal">
+            <div class="header">
+              <div class="img"></div>
+              <h3>Skill</h3>
+            </div>
+            <p>あなたのスキルを追加しましょう。</p>
+            <div class="input">
+              <input type="text" name="" value="">
+            </div>
 
-<transition name="modal">
-<div class="modal-mask">
-<div class="modal-wrapper">
-<div class="modal-container">
-<div class="skill_modal">
-<div class="header">
-<div class="img"></div>
-<h3>Skill</h3>
-</div>
-<p>あなたのスキルを追加しましょう。</p>
-<div class="input">
-<input type="text" name="" value="">
-</div>
-
-<div class="skill_modal_btn">
-<button type="button" name="button" @click="$emit('close')">キャンセル</button>
-<button type="button" name="button" class="btn">追加する</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</transition>
-
+            <div class="skill_modal_btn">
+              <button type="button" name="button" @click="$emit('close')">キャンセル</button>
+              <button type="button" name="button" class="btn">追加する</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
 </template>
 
 

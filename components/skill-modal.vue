@@ -1,6 +1,6 @@
 <template id="modal-template">
-  <transition name="modal">
-    <div class="modal-mask">
+  <transition name="modal" >
+    <div class="modal-mask" @click.self="$emit('closeModal')">
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="skill_modal">
@@ -9,12 +9,18 @@
               <h3>Skill</h3>
             </div>
             <p>あなたのスキルを追加しましょう。</p>
+            <p>{{showModal}}</p>
             <div class="input">
-              <input type="text" name="" value="">
+              <input type="text" name="" value="" autocomplete="on" list="skill-list">
+              <datalist id="skill-list">
+                <option value="html">html</option>
+                <option value="css">css</option>
+                <option value="js">js</option>
+              </datalist>
             </div>
 
             <div class="skill_modal_btn">
-              <button type="button" name="button" @click="$emit('close')">キャンセル</button>
+              <p @click="$emit('closeModal')">キャンセル</p>
               <button type="button" name="button" class="btn">追加する</button>
             </div>
           </div>
@@ -27,14 +33,41 @@
 
 <script type="text/javascript">
 
+export default {
+  methods:{
+    closeModal(){
+            this.showModal = !this.showModal
+        }
+  }
+}
+
 </script>
 
 <style lang="scss">
 @import '~/assets/style/_color.scss';
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  transition: all .3s ease;
+}
 
 .skill_modal{
   background-color: #fff;
-  box-shadow: $box_shadow01;
   border-radius: 12px;
   width: 340px;
   padding: 1.5rem;

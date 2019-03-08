@@ -17,9 +17,7 @@
         <div class="create_body_content">
           <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea>
         </div>
-        <button id="show-modal" @click="showModal = true">Show Modal</button>
-        <skill v-if="showModal" @close="showModal = false">
-        </skill>
+        <skill />
       </div>
     </div>
 

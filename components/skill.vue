@@ -1,5 +1,5 @@
 <template id="">
-  <div class="">
+  <div class="" id="skill">
   <div class="skill">
     <div class="skill_item">
       <div class="skill_item_img"></div>
@@ -31,31 +31,40 @@
       <p>adobe XD5</p>
     </div>
 
-    <div class="skill_item skill_add">
-      <div class=""></div>
-      <p>スキルを追加</p>
-    </div>
+    <div class="skill_item skill_add" @click="openModal">
+     <div class=""></div>
+     <p>スキルを追加</p>
+     <p>{{showModal}}</p>
+   </div>
+ </div>
+ <SkillModal v-if="showModal" ref="skillmodal"/>
   </div>
 
-  <div class="skill_modal">
-    <div class="header">
-      <div class="img"></div>
-      <h3>Skill</h3>
-    </div>
-    <p>あなたのスキルを追加しましょう。</p>
-    <div class="input">
-      <input type="text" name="" value="">
-    </div>
-
-    <div class="skill_modal_btn">
-      <p>キャンセル</p>
-      <button type="button" name="button" class="btn">追加する</button>
-    </div>
   </div>
   </div>
 </template>
 
 <script>
+import SkillModal from '~/components/skill-modal.vue';
+export default {
+ components: {
+   SkillModal
+ },
+ data() {
+   return {
+     showModal: false
+   }
+ },
+ methods: {
+   openModal() {
+     this.showModal = !this.showModal
+   },
+   closeModal() {
+     this.showModal = !this.showModal
+     this.$refs.skillmodal.closeModal()
+   }
+ }
+}
 
 </script>
 
@@ -69,15 +78,27 @@
     justify-content: space-between;
     max-width: 840px;
     margin: 0 auto;
+    padding: 0 30px;
+    &:before{
+      content:"";
+      display: block;
+      width:20.1%;
+      order:1;
+    }
+    &:after{
+      content:"";
+      display: block;
+      width:20.1%;
+    }
     &_item{
       background-color: #fff;
       box-shadow: $box_shadow01;
       border-radius: 12px;
       padding: 0rem;
       text-align: center;
-      margin:0.5rem;
+      margin:0.5rem 0;
       transition: $transtion01;
-      width: 20%;
+      width: 20.1%;
       &_img{
         width: 70px;
         height: 70px;
@@ -109,66 +130,6 @@
       }
     }
   }
-  .skill_modal{
-    background-color: #fff;
-    box-shadow: $box_shadow01;
-    border-radius: 12px;
-    width: 340px;
-    padding: 1.5rem;
-    margin: 3rem auto;
-    .header{
-      display: flex;
-      align-items: center;
-      .img{
-        width: 45px;
-        height: 45px;
-        border:solid 1px #ccc;
-        border-radius: 5px;
-      }
-      h3{
-        margin-left: 1rem;
-        font-weight: bold;
-      }
-    }
-    p{
-      margin-top: 1rem;
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .input{
-      margin-top: 0.5rem;
-      input{
-        box-sizing: border-box;
-        width: 100%;
-        border-radius: 4px;
-        border: solid 1px #cacaca;
-        background-color: #fafafa;
-        font-size: 14px;
-        padding: 0.4rem;
-      }
-    }
-    &_btn{
-      display: flex;
-      align-items: center;
-      margin-top: 1.5rem;
-      p{
-        color: #ccc;
-        font-size: 14px;
-        margin: 0;
-        cursor: pointer;
-      }
-      button{
-        margin-left: auto;
-        background-color: $main_color;
-        color: #fff;
-        font-size: 14px;
-        padding: 0.5rem 1rem;
-        &:active{
-          background-color: $sub_color;
-        }
-      }
-    }
-  }
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
   .skill{
@@ -178,6 +139,12 @@
     max-width: 840px;
     margin: 0 auto;
     transition: 0.3s;
+    padding: 0 30px;
+    &:after{
+      content:"";
+      display: block;
+      width:30%;
+    }
     &_item{
       transition: $transtion01;
       background-color: #fff;
@@ -185,7 +152,7 @@
       border-radius: 12px;
       padding: 0rem;
       text-align: center;
-      margin:0.5rem;
+      margin:0.5rem 0;
       width: 30%;
       &_img{
         width: 70px;
@@ -220,7 +187,6 @@
   }
   .skill_modal{
     background-color: #fff;
-    box-shadow: $box_shadow01;
     border-radius: 12px;
     width: 340px;
     padding: 1.5rem;
@@ -288,6 +254,7 @@
     max-width: 840px;
     margin: 0 auto;
     transition: 0.3s;
+    padding: 0 10px;
     &_item{
       transition: $transtion01;
       background-color: #fff;
@@ -295,8 +262,8 @@
       border-radius: 12px;
       padding: 0rem;
       text-align: center;
-      margin:0.5rem;
-      width: 45%;
+      margin:0.5rem 0;
+      width: 48%;
       &_img{
         width: 70px;
         height: 70px;
@@ -329,7 +296,6 @@
   }
   .skill_modal{
     background-color: #fff;
-    box-shadow: $box_shadow01;
     border-radius: 12px;
     width: 280px;
     padding: 1.5rem;

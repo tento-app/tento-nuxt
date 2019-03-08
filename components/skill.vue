@@ -78,15 +78,27 @@ export default {
     justify-content: space-between;
     max-width: 840px;
     margin: 0 auto;
+    padding: 0 30px;
+    &:before{
+      content:"";
+      display: block;
+      width:20.1%;
+      order:1;
+    }
+    &:after{
+      content:"";
+      display: block;
+      width:20.1%;
+    }
     &_item{
       background-color: #fff;
       box-shadow: $box_shadow01;
       border-radius: 12px;
       padding: 0rem;
       text-align: center;
-      margin:0.5rem;
+      margin:0.5rem 0;
       transition: $transtion01;
-      width: 20%;
+      width: 20.1%;
       &_img{
         width: 70px;
         height: 70px;
@@ -127,6 +139,12 @@ export default {
     max-width: 840px;
     margin: 0 auto;
     transition: 0.3s;
+    padding: 0 30px;
+    &:after{
+      content:"";
+      display: block;
+      width:30%;
+    }
     &_item{
       transition: $transtion01;
       background-color: #fff;
@@ -134,7 +152,7 @@ export default {
       border-radius: 12px;
       padding: 0rem;
       text-align: center;
-      margin:0.5rem;
+      margin:0.5rem 0;
       width: 30%;
       &_img{
         width: 70px;
@@ -169,7 +187,6 @@ export default {
   }
   .skill_modal{
     background-color: #fff;
-    box-shadow: $box_shadow01;
     border-radius: 12px;
     width: 340px;
     padding: 1.5rem;
@@ -237,6 +254,7 @@ export default {
     max-width: 840px;
     margin: 0 auto;
     transition: 0.3s;
+    padding: 0 10px;
     &_item{
       transition: $transtion01;
       background-color: #fff;
@@ -244,8 +262,8 @@ export default {
       border-radius: 12px;
       padding: 0rem;
       text-align: center;
-      margin:0.5rem;
-      width: 45%;
+      margin:0.5rem 0;
+      width: 48%;
       &_img{
         width: 70px;
         height: 70px;
@@ -278,7 +296,6 @@ export default {
   }
   .skill_modal{
     background-color: #fff;
-    box-shadow: $box_shadow01;
     border-radius: 12px;
     width: 280px;
     padding: 1.5rem;

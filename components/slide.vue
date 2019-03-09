@@ -3,70 +3,80 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide background_img_01">
-        <a href="#">
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
+      <nuxt-link to=''/camp-detail>
+        <!-- card content-->
+        <div class="swiper-slide background_img_01">
+          <a href="#">
+            <div class="slide_item">
+              <div class="slide_item_user">
+                <div class="slide_item_user_img">
+                </div>
+                <div class="">
+                  <p class="slide_item_user_name">ジョージハリスン</p>
+                  <p class="slide_item_user_position">webエンジニア</p>
+                </div>
               </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
+              <h4>webデザイナーで食事会しませんか？？</h4>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide background_img_02">
-        <a href="#">
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
+          </a>
+        </div>
+      </nuxt-link>
+      <nuxt-link to=''/camp-detail>
+        <!-- card content-->
+        <div class="swiper-slide background_img_02">
+          <a href="#">
+            <div class="slide_item">
+              <div class="slide_item_user">
+                <div class="slide_item_user_img">
+                </div>
+                <div class="">
+                  <p class="slide_item_user_name">ジョージハリスン</p>
+                  <p class="slide_item_user_position">webエンジニア</p>
+                </div>
               </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
+              <h4>webデザイナーで食事会しませんか？？</h4>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide background_img_03">
-        <a href="#">
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
+          </a>
+        </div>
+      </nuxt-link>
+      <nuxt-link to=''/camp-detail>
+        <!-- card content-->
+        <div class="swiper-slide background_img_03">
+          <a href="#">
+            <div class="slide_item">
+              <div class="slide_item_user">
+                <div class="slide_item_user_img">
+                </div>
+                <div class="">
+                  <p class="slide_item_user_name">ジョージハリスン</p>
+                  <p class="slide_item_user_position">webエンジニア</p>
+                </div>
               </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
+              <h4>webデザイナーで食事会しませんか？？</h4>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide background_img_04">
-        <a href="#">
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
+          </a>
+        </div>
+      </nuxt-link>
+      <nuxt-link to=''/camp-detail>
+        <!-- card content-->
+        <div class="swiper-slide background_img_04">
+          <a href="#">
+            <div class="slide_item">
+              <div class="slide_item_user">
+                <div class="slide_item_user_img">
+                </div>
+                <div class="">
+                  <p class="slide_item_user_name">ジョージハリスン</p>
+                  <p class="slide_item_user_position">webエンジニア</p>
+                </div>
               </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
+              <h4>webデザイナーで食事会しませんか？？</h4>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
+      </nuxt-link>
     </div>
-
     <div class="swiper-pagination"></div>
-
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
@@ -74,20 +84,25 @@
 </template>
 <script>
 export default {
-    data() {
-      return {
-        swiperOption: {
-          slidesPerView: 'auto',
-          centeredSlides: true,
-          spaceBetween: 30,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          }
+    data () {
+        return {
+            swiperOption: {
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 0,
+                loop: true,
+                pagination: {
+                  el: '.swiper-pagination',
+                  clickable: true
+                },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev'
+                }
+            }
         }
-      }
     }
-  }
+}
 </script>
 
 <style lang="scss">
@@ -108,6 +123,7 @@ export default {
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
+                    width: 60%;
                     height: 280px;
                     margin: 0 auto;
                     a {
@@ -151,12 +167,11 @@ export default {
                     }
                 }
             }
-            .swiper-button {
+            .swiper-pegination {
                 background: none;
                 font-size: 32px;
                 color: #fff;
             }
-            .swiper-pagination {
                 .swiper-pagination-bullet {
                     background-color: #fff;
                     opacity: 1;
@@ -164,10 +179,8 @@ export default {
                 .swiper-pagination-bullet-active {
                     background-color: $main_color;
                 }
-            }
+          }
         }
-    }
-
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
 
@@ -229,12 +242,11 @@ export default {
                     }
                 }
             }
-            .swiper-button-next {
+            .swiper-pegination {
                 background: none;
                 font-size: 32px;
                 color: #fff;
             }
-            .swiper-pagination {
                 .swiper-pagination-bullet {
                     background-color: #fff;
                     opacity: 1;
@@ -242,7 +254,6 @@ export default {
                 .swiper-pagination-bullet-active {
                     background-color: $main_color;
                 }
-            }
         }
     }
 
@@ -259,7 +270,7 @@ export default {
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
-                    width: 80%;
+                    width: 100%;
                     height: 280px;
                     margin: 0 auto;
                     a {
@@ -303,12 +314,11 @@ export default {
                     }
                 }
             }
-            .swiper-button {
+            .swiper-pegination {
                 background: none;
                 font-size: 32px;
                 color: #fff;
             }
-            .swiper-pagination {
                 .swiper-pagination-bullet {
                     background-color: #fff;
                     opacity: 1;
@@ -316,7 +326,6 @@ export default {
                 .swiper-pagination-bullet-active {
                     background-color: $main_color;
                 }
-            }
         }
     }
 

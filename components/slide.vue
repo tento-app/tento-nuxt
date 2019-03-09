@@ -3,79 +3,71 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <nuxt-link to=''/camp-detail>
-        <!-- card content-->
-        <div class="swiper-slide background_img_01">
-          <a href="#">
-            <div class="slide_item">
-              <div class="slide_item_user">
-                <div class="slide_item_user_img">
-                </div>
-                <div class="">
-                  <p class="slide_item_user_name">ジョージハリスン</p>
-                  <p class="slide_item_user_position">webエンジニア</p>
-                </div>
+      <div class="swiper-slide background_img_01">
+        <nuxt-link to='/camp-detail'>
+          <!-- card content-->
+          <div class="slide_item">
+            <div class="slide_item_user">
+              <div class="slide_item_user_img">
               </div>
-              <h4>webデザイナーで食事会しませんか？？</h4>
-            </div>
-          </a>
-        </div>
-      </nuxt-link>
-      <nuxt-link to=''/camp-detail>
-        <!-- card content-->
-        <div class="swiper-slide background_img_02">
-          <a href="#">
-            <div class="slide_item">
-              <div class="slide_item_user">
-                <div class="slide_item_user_img">
-                </div>
-                <div class="">
-                  <p class="slide_item_user_name">ジョージハリスン</p>
-                  <p class="slide_item_user_position">webエンジニア</p>
-                </div>
+              <div class="">
+                <p class="slide_item_user_name">ジョージハリスン</p>
+                <p class="slide_item_user_position">webエンジニア</p>
               </div>
-              <h4>webデザイナーで食事会しませんか？？</h4>
             </div>
-          </a>
-        </div>
-      </nuxt-link>
-      <nuxt-link to=''/camp-detail>
-        <!-- card content-->
-        <div class="swiper-slide background_img_03">
-          <a href="#">
-            <div class="slide_item">
-              <div class="slide_item_user">
-                <div class="slide_item_user_img">
-                </div>
-                <div class="">
-                  <p class="slide_item_user_name">ジョージハリスン</p>
-                  <p class="slide_item_user_position">webエンジニア</p>
-                </div>
+            <h4>webデザイナーで食事会しませんか？？</h4>
+          </div>
+        </nuxt-link>
+      </div>
+      <div class="swiper-slide background_img_02">
+        <a href="#">
+          <div class="slide_item">
+            <div class="slide_item_user">
+              <div class="slide_item_user_img">
               </div>
-              <h4>webデザイナーで食事会しませんか？？</h4>
-            </div>
-          </a>
-        </div>
-      </nuxt-link>
-      <nuxt-link to=''/camp-detail>
-        <!-- card content-->
-        <div class="swiper-slide background_img_04">
-          <a href="#">
-            <div class="slide_item">
-              <div class="slide_item_user">
-                <div class="slide_item_user_img">
-                </div>
-                <div class="">
-                  <p class="slide_item_user_name">ジョージハリスン</p>
-                  <p class="slide_item_user_position">webエンジニア</p>
-                </div>
+              <div class="">
+                <p class="slide_item_user_name">ジョージハリスン</p>
+                <p class="slide_item_user_position">webエンジニア</p>
               </div>
-              <h4>webデザイナーで食事会しませんか？？</h4>
             </div>
-          </a>
-        </div>
-      </nuxt-link>
+            <h4>webデザイナーで食事会しませんか？？</h4>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-slide background_img_03">
+        <nuxt-link to='/camp-detail'>
+          <!-- card content-->
+          <div class="slide_item">
+            <div class="slide_item_user">
+              <div class="slide_item_user_img">
+              </div>
+              <div class="">
+                <p class="slide_item_user_name">ジョージハリスン</p>
+                <p class="slide_item_user_position">webエンジニア</p>
+              </div>
+            </div>
+            <h4>webデザイナーで食事会しませんか？？</h4>
+          </div>
+        </nuxt-link>
+      </div>
+      <div class="swiper-slide background_img_04">
+        <nuxt-link to='/camp-detail'>
+          <!-- card content-->
+          <div class="slide_item">
+            <div class="slide_item_user">
+              <div class="slide_item_user_img">
+              </div>
+              <div class="">
+                <p class="slide_item_user_name">ジョージハリスン</p>
+                <p class="slide_item_user_position">webエンジニア</p>
+              </div>
+            </div>
+            <h4>webデザイナーで食事会しませんか？？</h4>
+          </div>
+        </nuxt-link>
+      </div>
     </div>
+
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -110,10 +102,11 @@ export default {
 @media (min-width:840px) {
 
     .slide {
-        margin-top: 60px;
+        margin: 60px auto 0;
         padding: 0 30px;
+        max-width: 840px;
         .swiper-container {
-            max-width: 840px;
+            padding: 0 30px;
             border-radius: 12px;
             overflow: hidden;
             font-size: 0;
@@ -270,7 +263,7 @@ export default {
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
-                    width: 100%;
+                    width: 80%;
                     height: 280px;
                     margin: 0 auto;
                     a {

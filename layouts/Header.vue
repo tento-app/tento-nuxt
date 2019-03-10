@@ -6,37 +6,14 @@
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
       <div class="left">
-        <div class="account" id="account">
-          <div class="account_menu" id="account_menu">
-            <ul>
-              <nuxt-link to="/create" class="sp">
-                <li><i class="fas fa-campground"></i>
-                  <p>New camp</p>
-                </li>
-              </nuxt-link>
-              <nuxt-link to="/account">
-                <li><i class="far fa-user"></i>
-                  <p>マイページ</p>
-                </li>
-              </nuxt-link>
-              <a to="" class="sp">
-                <li><i class="far fa-bookmark"></i>
-                  <p>保存したキャンプ</p>
-                </li>
-              </a>
-              <a href="#">
-                <li><i class="fas fa-sign-out-alt"></i>
-                  <p>ログアウト</p>
-                </li>
-              </a>
-            </ul>
+        <nuxt-link to="login">
+          <div class="sign-in　submit btn">
+            <p>ログイン/新規アカウント</p>
           </div>
+        </nuxt-link>
+        <div class="account" id="account" @click="openModal">
+          <headerModal v-if="showModal" />
         </div>
-        <a href="https://twitter.com/">
-          <div class="contact btn">
-            <i class="far fa-envelope"></i>
-          </div>
-        </a>
         <nuxt-link to="/create">
           <div class="submit btn">
             <i class="fas fa-plus"></i>
@@ -59,6 +36,23 @@
 // }
 // account.addEventListener("click",show_menu);
 // layer[0].addEventListener("click",show_menu);
+import headerModal from '~/components/header-modal.vue';
+export default {
+  components: {
+    headerModal
+  },
+  data() {
+    return{
+      showModal: false
+    }
+  },
+  methods: {
+    openModal() {
+      this.showModal = !this.showModal
+    }
+  }
+}
+
 </script>
 
 
@@ -104,48 +98,11 @@
           height: 45px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
-          border: solid 1px $sub_color;
           cursor: pointer;
           box-sizing: border-box;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;
-          }
-          &_menu {
-            &.active {
-              display: block;
-            }
-            z-index: 999;
-            display: none;
-            text-align: left;
-            color: #555;
-            font-size: 14px;
-            position: absolute;
-            top:75px;
-            right:230px;
-            ul {
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-              background-color: #fff;
-              border-radius: 8px;
-              padding: 1rem 0;
-              font-weight: normal;
-              li {
-                font-size: 14px;
-                padding: 6px 12px;
-                display: flex;
-                align-items: center;
-                p {
-                  margin-left: 1rem;
-                }
-                i {
-                  color: $sub_color;
-                }
-                &:hover {
-                  background-color: #eee;
-                  transition: $transtion01;
-                }
-              }
-            }
           }
         }
         .contact {
@@ -213,48 +170,11 @@
           border-radius: 50%;
           box-shadow: $box_shadow01;
           box-shadow: $box_shadow01;
-          border: solid 1px $main_color;
           cursor: pointer;
           box-sizing: border-box;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;
-          }
-          &_menu {
-            &.active {
-              display: block;
-            }
-            z-index: 999;
-            display: none;
-            text-align: left;
-            color: #555;
-            font-size: 14px;
-            position: absolute;
-            top:75px;
-            right:230px;
-            ul {
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-              background-color: #fff;
-              border-radius: 8px;
-              padding: 1rem 0;
-              font-weight: normal;
-              li {
-                font-size: 14px;
-                padding: 6px 12px;
-                display: flex;
-                align-items: center;
-                p {
-                  margin-left: 1rem;
-                }
-                i {
-                  color: $sub_color;
-                }
-                &:hover {
-                  background-color: #eee;
-                  transition: $transtion01;
-                }
-              }
-            }
           }
         }
         .contact {
@@ -322,48 +242,11 @@
           height: 45px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
-          border: solid 1px $main_color;
           cursor: pointer;
           box-sizing: border-box;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;
-          }
-          &_menu {
-            &.active {
-              display: block;
-            }
-            z-index: 999;
-            display: none;
-            text-align: left;
-            color: #555;
-            font-size: 14px;
-            position: absolute;
-            top:75px;
-            right:90px;
-            ul {
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-              background-color: #fff;
-              border-radius: 8px;
-              padding: 1rem 0;
-              font-weight: normal;
-              li {
-                font-size: 14px;
-                padding: 6px 12px;
-                display: flex;
-                align-items: center;
-                p {
-                  margin-left: 1rem;
-                }
-                i {
-                  color: $sub_color;
-                }
-                &:hover {
-                  background-color: #eee;
-                  transition: $transtion01;
-                }
-              }
-            }
           }
         }
         .contact {

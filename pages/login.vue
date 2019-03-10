@@ -20,4 +20,12 @@ export default {
 </script>
 
 <style lang="scss">
+  body {
+    background-color: #efefef;
+  }
+  @media screen and (min-width: 0px) and (max-width: 550px) {
+    body{
+      background-color: #fff;
+    }
+  }
 </style>

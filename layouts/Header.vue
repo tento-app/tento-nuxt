@@ -6,9 +6,11 @@
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
       <div class="left">
-        <div class="sign-in　submit btn">
-          <p>ログイン/新規アカウント</p>
-        </div>
+        <nuxt-link to="login">
+          <div class="sign-in　submit btn">
+            <p>ログイン/新規アカウント</p>
+          </div>
+        </nuxt-link>
         <div class="account" id="account" @click="openModal">
           <headerModal v-if="showModal" />
         </div>

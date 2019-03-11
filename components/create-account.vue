@@ -3,26 +3,60 @@
     <div class="create-account">
       <div class="sign-up contents">
         <h1>新規アカウント作成</h1>
-        <form class="" action="index.html" method="post">
+        <form class="" action="index.html" method="post" @submit="checkForm">
           <div class="item">
             <label for="up-e-mail">メールアドレス</label>
-            <input type="text" name="" value="" id="up-e-mail">
+            <input type="text" name="" value="" id="up-e-mail" v-model="e_mail">
+            <p v-if="mailerrors.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in mailerrors">{{ error }}</li>
+              </ul>
+            </p>
+          </div>
+          <div class="item">
+            <label for="up-id">ID</label>
+            <input type="text" name="" value="" id="up-id" v-model="identification">
+            <p v-if="identificationerros.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in identificationerros">{{ error }}</li>
+              </ul>
+            </p>
           </div>
           <div class="item">
             <label for="name">ユーザーネーム</label>
-            <input type="text" name="" value="" id="name">
+            <input type="text" name="" value="" id="name" v-model="name">
+            <p v-if="nameerros.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in nameerros">{{ error }}</li>
+              </ul>
+            </p>
           </div>
           <div class="item">
             <label for="up-password">パスワード</label>
-            <input type="password" name="" value="" id="up-password">
+            <input type="password" name="" value="" id="up-password" v-model="password">
+            <p v-if="passworderros.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in passworderros">{{ error }}</li>
+              </ul>
+            </p>
           </div>
           <div class="item">
             <label for="conf-up-password">パスワード(確認)</label>
-            <input type="password" name="" value="" id="conf-up-password">
+            <input type="password" name="" value="" id="conf-up-password" v-model="conf_up_password">
+            <p v-if="confpassworderros.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in confpassworderros">{{ error }}</li>
+              </ul>
+            </p>
           </div>
           <div class="btn_list">
-            <button type="button" name="button" class="btn">Sign up</button>
-            <button type="button" name="button" class="btn md">Sign in ></button>
+            <button type="submit" name="button" class="btn">Sign up</button>
+            <button type="submit" name="button" class="btn md">Sign in ></button>
           </div>
 
         </form>
@@ -34,8 +68,8 @@
         </div>
         <form class="" action="index.html" method="post">
           <div class="item">
-            <label for="in-e-mail">メールアドレス</label>
-            <input type="text" name="" value="" id="in-e-mail">
+            <label for="in-id">ID</label>
+            <input type="text" name="" value="" id="in-id">
           </div>
           <div class="item">
             <label for="in-password">パスワード</label>
@@ -50,7 +84,52 @@
 
 <script>
 export default {
-}
+  data(){
+    return{
+      errors:[],
+      mailerrors:[],
+      identificationerros:[],
+      nameerros:[],
+      passworderros:[],
+      confpassworderros:[],
+      e_mail:"",
+      identification:"",
+      name:"",
+      password:"",
+      conf_up_password:"",
+      error:false
+  }
+},
+  methods: {
+    checkForm:function(e) {
+      if(this.e_mail && this.identification && this.name && this.password && this.conf_up_password) {
+        return true;
+      }
+      this.mailerrors = [];
+      this.identificationerros = [];
+      this.nameerros = [];
+      this.passworderros = [];
+      this.confpassworderros = [];
+      if(!this.e_mail) {
+        this.mailerrors.push("e-mail required.")
+      }
+      if(!this.identification) {
+        this.identificationerros.push("ID required.");
+      }
+      if(!this.name) {
+        this.nameerros.push("user-name required.");
+      }
+      if(!this.password) {
+        this.passworderros.push("password required.");
+      }
+      if(!this.conf_up_password) {
+        this.confpassworderros.push("conf_up_password required.");
+      }
+      e.preventDefault();
+    }
+   }
+  }
+
 </script>
 <style lang="scss">
 @import '~/assets/style/base.scss';

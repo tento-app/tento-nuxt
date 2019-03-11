@@ -6,51 +6,52 @@
         <form class="" action="index.html" method="post" @submit="checkForm">
           <div class="item">
             <label for="up-e-mail">メールアドレス</label>
-            <input type="text" name="" value="" id="up-e-mail" v-model="e_mail">
+            <input type="email" name="" value="" id="up-e-mail" v-model="e_mail" v-bind:class="{error : mailerror}" >
             <p v-if="mailerrors.length">
-              <b>Please correct the following error(s):</b>
+
               <ul>
-                <li v-for="error in mailerrors">{{ error }}</li>
+                <li v-for="error in mailerrors" class="error_message">{{ error }}</li>
               </ul>
             </p>
           </div>
           <div class="item">
             <label for="up-id">ID</label>
-            <input type="text" name="" value="" id="up-id" v-model="identification">
+            <input type="text" name="" value="" id="up-id" v-model="identification" v-bind:class="{error : identificationerror}">
             <p v-if="identificationerros.length">
-              <b>Please correct the following error(s):</b>
+
               <ul>
-                <li v-for="error in identificationerros">{{ error }}</li>
+                <li v-for="error in identificationerros" class="error_message">{{ error }}</li>
               </ul>
             </p>
           </div>
           <div class="item">
             <label for="name">ユーザーネーム</label>
-            <input type="text" name="" value="" id="name" v-model="name">
+            <input type="text" name="" value="" id="name" v-model="name" v-bind:class="{error : nameerror}" maxlength="20">
+            <p class="count">{{ name.length }}/20</p>
             <p v-if="nameerros.length">
-              <b>Please correct the following error(s):</b>
+
               <ul>
-                <li v-for="error in nameerros">{{ error }}</li>
+                <li v-for="error in nameerros" class="error_message">{{ error }}</li>
               </ul>
             </p>
           </div>
           <div class="item">
             <label for="up-password">パスワード</label>
-            <input type="password" name="" value="" id="up-password" v-model="password">
+            <input type="password" name="" value="" id="up-password" v-model="password" v-bind:class="{error : passworderror}">
             <p v-if="passworderros.length">
-              <b>Please correct the following error(s):</b>
+
               <ul>
-                <li v-for="error in passworderros">{{ error }}</li>
+                <li v-for="error in passworderros" class="error_message">{{ error }}</li>
               </ul>
             </p>
           </div>
           <div class="item">
             <label for="conf-up-password">パスワード(確認)</label>
-            <input type="password" name="" value="" id="conf-up-password" v-model="conf_up_password">
+            <input type="password" name="" value="" id="conf-up-password" v-model="conf_up_password" v-bind:class="{error : confpassworderror}">
             <p v-if="confpassworderros.length">
-              <b>Please correct the following error(s):</b>
+
               <ul>
-                <li v-for="error in confpassworderros">{{ error }}</li>
+                <li v-for="error in confpassworderros" class="error_message">{{ error }}</li>
               </ul>
             </p>
           </div>
@@ -97,7 +98,11 @@ export default {
       name:"",
       password:"",
       conf_up_password:"",
-      error:false
+      mailerror:false,
+      identificationerror:false,
+      nameerror:false,
+      passworderror:false,
+      confpassworderror:false
   }
 },
   methods: {
@@ -111,19 +116,24 @@ export default {
       this.passworderros = [];
       this.confpassworderros = [];
       if(!this.e_mail) {
-        this.mailerrors.push("e-mail required.")
+        this.mailerrors.push("メールアドレスを記入してください");
+        this.mailerror = true
       }
       if(!this.identification) {
-        this.identificationerros.push("ID required.");
+        this.identificationerros.push("ID を記入してください");
+        this.identificationerror = true
       }
       if(!this.name) {
-        this.nameerros.push("user-name required.");
+        this.nameerros.push("ユーザーネームを記入してください");
+        this.nameerror = true
       }
       if(!this.password) {
-        this.passworderros.push("password required.");
+        this.passworderros.push("パスワードを記入してください");
+        this.passworderror = true
       }
       if(!this.conf_up_password) {
-        this.confpassworderros.push("conf_up_password required.");
+        this.confpassworderros.push("パスワード(確認)を記入してください");
+        this.confpassworderror = true
       }
       e.preventDefault();
     }
@@ -168,7 +178,24 @@ export default {
       padding: 1.5rem 0 0;
     }
     .item {
+      position: relative;
       margin:0 0 0.8rem;
+      .count {
+        top:35px;
+        right: 10px;
+        position: absolute;
+        font-weight: lighter;
+        color: #ccc;
+        font-size: 12px
+      }
+      .error{
+        border: solid 1px red;
+      }
+      .error_message {
+        color: red;
+        font-size: 14px;
+        font-weight: bold;
+      }
       input{
         background-color: #fafafa;
         border: #cacaca solid 1px;

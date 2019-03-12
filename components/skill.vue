@@ -1,68 +1,57 @@
 <template id="">
   <div class="" id="skill">
-  <div class="skill">
-    <div class="skill_item">
-      <div class="skill_item_img"></div>
-      <p>adobe XD</p>
+    <div class="skill">
+      <div class="skill_item">
+        <div class="skill_item_img"></div>
+        <p>adobe XD</p>
+      </div>
+
+      <div class="skill_item">
+        <div class="skill_item_img"></div>
+        <p>adobe XD</p>
+      </div>
+
+      <div class="skill_item">
+        <div class="skill_item_img"></div>
+        <p>adobe XD</p>
+      </div>
+
+      <div class="skill_item">
+        <div class="skill_item_img"></div>
+        <p>adobe XD</p>
+      </div>
+
+      <div class="skill_item">
+        <div class="skill_item_img"></div>
+        <p>adobe XD</p>
+      </div>
+
+      <div class="skill_item">
+        <div class="skill_item_img"></div>
+        <p>adobe XD5</p>
+      </div>
+
+      <div class="skill_item skill_add" @click="isShowModal">
+        <div class=""></div>
+        <p>スキルを追加</p>
+      </div>
     </div>
-
-    <div class="skill_item">
-      <div class="skill_item_img"></div>
-      <p>adobe XD</p>
-    </div>
-
-    <div class="skill_item">
-      <div class="skill_item_img"></div>
-      <p>adobe XD</p>
-    </div>
-
-    <div class="skill_item">
-      <div class="skill_item_img"></div>
-      <p>adobe XD</p>
-    </div>
-
-    <div class="skill_item">
-      <div class="skill_item_img"></div>
-      <p>adobe XD</p>
-    </div>
-
-    <div class="skill_item">
-      <div class="skill_item_img"></div>
-      <p>adobe XD5</p>
-    </div>
-
-    <div class="skill_item skill_add" @click="openModal">
-     <div class=""></div>
-     <p>スキルを追加</p>
-     <p>{{showModal}}</p>
-   </div>
- </div>
- <SkillModal v-if="showModal" ref="skillmodal"/>
-  </div>
-
-  </div>
+  <SkillModal v-if="showModal" ref="skillmodal"/>
   </div>
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex'
 import SkillModal from '~/components/skill-modal.vue';
 export default {
  components: {
    SkillModal
  },
- data() {
-   return {
-     showModal: false
-   }
- },
+  computed: {
+    ...mapState('skill_modal',['showModal'])
+  },
  methods: {
-   openModal() {
-     this.showModal = !this.showModal
-   },
-   closeModal() {
-     this.showModal = !this.showModal
-     this.$refs.skillmodal.closeModal()
-   }
+    ...mapMutations('skill_modal',['isShowModal'])
  }
 }
 

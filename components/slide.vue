@@ -69,8 +69,12 @@
     </div>
 
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+    <div class="swiper-button-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </div>
   </div>
 </div>
 </template>
@@ -160,6 +164,16 @@ export default {
                     }
                 }
             }
+            .swiper-button-next{
+              background-image: none;
+              top: 45%;
+              right: 35px;
+            }
+            .swiper-button-prev{
+              background-image: none;
+              top: 45%;
+              left: -15px;
+            }
             .swiper-pegination {
                 background: none;
                 font-size: 32px;
@@ -235,6 +249,16 @@ export default {
                     }
                 }
             }
+            .swiper-button-next{
+              background-image: none;
+              top: 45%;
+              right: 35px;
+            }
+            .swiper-button-prev{
+              background-image: none;
+              top: 45%;
+              left: -15px;
+            }
             .swiper-pegination {
                 background: none;
                 font-size: 32px;
@@ -306,6 +330,22 @@ export default {
                         }
                     }
                 }
+            }
+            .swiper-button-next{
+              background-image: none;
+              top: 45%;
+              right: 35px;
+              svg{
+                stroke-width:1.5
+              }
+            }
+            .swiper-button-prev{
+              background-image: none;
+              top: 45%;
+              left: -15px;
+              svg{
+                stroke-width:1.5
+              }
             }
             .swiper-pegination {
                 background: none;

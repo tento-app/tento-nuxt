@@ -3,6 +3,7 @@
     <Header />
     <div>
       <CampBody />
+      <profile />
       <div class="skill_component">
         <skill />
       </div>
@@ -38,9 +39,12 @@ export default {
 <style lang='scss'>
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
-
+@import '~/assets/style/_color.scss';
+.main {
+  padding-bottom: 5rem;
+}
 .skill_component{
-  background-color: #EFEFEF;
+  background-color: $backround_color02;
   padding: 80px 0;
 }
 

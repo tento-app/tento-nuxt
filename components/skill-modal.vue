@@ -20,8 +20,8 @@
             </div>
 
             <div class="skill_modal_btn">
-              <p @click="$emit('closeModal')">キャンセル</p>
-              <button type="button" name="button" class="btn">追加する</button>
+              <p @click="isShowModal">キャンセル</p>
+              <button type="button" @click="isShowModal" name="button" class="btn">追加する</button>
             </div>
           </div>
         </div>
@@ -32,13 +32,12 @@
 
 
 <script type="text/javascript">
+import { mapMutations } from 'vuex'
 
 export default {
-  methods:{
-    closeModal(){
-            this.showModal = !this.showModal
-        }
-  }
+ methods: {
+    ...mapMutations('skill_modal',['isShowModal'])
+ }
 }
 
 </script>

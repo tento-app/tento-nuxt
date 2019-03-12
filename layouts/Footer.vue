@@ -41,7 +41,7 @@
     footer {
         background-color: #302D2C;
         display: flex;
-        margin-top: 4rem;
+        margin-top: 0rem;
         justify-content: center;
         .content {
             margin: 0;

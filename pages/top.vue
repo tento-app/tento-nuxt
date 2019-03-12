@@ -1,7 +1,7 @@
 <template>
   <section>
     <Header />
-    <div>
+    <div class="main">
       <slide />
       <card />
     </div>

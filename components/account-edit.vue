@@ -19,8 +19,8 @@
         <div class="account_form_text">
           <div class="account_form_text_name account_form_text_item">
             <p>ユーザーネーム</p>
-            <input type="text" name="" value="" maxlength='20' placeholder="てんと一郎" v-model="name" v-bind:class="{error : error}" v-on:change="checkError">
-            <p class="count">{{ name.length }}/20</p>
+            <input type="text" name="" value="" maxlength='12' placeholder="てんと一郎" v-model="name" v-bind:class="{error : error}" v-on:change="checkError">
+            <p class="count">{{ name.length }}/12</p>
             <p v-if="errors.length">
               <ul>
                 <li v-for="error in errors" class="error_message">{{ error }}</li>

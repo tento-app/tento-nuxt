@@ -2,18 +2,18 @@
   <section id="account">
     <Header />
     <div class="main">
-      <login />
+      <createAccount />
     </div>
   </section>
 </template>
 
 <script>
-import login from '~/components/login.vue';
+import createAccount from '~/components/create-account.vue';
 import Header from '~/layouts/Header.vue';
 
 export default {
   components: {
-    login,
+    createAccount,
     Header
   }
 }

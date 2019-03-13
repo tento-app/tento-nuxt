@@ -1,73 +1,6 @@
 <template lang="html">
   <div class="">
     <div class="create-account">
-      <div class="sign-up contents">
-        <h1>新規アカウント作成</h1>
-        <form class="" action="index.html" method="post" @submit="checkForm">
-          <div class="item">
-            <label for="up-e-mail">メールアドレス</label>
-            <input type="email" name="" value="" id="up-e-mail" v-model="e_mail" v-bind:class="{error : mailerror}" >
-            <p v-if="mailerrors.length">
-
-              <ul>
-                <li v-for="error in mailerrors" class="error_message">{{ error }}</li>
-              </ul>
-            </p>
-          </div>
-          <div class="item">
-            <label for="up-id">ID</label>
-            <input type="text" name="" value="" id="up-id" v-model="identification" v-bind:class="{error : identificationerror}" pattern="^[0-9A-Za-z]+$">
-            <p v-if="identificationerros.length">
-
-              <ul>
-                <li v-for="error in identificationerros" class="error_message">{{ error }}</li>
-              </ul>
-            </p>
-          </div>
-          <div class="item">
-            <label for="name">ユーザーネーム</label>
-            <input type="text" name="" value="" id="name" v-model="name" v-bind:class="{error : nameerror}" maxlength="12">
-            <p class="count">{{ name.length }}/12</p>
-            <p v-if="nameerros.length">
-
-              <ul>
-                <li v-for="error in nameerros" class="error_message">{{ error }}</li>
-              </ul>
-            </p>
-          </div>
-          <div class="item">
-            <label for="up-password">パスワード</label>
-            <input type="password" name="" value="" id="up-password" v-model="password" v-bind:class="{error : passworderror}">
-            <p>{{password}}</p>
-            <p v-if="passworderros.length">
-              <ul>
-                <li v-for="error in passworderros" class="error_message">{{ error }}</li>
-              </ul>
-            </p>
-          </div>
-          <div class="item">
-            <label for="conf-up-password">パスワード(確認)</label>
-            <input type="password" name="" value="" id="conf-up-password" v-model="conf_up_password" v-bind:class="{error : confpassworderror}">
-            <p>{{conf_up_password}}</p>
-            <p v-if="confpassworderros.length">
-
-              <ul>
-                <li v-for="error in confpassworderros" class="error_message">{{ error }}</li>
-              </ul>
-            </p>
-          </div>
-          <div class="btn_list">
-            <button type="submit" name="button" class="btn">アカウント作成</button>
-            <nuxt-link to="/login" class="btn md">
-              <div class="md_link">
-                <p>ログイン</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-              </div>
-            </nuxt-link>
-          </div>
-
-        </form>
-      </div>
       <div class="sign-in contents">
         <h1>ログイン</h1>
         <div class="img">
@@ -92,11 +25,20 @@
               </ul>
             </p>
           </div>
-          <button type="submit" name="button" class="btn">ログイン</button>
+          <div class="btn_list">
+            <button type="submit" name="button" class="btn">ログイン</button>
+            <nuxt-link to="/create-account" class="btn md">
+              <div class="md_link">
+                <p>アカウント作成</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </nuxt-link>
+
+          </div>
         </form>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -204,7 +146,7 @@ export default {
   }
 
 </script>
-<style lang="scss" scoped="">
+<style lang="scss">
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
 
@@ -305,9 +247,15 @@ export default {
 }
 
 @media screen and (min-width: 500px) and (max-width: 840px) {
+  .md {
+    margin-left: 1rem;
+  }
   .md_link {
     display: flex;
     align-items: center;
+  }
+  .btn_list {
+    display: flex;
   }
   .create-account{
     display: flex;
@@ -378,7 +326,6 @@ export default {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      display: none;
       label {
         display: block;
         font-weight: bold;
@@ -400,9 +347,15 @@ export default {
 }
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .md {
+    margin-left: 1rem;
+  }
   .md_link {
     display: flex;
     align-items: center;
+  }
+  .btn_list {
+    display: flex;
   }
   .create-account{
     display: flex;
@@ -481,7 +434,6 @@ export default {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      display: none;
       label {
         display: block;
         font-weight: bold;

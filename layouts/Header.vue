@@ -6,7 +6,7 @@
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
       <div class="left">
-        <nuxt-link to="login">
+        <nuxt-link to="create-account">
           <div class="sign-in　submit btn">
             <p>ログイン/新規アカウント</p>
           </div>

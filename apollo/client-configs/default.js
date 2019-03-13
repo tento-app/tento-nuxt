@@ -3,7 +3,11 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 export default () => {
-  const httpLink = new HttpLink({ uri: 'http://118.27.21.32/' })
+  const httpLink = new HttpLink({
+    uri: 'http://127.0.0.1:8000/',
+    fetchOptions: {},
+    headers: {},
+  })
 
   // auth token
 //   const token = 'xxxxxxxxxxxxx'
@@ -11,13 +15,14 @@ export default () => {
   // middleware
   const middlewareLink = new ApolloLink((operation, forward) => {
     operation.setContext({
-    //   headers: { Authorization: `bearer ${token}` }
     })
     return forward(operation)
   })
   const link = middlewareLink.concat(httpLink)
   return {
     link,
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    connectToDevTools: true,
+    defaultHttpLink: false,
   }
 }

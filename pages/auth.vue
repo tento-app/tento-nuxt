@@ -10,16 +10,20 @@
     </div>
 </template>
 <script>
+import { mapState,mapMutations } from 'vuex'
 import loginGql from '~/graphql/mutation/login.gql'
 export default {
     data: function () {
         return {
             username: "",
             password: "",
-            token: "",
         }
     },
+    computed: {
+        ...mapState('user',['token'])
+    },
     methods: {
+        ...mapMutations('user',['setToken']),
         login: function () {
             this.$apollo.mutate({
                 mutation: loginGql,
@@ -31,7 +35,7 @@ export default {
                 // 成功した場合に実行する処理（200OKのレスポンスの場合）
                 console.log("成功")
                 console.log(result)
-                this.token  = result.data.authToken.token
+                this.setToken(result.data.authToken.token)
             }).catch((error) => {
                 // errorの場合に実行する処理
                 console.log("失敗")

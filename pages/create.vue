@@ -40,5 +40,11 @@
 </script>
 
 <style lang="scss">
+.mavonEditor {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 30px;
+  z-index: -1;
+}
 
 </style>

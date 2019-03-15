@@ -14,10 +14,19 @@
         </div>
       </div>
       <div class="create_body">
-        <div class="create_body_content">
-          <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea>
+        <div class="editor">
+            <editor-menu-bar :editor="editor">
+              <div slot-scope="{ commands, isActive }">
+                <button :class="{ 'is-active': isActive.bold() }" @click="commands.bold">
+                  Bold
+                </button>
+                <button :class="{ 'is-active': isActive.heading({ level: 2 }) }" @click="commands.heading({ level: 2 })">
+                  H2
+                </button>
+              </div>
+            </editor-menu-bar>
+            <editor-content :editor="editor" />
         </div>
-        <skill />
       </div>
     </div>
 
@@ -27,13 +36,71 @@
 
 <script>
 import Header from '~/layouts/Header.vue';
-import skill from '~/components/skill.vue';
+import { Editor, EditorContent,EditorMenuBar } from 'tiptap'
+import {
+  Blockquote,
+  CodeBlock,
+  HardBreak,
+  Heading,
+  OrderedList,
+  BulletList,
+  ListItem,
+  TodoItem,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  History,
+} from 'tiptap-extensions'
 
 export default {
   components: {
     Header,
-    skill
-  }
+    EditorMenuBar,
+    EditorContent,
+  },
+  data() {
+    return {
+      editor: new Editor({
+        extensions: [
+          new Blockquote(),
+          new CodeBlock(),
+          new HardBreak(),
+          new Heading({ levels: [1, 2, 3] }),
+          new BulletList(),
+          new OrderedList(),
+          new ListItem(),
+          new TodoItem(),
+          new TodoList(),
+          new Bold(),
+          new Code(),
+          new Italic(),
+          new Link(),
+          new Strike(),
+          new Underline(),
+          new History(),
+        ],
+        content: `
+          <h1>Yay Headlines!</h1>
+          <p>All these <strong>cool tags</strong> are working now.</p>
+        `,
+      }),
+    }
+  },
+  mounted() {
+    this.editor = new Editor({
+      content: `
+        <h1>Yay Headlines!</h1>
+        <p>All these <strong>cool tags</strong> are working now.</p>
+      `,
+    })
+  },
+  beforeDestroy() {
+    this.editor.destroy()
+  },
 }
 </script>
 
@@ -74,18 +141,14 @@ export default {
       }
     }
     &_body{
+      .editor{
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
       &_content{
         max-width: 840px;
         margin: 2rem auto;
-        textarea{
-          width: 100%;
-          box-sizing: border-box;
-          background-color: rgba(0,0,0,0);
-          outline: 0;
-          line-height: 2rem;
-          font-size: 16px;
-          border: none;
-        }
       }
     }
   }

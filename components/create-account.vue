@@ -87,7 +87,7 @@
               </ul>
             </p>
           </div>
-          <button type="submit" name="button" class="btn">Sign in</button>
+          <button type="submit" name="button" class="btn" @click="login">Sign in</button>
         </form>
       </div>
     </div>
@@ -95,6 +95,8 @@
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex'
+import loginGql from '~/graphql/mutation/login.gql'
 export default {
   data(){
     return{
@@ -108,9 +110,9 @@ export default {
       in_passworderros:[],
       e_mail:"",
       identification:"",
-      in_identification:"",
       name:"",
       password:"",
+      in_identification:"",
       in_password:"",
       conf_up_password:"",
       mailerror:false,
@@ -123,6 +125,24 @@ export default {
   }
 },
   methods: {
+    ...mapMutations('user',['setToken']),
+    login: function () {
+        this.$apollo.mutate({
+            mutation: loginGql,
+            variables: {
+                username: this.in_identification,
+                password: this.in_password,
+            }
+        }).then((result) => {
+            // 成功した場合に実行する処理（200OKのレスポンスの場合）
+            console.log("成功")
+            this.setToken(result.data.authToken.token)
+            redirect('/')
+        }).catch((error) => {
+            // errorの場合に実行する処理
+            console.log("失敗")
+        })
+    },
     checkForm:function(e) {
       if(this.e_mail && this.identification && this.name && this.password && this.conf_up_password) {
         return true;

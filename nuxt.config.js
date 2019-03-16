@@ -95,7 +95,8 @@ module.exports = () => {
      ** Nuxt.js modules
      */
     modules: [,
-      '@nuxtjs/apollo'
+      '@nuxtjs/apollo',
+      'cookie-universal-nuxt',
     ],
 
     apollo: {

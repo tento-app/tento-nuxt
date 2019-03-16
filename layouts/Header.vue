@@ -6,12 +6,12 @@
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
       <div class="left">
-        <nuxt-link to="login">
+        <nuxt-link to="login" v-if="!username">
           <div class="sign-in　submit btn">
             <p>ログイン/新規アカウント</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal">
+        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-image': 'url(' + logo + ')' }">
           <headerModal v-if="showModal" />
         </div>
         <nuxt-link to="/create">
@@ -26,16 +26,7 @@
   </header>
 </template>
 <script type="text/javascript">
-// let layer = document.getElementsByClassName('layer');
-// let account_menu = document.getElementById('account_menu');
-// let account = document.getElementById('account');
-//
-// function show_menu() {
-//   account_menu.classList.toggle('active');
-//   layer[0].classList.toggle('active');
-// }
-// account.addEventListener("click",show_menu);
-// layer[0].addEventListener("click",show_menu);
+import { mapState } from 'vuex'
 import headerModal from '~/components/header-modal.vue';
 export default {
   components: {
@@ -45,6 +36,9 @@ export default {
     return{
       showModal: false
     }
+  },
+  computed: {
+      ...mapState('user',['username','logo'])
   },
   methods: {
     openModal() {

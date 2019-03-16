@@ -2,7 +2,6 @@
   <div class="content item">
     <div class="nav">
       <h1>New Camp</h1>
-      <p>{{ selected }}</p>
       <div class="nav_item">
         <ul>
           <li>すべて</li>

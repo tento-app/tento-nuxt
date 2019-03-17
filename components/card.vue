@@ -2,22 +2,15 @@
   <div class="content item">
     <div class="nav">
       <h1>New Camp</h1>
-      <div class="nav_item">
-        <ul>
-          <li>すべて</li>
-          <li>イベント</li>
-          <li>開発</li>
-        </ul>
-      </div>
     </div>
     <div class="cards_list">
       <nuxt-link to="/camp-detail" class="card_link" v-for="project in allProjects.edges" :key="project.node.name">
         <div class="card">
           <div class="card_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
-            <p
+            <!-- <p
               class="card_img_category"
               :style="{ 'background-color': '#' + project.node.category.color }"
-            >{{ project.node.category.name }}</p>
+            >{{ project.node.category.name }}</p> -->
           </div>
           <div class="card_txt">
             <h4>{{ project.node.name }}</h4>

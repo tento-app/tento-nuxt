@@ -1,10 +1,9 @@
-<template>
-  <section>
+<template lang="html">
+  <section id="account">
     <Header />
     <div class="main">
-      <CampBody />
-      <div class="">
-        <chat />
+      <div class="account_edit">
+        <Card />
       </div>
     </div>
     <Footer />
@@ -12,29 +11,26 @@
 </template>
 
 <script>
+import Card from '~/components/card.vue';
 import Header from '~/layouts/Header.vue';
 import Footer from '~/layouts/Footer.vue';
-import CampBody from '~/components/camp-body.vue';
-import chat from '~/components/chat.vue';
-
 
 export default {
   components: {
+    Card,
     Header,
-    Footer,
-    CampBody,
-    chat
+    Footer
   }
 }
 </script>
 
-<style lang='scss' scoped="">
+<style lang="scss">
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
-@import '~/assets/style/_color.scss';
+
 .main {
-  padding-bottom: 5rem;
-  background-color: #fff;
+  padding: 0 0 5rem;
 }
+
 
 </style>

@@ -16,7 +16,7 @@
             </li>
             <nuxt-link to="/account">
               <li class="profile_view_more sub_btn">
-                <p>View page <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></p>
+                <p>View page</p>
               </li>
             </nuxt-link>
           </ul>
@@ -42,11 +42,11 @@ export default {
   .profile{
     max-width: 840px;
     margin: 0 auto;
-    padding: 80px 30px;
+    padding: 0px 30px 20px;
     &_contents{
       border: $border01;
       border-radius: 5px;
-      padding: 26px;
+      padding: 1rem;
       &_user {
         display: flex;
         align-items: flex-start;
@@ -56,8 +56,8 @@ export default {
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        width: 48px;
-        height: 48px;
+        width: 62px;
+        height: 62px;
         border-radius: 50%;
         margin-right: 1rem;
       }
@@ -65,17 +65,21 @@ export default {
         &_name{
           font-size: 18px;
           font-weight: bold;
+          line-height: 1.4;
+          margin: 0.5rem 0 0;
         }
         &_position {
-          font-size: 14px;
+          font-size: 0.9rem;
+          line-height: 1.4;
           color: #ccc;
+          margin: 0 0 0.5rem;
         }
         &_text{
-          font-size: 14px;
+          font-size: 0.95rem;
           color: #555555;
         }
         .profile_view_more{
-          margin: 6px 0;
+          margin: 0.5rem 0;
           p {
             display: flex;
             align-items: center;
@@ -143,11 +147,11 @@ export default {
   .profile{
     max-width: 840px;
     margin: 0 auto;
-    padding: 80px 0px;
+    padding: 20px 0px;
     &_contents{
       border-top: $border01;
       border-bottom: $border01;
-      padding: 26px;
+      padding: 1rem;
       &_user {
         display: flex;
         align-items: flex-start;
@@ -157,8 +161,8 @@ export default {
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        min-width: 42px;
-        height: 42px;
+        min-width: 52px;
+        height: 52px;
         border-radius: 50%;
         margin-right: 1rem;
       }

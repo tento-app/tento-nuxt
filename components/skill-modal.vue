@@ -5,11 +5,10 @@
         <div class="modal-container">
           <div class="skill_modal">
             <div class="header">
-              <div class="img"></div>
+              <div class="img"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></div>
               <h3>Skill</h3>
             </div>
             <p>あなたのスキルを追加しましょう。</p>
-            <p>{{showModal}}</p>
             <div class="input">
               <input type="text" name="" value="" autocomplete="on" list="skill-list">
               <datalist id="skill-list">
@@ -77,8 +76,6 @@ export default {
     .img{
       width: 45px;
       height: 45px;
-      border:solid 1px #ccc;
-      border-radius: 5px;
     }
     h3{
       margin-left: 1rem;

@@ -110,7 +110,8 @@ export default {
     height: 500px;
     display: flex;
     margin: 0 auto;
-    padding: 80px 30px;
+    padding: 0 30px;
+    height: 342px;
     &_members{
       background-color: #FFFFFF;
       box-shadow: $box_shadow02;
@@ -241,7 +242,7 @@ export default {
   .chat{
     max-width: 840px;
     margin: 0 auto;
-    padding: 80px 30px;
+    padding: 20px 30px;
     &_members{
       background-color: #FFFFFF;
       box-shadow: $box_shadow02;
@@ -374,7 +375,7 @@ export default {
   .chat{
     max-width: 840px;
     margin: 0 auto;
-    padding: 80px 10px;
+    padding: 20px 10px;
     &_members{
       background-color: #FFFFFF;
       box-shadow: $box_shadow02;

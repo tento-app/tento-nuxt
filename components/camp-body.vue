@@ -2,7 +2,6 @@
     <div class="content camp_body">
       <div class="camp_body_eyecatch background_img_03"></div>
       <div class="camp_body_text">
-        <!-- <p class="camp_body_text_tag develop">開発</p> -->
         <h1 class="camp_body_text_title">進行中のプロジェクトデザインやってくれる方！</h1>
         <user />
         <div class="camp_body_text_describe">
@@ -19,15 +18,33 @@
           </p>
         </div>
       </div>
+      <div class="">
+        <div class="skill_component">
+          <skill />
+        </div>
+        <div class="profile_component">
+          <profile />
+        </div>
+      </div>
+      <div class="join">
+        <div class="btn_list">
+          <p class="btn_priority ">このキャンプに参加する</p>
+          <p class="btn color">リストに保存する<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
+        </div>
+      </div>
     </div>
 </template>
 
 <script type="text/javascript">
 import user from '~/components/user.vue';
+import profile from '~/components/profile.vue';
+import skill from '~/components/skill.vue';
 
 export default {
   components: {
-    user
+    user,
+    profile,
+    skill
   }
 }
 
@@ -37,14 +54,21 @@ export default {
 @import '~/assets/style/_color.scss';
 
 @media (min-width:840px) {
+  .skill_component {
+    margin: 3rem 0;
+  }
+  .profile_component {
+    margin: 3rem 0;
+  }
   .camp_body{
+    padding: 60px 0 0;
     &_eyecatch{
       height: 280px;
       max-width: 840px;
       border-radius: 12px;
       position: relative;
       width: 100%;
-      margin: 60px auto 0;
+      margin: 0px auto 0;
       box-shadow: $box_shadow04;
     }
     &_text{
@@ -80,6 +104,35 @@ export default {
           line-height: 260%;
           word-break: keep-all;
           white-space: pre-line;
+        }
+      }
+    }
+  }
+  .join {
+    display: flex;
+    max-width: 840px;
+    margin: 2rem auto;
+    padding: 2rem 30px;
+    margin-left:auto;
+    border-top: $border01;
+    .btn_list {
+      margin-left: auto;
+      display: flex;
+      .btn_priority{
+        display: flex;
+        align-items: center;
+      }
+      .color {
+        border: $border01;
+        border-radius: 8px;
+        background-color: $black04;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        margin-left: 1rem;
+        color: $black02;
+        svg {
+          stroke: $black02;
         }
       }
     }
@@ -135,6 +188,35 @@ export default {
       }
     }
   }
+  .join {
+    display: flex;
+    max-width: 840px;
+    margin: 2rem auto 0;
+    padding: 2rem 30px 0;
+    margin-left:auto;
+    border-top: $border01;
+    .btn_list {
+      margin-left: auto;
+      display: flex;
+      .btn_priority{
+        display: flex;
+        align-items: center;
+      }
+      .color {
+        border: $border01;
+        border-radius: 8px;
+        background-color: $black04;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        margin-left: 1rem;
+        color: $black02;
+        svg {
+          stroke: $black02;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
@@ -142,7 +224,7 @@ export default {
     max-width: 840px;
     padding: 40px 10px;
     &_eyecatch{
-      height: 240px;
+      height: 180px;
       max-width: 840px;
       border-radius: 12px;
       position: relative;
@@ -182,6 +264,34 @@ export default {
         p{
           line-height: 260%;
           white-space: pre-line;
+        }
+      }
+    }
+  }
+  .join {
+    display: flex;
+    justify-content: center;
+    max-width: 840px;
+    margin: 0rem auto;
+    padding: 0rem 0px 0;
+    margin-left:auto;
+    .btn_list {
+      display: flex;
+      .btn_priority{
+        display: flex;
+        align-items: center;
+      }
+      .color {
+        border: $border01;
+        border-radius: 8px;
+        background-color: $black04;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        margin-left: 1rem;
+        color: $black02;
+        svg {
+          stroke: $black02;
         }
       }
     }

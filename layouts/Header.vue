@@ -64,7 +64,7 @@ export default {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 18px 0;
+    padding: 0.7rem 0;
     z-index: 4;
     position: fixed;
     width: 100%;
@@ -136,7 +136,7 @@ export default {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 18px 0;
+    padding: 0.7rem 0;
     z-index: 4;
     position: fixed;
     width: 100%;
@@ -209,7 +209,7 @@ export default {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 18px 0;
+    padding: 0.7rem 0;
     z-index: 4;
     position: fixed;
     width: 100%;

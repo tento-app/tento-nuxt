@@ -1,0 +1,6 @@
+query ($token: String!){
+  viewer(token: $token){
+    username
+    logo
+  }
+}

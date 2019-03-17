@@ -68,7 +68,8 @@
         <div class="img">
 
         </div>
-        <form class="" action="index.html" method="post" @submit="checksignin">
+        <!-- <form class="" @submit="checksignin"> -->
+        <form class="" onClick="return false;">
           <div class="item">
             <label for="in-id">ID</label>
             <input type="text" name="" value="" id="in-id" v-model="in_identification" v-bind:class="{error : in_identificationerror}">
@@ -87,7 +88,7 @@
               </ul>
             </p>
           </div>
-          <button type="submit" name="button" class="btn">Sign in</button>
+          <button name="button" class="btn" @click="login">Sign in</button>
         </form>
       </div>
     </div>
@@ -95,6 +96,10 @@
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex'
+import Header from '~/layouts/Header.vue';
+import loginGql from '~/graphql/mutation/login.gql'
+import viewerGql from '~/graphql/query/viewer.gql'
 export default {
   data(){
     return{
@@ -108,9 +113,9 @@ export default {
       in_passworderros:[],
       e_mail:"",
       identification:"",
-      in_identification:"",
       name:"",
       password:"",
+      in_identification:"",
       in_password:"",
       conf_up_password:"",
       mailerror:false,
@@ -123,6 +128,33 @@ export default {
   }
 },
   methods: {
+    ...mapMutations('user',['setToken','setUsername','setLogo']),
+    login: function () {
+        this.$apollo.mutate({
+            mutation: loginGql,
+            variables: {
+                username: this.in_identification,
+                password: this.in_password,
+            }
+        }).then((result) => {
+            // 成功した場合に実行する処理（200OKのレスポンスの場合）
+            console.log("成功")
+            console.log(result)
+            this.setToken(result.data.authToken.token)
+            this.$apollo.query({
+                query: viewerGql,
+                variables: {
+                    token: result.data.authToken.token
+                }
+            }).then((result) => {
+                this.setUsername(result.data.viewer.username)
+                this.setLogo(result.data.viewer.logo)
+            })
+        }).catch((error) => {
+            // errorの場合に実行する処理
+            console.log("失敗")
+        })
+    },
     checkForm:function(e) {
       if(this.e_mail && this.identification && this.name && this.password && this.conf_up_password) {
         return true;

@@ -49,7 +49,7 @@ export default {
       padding: 1rem;
       &_user {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
       }
       &_img {
         background-image: url("../static/icon.jpg");
@@ -103,7 +103,7 @@ export default {
       padding: 26px;
       &_user {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
       }
       &_img {
         background-image: url("../static/icon.jpg");
@@ -154,7 +154,7 @@ export default {
       padding: 1rem;
       &_user {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
       }
       &_img {
         background-image: url("../static/icon.jpg");

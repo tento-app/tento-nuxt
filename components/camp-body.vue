@@ -4,6 +4,19 @@
       <div class="camp_body_text">
         <h1 class="camp_body_text_title">進行中のプロジェクトデザインやってくれる方！</h1>
         <user />
+        <div class="">
+          <ul class="setting">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
+              <p>赤羽キャンパス</p>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <p>03/17/14:00</p>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><p>tento@gmail.com</p></li>
+          </ul>
+        </div>
         <div class="camp_body_text_describe">
           <p>テレビのCM意味あるのかな？と感じたことがある人は多いと思います。
             あの広告方法は、商品を認知してもらうこと、に関してはすごい力を持っています。
@@ -75,31 +88,47 @@ export default {
       margin: 0 auto;
       padding: 40px 40px;
       max-width: 840px;
-      &_tag{
-        width: 80px;
-        font-size: 14px;
-        font-weight: bold;
-        padding: 4px;
-        text-align: center;
-        min-width: 40px;
-        color: #fff;
-        &.event {
-            background-color: #007D98;
-        }
-        &.develop {
-            background-color: #F49E1B;
-        }
-        &.join {
-            background-color: #FF4B4B;
+      .setting {
+        margin: 1.5rem 0 0;
+        border-bottom: $border01;
+        padding: 1rem 0;
+        display: flex;
+        align-items: center;
+        li {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          margin-right: 1rem;
+          p {
+            margin-left: 0.4rem;
+          }
         }
       }
+      // &_tag{
+      //   width: 80px;
+      //   font-size: 14px;
+      //   font-weight: bold;
+      //   padding: 4px;
+      //   text-align: center;
+      //   min-width: 40px;
+      //   color: #fff;
+      //   &.event {
+      //       background-color: #007D98;
+      //   }
+      //   &.develop {
+      //       background-color: #F49E1B;
+      //   }
+      //   &.join {
+      //       background-color: #FF4B4B;
+      //   }
+      // }
       h1{
         margin-top: 10px;
         margin-bottom: 20px;
         color: $black01;
       }
       &_describe{
-        margin-top: 30px;
+        margin-top: 1rem;
         p{
           line-height: 260%;
           word-break: keep-all;
@@ -156,24 +185,40 @@ export default {
       margin: 0 auto;
       padding: 40px 20px;
       max-width: 840px;
-      &_tag{
-        width: 80px;
-        font-size: 14px;
-        font-weight: bold;
-        padding: 4px;
-        text-align: center;
-        min-width: 40px;
-        color: #fff;
-        &.event {
-            background-color: #007D98;
-        }
-        &.develop {
-            background-color: #F49E1B;
-        }
-        &.join {
-            background-color: #FF4B4B;
+      .setting {
+        margin: 1.5rem 0 0;
+        border-bottom: $border01;
+        padding: 1rem 0;
+        display: flex;
+        align-items: center;
+        li {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          margin-right: 1rem;
+          p {
+            margin-left: 0.4rem;
+          }
         }
       }
+      // &_tag{
+      //   width: 80px;
+      //   font-size: 14px;
+      //   font-weight: bold;
+      //   padding: 4px;
+      //   text-align: center;
+      //   min-width: 40px;
+      //   color: #fff;
+      //   &.event {
+      //       background-color: #007D98;
+      //   }
+      //   &.develop {
+      //       background-color: #F49E1B;
+      //   }
+      //   &.join {
+      //       background-color: #FF4B4B;
+      //   }
+      // }
       h1{
         margin-top: 10px;
         margin-bottom: 20px;
@@ -236,24 +281,40 @@ export default {
       margin: 0 auto;
       padding: 40px 20px;
       max-width: 840px;
-      &_tag{
-        width: 80px;
-        font-size: 14px;
-        font-weight: bold;
-        padding: 4px;
-        text-align: center;
-        min-width: 40px;
-        color: #fff;
-        &.event {
-            background-color: #007D98;
-        }
-        &.develop {
-            background-color: #F49E1B;
-        }
-        &.join {
-            background-color: #FF4B4B;
+      .setting {
+        margin: 1.5rem 0 0;
+        border-bottom: $border01;
+        padding: 1rem 0;
+        align-items: center;
+        li {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          margin-right: 1rem;
+          margin-bottom: 0.5rem;
+          p {
+            margin-left: 0.4rem;
+          }
         }
       }
+      // &_tag{
+      //   width: 80px;
+      //   font-size: 14px;
+      //   font-weight: bold;
+      //   padding: 4px;
+      //   text-align: center;
+      //   min-width: 40px;
+      //   color: #fff;
+      //   &.event {
+      //       background-color: #007D98;
+      //   }
+      //   &.develop {
+      //       background-color: #F49E1B;
+      //   }
+      //   &.join {
+      //       background-color: #FF4B4B;
+      //   }
+      // }
       h1{
         margin-top: 10px;
         margin-bottom: 20px;

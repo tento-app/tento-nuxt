@@ -4,7 +4,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 
 export default () => {
   const httpLink = new HttpLink({
-    uri: 'http://127.0.0.1:8000/',
+    uri: 'https://api.tento.app',
     fetchOptions: {},
     headers: {},
   })

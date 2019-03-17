@@ -3,7 +3,7 @@
     <ul>
         <div class="header">
           <p class="name">ジョージハリスン</p>
-          <p class="id">oswald_ya</p>
+          <p class="id">{{ username }}</p>
         </div>
       <nuxt-link to="/create" class="sp">
         <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(163,167,161)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -20,7 +20,7 @@
           <p>保存したキャンプ</p>
         </li>
       </nuxt-link>
-      <a href="#">
+      <a @click="logout">
         <li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(163,167,161)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg>
           <p>ログアウト</p>
         </li>
@@ -30,7 +30,17 @@
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex'
 export default {
+    computed: {
+        ...mapState('user',['username'])
+    },
+    methods: {
+        ...mapMutations('user',['setToken','setUsername','setLogo']),
+        logout: function (){
+          this.$store.dispatch('user/logout');
+        },
+    }
 }
 </script>
 

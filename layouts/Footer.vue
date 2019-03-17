@@ -2,12 +2,10 @@
 <footer>
   <div class="content">
     <div class="sp">
-      <img src="../static/logo_w.png" alt="">
+      <img src="../static/logo_footer.png" alt="">
     </div>
     <ul>
-      <div class="sp_left">
-        <h5>About</h5>
-      </div>
+      <h5 class="sp_left">About</h5>
       <div class="sp_right">
         <a href="#">
           <li>About Tento</li>
@@ -119,20 +117,26 @@
 @media screen and (min-width: 0px) and (max-width: 499px) {
   footer{
     background-color: #302D2C;
-    padding-bottom: 1.4rem;
     justify-content: center;
     .content{
       margin: 0 auto 0;
-      padding: 10px 30px;
+      padding: 30px;
+      .sp{
+        margin-top: 12px;
+        img{
+          width: 42px;
+        }
+      }
       ul{
         color: #fff;
         margin-top: 1.4rem;
         display: flex;
         width: 100%;
         .sp_left{
-          margin-right: 10px;
+          margin-right: 18px;
           min-width: 20%;
-          font-size: 15px;
+          font-size: 14px;
+          letter-spacing: 0.4px;
         }
         li{
           color: #ccc;

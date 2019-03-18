@@ -8,7 +8,7 @@
 # - UWSGI_PID
  
 version: 2
-jobs:u
+jobs:
   deploy:
     docker:
       - image: sickp/alpine-sshd

@@ -3,7 +3,7 @@
     <div class="create-account">
       <div class="sign-up contents">
         <h1>新規アカウント作成</h1>
-        <form class="" action="index.html" method="post" @submit="checkForm">
+        <form class="" action="top" method="post" @submit="checkForm">
           <div class="item">
             <label for="up-e-mail">メールアドレス</label>
             <input type="email" name="" value="" id="up-e-mail" v-model="e_mail" v-bind:class="{error : mailerror}" >

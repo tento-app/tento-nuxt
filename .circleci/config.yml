@@ -27,7 +27,7 @@ jobs:
  
       - run:
           name: Start release deploy
-          command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} -p ${PORT_NUM} "cd ${APP_DIR}; echo ${USER_PASS} | sudo -S git pull; echo ${USER_PASS} | sudo yarn install; echo ${USER_PASS} | sudo yarn build; echo ${USER_PASS} | sudo -S forever list; echo ${USER_PASS} | sudo -S pgrep -f nuxt | sudo xargs kill -9; echo ${USER_PASS} | sudo -S forever start -c "yarn start" ./"
+          command: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} -p ${PORT_NUM} "cd ${APP_DIR}; echo ${USER_PASS} | sudo -S git pull; echo ${USER_PASS} | sudo yarn install; echo ${USER_PASS} | sudo yarn build; echo ${USER_PASS} | sudo -S pgrep -f nuxt | sudo xargs kill -9; echo ${USER_PASS} | sudo -S forever start -c "yarn start" ./"
 
 workflows:
   version: 2

@@ -1,13 +1,16 @@
 <template id="">
   <div class="content item">
+    <div class="nav">
+      <h1>New Camp</h1>
+    </div>
     <div class="cards_list">
-      <a href="#" class="card_link" v-for="project in allProjects.edges" :key="project.node.name">
+      <nuxt-link to="/camp-detail" class="card_link" v-for="project in allProjects.edges" :key="project.node.name">
         <div class="card">
           <div class="card_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
-            <p
+            <!-- <p
               class="card_img_category"
               :style="{ 'background-color': '#' + project.node.category.color }"
-            >{{ project.node.category.name }}</p>
+            >{{ project.node.category.name }}</p> -->
           </div>
           <div class="card_txt">
             <h4>{{ project.node.name }}</h4>
@@ -20,7 +23,7 @@
             </div>
           </div>
         </div>
-      </a>
+      </nuxt-link>
     </div>
     <div class="card_loader">
       <div class="sub_btn more">
@@ -30,15 +33,60 @@
   </div>
 </template>
 
+<script >
+  export default {
+    data() {
+      return {
+        selected: true
+      }
+    }
+  }
+</script>
+
 <style lang="scss">
 @import "~/assets/style/_color.scss";
 @media (min-width: 840px) {
+  .nav{
+    max-width: 840px;
+    margin: 0 auto 3rem;
+    padding: 0 30px;
+    h1{
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #1f1f1f;
+    }
+    &_item{
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          cursor: pointer;
+          text-align: center;
+          margin: 0 1rem;
+          padding: 0 0.5rem 1rem;
+          font-weight: bold;
+          color: #1f1f1f;
+        }
+        .active {
+          border-bottom: solid 3px $main-color;
+
+        }
+      }
+    }
+  }
   .cards_list {
+    padding: 0 30px;
     max-width: 840px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     margin: 0 auto;
+    &:after{
+      content:"";
+      display: block;
+      width:31.5%;
+    }
     .card_link {
       width: 31.5%;
       margin-bottom: 2rem;
@@ -66,7 +114,7 @@
           font-size: 10px;
           padding: 8px;
           text-align: center;
-          min-width: 40px;
+          min-width: 57px;
           color: #fff;
           &.event {
             background-color: #007d98;
@@ -94,7 +142,7 @@
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
-          margin-bottom: 1.4rem;
+          margin-bottom: 0.2rem;
         }
         &_user {
           display: flex;
@@ -131,6 +179,35 @@
   }
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
+  .nav{
+    max-width: 840px;
+    margin: 0 auto 3rem;
+    padding: 0 30px;
+    h1{
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #1f1f1f;
+    }
+    &_item{
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          cursor: pointer;
+          text-align: center;
+          margin: 0 1rem;
+          padding: 0 0.5rem 1rem;
+          font-weight: bold;
+          color: #1f1f1f;
+        }
+        .selected {
+          border-bottom: solid 3px $main-color;
+
+        }
+      }
+    }
+  }
   .cards_list {
     max-width: 840px;
     display: flex;
@@ -164,7 +241,7 @@
             font-size: 10px;
             padding: 8px;
             text-align: center;
-            min-width: 40px;
+            min-width: 57px;
             color: #fff;
             &.event {
               background-color: #007d98;
@@ -230,6 +307,35 @@
   }
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .nav{
+    max-width: 840px;
+    margin: 0 auto 3rem;
+    h1{
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #1f1f1f;
+    }
+    &_item{
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+          margin: 0 0.6rem;
+          padding: 0 0.5rem 1rem;
+          font-weight: bold;
+          color: #1f1f1f;
+        }
+        .selected {
+          border-bottom: solid 3px $main-color;
+
+        }
+      }
+    }
+  }
   .cards_list {
     max-width: 840px;
     display: flex;
@@ -263,7 +369,7 @@
           font-size: 10px;
           padding: 8px;
           text-align: center;
-          min-width: 40px;
+          min-width: 57px;
           color: #fff;
           &.event {
             background-color: #007d98;

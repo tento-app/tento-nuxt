@@ -1,35 +1,44 @@
 <template>
 <footer>
   <div class="content">
+    <div class="sp">
+      <img src="../static/logo_footer.png" alt="">
+    </div>
     <ul>
-      <h5>About</h5>
-      <a href="#">
-        <li>About Tento</li>
-      </a>
-      <a href="#">
-        <li>About Us</li>
-      </a>
-      <a href="#">
-        <li>Q & A</li>
-      </a>
+      <h5 class="sp_left">About</h5>
+      <div class="sp_right">
+        <a href="#">
+          <li>About Tento</li>
+        </a>
+        <a href="#">
+          <li>About Us</li>
+        </a>
+        <a href="#">
+          <li>Q & A</li>
+        </a>
+      </div>
     </ul>
     <ul>
-      <h5>Links</h5>
-      <a href="#">
-        <li>Privacy</li>
-      </a>
-      <a href="#">
-        <li>Terms</li>
-      </a>
+      <h5 class="sp_left">Links</h5>
+      <div class="sp_right">
+        <a href="#">
+          <li>Privacy</li>
+        </a>
+        <a href="#">
+          <li>Terms</li>
+        </a>
+      </div>
     </ul>
     <ul>
-      <h5>Contact</h5>
-      <a href="#">
-        <li>E-mail</li>
-      </a>
-      <a href="#">
-        <li>Twitter</li>
-      </a>
+      <h5 class="sp_left">Contact</h5>
+      <div class="sp_right">
+        <a href="#">
+          <li>E-mail</li>
+        </a>
+        <a href="https://twitter.com/tento_app">
+          <li>Twitter</li>
+        </a>
+      </div>
     </ul>
   </div>
 </footer>
@@ -37,11 +46,10 @@
 
 <style lang="scss">
 @media (min-width:840px) {
-
     footer {
         background-color: #302D2C;
         display: flex;
-        margin-top: 4rem;
+        margin-top: 0rem;
         justify-content: center;
         .content {
             margin: 0;
@@ -73,14 +81,15 @@
     }
 
 }
-@media screen and (min-width: 0px) and (max-width: 840px) {
+@media screen and (min-width: 500px) and (max-width: 839px) {
     footer {
         background-color: #302D2C;
-        margin-top: 4rem;
         padding-bottom: 20px;
+        justify-content: center;
+        display: flex;
         .content {
-            flex-wrap: wrap;
             display: flex;
+            flex-wrap: wrap;
             margin: 0;
             ul {
                 margin-right: 2rem;
@@ -104,5 +113,40 @@
             }
         }
     }
+}
+@media screen and (min-width: 0px) and (max-width: 499px) {
+  footer{
+    background-color: #302D2C;
+    justify-content: center;
+    .content{
+      margin: 0 auto 0;
+      padding: 30px;
+      .sp{
+        margin-top: 12px;
+        img{
+          width: 42px;
+        }
+      }
+      ul{
+        color: #fff;
+        margin-top: 1.4rem;
+        display: flex;
+        width: 100%;
+        .sp_left{
+          margin-right: 18px;
+          min-width: 20%;
+          font-size: 14px;
+          letter-spacing: 0.4px;
+        }
+        li{
+          color: #ccc;
+          font-size: 14px;
+          margin-bottom: 8px;
+          letter-spacing: 0.4px;
+        }
+      }
+    }
+  }
+
 }
 </style>

@@ -4,7 +4,8 @@
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
       <div class="swiper-slide background_img_01">
-        <a href="#">
+        <nuxt-link to='/camp-detail'>
+          <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
               <div class="slide_item_user_img">
@@ -16,7 +17,7 @@
             </div>
             <h4>webデザイナーで食事会しませんか？？</h4>
           </div>
-        </a>
+        </nuxt-link>
       </div>
       <div class="swiper-slide background_img_02">
         <a href="#">
@@ -34,7 +35,8 @@
         </a>
       </div>
       <div class="swiper-slide background_img_03">
-        <a href="#">
+        <nuxt-link to='/camp-detail'>
+          <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
               <div class="slide_item_user_img">
@@ -46,10 +48,11 @@
             </div>
             <h4>webデザイナーで食事会しませんか？？</h4>
           </div>
-        </a>
+        </nuxt-link>
       </div>
       <div class="swiper-slide background_img_04">
-        <a href="#">
+        <nuxt-link to='/camp-detail'>
+          <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
               <div class="slide_item_user_img">
@@ -61,33 +64,41 @@
             </div>
             <h4>webデザイナーで食事会しませんか？？</h4>
           </div>
-        </a>
+        </nuxt-link>
       </div>
     </div>
 
     <div class="swiper-pagination"></div>
-
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+    <div class="swiper-button-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </div>
   </div>
 </div>
 </template>
 <script>
 export default {
-    data() {
-      return {
-        swiperOption: {
-          slidesPerView: 'auto',
-          centeredSlides: true,
-          spaceBetween: 30,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          }
+    data () {
+        return {
+            swiperOption: {
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 0,
+                loop: true,
+                pagination: {
+                  el: '.swiper-pagination',
+                  clickable: true
+                },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev'
+                }
+            }
         }
-      }
     }
-  }
+}
 </script>
 
 <style lang="scss">
@@ -95,10 +106,11 @@ export default {
 @media (min-width:840px) {
 
     .slide {
-        margin-top: 60px;
+        margin: 60px auto 0;
         padding: 0 30px;
+        max-width: 840px;
         .swiper-container {
-            max-width: 840px;
+            padding: 0 30px;
             border-radius: 12px;
             overflow: hidden;
             font-size: 0;
@@ -108,6 +120,7 @@ export default {
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
+                    width: 60%;
                     height: 280px;
                     margin: 0 auto;
                     a {
@@ -151,12 +164,21 @@ export default {
                     }
                 }
             }
-            .swiper-button {
+            .swiper-button-next{
+              background-image: none;
+              top: 45%;
+              right: 35px;
+            }
+            .swiper-button-prev{
+              background-image: none;
+              top: 45%;
+              left: -15px;
+            }
+            .swiper-pegination {
                 background: none;
                 font-size: 32px;
                 color: #fff;
             }
-            .swiper-pagination {
                 .swiper-pagination-bullet {
                     background-color: #fff;
                     opacity: 1;
@@ -164,10 +186,8 @@ export default {
                 .swiper-pagination-bullet-active {
                     background-color: $main_color;
                 }
-            }
+          }
         }
-    }
-
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
 
@@ -229,12 +249,21 @@ export default {
                     }
                 }
             }
-            .swiper-button-next {
+            .swiper-button-next{
+              background-image: none;
+              top: 45%;
+              right: 35px;
+            }
+            .swiper-button-prev{
+              background-image: none;
+              top: 45%;
+              left: -15px;
+            }
+            .swiper-pegination {
                 background: none;
                 font-size: 32px;
                 color: #fff;
             }
-            .swiper-pagination {
                 .swiper-pagination-bullet {
                     background-color: #fff;
                     opacity: 1;
@@ -242,7 +271,6 @@ export default {
                 .swiper-pagination-bullet-active {
                     background-color: $main_color;
                 }
-            }
         }
     }
 
@@ -303,12 +331,27 @@ export default {
                     }
                 }
             }
-            .swiper-button {
+            .swiper-button-next{
+              background-image: none;
+              top: 45%;
+              right: 35px;
+              svg{
+                stroke-width:1.5
+              }
+            }
+            .swiper-button-prev{
+              background-image: none;
+              top: 45%;
+              left: -15px;
+              svg{
+                stroke-width:1.5
+              }
+            }
+            .swiper-pegination {
                 background: none;
                 font-size: 32px;
                 color: #fff;
             }
-            .swiper-pagination {
                 .swiper-pagination-bullet {
                     background-color: #fff;
                     opacity: 1;
@@ -316,7 +359,6 @@ export default {
                 .swiper-pagination-bullet-active {
                     background-color: $main_color;
                 }
-            }
         }
     }
 

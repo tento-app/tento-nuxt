@@ -39,14 +39,10 @@ export default {
 @import '~/assets/style/btn.scss';
 
 .main{
-  background-color: #eaeaea;
-  .account_header{
-
-  }
   .skill_container{
     padding: 80px 0;
     margin-top: 80px;
-    background-color: #fafafa;
+    background-color: $backround_color02;
   }
 }
 

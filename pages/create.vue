@@ -33,6 +33,11 @@ export default {
   components: {
     Header,
     skill
+  },
+  fetch ({ store, redirect }) {
+    if (!store.state.user.username) {
+      return redirect('/login')
+    }
   }
 }
 </script>

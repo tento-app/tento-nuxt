@@ -3,12 +3,12 @@
 .btn{
   background-color: #fff;
   border-radius: 6px;
-  color: #333;
+  color: $main-color;
   padding: 12px;
   box-shadow: $box_shadow01;
   font-weight: bold;
-  font-size: 16px;
-  transition: 0.3s;
+  font-size: 12px;
+  transition: 0.1s;
   text-align: center;
   display: inline-block;
   cursor: pointer;
@@ -17,11 +17,10 @@
     color: $main_color;
   }
   &:hover{
-    transition: 0.3s;
+    transition: 0.1s;
     box-shadow: $box_shadow02;
   }
   &:active{
-    transition: 0.05s;
     box-shadow: $box_shadow03;
     background-color: #f8f8f8;
   }
@@ -35,15 +34,45 @@
   background-color: #302D2C;
   border-radius: 99px;
   color: #fff;
-  padding: 12px;
+  padding:12px 22px;
   box-shadow: $box_shadow01;
   font-size: 14px;
-  transition: 0.3s;
+  transition: 0.1s;
   text-align: center;
   display: inline-block;
   cursor: pointer;
   &:hover{
-    transition: 0.3s;
+    transition: 0.1s;
     box-shadow: $box_shadow02;
+  }
+}
+
+.btn_priority{
+  background-color: #F7AF06;
+  border-radius: 6px;
+  color: #fff;
+  padding: 12px;
+  box-shadow: $box_shadow01;
+  font-weight: bold;
+  font-size: 12px;
+  transition: 0.1s;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  i{
+    color: $main_color;
+  }
+  &:hover{
+    transition: 0.1s;
+    box-shadow: $box_shadow02;
+  }
+  &:active{
+    box-shadow: $box_shadow03;
+    background-color: #F7AF06;
+  }
+  &:disabled{
+    box-shadow: none;
+    color: #007369;
   }
 }

@@ -2,17 +2,17 @@
 <div class="content profile">
     <div class="profile_contents">
       <div class="profile_contents_user">
-        <div class="profile_contents_img"></div>
+        <div class="profile_contents_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
         <div class="profile_contents_wrapper">
           <ul>
             <li>
-              <p class="profile_contents_wrapper_name">ジョージハリスン</p>
+              <p class="profile_contents_wrapper_name">{{ name }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_position">マーケター</p>
+              <p class="profile_contents_wrapper_position">{{ position }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_text">私は元the beatlesのメンバーで今はマーケターとして働いています。</p>
+              <p class="profile_contents_wrapper_text">{{ intro }}</p>
             </li>
             <nuxt-link to="/account">
               <li class="profile_view_more sub_btn">
@@ -32,6 +32,14 @@ import user from '~/components/user.vue';
 export default {
   components: {
     user
+  },
+  data(){
+    return{
+      icon:"",
+      name:"ジョージハリスン",
+      position:"マーケター",
+      intro:"マーケティング、ウェブコンサルティングのことならお任せください"
+    }
   }
 }
 </script>

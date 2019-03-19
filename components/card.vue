@@ -15,10 +15,10 @@
           <div class="card_txt">
             <h4>{{ project.node.name }}</h4>
             <div class="card_txt_user">
-              <div class="card_txt_user_img"></div>
+              <div class="card_txt_user_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }"></div>
               <div class>
                 <p class="card_txt_user_name">{{ project.node.user.username }}</p>
-                <p class="card_txt_user_position">webエンジニア</p>
+                <p class="card_txt_user_position">{{ project.node.user.position }}</p>
               </div>
             </div>
           </div>
@@ -33,14 +33,16 @@
   </div>
 </template>
 
-<script >
-  export default {
-    data() {
-      return {
-        selected: true
-      }
+<script>
+export default {
+  data(){
+    return{
+      selected: true,
+      icon:"",
+      position:"webエンジニア"
     }
   }
+}
 </script>
 
 <style lang="scss">

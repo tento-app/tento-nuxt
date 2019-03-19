@@ -1,14 +1,12 @@
-{
-  allProjects(first:9, after: ""){
+query($page_size: Int, $endCursor: String!){
+  allProjects(first:$page_size, after: $endCursor){
     edges{
       node{
         header
-        logo
-        url
         name
-        content
         user{
           username
+          logo
         }
         tags{
           edges{
@@ -17,14 +15,6 @@
             }
           }
         }
-        users{
-          edges{
-            node{
-              username
-            }
-          }
-        }
-        updatedAt
       }
     }
     pageInfo {

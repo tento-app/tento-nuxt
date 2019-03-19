@@ -1,6 +1,16 @@
 <template>
-  <h1>camp _id</h1>
+  <section>
+    <Header />
+    <div class="main">
+      <CampBody />
+      <div class="">
+        <chat />
+      </div>
+    </div>
+    <Footer />
+  </section>
 </template>
+
 <script>
 import projectGql from '~/graphql/query/project.gql'
 export default {

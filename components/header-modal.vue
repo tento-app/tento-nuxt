@@ -2,7 +2,7 @@
   <div class="account_menu" id="account_menu">
     <ul>
         <div class="header">
-          <p class="name">ジョージハリスン</p>
+          <p class="name">{{ name }}</p>
           <p class="id">{{ username }}</p>
         </div>
       <nuxt-link to="/create" class="sp">
@@ -40,6 +40,11 @@ export default {
         logout: function (){
           this.$store.dispatch('user/logout');
         },
+    },
+    data(){
+      return{
+        name:"ジョージハリスン"
+      }
     }
 }
 </script>

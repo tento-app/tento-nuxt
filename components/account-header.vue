@@ -1,28 +1,35 @@
 <template lang="html">
   <div class="account">
     <div class="account_header">
-      <div class="img">
-        <div class="icon"></div>
+      <div class="img" :style="{ 'background-image': 'url(' + background_img + ')' }">
+        <div class="icon" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
       </div>
       <div class="account_header_text">
         <div class="account_header_text_link">
           <div class="">
-            <p class="name">ジョージハリスン</p>
-            <p class="position">マーケター</p>
+            <p class="name">{{ name }}</p>
+            <p class="position">{{ position }}</p>
           </div>
           <nuxt-link to="account-edit">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
           </nuxt-link>
         </div>
-        <p class="intro">
-          マーケティング、ウェブコンサルティングのことならお任せください
-        </p>
+        <p class="intro">{{ intro }}</p>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script type="text/javascript">
+export default {
+  data(){
+    return{
+      name:"ジョージハリスン",
+      position:"マーケター",
+      intro:"マーケティング、ウェブコンサルティングのことならお任せください"
+    }
+  }
+}
 </script>
 
 <style lang="scss">

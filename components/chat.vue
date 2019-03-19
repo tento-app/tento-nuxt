@@ -1,7 +1,7 @@
 <template id="">
   <div class="content chat">
     <div class="chat_members">
-      <h2>参加メンバー(4)</h2>
+      <h2>参加メンバー({{ persons }})</h2>
       <div class="chat_members_list">
         <ul>
           <li><nuxt-link to="/account"><user /></nuxt-link></li>
@@ -16,68 +16,63 @@
         <div class="div">
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
-                <p class="chat_contents_user_info_name">リンゴスター</p>
-                <p class="chat_contents_user_info_time">10:24</p>
+                <p class="chat_contents_user_info_name">{{ name }}</p>
+                <p class="chat_contents_user_info_time">{{ chat_time }}</p>
               </div>
-                <p>おはようございます。
-                   今日の会議は何時ごろスタートですか~？</p>
+                <p>{{ chat_txt }}</p>
             </div>
           </div>
         </li>
 
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
-                <p class="chat_contents_user_info_name">リンゴスター</p>
-                <p class="chat_contents_user_info_time">10:24</p>
+                <p class="chat_contents_user_info_name">{{ name }}</p>
+                <p class="chat_contents_user_info_time">{{ chat_time }}</p>
               </div>
-                <p>おはようございます。
-                   今日の会議は何時ごろスタートですか~？22</p>
+                <p>{{ chat_txt }}</p>
             </div>
           </div>
         </li>
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
-                <p class="chat_contents_user_info_name">リンゴスター</p>
-                <p class="chat_contents_user_info_time">10:24</p>
+                <p class="chat_contents_user_info_name">{{ name }}</p>
+                <p class="chat_contents_user_info_time">{{ chat_time }}</p>
               </div>
-                <p>おはようございます。
-                   今日の会議は何時ごろスタートですか~？42</p>
+                <p>{{ chat_txt }}</p>
             </div>
           </div>
         </li>
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
-                <p class="chat_contents_user_info_name">リンゴスター</p>
-                <p class="chat_contents_user_info_time">10:24</p>
+                <p class="chat_contents_user_info_name">{{ name }}</p>
+                <p class="chat_contents_user_info_time">{{ chat_time }}</p>
               </div>
-                <p>おはようございます。
-                   今日の会議は何時ごろスタートですか~？52</p>
+                <p>{{ chat_txt }}</p>
             </div>
           </div>
         </li>
 
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
-                <p class="chat_contents_user_info_name">ジョージハリスン</p>
-                <p class="chat_contents_user_info_time">10:24</p>
+                <p class="chat_contents_user_info_name">{{ name }}</p>
+                <p class="chat_contents_user_info_time">{{ chat_time }}</p>
               </div>
-                <p>おはようございます！
-                   12:30から始めますよーー</p>
+                <p>{{ chat_txt }}</p>
             </div>
           </div>
         </li>
@@ -98,6 +93,15 @@ import user from '~/components/user.vue';
 export default {
   components: {
     user
+  },
+  data(){
+    return{
+      persons:"4",
+      icon:"",
+      name:"リンゴスター",
+      chat_time:"10:24",
+      chat_txt:"おはようございます。今日の会議は何時ごろスタートですか~？"
+    }
   }
 }
 </script>

@@ -3,66 +3,63 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide background_img_01">
+      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
+        <!-- {{ background_img }} -->
         <nuxt-link to='/camp-detail'>
           <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
+              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
               <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
+                <p class="slide_item_user_name">{{ name }}</p>
+                <p class="slide_item_user_position">{{ position }}</p>
               </div>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
+            <h4>{{ title }}</h4>
           </div>
         </nuxt-link>
       </div>
-      <div class="swiper-slide background_img_02">
+      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
         <a href="#">
           <div class="slide_item">
             <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
+              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
               <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
+                <p class="slide_item_user_name">{{ name }}</p>
+                <p class="slide_item_user_position">{{ position }}</p>
               </div>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
+            <h4>{{ title }}</h4>
           </div>
         </a>
       </div>
-      <div class="swiper-slide background_img_03">
+      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
         <nuxt-link to='/camp-detail'>
           <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
+              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
               <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
+                <p class="slide_item_user_name">{{ name }}</p>
+                <p class="slide_item_user_position">{{ position }}</p>
               </div>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
+            <h4>{{ title }}</h4>
           </div>
         </nuxt-link>
       </div>
-      <div class="swiper-slide background_img_04">
+      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
         <nuxt-link to='/camp-detail'>
           <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
+              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
               <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
+                <p class="slide_item_user_name">{{ name }}</p>
+                <p class="slide_item_user_position">{{ position }}</p>
               </div>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
+            <h4>{{ title }}</h4>
           </div>
         </nuxt-link>
       </div>
@@ -95,7 +92,12 @@ export default {
                   nextEl: '.swiper-button-next',
                   prevEl: '.swiper-button-prev'
                 }
-            }
+            },
+            background_img:"",
+            icon:"",
+            name:"ジョージハリスン",
+            position:"webエンジニア",
+            title:"webデザイナーで食事会しませんか？？"
         }
     }
 }

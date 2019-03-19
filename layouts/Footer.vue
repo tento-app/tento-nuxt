@@ -1,9 +1,9 @@
 <template>
 <footer>
   <div class="content">
-    <div class="sp">
+    <!-- <div class="logo">
       <img src="../static/logo_footer.png" alt="">
-    </div>
+    </div> -->
     <ul>
       <h5 class="sp_left">About</h5>
       <div class="sp_right">
@@ -56,10 +56,15 @@
             flex-wrap: wrap;
             display: flex;
             margin: 0;
+            // .logo{
+            //   padding: 40px;
+            //   img{
+            //     width: 40px;
+            //   }
+            // }
             ul {
                 margin-right: 2rem;
                 color: #fff;
-                font-size: 16px;
                 padding: 40px 30px 40px 0;
                 max-width: 840px;
                 &:last-child {
@@ -67,13 +72,14 @@
                     padding-right: 0;
                 }
                 h5 {
-                    font-size: 16px;
+                    font-size: 18px;
                     margin-bottom: 0.8rem;
                 }
                 li {
-                    margin-right: 1.2rem;
+                    margin-right: 4rem;
                     margin-bottom: 0.4rem;
-                    font-size: 14px;
+                    font-size: 16px;
+                    font-weight: bold;
                     color: #ccc;
                 }
             }
@@ -94,20 +100,20 @@
             ul {
                 margin-right: 2rem;
                 color: #fff;
-                font-size: 16px;
                 padding: 40px 0 0;
                 max-width: 840px;
                 &:last-child {
                     margin-right: 0;
                 }
                 h5 {
-                    font-size: 16px;
+                    font-size: 18px;
                     margin-bottom: 0.8rem;
                 }
                 li {
-                    margin-right: 1.2rem;
+                    margin-right: 4rem;
                     margin-bottom: 0.4rem;
-                    font-size: 14px;
+                    font-size: 16px;
+                    font-weight: bold;
                     color: #ccc;
                 }
             }
@@ -121,12 +127,12 @@
     .content{
       margin: 0 auto 0;
       padding: 30px;
-      .sp{
-        margin-top: 12px;
-        img{
-          width: 42px;
-        }
-      }
+      // .logo{
+      //   margin-top: 12px;
+      //   img{
+      //     width: 42px;
+      //   }
+      // }
       ul{
         color: #fff;
         margin-top: 1.4rem;
@@ -134,15 +140,16 @@
         width: 100%;
         .sp_left{
           margin-right: 18px;
-          min-width: 20%;
-          font-size: 14px;
+          min-width: 70px;
+          font-size: 18px;
           letter-spacing: 0.4px;
         }
         li{
           color: #ccc;
-          font-size: 14px;
+          font-size: 16px;
           margin-bottom: 8px;
           letter-spacing: 0.4px;
+          font-weight: bold;
         }
       }
     }

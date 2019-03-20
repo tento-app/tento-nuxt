@@ -86,16 +86,16 @@ module.exports = () => {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [{
-      src: '~/plugins/swiper.js',
-      ssr: false
-    }, ],
+    plugins: [
+      { src: '~/plugins/swiper.js',ssr: false},
+    ],
 
     /*
      ** Nuxt.js modules
      */
     modules: [,
-      '@nuxtjs/apollo'
+      '@nuxtjs/apollo',
+      'nuxt-svg',
     ],
 
     apollo: {
@@ -115,7 +115,7 @@ module.exports = () => {
         chunk: '[name].js'
       },
       extend(config, ctx) {
-
+        // get and remove file loader
       }
     }
   }

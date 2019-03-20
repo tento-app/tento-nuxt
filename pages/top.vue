@@ -2,7 +2,7 @@
   <section>
     <Header />
     <div class="main">
-      <slide />
+      <slide :projects="allProjects.edges"/>
       <card :projects="allProjects.edges"/>
       <cardLoader />
     </div>
@@ -27,11 +27,18 @@ export default {
     Header,
     Footer,
   },
-  async asyncData({ payload, params }) {
-    app.apolloProvider.defaultClient.query({
-       ...
-    }).then(({ data }) => data && data.posts)
-  },
+  asyncData (context) {
+    return context.app.apolloProvider.defaultClient.query({
+      query: allProjectsGql,
+      variables: {
+        page_size: 9,
+        endCursor: "",
+      }
+      }).then(({ data }) => {
+          // do what you want with data
+          return { allProjects: data.allProjects}
+        })
+  }
 }
 </script>
 

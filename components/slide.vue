@@ -3,63 +3,19 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
-        <!-- {{ background_img }} -->
-        <nuxt-link to='/camp-detail'>
+      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
+
+        <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
           <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
-              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + project.node.user.logo + ')' }"></div>
               <div class="">
-                <p class="slide_item_user_name">{{ name }}</p>
-                <p class="slide_item_user_position">{{ position }}</p>
+                <p class="slide_item_user_name">{{ project.node.user.username }}</p>
+                <p class="slide_item_user_position">webエンジニア</p>
               </div>
             </div>
-            <h4>{{ title }}</h4>
-          </div>
-        </nuxt-link>
-      </div>
-      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
-        <a href="#">
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
-              <div class="">
-                <p class="slide_item_user_name">{{ name }}</p>
-                <p class="slide_item_user_position">{{ position }}</p>
-              </div>
-            </div>
-            <h4>{{ title }}</h4>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
-        <nuxt-link to='/camp-detail'>
-          <!-- card content-->
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
-              <div class="">
-                <p class="slide_item_user_name">{{ name }}</p>
-                <p class="slide_item_user_position">{{ position }}</p>
-              </div>
-            </div>
-            <h4>{{ title }}</h4>
-          </div>
-        </nuxt-link>
-      </div>
-      <div class="swiper-slide" :style="{ 'background-image': 'url(' + background_img + ')' }">
-        <nuxt-link to='/camp-detail'>
-          <!-- card content-->
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
-              <div class="">
-                <p class="slide_item_user_name">{{ name }}</p>
-                <p class="slide_item_user_position">{{ position }}</p>
-              </div>
-            </div>
-            <h4>{{ title }}</h4>
+            <h4>{{ project.node.name }}</h4>
           </div>
         </nuxt-link>
       </div>
@@ -77,6 +33,9 @@
 </template>
 <script>
 export default {
+  props: {
+    projects: Array,
+  },
     data () {
         return {
             swiperOption: {
@@ -92,12 +51,7 @@ export default {
                   nextEl: '.swiper-button-next',
                   prevEl: '.swiper-button-prev'
                 }
-            },
-            background_img:"",
-            icon:"",
-            name:"ジョージハリスン",
-            position:"webエンジニア",
-            title:"webデザイナーで食事会しませんか？？"
+            }
         }
     }
 }

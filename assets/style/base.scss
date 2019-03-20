@@ -41,29 +41,28 @@ body{
     background-color: rgba(0,0,0,0);
     z-index: 998;
   }
-  .background_img{
-    &_01{
-      background-image: url('../static/camp_img.jpg') !important;
-      background-size: cover;
-      background-position: center;
-    }
-    &_02{
-      background-image: url('../static/camp_img_02.jpg') !important;
-      background-size: cover;
-      background-position: center;
-    }
-    &_03{
-      background-image: url('../static/camp_img_03.jpg') !important;
-      background-size: cover;
-      background-position: center;
-    }
-    &_04{
-      background-image: url('../static/camp_img_04.jpg') !important;
-      background-size: cover;
-      background-position: center;
-    }
-
-  }
+  // .background_img{
+  //   &_01{
+  //     background-image: url('../static/camp_img.jpg') !important;
+  //     background-size: cover;
+  //     background-position: center;
+  //   }
+  //   &_02{
+  //     background-image: url('../static/camp_img_02.jpg') !important;
+  //     background-size: cover;
+  //     background-position: center;
+  //   }
+  //   &_03{
+  //     background-image: url('../static/camp_img_03.jpg') !important;
+  //     background-size: cover;
+  //     background-position: center;
+  //   }
+  //   &_04{
+  //     background-image: url('../static/camp_img_04.jpg') !important;
+  //     background-size: cover;
+  //     background-position: center;
+  //   }
+  // }
   @media (min-width: 500px) {
     .sp{
       display: none;

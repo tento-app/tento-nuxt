@@ -4,7 +4,7 @@
       <h1>New Camp</h1>
     </div>
     <div class="cards_list">
-      <nuxt-link to="/camp-detail" class="card_link" v-for="project in allProjects.edges" :key="project.node.name">
+      <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
           <div class="card_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
             <!-- <p
@@ -15,32 +15,23 @@
           <div class="card_txt">
             <h4>{{ project.node.name }}</h4>
             <div class="card_txt_user">
-              <div class="card_txt_user_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }"></div>
+              <div class="card_txt_user_img" :style="{ 'background-image': 'url(' + project.node.user.logo + ')' }"></div>
               <div class>
                 <p class="card_txt_user_name">{{ project.node.user.username }}</p>
-                <p class="card_txt_user_position">{{ project.node.user.position }}</p>
+                <p class="card_txt_user_position">webエンジニア</p>
               </div>
             </div>
           </div>
         </div>
       </nuxt-link>
     </div>
-    <div class="card_loader">
-      <div class="sub_btn more">
-        <p>Read More</p>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
-      selected: true,
-      icon:"",
-      position:"webエンジニア"
-    }
+  props: {
+    projects: Array,
   }
 }
 </script>
@@ -171,14 +162,6 @@ export default {
       }
     }
   }
-
-  .card_loader {
-    margin-top: 60px;
-    text-align: center;
-    .more {
-      padding: 12px 32px;
-    }
-  }
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
   .nav{
@@ -299,14 +282,6 @@ export default {
       }
     }
   }
-
-  .card_loader {
-    margin-top: 60px;
-    text-align: center;
-    .more {
-      padding: 12px 32px;
-    }
-  }
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
   .nav{
@@ -425,106 +400,5 @@ export default {
       }
     }
   }
-
-  .card_loader {
-    margin-top: 60px;
-    text-align: center;
-    .more {
-      padding: 12px 32px;
-    }
-  }
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      allProjects: {
-        edges: [
-          {
-            node: {
-              id: "UHJvamVjdE5vZGU6MQ==",
-              name: "アプリケーション開発RTA",
-              header: "https://pbs.twimg.com/media/DzVrp-BWoAEOWB4.jpg",
-              user: {
-                username: "tento_admin"
-              },
-              category: {
-                name: "イベント",
-                color: "007D98"
-              },
-              createdAt: "2019-02-14T04:55:36+00:00"
-            }
-          },
-          {
-            node: {
-              id: "UHJvamVjdE5vZGU6Mg==",
-              name: "INIADポスターデザインRTA",
-              header: "https://pbs.twimg.com/media/DzVrp-BWoAEOWB4.jpg",
-              user: {
-                username: "tento_admin"
-              },
-              category: {
-                name: "イベント",
-                color: "007D98"
-              },
-              createdAt: "2019-02-14T08:04:24.671208+00:00"
-            }
-          },
-          {
-            node: {
-              id: "UHJvamVjdE5vZGU6Mw==",
-              name: "project1-1",
-              header: "https://pbs.twimg.com/media/DzQfxgfW0AAy0q7.jpg",
-              user: {
-                username: "test1"
-              },
-              category: {
-                name: "開発",
-                color: "F49E1B"
-              },
-              createdAt: "2019-02-21T06:43:09.422173+00:00"
-            }
-          },
-          {
-            node: {
-              id: "UHJvamVjdE5vZGU6NA==",
-              name: "ARG cgサークル　説明会",
-              header: "https://pbs.twimg.com/media/DzWXJt9X0AAiW-x.jpg",
-              user: {
-                username: "test3"
-              },
-              category: {
-                name: "イベント",
-                color: "007D98"
-              },
-              createdAt: "2019-02-27T04:51:42.362104+00:00"
-            }
-          },
-          {
-            node: {
-              id: "UHJvamVjdE5vZGU6NQ==",
-              name: "vueでアプリ開発",
-              header: "https://pbs.twimg.com/media/DzWXJt9X0AAiW-x.jpg",
-              user: {
-                username: "test5"
-              },
-              category: {
-                name: "開発",
-                color: "F49E1B"
-              },
-              createdAt: "2019-02-27T05:05:03.307944+00:00"
-            }
-          }
-        ],
-        pageInfo: {
-          hasNextPage: false,
-          hasPreviousPage: false,
-          startCursor: "YXJyYXljb25uZWN0aW9uOjA=",
-          endCursor: "YXJyYXljb25uZWN0aW9uOjQ="
-        }
-      }
-    };
-  }
-};
-</script>

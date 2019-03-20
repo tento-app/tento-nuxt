@@ -100,6 +100,7 @@ module.exports = () => {
     ],
 
     apollo: {
+      includeNodeModules: true,
       clientConfigs: {
         default: '~/apollo/client-configs/default.js'
       }

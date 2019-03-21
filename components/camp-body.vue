@@ -33,6 +33,7 @@
       </div>
       <div class="join">
         <div class="btn_list">
+          <a :href="twUrl" target="_blank">share</a>
           <p class="btn_priority ">このキャンプに参加する</p>
           <p class="btn color">リストに保存する<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
         </div>
@@ -59,6 +60,25 @@ export default {
     text: String,
     background_img_url: String,
   },
+  data() {
+    return {
+      twUrl : 'https://twitter.com/intent/tweet?text=' + this.title + '&hashtags=tento_camp' + '&url=' + this.url,
+      url : encodeURIComponent(location.href)
+    }
+  },
+  methods : {
+    /**
+     * シェア用のURLを作成します。
+     */
+    createSnsUrl : function(){
+        // 現在のurlをエンコード
+    	// var url = encodeURIComponent(location.href);
+    	// ページ文言(タイトルとかdescription) ここではdescriptionを使用
+    	// var txt = encodeURIComponent(document.querySelector("meta[name='description']").getAttribute('content'));
+    	// Twitter用のurl作成 ハッシュタグもtxtを使用
+    	this.twUrl = 'https://twitter.com/intent/tweet?text=' + this.title + '&hashtags=tento_camp' + 'tento_camp' + '&url=' + this.url;
+    }
+  }
   // data() {
   //   return {
   //     title:"進行中のプロジェクトデザインやってくれる方！",

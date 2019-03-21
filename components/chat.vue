@@ -4,9 +4,10 @@
       <h2>参加メンバー({{ persons }})</h2>
       <div class="chat_members_list">
         <ul>
-          <li><nuxt-link to="/account"><user /></nuxt-link></li>
-          <li><nuxt-link to="/account"><user /></nuxt-link></li>
-          <li><nuxt-link to="/account"><user /></nuxt-link></li>
+          <li><nuxt-link to="/account"><user :background_img_url="background_img_url" :name="name" :position="'webエンジニア'" /></nuxt-link></li>
+          <li><nuxt-link to="/account"><user :background_img_url="background_img_url" :name="name" :position="'webエンジニア'" /></nuxt-link></li>
+          <li><nuxt-link to="/account"><user :background_img_url="background_img_url" :name="name" :position="'webエンジニア'" /></nuxt-link></li>
+          <li><nuxt-link to="/account"><user :background_img_url="background_img_url" :name="name" :position="'webエンジニア'" /></nuxt-link></li>
         </ul>
       </div>
     </div>
@@ -16,7 +17,7 @@
         <div class="div">
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
                 <p class="chat_contents_user_info_name">{{ name }}</p>
@@ -29,7 +30,7 @@
 
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
                 <p class="chat_contents_user_info_name">{{ name }}</p>
@@ -41,7 +42,7 @@
         </li>
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
                 <p class="chat_contents_user_info_name">{{ name }}</p>
@@ -53,7 +54,7 @@
         </li>
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
                 <p class="chat_contents_user_info_name">{{ name }}</p>
@@ -66,7 +67,7 @@
 
         <li>
           <div class="chat_contents_detail">
-            <div class="user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+            <div class="user_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
             <div class="chat_contents_user">
               <div class="chat_contents_user_info">
                 <p class="chat_contents_user_info_name">{{ name }}</p>
@@ -97,7 +98,7 @@ export default {
   data(){
     return{
       persons:"4",
-      icon:"",
+      background_img_url:"https://picsum.photos/200/200/?image=857",
       name:"リンゴスター",
       chat_time:"10:24",
       chat_txt:"おはようございます。今日の会議は何時ごろスタートですか~？"

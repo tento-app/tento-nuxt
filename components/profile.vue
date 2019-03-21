@@ -2,7 +2,7 @@
 <div class="content profile">
     <div class="profile_contents">
       <div class="profile_contents_user">
-        <div class="profile_contents_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="profile_contents_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
         <div class="profile_contents_wrapper">
           <ul>
             <li>
@@ -33,11 +33,9 @@ export default {
   components: {
     user
   },
+  props: ['background_img_url','name','position'],
   data(){
     return{
-      icon:"",
-      name:"ジョージハリスン",
-      position:"マーケター",
       intro:"マーケティング、ウェブコンサルティングのことならお任せください"
     }
   }

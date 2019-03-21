@@ -3,5 +3,9 @@ query ($id: ID!){
     name
     content
     header
+    user {
+      username
+      logo
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template id="">
   <div class="abstract_user">
-    <div class="abstract_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+    <div class="abstract_user_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
     <div class="">
       <p class="abstract_user_name">{{ name }}</p>
       <p class="abstract_user_position">{{ position }}</p>
@@ -10,13 +10,7 @@
 
 <script type="text/javascript">
   export default {
-    data(){
-      return{
-        icon:"",
-        name:"ジョージハリスン",
-        position:"webエンジニア"
-      }
-    }
+    props: ['background_img_url','name','position']
   }
 </script>
 
@@ -26,7 +20,7 @@
       display: flex;
       align-items: center;
       &_img {
-          background-image: url("../static/icon.jpg");
+          // background-image: url("../static/icon.jpg");
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;

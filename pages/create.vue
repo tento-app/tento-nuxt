@@ -11,12 +11,13 @@
 
         </div>
       </div>
+      <button class="btn_priority" @click="openModal" type="button" name="button">公開設定へ進む</button>
       <div class="create_body">
         <div class="create_body_content">
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
           <medium-editor :content='content' :options='options' />
         </div>
-        <settingModal />
+        <settingModal v-if="showModal" @close="closeModal" />
       </div>
     </div>
   </div>
@@ -38,6 +39,7 @@ export default {
   // },
   data() {
         return {
+            showModal: false,
             content: "",
             options: {
               placeholder: {
@@ -46,7 +48,15 @@ export default {
               uploadUrl: "https://imgur.com/upload"
             }
         }
+    },
+  methods: {
+    openModal(item) {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
     }
+  },
 }
 </script>
 

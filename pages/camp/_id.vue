@@ -2,7 +2,7 @@
   <section>
     <Header />
     <div class="main">
-      <CampBody :title="project.name" :text="project.content" :background_img_url="project.header" :place="'赤羽キャンパス'" :contact="'tento@gmail.com'" :time="'03/17/14:00'"/>
+      <CampBody :title="project.name" :text="project.content" :background_img_url="project.header" :host_user="project.user" :place="'赤羽キャンパス'" :contact="'tento@gmail.com'" :time="'03/17/14:00'"/>
       <div class="">
         <chat />
       </div>

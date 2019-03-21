@@ -91,6 +91,7 @@ module.exports = () => {
     plugins: [
       { src: '~/plugins/swiper.js', ssr: false },
       { src: '~/plugins/medium-editor', ssr: false },
+      { src: '~/plugins/multiselect', ssr: false },
     ],
 
     /*

@@ -5,7 +5,6 @@
 
       <div class="create_title">
         <div class="create_title_content">
-          <p>長期募集(開発メンバー、サークルメンバー募集など)</p>
           <div class="create_title_content_input">
             <input type="text" name="" value="" placeholder="タイトルを記入してください">
           </div>
@@ -17,7 +16,7 @@
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
           <medium-editor :content='content' :options='options' />
         </div>
-        <skill />
+        <settingModal />
       </div>
     </div>
   </div>
@@ -25,12 +24,12 @@
 
 <script>
 import Header from '~/layouts/Header.vue';
-import skill from '~/components/skill.vue';
+import settingModal from '~/components/open-setting-modal.vue';
 
 export default {
   components: {
     Header,
-    skill
+    settingModal
   },
   // fetch ({ store, redirect }) {
   //   if (!store.state.user.username) {

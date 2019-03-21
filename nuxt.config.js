@@ -80,16 +80,18 @@ module.exports = () => {
      ** Global CSS
      */
     css: [
-      'swiper/dist/css/swiper.css'
+      'swiper/dist/css/swiper.css',
+      'medium-editor/dist/css/medium-editor.css',
+      'vue2-content-editor/src/themes/default.css'
     ],
 
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [{
-      src: '~/plugins/swiper.js',
-      ssr: false
-    }, ],
+    plugins: [
+      { src: '~/plugins/swiper.js', ssr: false },
+      { src: '~/plugins/medium-editor', ssr: false },
+    ],
 
     /*
      ** Nuxt.js modules

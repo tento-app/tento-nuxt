@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="">
-    <form class="" action="index.html" method="post">
       <Header />
       <div class="create">
 
@@ -15,13 +14,12 @@
       </div>
       <div class="create_body">
         <div class="create_body_content">
-          <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea>
+          <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
+          <medium-editor :content='content' :options='options' />
         </div>
         <skill />
       </div>
     </div>
-
-    </form>
   </div>
 </template>
 
@@ -34,11 +32,22 @@ export default {
     Header,
     skill
   },
-  fetch ({ store, redirect }) {
-    if (!store.state.user.username) {
-      return redirect('/login')
+  // fetch ({ store, redirect }) {
+  //   if (!store.state.user.username) {
+  //     return redirect('/login')
+  //   }
+  // },
+  data() {
+        return {
+            content: "",
+            options: {
+              placeholder: {
+                text: "Mediumとエディターの使い方は同じです！"
+              },
+              uploadUrl: "https://imgur.com/upload"
+            }
+        }
     }
-  }
 }
 </script>
 

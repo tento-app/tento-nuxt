@@ -3,32 +3,32 @@
     <h1>Needs tool</h1>
     <div class="skill">
       <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
         <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
         <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
         <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
         <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
         <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
         <p>{{ skill_name }}</p>
       </div>
 
@@ -56,7 +56,7 @@ export default {
  },
  data(){
    return{
-     skil_img:"",
+     skil_img:"icon.png",
      skill_name:"adobe XD"
    }
  }

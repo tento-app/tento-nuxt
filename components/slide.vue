@@ -3,66 +3,19 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide background_img_01">
-        <nuxt-link to='/camp-detail'>
+      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
+
+        <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
           <!-- card content-->
           <div class="slide_item">
             <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
+              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + project.node.user.logo + ')' }"></div>
               <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
+                <p class="slide_item_user_name">{{ project.node.user.username }}</p>
                 <p class="slide_item_user_position">webエンジニア</p>
               </div>
             </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </nuxt-link>
-      </div>
-      <div class="swiper-slide background_img_02">
-        <a href="#">
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
-            </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </a>
-      </div>
-      <div class="swiper-slide background_img_03">
-        <nuxt-link to='/camp-detail'>
-          <!-- card content-->
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
-            </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
-          </div>
-        </nuxt-link>
-      </div>
-      <div class="swiper-slide background_img_04">
-        <nuxt-link to='/camp-detail'>
-          <!-- card content-->
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img">
-              </div>
-              <div class="">
-                <p class="slide_item_user_name">ジョージハリスン</p>
-                <p class="slide_item_user_position">webエンジニア</p>
-              </div>
-            </div>
-            <h4>webデザイナーで食事会しませんか？？</h4>
+            <h4>{{ project.node.name }}</h4>
           </div>
         </nuxt-link>
       </div>
@@ -80,6 +33,9 @@
 </template>
 <script>
 export default {
+  props: {
+    projects: Array,
+  },
     data () {
         return {
             swiperOption: {

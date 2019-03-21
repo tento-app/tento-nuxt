@@ -1,12 +1,24 @@
 <template id="">
   <div class="abstract_user">
-    <div class="abstract_user_img"></div>
+    <div class="abstract_user_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
     <div class="">
-      <p class="abstract_user_name">ジョージハリスン</p>
-      <p class="abstract_user_position">webエンジニア</p>
+      <p class="abstract_user_name">{{ name }}</p>
+      <p class="abstract_user_position">{{ position }}</p>
     </div>
   </div>
 </template>
+
+<script type="text/javascript">
+  export default {
+    data(){
+      return{
+        icon:"",
+        name:"ジョージハリスン",
+        position:"webエンジニア"
+      }
+    }
+  }
+</script>
 
 <style lang="scss">
 @media (min-width:840px){

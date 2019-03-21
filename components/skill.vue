@@ -3,33 +3,33 @@
     <h1>Needs tool</h1>
     <div class="skill">
       <div class="skill_item">
-        <div class="skill_item_img"></div>
-        <p>adobe XD</p>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img"></div>
-        <p>adobe XD</p>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img"></div>
-        <p>adobe XD</p>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img"></div>
-        <p>adobe XD</p>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img"></div>
-        <p>adobe XD</p>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item">
-        <div class="skill_item_img"></div>
-        <p>adobe XD5</p>
+        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <p>{{ skill_name }}</p>
       </div>
 
       <div class="skill_item skill_add" @click="isShowModal">
@@ -53,6 +53,12 @@ export default {
   },
  methods: {
     ...mapMutations('skill_modal',['isShowModal'])
+ },
+ data(){
+   return{
+     skil_img:"icon.png",
+     skill_name:"adobe XD"
+   }
  }
 }
 

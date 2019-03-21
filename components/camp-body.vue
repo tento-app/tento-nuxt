@@ -3,7 +3,7 @@
       <div class="camp_body_eyecatch" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
       <div class="camp_body_text">
         <h1 class="camp_body_text_title">{{ title }}</h1>
-        <user />
+        <user :background_img_url="host_user.logo" :name="host_user.username" :position="'webエンジニア'" />
         <div class="">
           <ul class="setting">
             <li>
@@ -28,7 +28,7 @@
           <skill />
         </div>
         <div class="profile_component">
-          <profile />
+          <profile :background_img_url="host_user.logo" :name="host_user.username" :position="'マーケター'"/>
         </div>
       </div>
       <div class="join">
@@ -59,11 +59,11 @@ export default {
     contact: String,
     text: String,
     background_img_url: String,
+    host_user: Object,
   },
   data() {
     return {
-      twUrl : 'https://twitter.com/intent/tweet?text=' + this.title + '&hashtags=tento_camp' + '&url=' + this.url,
-      url : encodeURIComponent(location.href)
+      twUrl : '',
     }
   },
   methods : {
@@ -76,7 +76,7 @@ export default {
     	// ページ文言(タイトルとかdescription) ここではdescriptionを使用
     	// var txt = encodeURIComponent(document.querySelector("meta[name='description']").getAttribute('content'));
     	// Twitter用のurl作成 ハッシュタグもtxtを使用
-    	this.twUrl = 'https://twitter.com/intent/tweet?text=' + this.title + '&hashtags=tento_camp' + 'tento_camp' + '&url=' + this.url;
+    	this.twUrl = 'https://twitter.com/intent/tweet?text=' + this.title + '&hashtags=tento_camp' + 'tento_camp' + '&url=' + encodeURIComponent(location.href);
     }
   }
   // data() {

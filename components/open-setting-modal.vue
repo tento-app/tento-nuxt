@@ -4,13 +4,21 @@
       <div class="modal-container">
         <div class="setting-modal">
           <h3>公開設定(任意)</h3>
-          <form class="" action="index.html" method="post">
+          <div  class="form">
+            <div class="item">
+              <label for="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="square" stroke-linejoin="arcs"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5L16 10 4 20"/></svg>
+                <p>ヘッダー画像</p>
+              </label>
+              <input type="file" name="" value="" >
+            </div>
             <div class="item">
               <label for="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 <p>スキル</p>
               </label>
-              <input type="text" name="" value="" placeholder="スキルを追加してください">
+              <Multiselect v-model="value" :options="options" :multiple="true" :hide-selected="true" :searchable="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" label="name" track-by="name" :preselect-first="false" :max-height="200">
+              </Multiselect>
             </div>
             <div class="item">
               <label for="">
@@ -35,10 +43,10 @@
             </div>
 
             <div class="btn-list">
-              <p>編集に戻る</p>
+              <p @click="$emit('close')">編集に戻る</p>
               <button class="btn_priority" type="button" name="button">公開する</button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -47,9 +55,32 @@
 
 <script>
 export default {
+  data () {
+    return {
+      value: [],
+      options: [
+        { name: 'Vue.js', language: 'JavaScript' },
+        { name: 'Adonis', language: 'JavaScript' },
+        { name: 'Rails', language: 'Ruby' },
+        { name: 'Sinatra', language: 'Ruby' },
+        { name: 'Laravel', language: 'PHP' },
+        { name: 'Phoenix', language: 'Elixir' }
+      ]
+    }
+  },
+  methods: {
+    addTag (newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+      }
+      this.options.push(tag)
+      this.value.push(tag)
+    }
+  }
 }
 </script>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss"scoped>
 @import '~/assets/style/_color.scss';
 @import '~/assets/style/base.scss';
@@ -86,7 +117,7 @@ export default {
   h3 {
     color: $black01;
   }
-  form {
+  .form {
     .item {
       margin:1rem 0 2rem;
       label {

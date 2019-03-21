@@ -7,10 +7,10 @@
     <ul>
       <h5 class="sp_left">About</h5>
       <div class="sp_right">
-        <a href="#">
+        <nuxt-link to='/'>
           <li>About Tento</li>
-        </a>
-        <a href="#">
+        </nuxt-link>
+        <a href='https://ark-cg.com/' target="_blank">
           <li>About Us</li>
         </a>
         <a href="#">
@@ -21,21 +21,18 @@
     <ul>
       <h5 class="sp_left">Links</h5>
       <div class="sp_right">
-        <a href="#">
+        <nuxt-link to='/privacy'>
           <li>Privacy</li>
-        </a>
-        <a href="#">
-          <li>Terms</li>
-        </a>
+        </nuxt-link>
+        <nuxt-link to='/terms'>
+          <li>Termsy</li>
+        </nuxt-link>
       </div>
     </ul>
     <ul>
       <h5 class="sp_left">Contact</h5>
       <div class="sp_right">
-        <a href="#">
-          <li>E-mail</li>
-        </a>
-        <a href="https://twitter.com/tento_app">
+        <a href="https://twitter.com/tento_app" target="_blank">
           <li>Twitter</li>
         </a>
       </div>

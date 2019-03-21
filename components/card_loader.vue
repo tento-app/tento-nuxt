@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss"scoped>
 @import "~/assets/style/_color.scss";
 @media (min-width: 840px) {
   .card_loader {

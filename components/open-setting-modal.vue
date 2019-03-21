@@ -3,7 +3,7 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div class="setting-modal">
-          <h3>公開設定</h3>
+          <h3>公開設定(任意)</h3>
           <form class="" action="index.html" method="post">
             <div class="item">
               <label for="">
@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss"scoped>
 @import '~/assets/style/_color.scss';
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
@@ -65,7 +65,7 @@ export default {
   background-color: rgba(0, 0, 0, .5);
   display: table;
   transition: opacity .3s ease;
-  display: none;
+  // display: none;
 }
 
 .modal-wrapper {

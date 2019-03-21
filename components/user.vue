@@ -20,7 +20,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media (min-width:840px){
   .abstract_user {
       display: flex;

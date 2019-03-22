@@ -3,9 +3,9 @@
     <Header />
     <div class="main">
       <CampBody :title="project.name" :text="project.content" :background_img_url="project.header" :host_user="project.user" :place="'赤羽キャンパス'" :contact="'tento@gmail.com'" :time="'03/17/14:00'"/>
-      <div class="">
+      <!-- <div class="">
         <chat />
-      </div>
+      </div> -->
     </div>
     <Footer />
   </section>
@@ -44,8 +44,7 @@ export default {
 @import '~/assets/style/btn.scss';
 @import '~/assets/style/_color.scss';
 .main {
-  padding-bottom: 5rem;
-  background-color: #fff;
+  
 }
 
 </style>

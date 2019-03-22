@@ -25,7 +25,7 @@
           <li>Privacy</li>
         </nuxt-link>
         <nuxt-link to='/terms'>
-          <li>Termsy</li>
+          <li>Terms</li>
         </nuxt-link>
       </div>
     </ul>

@@ -1,7 +1,13 @@
 <template lang="html">
   <div class="">
-      <Header />
       <div class="create">
+        <div class="header">
+          <nuxt-link to='/top' class="left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            <p>投稿終了</p>
+          </nuxt-link>
+          <button class="btn_priority" @click="openModal" type="button" name="button">公開設定へ進む</button>
+        </div>
 
         <div class="create_eyecatch">
           <div class="create_eyecatch_content">
@@ -27,7 +33,6 @@
 
         </div>
       </div>
-      <button class="btn_priority" @click="openModal" type="button" name="button">公開設定へ進む</button>
       <div class="create_body">
         <div class="create_body_content">
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
@@ -98,6 +103,27 @@ export default {
 @import '~/assets/style/btn.scss';
 
   .create{
+    .header {
+      position: relative;
+      background-color: rgba(250, 250, 250, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.7rem 3rem;
+      z-index: 4;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: flex;
+      .left {
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+        p {
+          font-size: 14px;
+          color: $black01;
+          font-weight: bold;
+        }
+      }
+    }
     &_eyecatch {
       &_content {
         max-width: 840px;

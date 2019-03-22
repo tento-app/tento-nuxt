@@ -1,5 +1,15 @@
 <template id="">
     <div class="content camp_body">
+      <div class="header" v-bind:class="{ active: headerActive }">
+        <div class="text">
+          <h1 class="camp_body_text_title">{{ title }}</h1>
+          <div class="btn_list">
+            <a :href="twUrl" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
+            <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
+            <p class="btn_priority ">このキャンプに参加する</p>
+          </div>
+        </div>
+      </div>
       <div class="camp_body_eyecatch">
 
         <div class="camp_body_eyecatch_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
@@ -36,13 +46,13 @@
           <profile :background_img_url="host_user.logo" :name="host_user.username" :position="'マーケター'"/>
         </div>
       </div>
-      <div class="join">
+      <!-- <div class="join">
         <div class="btn_list">
           <a :href="twUrl" target="_blank">share</a>
           <p class="btn_priority ">このキャンプに参加する</p>
           <p class="btn color">リストに保存する<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -70,7 +80,12 @@ export default {
   data() {
     return {
       twUrl : '',
+      headerActive:false,
+      scrollY:0,
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
   },
   methods : {
     /**
@@ -83,6 +98,14 @@ export default {
     	// var txt = encodeURIComponent(document.querySelector("meta[name='description']").getAttribute('content'));
     	// Twitter用のurl作成 ハッシュタグもtxtを使用
     	this.twUrl = 'https://twitter.com/intent/tweet?text=' + this.title + '&hashtags=tento_camp' + 'tento_camp' + '&url=' + encodeURIComponent(location.href);
+    },
+    handleScroll: function() {
+        this.scrollY = window.scrollY;
+        if (this.scrollY > 400) {
+          this.headerActive = true
+        } else {
+          this.headerActive = false
+        }
     }
   }
   // data() {
@@ -100,6 +123,28 @@ export default {
 
 <style lang="scss">
 @import '~/assets/style/_color.scss';
+@keyframes fadein01 {
+  0% {
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout01 {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+}
+
 
 @media (min-width:840px) {
   .skill_component {
@@ -109,6 +154,60 @@ export default {
     margin: 3rem 0;
   }
   .camp_body{
+    .active {
+      display:block !important;
+      opacity: 1;
+      animation: fadein01 0.2s ease-in 0s;
+    }
+    .header {
+      position: relative;
+      background-color: rgba(250, 250, 250, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.9rem 0;
+      z-index: 4;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: none;
+      .text {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0px 30px;
+        display: flex;
+        align-items: center;
+        h1 {
+          font-size: 1.2rem;
+          color: #1f1f1f;
+        }
+        .btn_list {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          a {
+            margin-right: 0.5rem;
+            box-shadow: $box_shadow01;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            img {
+              width: 35px;
+            }
+          }
+          .bookmark {
+            cursor: pointer;
+            box-shadow: $box_shadow01;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
     .content_text{
       background-color: #fff;
     }

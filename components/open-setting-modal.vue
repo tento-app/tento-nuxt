@@ -17,7 +17,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 <p>スキル</p>
               </label>
-              <Multiselect v-model="value" :options="options" :multiple="true" :hide-selected="true" :searchable="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" label="name" track-by="name" :preselect-first="false" :max-height="200">
+              <Multiselect v-model="value" :options="options" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" label="name" track-by="name" :preselect-first="false" :max-height="200">
               </Multiselect>
             </div>
             <div class="item">

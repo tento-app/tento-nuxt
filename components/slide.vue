@@ -79,6 +79,9 @@ export default {
                     width: 60%;
                     height: 280px;
                     margin: 0 auto;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
                     a {
                         display: block;
                         width: 100%;

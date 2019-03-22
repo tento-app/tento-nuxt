@@ -39,10 +39,11 @@ export default {
 @import '~/assets/style/btn.scss';
 
 .main{
+  background-color: #fff;
   .skill_container{
     padding: 80px 0;
     margin-top: 80px;
-    background-color: $backround_color02;
+    background-color: $backround_color01;
   }
 }
 

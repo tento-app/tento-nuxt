@@ -1,6 +1,11 @@
 <template id="">
     <div class="content camp_body">
-      <div class="camp_body_eyecatch" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
+      <div class="camp_body_eyecatch">
+
+        <div class="camp_body_eyecatch_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
+      </div>
+      <div class="content_text">
+
       <div class="camp_body_text">
         <h1 class="camp_body_text_title">{{ title }}</h1>
         <user :background_img_url="host_user.logo" :name="host_user.username" :position="'webエンジニア'" />
@@ -39,6 +44,7 @@
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script type="text/javascript">
@@ -103,15 +109,24 @@ export default {
     margin: 3rem 0;
   }
   .camp_body{
-    padding: 60px 0 0;
+    .content_text{
+      background-color: #fff;
+    }
     &_eyecatch{
-      height: 280px;
       max-width: 840px;
-      border-radius: 12px;
-      position: relative;
-      width: 100%;
-      margin: 0px auto 0;
-      box-shadow: $box_shadow04;
+      margin: 0 auto;
+      padding:30px;
+      &_img {
+        height: 280px;
+        max-width: 100%;
+        border-radius: 12px;
+        position: relative;
+        width: 100%;
+        box-shadow: $box_shadow04;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     }
     &_text{
       margin: 0 auto;
@@ -169,7 +184,7 @@ export default {
   .join {
     display: flex;
     max-width: 840px;
-    margin: 2rem auto;
+    margin: 2rem auto 0;
     padding: 2rem 30px;
     margin-left:auto;
     border-top: $border01;
@@ -200,19 +215,28 @@ export default {
 @media screen and (min-width: 500px) and (max-width: 840px) {
   .camp_body{
     max-width: 840px;
-    padding: 40px 30px;
+    .content_text{
+      background-color: #fff;
+    }
     &_eyecatch{
-      height: 240px;
       max-width: 840px;
-      border-radius: 12px;
-      position: relative;
-      width: 100%;
-      margin: 0px auto 0;
-      box-shadow: $box_shadow04;
+      margin: 0 auto;
+      padding:30px;
+      &_img {
+        height: 240px;
+        max-width: 100%;
+        border-radius: 12px;
+        position: relative;
+        width: 100%;
+        box-shadow: $box_shadow04;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     }
     &_text{
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 40px 30px;
       max-width: 840px;
       .setting {
         margin: 1.5rem 0 0;
@@ -296,19 +320,28 @@ export default {
 @media screen and (min-width: 0px) and (max-width: 500px) {
   .camp_body{
     max-width: 840px;
-    padding: 40px 10px;
+    .content_text{
+      background-color: #fff;
+    }
     &_eyecatch{
-      height: 180px;
       max-width: 840px;
-      border-radius: 12px;
-      position: relative;
-      width: 100%;
-      margin: 0px auto 0;
-      box-shadow: $box_shadow04;
+      margin: 0 auto;
+      padding: 30px 15px;
+      &_img {
+        height: 240px;
+        max-width: 100%;
+        border-radius: 12px;
+        position: relative;
+        width: 100%;
+        box-shadow: $box_shadow04;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     }
     &_text{
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 40px 15px;
       max-width: 840px;
       .setting {
         margin: 1.5rem 0 0;

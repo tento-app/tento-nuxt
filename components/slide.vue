@@ -167,6 +167,9 @@ export default {
                     width: 80%;
                     height: 280px;
                     margin: 0 auto;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
                     a {
                         display: block;
                         width: 100%;
@@ -249,6 +252,9 @@ export default {
                     width: 80%;
                     height: 280px;
                     margin: 0 auto;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
                     a {
                         display: block;
                         width: 100%;

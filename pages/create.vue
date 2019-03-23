@@ -28,7 +28,7 @@
       <div class="create_title">
         <div class="create_title_content">
           <div class="create_title_content_input">
-            <input type="text" name="" value="" placeholder="タイトルを記入してください">
+            <textarea name="name" rows="8" cols="80" placeholder="タイトルを記入してください"></textarea>
           </div>
 
         </div>
@@ -101,6 +101,7 @@ export default {
 @import '~/assets/style/_color.scss';
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
+@media (min-width:500px){
 
   .create{
     .header {
@@ -181,7 +182,7 @@ export default {
         }
         &_input{
 
-          input{
+          textarea{
             border: none;
             background-color: rgba(0,0,0,0);
             outline: 0;
@@ -190,6 +191,7 @@ export default {
             color: $black01;
             font-size: 32px;
             font-weight: bold;
+            height: 54px;
             &::placeholder{
               color: rgba(0,0,0,0.4);
             }
@@ -217,4 +219,127 @@ export default {
       }
     }
   }
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .create{
+    .header {
+      position: relative;
+      background-color: rgba(250, 250, 250, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.7rem 15px;
+      z-index: 4;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: flex;
+      .left {
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+        p {
+          font-size: 14px;
+          color: $black01;
+          font-weight: bold;
+        }
+      }
+    }
+    &_eyecatch {
+      &_content {
+        max-width: 840px;
+        margin: 0rem auto;
+        padding: 1rem 15px;
+        label {
+          cursor: pointer;
+          font-size: 14px;
+          border-radius: 99px;
+          display: inline-block;
+          div {
+            display: flex;
+            align-items: center;
+          }
+        }
+        input {
+          display: none;
+        }
+        .img {
+          height: 280px;
+          max-width: 100%;
+          border-radius: 12px;
+          position: relative;
+          width: 100%;
+          box-shadow: $box_shadow04;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          display: flex;
+          p {
+            margin-left: auto;
+            background-color: $black02;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+    &_title{
+      &_content{
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 1rem 15px 2rem;
+        p{
+          margin-bottom: 1.5rem;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &_input{
+
+          textarea{
+            white-space: pre-wrap;
+            border: none;
+            background-color: rgba(0,0,0,0);
+            outline: 0;
+            box-sizing: border-box;
+            width: 100%;
+            color: $black01;
+            font-size: 1.6rem;
+            font-weight: bold;
+            height: 2.5rem;
+            &::placeholder{
+              color: rgba(0,0,0,0.4);
+            }
+          }
+        }
+      }
+    }
+    &_body{
+      background-color: #fff;
+      min-height: 100vh;
+      &_content{
+        max-width: 840px;
+        margin: 2rem auto 0;
+        padding: 0 15px;
+        color: $black01;
+        // textarea{
+        //   width: 100%;
+        //   box-sizing: border-box;
+        //   background-color: rgba(0,0,0,0);
+        //   outline: 0;
+        //   line-height: 2rem;
+        //   font-size: 16px;
+        //   border: none;
+        // }
+      }
+
+      
+    }
+  }
+}
 </style>

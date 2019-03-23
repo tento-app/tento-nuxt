@@ -15,6 +15,7 @@
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/style/_color.scss';
 @media (min-width:840px){
   .abstract_user {
       display: flex;
@@ -30,12 +31,13 @@
           margin-right: 0.5rem;
       }
       &_name {
-          font-size: 14px;
-          color: #555;
+          font-size: 1rem;
+          color: $black01;
+          font-weight: bold;
       }
       &_position {
-          font-size: 12px;
-          color: #ccc;
+          font-size: 14px;
+          color: $black02;
       }
   }
 }
@@ -49,18 +51,19 @@
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
-          width: 32px;
-          height: 32px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           margin-right: 0.5rem;
       }
       &_name {
-          font-size: 12px;
-          color: #555;
+          font-size: 1rem;
+          color: $black01;
+          font-weight: bold;
       }
       &_position {
-          font-size: 10px;
-          color: #ccc;
+          font-size: 14px;
+          color: $black02;
       }
   }
 
@@ -75,18 +78,19 @@
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
-          width: 32px;
-          height: 32px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           margin-right: 0.5rem;
       }
       &_name {
-          font-size: 14px;
-          color: #555;
+          font-size: 1rem;
+          color: $black01;
+          font-weight: bold;
       }
       &_position {
-          font-size: 12px;
-          color: #ccc;
+          font-size: 14px;
+          color: $black02;
       }
   }
 

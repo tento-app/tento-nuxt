@@ -2,7 +2,7 @@
     <div class="content camp_body">
       <div class="header" v-bind:class="{ active: headerActive }">
         <div class="text">
-          <h1 class="camp_body_text_title">{{ title }}</h1>
+          <h1 class="camp_body_text_title pc">{{ title }}</h1>
           <div class="btn_list">
             <a :href="twUrl" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
             <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
@@ -32,7 +32,16 @@
             <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               <p>{{ contact }}</p>
             </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <p>12人</p>
+            </li>
           </ul>
+          <div class="btn_list pc">
+            <a :href="twUrl" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
+            <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
+            <p class="btn_priority ">このキャンプに参加する</p>
+          </div>
         </div>
         <div class="camp_body_text_describe">
           <p>{{ text }}</p>
@@ -101,7 +110,7 @@ export default {
     },
     handleScroll: function() {
         this.scrollY = window.scrollY;
-        if (this.scrollY > 400) {
+        if (this.scrollY > 600) {
           this.headerActive = true
         } else {
           this.headerActive = false
@@ -151,7 +160,8 @@ export default {
     margin: 3rem 0;
   }
   .profile_component {
-    margin: 3rem 0;
+    margin: 3rem 0 0;
+    padding: 0 0 2rem;
   }
   .camp_body{
     .active {
@@ -210,6 +220,35 @@ export default {
     }
     .content_text{
       background-color: #fff;
+      .btn_list {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        a {
+          margin-right: 0.5rem;
+          box-shadow: $box_shadow01;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          img {
+            width: 35px;
+          }
+        }
+        .bookmark {
+          cursor: pointer;
+          box-shadow: $box_shadow01;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          margin-right: 0.5rem;
+        }
+      }
     }
     &_eyecatch{
       max-width: 840px;
@@ -229,7 +268,7 @@ export default {
     }
     &_text{
       margin: 0 auto;
-      padding: 40px 40px;
+      padding: 40px 30px;
       max-width: 840px;
       .setting {
         margin: 1.5rem 0 0;
@@ -273,7 +312,7 @@ export default {
       &_describe{
         margin-top: 1rem;
         p{
-          line-height: 350%;
+          line-height: 300%;
           word-break: keep-all;
           white-space: pre-line;
         }
@@ -314,8 +353,91 @@ export default {
 @media screen and (min-width: 500px) and (max-width: 840px) {
   .camp_body{
     max-width: 840px;
+    .active {
+      display:block !important;
+      opacity: 1;
+      animation: fadein01 0.2s ease-in 0s;
+    }
+    .header {
+      position: relative;
+      background-color: rgba(250, 250, 250, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.9rem 0;
+      z-index: 4;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: none;
+      .text {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0px 30px;
+        display: flex;
+        align-items: center;
+        h1 {
+          font-size: 1.2rem;
+          color: #1f1f1f;
+        }
+        .btn_list {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          a {
+            margin-right: 0.5rem;
+            box-shadow: $box_shadow01;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            img {
+              width: 35px;
+            }
+          }
+          .bookmark {
+            cursor: pointer;
+            box-shadow: $box_shadow01;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
     .content_text{
       background-color: #fff;
+      .btn_list {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        a {
+          margin-right: 0.5rem;
+          box-shadow: $box_shadow01;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          img {
+            width: 35px;
+          }
+        }
+        .bookmark {
+          cursor: pointer;
+          box-shadow: $box_shadow01;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          margin-right: 0.5rem;
+        }
+      }
     }
     &_eyecatch{
       max-width: 840px;
@@ -417,8 +539,65 @@ export default {
 }
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .pc {
+    display: none;
+  }
   .camp_body{
     max-width: 840px;
+    .active {
+      display:block !important;
+      opacity: 1;
+      animation: fadein01 0.2s ease-in 0s;
+    }
+    .header {
+      position: relative;
+      background-color: rgba(250, 250, 250, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0.9rem 0;
+      z-index: 4;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      display: none;
+      .text {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+          font-size: 1.2rem;
+          color: #1f1f1f;
+        }
+        .btn_list {
+          display: flex;
+          align-items: center;
+          a {
+            margin-right: 0.5rem;
+            box-shadow: $box_shadow01;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            img {
+              width: 35px;
+            }
+          }
+          .bookmark {
+            cursor: pointer;
+            box-shadow: $box_shadow01;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
     .content_text{
       background-color: #fff;
     }

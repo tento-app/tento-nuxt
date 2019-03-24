@@ -2,9 +2,9 @@
   <section>
     <Header />
     <div class="main">
-      <slide :projects="allProjects.edges"/>
-      <card :projects="allProjects.edges"/>
-      <cardLoader />
+      <slide :projects="swiperProjects"/>
+      <card :projects="allProjects"/>
+      <cardLoader @readmore="readmore" />
     </div>
     <Footer />
   </section>
@@ -31,13 +31,34 @@ export default {
     return context.app.apolloProvider.defaultClient.query({
       query: allProjectsGql,
       variables: {
-        page_size: 9,
+        page_size: 6,
         endCursor: "",
       }
       }).then(({ data }) => {
           // do what you want with data
-          return { allProjects: data.allProjects}
+          return {
+            swiperProjects: data.allProjects.edges.slice(3),
+            allProjects: data.allProjects.edges,
+            endCursor: data.allProjects.pageInfo.endCursor
+            }
         })
+  },
+  methods: {
+    readmore: function() {
+      this.$apollo.query({
+      query: allProjectsGql,
+      variables: {
+        page_size: 6,
+        endCursor: this.endCursor,
+      }
+      }).then(({ data }) => {
+          // do what you want with data
+          data.allProjects.edges.forEach((project) => {
+            this.allProjects.push(project)
+          })
+          this.endCursor = data.allProjects.pageInfo.endCursor
+        })
+    }
   }
 }
 </script>

@@ -24,3 +24,7 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 #sass
 npm install sass-loader --save-dev
 npm install --save-dev node-sass
+
+### ブランチを作り忘れた時
+
+https://qiita.com/k6i/items/edc69a806095e4fc489c

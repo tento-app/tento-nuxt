@@ -4,7 +4,9 @@
     <div class="skill">
 
       <div class="skill_item" v-for="tag in tags" key="tag.node.id">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
+        <div class="img">
+          <img v-bind:src="'../tag/' + tag.node.name + '.svg'" alt="">
+        </div>
         <p>{{ tag.node.name }}</p>
       </div>
 
@@ -32,7 +34,7 @@ export default {
  },
  data(){
    return{
-     skil_img:"/icon.png",
+     skil_img:"/tag/css.svg",
      skill_name:"adobe XD"
    }
  },
@@ -85,18 +87,17 @@ export default {
       min-width: 32%;
       display: flex;
       align-items: center;
-      &_img{
-        min-width: 40px;
-        height: 40px;
-        margin: 1rem;
-        background-image: url("../static/icon.png");
-        background-position: center;
-        background-repeat: no-repeat;
+      .img {
+        padding: 1rem;
+        img {
+          width: 40px;
+          height: 40px;
+        }
       }
       p{
         font-weight: bold;
         width: 100%;
-        font-size: 14px;
+        font-size: 1.2rem;
         padding: 1rem 0;
         margin-right: 1rem;
         border-left: $border01;
@@ -147,17 +148,16 @@ export default {
       text-align: center;
       margin:0.5rem 0;
       width: 30%;
-      &_img{
-        width: 70px;
-        height: 70px;
-        margin: 1.5rem auto;
-        background-image: url("../static/icon.png");
-        background-position: center;
-        background-repeat: no-repeat;
+      .img {
+        padding: 1rem;
+        img {
+          width: 70px;
+          height: 70px;
+        }
       }
       p{
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 1.2rem;
         border-top: solid 0.5px #eaeaea;
         padding: 1rem
       }
@@ -209,17 +209,16 @@ export default {
       text-align: center;
       margin:0.5rem 0;
       width: 48%;
-      &_img{
-        width: 70px;
-        height: 70px;
-        margin: 1.5rem auto;
-        background-image: url("../static/icon.png");
-        background-position: center;
-        background-repeat: no-repeat;
+      .img {
+        padding: 1rem;
+        img {
+          width: 70px;
+          height: 70px;
+        }
       }
       p{
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 1.2rem;
         border-top: solid 0.5px #eaeaea;
         padding: 1rem
       }

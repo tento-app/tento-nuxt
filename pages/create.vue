@@ -38,7 +38,7 @@
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
           <medium-editor :content='content' :options='options' />
         </div>
-        <settingModal v-if="showModal" @close="closeModal" />
+        <settingModal v-if="showModal" @close="closeModal" :options="options" />
       </div>
     </div>
   </div>
@@ -48,16 +48,23 @@
 import Header from '~/layouts/Header.vue';
 import settingModal from '~/components/open-setting-modal.vue';
 
+import allTagsGql from '~/graphql/query/allTags.gql'
 export default {
   components: {
     Header,
     settingModal
   },
-  // fetch ({ store, redirect }) {
-  //   if (!store.state.user.username) {
-  //     return redirect('/login')
-  //   }
-  // },
+  asyncData (context) {
+    return context.app.apolloProvider.defaultClient.query({
+      query: allTagsGql,
+      variables: {}
+      }).then(({ data }) => {
+          // do what you want with data
+          return {
+            options: data.allTags.edges.map(tag => tag.node),
+            }
+        })
+  },
   data() {
         return {
             showModal: false,

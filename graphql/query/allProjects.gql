@@ -9,13 +9,6 @@ query($page_size: Int, $endCursor: String!){
           username
           logo
         }
-        tags{
-          edges{
-            node{
-              name
-            }
-          }
-        }
       }
     }
     pageInfo {

@@ -1,5 +1,5 @@
 <template>
-    <div class="card_loader">
+    <div class="card_loader" @click="$emit('readmore')">
         <div class="sub_btn more">
             <p>Read More</p>
         </div>

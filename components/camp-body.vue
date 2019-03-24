@@ -49,7 +49,7 @@
       </div>
       <div class="">
         <div class="skill_component">
-          <skill />
+          <skill :tags="tags" />
         </div>
         <div class="profile_component">
           <profile :background_img_url="host_user.logo" :name="host_user.username" :position="'マーケター'"/>
@@ -85,6 +85,7 @@ export default {
     text: String,
     background_img_url: String,
     host_user: Object,
+    tags: Array
   },
   data() {
     return {

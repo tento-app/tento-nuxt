@@ -2,34 +2,10 @@
   <div class="" id="skill">
     <h1>Needs tool</h1>
     <div class="skill">
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
 
-      <div class="skill_item">
+      <div class="skill_item" v-for="tag in tags" key="tag.node.id">
         <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
+        <p>{{ tag.node.name }}</p>
       </div>
 
       <!-- <div class="skill_item skill_add" @click="isShowModal">
@@ -59,6 +35,9 @@ export default {
      skil_img:"/icon.png",
      skill_name:"adobe XD"
    }
+ },
+ props: {
+    tags: Array
  }
 }
 

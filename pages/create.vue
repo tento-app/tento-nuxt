@@ -64,7 +64,8 @@ export default {
             content: "",
             options: {
               placeholder: {
-                text: "Mediumとエディターの使い方は同じです！"
+                text: "Mediumとエディターの使い方は同じです！",
+                autoLink:true
               },
               uploadUrl: "https://imgur.com/upload",
             },
@@ -338,7 +339,7 @@ export default {
         // }
       }
 
-      
+
     }
   }
 }

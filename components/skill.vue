@@ -1,6 +1,6 @@
 <template id="">
   <div class="" id="skill">
-    <h1>Required tool</h1>
+    <h1>{{title}}</h1>
     <div class="skill">
 
       <div class="skill_item" v-for="tag in tags" key="tag.node.id">
@@ -39,7 +39,8 @@ export default {
    }
  },
  props: {
-    tags: Array
+    tags: Array,
+    title:String
  }
 }
 

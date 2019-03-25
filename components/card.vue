@@ -1,7 +1,7 @@
 <template id="">
   <div class="content item">
     <div class="nav">
-      <h1>New Camp</h1>
+      <h1>{{ title }}</h1>
     </div>
     <div class="cards_list">
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
@@ -32,6 +32,7 @@
 export default {
   props: {
     projects: Array,
+    title: String,
   }
 }
 </script>

@@ -6,10 +6,10 @@
         <AccountHeader />
       </div>
       <div class="skill_container">
-        <skill />
+        <skill title="My tool"/>
       </div>
       <div class="card">
-        <card />
+        <card title="Posted Camp"/>
       </div>
     </div>
     <Footer />

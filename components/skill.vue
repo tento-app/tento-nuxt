@@ -1,6 +1,6 @@
 <template id="">
   <div class="" id="skill">
-    <h1>Needs tool</h1>
+    <h1>Required tool</h1>
     <div class="skill">
 
       <div class="skill_item" v-for="tag in tags" key="tag.node.id">
@@ -56,6 +56,8 @@ export default {
       color: $black01;
       margin-bottom: 1rem;
       padding:0 30px;
+      text-align: center;
+      font-size: 2rem;
     }
   }
   .skill{

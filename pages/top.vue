@@ -3,7 +3,7 @@
     <Header />
     <div class="main">
       <slide :projects="swiperProjects"/>
-      <card :projects="allProjects"/>
+      <card :projects="allProjects" title="New Camp"/>
       <cardLoader @readmore="readmore" />
     </div>
     <Footer />

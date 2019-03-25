@@ -49,7 +49,7 @@
       </div>
       <div class="">
         <div class="skill_component">
-          <skill :tags="tags" />
+          <skill :tags="tags" title="Required tool"/>
         </div>
         <div class="profile_component">
           <profile :background_img_url="host_user.logo" :name="host_user.username" :position="'マーケター'"/>

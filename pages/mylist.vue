@@ -3,7 +3,7 @@
     <Header />
     <div class="main">
       <div class="account_edit">
-        <Card />
+        <Card title="Stored Camp"/>
       </div>
     </div>
     <Footer />

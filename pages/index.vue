@@ -132,16 +132,19 @@
           </div>
         </div>
         <div class="camp">
-
+          <card :projects="allProjects" title="New Camp"/>
         </div>
-        <div class="bottom_cta">
-          <div class="img">
-            <img src="~/static/logo_w.png" alt="">
+        <div class="background">
+          <div class="bottom_cta">
+            <div class="img">
+              <img src="~/static/logo_w.png" alt="">
+            </div>
+            <div class="text">
+              <h4>集まろう！<br>学生の新しいコミュニティー</h4>
+              <p class="btn_priority">さあ始めよう</p>
+            </div>
           </div>
-          <div class="text">
-            <h4>集まろう！<br>学生の新しいコミュニティー</h4>
-            <p class="btn_priority">さあ始めよう</p>
-          </div>
+
         </div>
       </div>
 
@@ -155,6 +158,7 @@
 import card from '~/components/card.vue';
 import Header from '~/layouts/Header.vue';
 import Footer from '~/layouts/Footer.vue';
+import allProjectsGql from '~/graphql/query/allProjects.gql'
 
 export default {
   components: {
@@ -162,6 +166,39 @@ export default {
     Header,
     Footer,
   },
+  asyncData (context) {
+    return context.app.apolloProvider.defaultClient.query({
+      query: allProjectsGql,
+      variables: {
+        page_size: 3,
+        endCursor: "",
+      }
+      }).then(({ data }) => {
+          // do what you want with data
+          return {
+            swiperProjects: data.allProjects.edges.slice(3),
+            allProjects: data.allProjects.edges,
+            endCursor: data.allProjects.pageInfo.endCursor
+            }
+        })
+  },
+  methods: {
+    readmore: function() {
+      this.$apollo.query({
+      query: allProjectsGql,
+      variables: {
+        page_size: 6,
+        endCursor: this.endCursor,
+      }
+      }).then(({ data }) => {
+          // do what you want with data
+          data.allProjects.edges.forEach((project) => {
+            this.allProjects.push(project)
+          })
+          this.endCursor = data.allProjects.pageInfo.endCursor
+        })
+    }
+  }
 }
 </script>
 
@@ -334,10 +371,12 @@ export default {
         }
       }
     }
+    .card {
+      margin-bottom: 3rem;
+    }
     .bottom_cta {
       max-width: 840px;
       margin:0 auto;
-      padding: 5rem 30px;
       text-align: center;
       .img {
         width: 180px;

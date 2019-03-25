@@ -1,0 +1,123 @@
+<template lang="html">
+  <section>
+    <Header />
+    <div class="background">
+      <div class="sign-in">
+        <h1>ログイン</h1>
+        <div class="img">
+        </div>
+        <div class="item">
+          <label for="in-id">ユーザーID</label>
+          <input type="text" name="" value="" id="in-id" v-model="in_identification" v-bind:class="{error : in_identificationerror}">
+        </div>
+        <div class="item">
+          <label for="in-password">パスワード</label>
+          <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
+        </div>
+        <div class="button">
+          <button name="button" class="btn_priority" @click="login">ログイン</button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</template>
+
+<script>
+import { mapState,mapMutations } from 'vuex'
+
+import Header from '~/layouts/Header.vue';
+import Footer from '~/layouts/Footer.vue';
+import loginGql from '~/graphql/mutation/login.gql'
+import viewerGql from '~/graphql/query/viewer.gql'
+
+export default {
+  components: {
+    Header,
+    Footer
+  },
+  methods: {
+    ...mapMutations('user',['setToken','setUsername','setLogo']),
+    login: function () {
+        this.$apollo.mutate({
+            mutation: loginGql,
+            variables: {
+                username: this.in_identification,
+                password: this.in_password,
+            }
+        }).then((result) => {
+            // 成功した場合に実行する処理（200OKのレスポンスの場合）
+            console.log("成功")
+            console.log(result)
+            this.setToken(result.data.authToken.token)
+            this.$apollo.query({
+                query: viewerGql,
+                variables: {
+                    token: result.data.authToken.token
+                }
+            }).then((result) => {
+                this.setUsername(result.data.viewer.username)
+                this.setLogo(result.data.viewer.logo)
+            })
+        }).catch((error) => {
+            // errorの場合に実行する処理
+            console.log("失敗")
+        })
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+@import '~/assets/style/_color.scss';
+.background {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:calc(100vh - 67.4px);
+}
+  .sign-in{
+    background-color: #fff;
+    max-width: 350px;
+    margin:3rem auto;
+    padding: 2rem 3rem;
+    h1 {
+      text-align: center;
+      border-bottom: solid 0.5px $black03;
+      margin-bottom: 1rem;
+    }
+    .button {
+      text-align: center;
+      margin-top: 1rem;
+      button {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+    .item {
+      margin: 0 0 1rem;
+    }
+    input{
+      border: 0;
+      border-bottom: $black02 solid 0.5px;
+      font-size: 16px;
+      padding: 0.2rem;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 0.2rem;
+      &::placeholder{
+        font-weight: normal;
+        color: #ddd;
+        font-size: 14px;
+      }
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+</style>

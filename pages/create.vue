@@ -45,40 +45,43 @@
 </template>
 
 <script>
-import Header from '~/layouts/Header.vue';
-import settingModal from '~/components/open-setting-modal.vue';
+import Header from "~/layouts/Header.vue";
+import settingModal from "~/components/open-setting-modal.vue";
 
-import allTagsGql from '~/graphql/query/allTags.gql'
+import createProjectGql from "~/graphql/mutation/createProject.gql";
+import allTagsGql from "~/graphql/query/allTags.gql";
 export default {
   components: {
     Header,
     settingModal
   },
-  asyncData (context) {
-    return context.app.apolloProvider.defaultClient.query({
-      query: allTagsGql,
-      variables: {}
-      }).then(({ data }) => {
-          // do what you want with data
-          return {
-            options: data.allTags.edges.map(tag => tag.node),
-            }
-        })
+  asyncData(context) {
+    return context.app.apolloProvider.defaultClient
+      .query({
+        query: allTagsGql,
+        variables: {}
+      })
+      .then(({ data }) => {
+        // do what you want with data
+        return {
+          options: data.allTags.edges.map(tag => tag.node)
+        };
+      });
   },
   data() {
-        return {
-            showModal: false,
-            content: "",
-            options: {
-              placeholder: {
-                text: "Mediumとエディターの使い方は同じです！",
-                autoLink:true
-              },
-              uploadUrl: "https://imgur.com/upload",
-            },
-            uploadedImage: '',
-        }
-    },
+    return {
+      showModal: false,
+      content: "",
+      options: {
+        placeholder: {
+          text: "Mediumとエディターの使い方は同じです！",
+          autoLink: true
+        },
+        uploadUrl: "https://imgur.com/upload"
+      },
+      uploadedImage: ""
+    };
+  },
   methods: {
     openModal(item) {
       this.showModal = true;
@@ -93,25 +96,49 @@ export default {
     // アップロードした画像を表示
     createImage(file) {
       let reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         this.uploadedImage = e.target.result;
       };
       reader.readAsDataURL(file);
     },
     deleteImage() {
-      this.uploadedImage = ''
+      this.uploadedImage = "";
+    },
+    submit() {
+      return this.$apollo
+        .mutate({
+          mutation: loginGql,
+          variables: {
+            token: "",
+            ProjectInput: {
+              name: "",
+              content: "",
+              tags: ["", ""],
+              date: "",
+              header: file
+            }
+          }
+        })
+        .then(result => {
+          // 成功した場合に実行する処理（200OKのレスポンスの場合）
+          console.log("成功");
+          console.log(result);
+        })
+        .catch(error => {
+          // errorの場合に実行する処理
+          console.log("失敗");
+        });
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/style/_color.scss';
-@import '~/assets/style/base.scss';
-@import '~/assets/style/btn.scss';
-@media (min-width:500px){
-
-  .create{
+@import "~/assets/style/_color.scss";
+@import "~/assets/style/base.scss";
+@import "~/assets/style/btn.scss";
+@media (min-width: 500px) {
+  .create {
     .header {
       position: relative;
       background-color: rgba(250, 250, 250, 1);
@@ -178,21 +205,20 @@ export default {
         }
       }
     }
-    &_title{
-      &_content{
+    &_title {
+      &_content {
         max-width: 840px;
         margin: 0 auto;
         padding: 3rem 30px 5rem;
-        p{
+        p {
           margin-bottom: 1.5rem;
           font-size: 14px;
           font-weight: bold;
         }
-        &_input{
-
-          textarea{
+        &_input {
+          textarea {
             border: none;
-            background-color: rgba(0,0,0,0);
+            background-color: rgba(0, 0, 0, 0);
             outline: 0;
             box-sizing: border-box;
             width: 100%;
@@ -200,17 +226,17 @@ export default {
             font-size: 32px;
             font-weight: bold;
             height: 54px;
-            &::placeholder{
-              color: rgba(0,0,0,0.4);
+            &::placeholder {
+              color: rgba(0, 0, 0, 0.4);
             }
           }
         }
       }
     }
-    &_body{
+    &_body {
       background-color: #fff;
       min-height: 100vh;
-      &_content{
+      &_content {
         max-width: 840px;
         margin: 2rem auto 0;
         padding: 0 30px;
@@ -230,7 +256,7 @@ export default {
 }
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
-  .create{
+  .create {
     .header {
       position: relative;
       background-color: rgba(250, 250, 250, 1);
@@ -297,22 +323,21 @@ export default {
         }
       }
     }
-    &_title{
-      &_content{
+    &_title {
+      &_content {
         max-width: 840px;
         margin: 0 auto;
         padding: 1rem 15px 2rem;
-        p{
+        p {
           margin-bottom: 1.5rem;
           font-size: 14px;
           font-weight: bold;
         }
-        &_input{
-
-          textarea{
+        &_input {
+          textarea {
             white-space: pre-wrap;
             border: none;
-            background-color: rgba(0,0,0,0);
+            background-color: rgba(0, 0, 0, 0);
             outline: 0;
             box-sizing: border-box;
             width: 100%;
@@ -320,17 +345,17 @@ export default {
             font-size: 1.6rem;
             font-weight: bold;
             height: 2.5rem;
-            &::placeholder{
-              color: rgba(0,0,0,0.4);
+            &::placeholder {
+              color: rgba(0, 0, 0, 0.4);
             }
           }
         }
       }
     }
-    &_body{
+    &_body {
       background-color: #fff;
       min-height: 100vh;
-      &_content{
+      &_content {
         max-width: 840px;
         margin: 2rem auto 0;
         padding: 0 15px;
@@ -345,8 +370,6 @@ export default {
         //   border: none;
         // }
       }
-
-
     }
   }
 }

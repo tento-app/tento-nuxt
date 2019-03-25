@@ -13,9 +13,9 @@
         <a href='https://ark-cg.com/' target="_blank">
           <li>About Us</li>
         </a>
-        <a href="#">
+        <nuxt-link to='/faq'>
           <li>Q & A</li>
-        </a>
+        </nuxt-link>
       </div>
     </ul>
     <ul>
@@ -76,7 +76,6 @@
                     margin-right: 4rem;
                     margin-bottom: 0.4rem;
                     font-size: 16px;
-                    font-weight: bold;
                     color: #ccc;
                 }
             }
@@ -110,7 +109,6 @@
                     margin-right: 4rem;
                     margin-bottom: 0.4rem;
                     font-size: 16px;
-                    font-weight: bold;
                     color: #ccc;
                 }
             }
@@ -146,7 +144,6 @@
           font-size: 16px;
           margin-bottom: 8px;
           letter-spacing: 0.4px;
-          font-weight: bold;
         }
       }
     }

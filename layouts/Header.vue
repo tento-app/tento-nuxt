@@ -6,12 +6,17 @@
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
       <div class="left">
-        <nuxt-link to="login" v-if="!username">
+        <nuxt-link to="/sign-in" v-if="!username">
           <div class="sign-in　submit btn">
-            <p>ログイン/新規アカウント</p>
+            <p>ログイン</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-image': 'url(' + logo + ')' }">
+        <nuxt-link to="sign-up" v-if="!username">
+          <div class="sign-in　submit btn_priority">
+            <p>新規アカウント作成</p>
+          </div>
+        </nuxt-link>
+        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-color' : 'url(https://media.tento.app/' + logo + ')' }" >
           <headerModal v-if="showModal" />
         </div>
         <nuxt-link to="/create">
@@ -82,7 +87,6 @@ export default {
         margin-left: auto;
         .account {
           background-color: $sub_color;
-          background-image: url("../static/icon.jpg");
           background-size: cover;
           background-position: center;
           margin-left: 0.8rem;

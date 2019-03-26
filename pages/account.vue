@@ -10,6 +10,16 @@
       </div>
       <div class="card">
         <card title="Posted Camp"/>
+
+        <div class="empty" v-if="!card">
+          <div class="img">
+            <img src="~/static/flow02-min.png" alt="">
+          </div>
+          <div class="text">
+            <p>自分のやりたいことをみんなにシェアしよう！！</p>
+            <nuxt-link to="/create" class="btn_priority">New Camp</nuxt-link>
+          </div>
+        </div>
       </div>
     </div>
     <Footer />
@@ -44,6 +54,26 @@ export default {
     padding: 80px 0;
     margin-top: 80px;
     background-color: $backround_color01;
+  }
+  .empty {
+    text-align: center;
+    padding-bottom: 5rem;
+    .img {
+      width: 300px;
+      margin: 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+    p {
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 2rem 0 1rem;
+    }
+    a {
+      font-size: 1rem;
+      padding: 1rem;
+    }
   }
 }
 

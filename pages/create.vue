@@ -28,7 +28,7 @@
       <div class="create_title">
         <div class="create_title_content">
           <div class="create_title_content_input">
-            <textarea name="name" rows="8" cols="80" placeholder="タイトルを記入してください"></textarea>
+            <textarea name="name" rows="1" cols="80" v-model="name" placeholder="タイトルを記入してください"></textarea>
           </div>
 
         </div>
@@ -38,7 +38,7 @@
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
           <medium-editor :content='content' :options='options' />
         </div>
-        <settingModal v-if="showModal" @close="closeModal" :options="options" />
+        <settingModal v-if="showModal" @close="closeModal" :options="options" @submit="submit" :place.sync="place" :date.sync="date" />
       </div>
     </div>
   </div>
@@ -79,6 +79,11 @@ export default {
         },
         uploadUrl: "https://imgur.com/upload"
       },
+      name: "",
+      content: "",
+      tags: [],
+      date: "",
+      place: "",
       uploadedImage: ""
     };
   },
@@ -105,29 +110,37 @@ export default {
       this.uploadedImage = "";
     },
     submit() {
-      return this.$apollo
-        .mutate({
-          mutation: loginGql,
-          variables: {
-            token: "",
-            ProjectInput: {
-              name: "",
-              content: "",
-              tags: ["", ""],
-              date: "",
-              header: file
-            }
-          }
-        })
-        .then(result => {
-          // 成功した場合に実行する処理（200OKのレスポンスの場合）
-          console.log("成功");
-          console.log(result);
-        })
-        .catch(error => {
-          // errorの場合に実行する処理
-          console.log("失敗");
-        });
+      console.log({
+        name: this.name,
+        content: this.content,
+        tags: this.tags,
+        date: this.date,
+        place: this.place,
+        header: this.uploadedImage
+      });
+      // return this.$apollo
+      //   .mutate({
+      //     mutation: loginGql,
+      //     variables: {
+      //       token: "",
+      //       ProjectInput: {
+      //         name: "",
+      //         content: "",
+      //         tags: ["", ""],
+      //         date: "",
+      //         header: this.uploadedImage
+      //       }
+      //     }
+      //   })
+      //   .then(result => {
+      //     // 成功した場合に実行する処理（200OKのレスポンスの場合）
+      //     console.log("成功");
+      //     console.log(result);
+      //   })
+      //   .catch(error => {
+      //     // errorの場合に実行する処理
+      //     console.log("失敗");
+      //   });
     }
   }
 };

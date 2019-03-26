@@ -100,6 +100,10 @@ module.exports = () => {
         src: '~/plugins/multiselect',
         ssr: false
       },
+      {
+        src: '~/plugins/datetime',
+        ssr: false
+      },
     ],
 
     /*

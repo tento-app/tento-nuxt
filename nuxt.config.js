@@ -117,9 +117,7 @@ module.exports = () => {
     apollo: {
       includeNodeModules: true,
       clientConfigs: {
-        default: {
-          httpEndpoint: 'https://api.tento.app',
-        }
+        default: '~/apollo/default.js'
       }
     },
     /*

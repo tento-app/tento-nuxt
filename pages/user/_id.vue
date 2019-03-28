@@ -3,10 +3,10 @@
     <Header />
     <div class="main">
       <div class="account_header">
-        <AccountHeader />
+        <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" />
       </div>
       <div class="skill_container">
-        <skill title="My tool"/>
+          <skill :tags="user.tags.edges" title="My tool"/>
       </div>
       <div class="card">
         <card title="Posted Camp"/>
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import userGql from '~/graphql/query/user.gql'
+
 import card from '~/components/card.vue';
 import skill from '~/components/skill.vue';
 import AccountHeader from '~/components/account-header.vue';

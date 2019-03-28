@@ -18,7 +18,7 @@
 
       <div class="camp_body_text">
         <h1 class="camp_body_text_title">{{ title }}</h1>
-        <user :background_img_url="host_user.logo" :name="host_user.username" :position="'webエンジニア'" />
+        <user :background_img_url="host_user.logo" :name="host_user.username" :position="'webエンジニア'" :id="host_user.id" />
         <div class="">
           <ul class="setting">
             <li>
@@ -52,7 +52,7 @@
           <skill :tags="tags" title="Required tool"/>
         </div>
         <div class="profile_component">
-          <profile :background_img_url="host_user.logo" :name="host_user.username" :position="'マーケター'"/>
+          <profile :id="host_user.id"  :background_img_url="host_user.logo" :name="host_user.username" :position="'マーケター'"/>
         </div>
       </div>
       <!-- <div class="join">

@@ -1,18 +1,37 @@
 query ($id: ID!){
   user(id: $id){
-    name
+    username
     content
     header
-    project {
-      name
-      content
-      header
-    }
-    tags{
+    logo
+    tags {
       edges{
         node{
           id
           name
+          logo
+        }
+      }
+    }
+    projects{
+      edges {
+        node {
+          id
+          name
+          header
+          user{
+            id
+            username
+          }
+        }
+      }
+    }
+    hostProjects{
+      edges{
+        node{
+          id
+          name
+          header
         }
       }
     }

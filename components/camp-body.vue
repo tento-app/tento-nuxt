@@ -12,7 +12,7 @@
       </div>
       <div class="camp_body_eyecatch">
 
-        <div class="camp_body_eyecatch_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
+        <div class="camp_body_eyecatch_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
       </div>
       <div class="content_text">
 
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="camp_body_text_describe">
-          <p>{{ text }}</p>
+          <p v-html="text"></p>
         </div>
       </div>
       <div class="">

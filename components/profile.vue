@@ -2,7 +2,7 @@
 <div class="content profile">
     <div class="profile_contents">
       <div class="profile_contents_user">
-        <div class="profile_contents_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
+        <div class="profile_contents_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }"></div>
         <div class="profile_contents_wrapper">
           <ul>
             <li>

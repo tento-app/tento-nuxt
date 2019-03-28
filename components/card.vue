@@ -6,7 +6,7 @@
     <div class="cards_list">
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
-          <div class="card_img" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
+          <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
             <!-- <p
               class="card_img_category"
               :style="{ 'background-color': '#' + project.node.category.color }"

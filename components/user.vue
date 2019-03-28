@@ -1,6 +1,6 @@
 <template id="">
   <div class="abstract_user">
-    <div class="abstract_user_img" :style="{ 'background-color' : 'url(https://media.tento.app/' + logo + ')' }"></div>
+    <div class="abstract_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }"></div>
     <div class="">
       <p class="abstract_user_name">{{ name }}</p>
       <p class="abstract_user_position">{{ position }}</p>

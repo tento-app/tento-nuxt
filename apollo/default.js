@@ -11,7 +11,7 @@ export default () => {
   })
 
   const httpLink = createUploadLink({
-    uri: 'http://127.0.0.1:8000',
+    uri: 'https://api.tento.app',
     fetchOptions: {},
     headers: {},
     onError: ({ networkError, graphQLErrors }) => {

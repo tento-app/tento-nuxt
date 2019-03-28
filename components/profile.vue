@@ -2,7 +2,7 @@
 <div class="content profile">
     <div class="profile_contents">
       <div class="profile_contents_user">
-        <div class="profile_contents_img" :style="{ 'background-image': 'url(' + background_img_url + ')' }"></div>
+        <div class="profile_contents_img" :style="{ 'background-image': 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
         <div class="profile_contents_wrapper">
           <ul>
             <li>
@@ -14,7 +14,7 @@
             <li>
               <p class="profile_contents_wrapper_text">{{ intro }}</p>
             </li>
-            <nuxt-link to="/account">
+            <nuxt-link :to="{ name: 'user-id' , params: { id: id }}">
               <li class="profile_view_more sub_btn">
                 <p>View page</p>
               </li>
@@ -33,7 +33,7 @@ export default {
   components: {
     user
   },
-  props: ['background_img_url','name','position'],
+  props: ['background_img_url','name','position','id'],
   data(){
     return{
       intro:"マーケティング、ウェブコンサルティングのことならお任せください"

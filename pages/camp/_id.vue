@@ -44,7 +44,7 @@ export default {
 @import '~/assets/style/btn.scss';
 @import '~/assets/style/_color.scss';
 .main {
-  
+
 }
 
 </style>

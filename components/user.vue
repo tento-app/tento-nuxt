@@ -1,4 +1,5 @@
 <template id="">
+<nuxt-link :to="{ name: 'user-id' , params: { id: id }}">
   <div class="abstract_user">
     <div class="abstract_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }"></div>
     <div class="">
@@ -6,11 +7,12 @@
       <p class="abstract_user_position">{{ position }}</p>
     </div>
   </div>
+</nuxt-link>
 </template>
 
 <script type="text/javascript">
   export default {
-    props: ['background_img_url','name','position']
+    props: ['background_img_url','name','position','id']
   }
 </script>
 

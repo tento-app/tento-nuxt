@@ -3,21 +3,13 @@ import { ApolloLink } from 'apollo-link'
 import { HttpLink } from 'apollo-link-http'
 import { createUploadLink } from 'apollo-upload-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { onError } from "apollo-link-error";
 
 export default () => {
-  const errorLink = onError(({ graphQLErrors }) => {
-    if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message))
-  })
 
   const httpLink = createUploadLink({
     uri: 'https://api.tento.app',
     fetchOptions: {},
     headers: {},
-    onError: ({ networkError, graphQLErrors }) => {
-      console.log('graphQLErrors', graphQLErrors)
-      console.log('networkError', networkError)
-    }
   })
 
   // middleware

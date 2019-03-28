@@ -15,7 +15,7 @@
           <div class="card_txt">
             <h4>{{ project.node.name }}</h4>
             <div class="card_txt_user">
-              <div class="card_txt_user_img" :style="{ 'background-image': 'url(' + project.node.user.logo + ')' }"></div>
+              <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
               <div class>
                 <p class="card_txt_user_name">{{ project.node.user.username }}</p>
                 <p class="card_txt_user_position">webエンジニア</p>
@@ -142,7 +142,6 @@ export default {
           display: flex;
           align-items: center;
           &_img {
-            background-image: url("../static/icon.jpg");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -150,6 +149,7 @@ export default {
             height: 42px;
             border-radius: 50%;
             margin-right: 1rem;
+            border: solid 0.5px $black03;
           }
           &_name {
             font-size: 12px;
@@ -261,7 +261,6 @@ export default {
             display: flex;
             align-items: center;
             &_img {
-              background-image: url("../static/icon.jpg");
               background-position: center;
               background-size: cover;
               background-repeat: no-repeat;
@@ -269,6 +268,7 @@ export default {
               height: 38px;
               border-radius: 50%;
               margin-right: 1rem;
+              border: solid 0.5px $black03;
             }
             &_name {
               font-size: 12px;
@@ -388,6 +388,7 @@ export default {
             height: 38px;
             border-radius: 50%;
             margin-right: 1rem;
+            border: solid 0.5px $black03;
           }
           &_name {
             font-size: 14px;

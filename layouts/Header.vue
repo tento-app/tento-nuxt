@@ -16,7 +16,7 @@
             <p>新規アカウント作成</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-color' : 'url(https://media.tento.app/' + logo + ')' }" >
+        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
           <headerModal v-if="showModal" />
         </div>
         <nuxt-link to="/create">
@@ -86,7 +86,6 @@ export default {
         align-items: center;
         margin-left: auto;
         .account {
-          background-color: $sub_color;
           background-size: cover;
           background-position: center;
           margin-left: 0.8rem;
@@ -98,6 +97,7 @@ export default {
           box-shadow: $box_shadow01;
           cursor: pointer;
           box-sizing: border-box;
+          border: solid 0.5px $black03;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;
@@ -168,6 +168,7 @@ export default {
           border-radius: 50%;
           box-shadow: $box_shadow01;
           box-shadow: $box_shadow01;
+          border: solid 0.5px $black03;
           cursor: pointer;
           box-sizing: border-box;
           &:hover {
@@ -242,6 +243,7 @@ export default {
           box-shadow: $box_shadow01;
           cursor: pointer;
           box-sizing: border-box;
+          border: solid 0.5px $black03;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;

@@ -47,12 +47,13 @@ export default {
           background-size: cover;
           width: 120px;
           height: 120px;
-          border: solid 3px #fff;
+          border: solid 3px $main-color;
           border-radius: 50%;
           position: absolute;
           transform: translate(-50%,-50%);
           left: 50%;
           bottom: -120px;
+          box-shadow: &$box_shadow01;
         }
       }
       &_text{

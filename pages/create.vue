@@ -133,7 +133,8 @@ export default {
       tags: [],
       date: "",
       place: "",
-      uploadedImage: ""
+      uploadedImage: "",
+      headerFile: null
     };
   },
   computed: {
@@ -149,6 +150,7 @@ export default {
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
+      this.headerFile = files[0]
       this.createImage(files[0]);
     },
     // アップロードした画像を表示
@@ -168,9 +170,9 @@ export default {
         content: this.content,
         content: this.contact,
         tags: this.tags,
-        date: this.date,
+        start_at: this.date,
         place: this.place,
-        header: this.uploadedImage
+        header: this.headerFile
       });
      return this.$apollo.mutate({
           mutation: createProjectGql,
@@ -181,9 +183,9 @@ export default {
               content: this.content,
               contact: this.contact,
               tags: this.tags,
-              date: this.date,
+              // start_at: this.date,
               place: this.place,
-              header: this.uploadedImage
+              header: this.headerFile
             }
           }
         })
@@ -194,7 +196,7 @@ export default {
         })
         .catch(error => {
           // errorの場合に実行する処理
-          console.log("失敗");
+          console.log(error);
         });
     }
   }

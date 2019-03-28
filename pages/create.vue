@@ -170,7 +170,7 @@ export default {
         content: this.content,
         content: this.contact,
         tags: this.tags,
-        start_at: this.date,
+        startat: this.date,
         place: this.place,
         header: this.headerFile
       });
@@ -183,7 +183,7 @@ export default {
               content: this.content,
               contact: this.contact,
               tags: this.tags,
-              start_at: this.date,
+              startat: this.date,
               place: this.place,
               header: this.headerFile
             }
@@ -191,8 +191,7 @@ export default {
         })
         .then(result => {
           // 成功した場合に実行する処理（200OKのレスポンスの場合）
-          console.log("成功");
-          console.log(result);
+          this.$router.push('/camp/'+result.data.createProject.project.id)
         })
         .catch(error => {
           // errorの場合に実行する処理

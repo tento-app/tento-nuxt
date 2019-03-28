@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
     <div class="skill">
 
-      <div class="skill_item" v-for="tag in tags" key="tag.node.id">
+      <div class="skill_item" v-for="tag in tags" :key="tag.node.id">
         <div class="img">
           <img v-bind:src="'../tag/' + tag.node.name + '.svg'" alt="">
         </div>

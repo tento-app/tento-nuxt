@@ -88,10 +88,22 @@ module.exports = () => {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [
-      { src: '~/plugins/swiper.js', ssr: false },
-      { src: '~/plugins/medium-editor', ssr: false },
-      { src: '~/plugins/multiselect', ssr: false },
+    plugins: [{
+        src: '~/plugins/swiper.js',
+        ssr: false
+      },
+      {
+        src: '~/plugins/medium-editor',
+        ssr: false
+      },
+      {
+        src: '~/plugins/multiselect',
+        ssr: false
+      },
+      {
+        src: '~/plugins/datetime',
+        ssr: false
+      },
     ],
 
     /*
@@ -105,7 +117,7 @@ module.exports = () => {
     apollo: {
       includeNodeModules: true,
       clientConfigs: {
-        default: '~/apollo/client-configs/default.js'
+        default: '~/apollo/default.js'
       }
     },
     /*

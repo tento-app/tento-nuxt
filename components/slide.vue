@@ -3,7 +3,7 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image': 'url(' + project.node.header + ')' }">
+      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
 
         <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
           <!-- card content-->

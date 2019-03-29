@@ -1,6 +1,7 @@
 <template lang="html">
   <section id="account">
     <Header />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="main">
       <createAccount />
     </div>

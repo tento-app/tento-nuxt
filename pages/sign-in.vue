@@ -7,7 +7,7 @@
         <div class="img">
         </div>
         <div class="item">
-          <label for="in-id">ユーザーID</label>
+          <label for="in-id">メールアドレス/ID</label>
           <input type="text" name="" value="" id="in-id" v-model="in_identification" v-bind:class="{error : in_identificationerror}">
         </div>
         <div class="item">

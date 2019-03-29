@@ -19,7 +19,7 @@
           <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
         </div>
         <div class="button">
-          <button name="button" class="btn_priority" @click="login">ログイン</button>
+          <button name="button" class="btn_priority" @click="login">新規アカウント作成</button>
         </div>
       </div>
 
@@ -29,12 +29,10 @@
 </template>
 
 <script>
-import Card from '~/components/card.vue';
 import Header from '~/layouts/Header.vue';
 import Footer from '~/layouts/Footer.vue';
 export default {
   components: {
-    Card,
     Header,
     Footer
   }

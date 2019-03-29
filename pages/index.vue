@@ -1,6 +1,7 @@
 <template>
   <section class="container">
     <Header />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div id="lp">
       <div class="main">
         <div class="background">

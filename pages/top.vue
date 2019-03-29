@@ -1,5 +1,6 @@
 <template>
   <section>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="main">
       <slide :projects="swiperProjects"/>
@@ -66,6 +67,7 @@ export default {
 <style lang='scss'>
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
+
 
 
 </style>

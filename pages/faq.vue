@@ -1,6 +1,7 @@
 <template lang="html">
   <section>
     <Header />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
       <div id="FAQ">
         <h1>よくある質問</h1>
         <div class="item">

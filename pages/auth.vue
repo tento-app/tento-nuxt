@@ -1,6 +1,7 @@
 <template>
     <div>
     <Header />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
         <input v-model="username" type="text" placeholder="名前">
         <input v-model="password" type="text" placeholder="パスワード">
          <button @click="login">

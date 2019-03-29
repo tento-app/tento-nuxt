@@ -2,6 +2,7 @@
 <section>
   <Header />
   <div class="main">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="wrapper">
       <h1>プライバシーポリシー </h1>
       <div class="introduction">

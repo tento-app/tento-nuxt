@@ -2,6 +2,7 @@
   <section>
     <Header />
     <div class="main">
+      <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
       <CampBody :title="project.name" :text="project.content" :background_img_url="project.header" :host_user="project.user" :tags="project.tags.edges" :place="'赤羽キャンパス'" :contact="'tento@gmail.com'" :time="'03/17/14:00'"/>
       <!-- <div class="">
         <chat />

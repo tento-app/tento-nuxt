@@ -4,10 +4,11 @@
     <Header />
     <div class="main">
       <div class="account_header">
-        <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" />
+        <!-- <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" /> -->
+        <MypageHeader />
       </div>
       <div class="skill_container">
-          <skill :tags="user.tags.edges" title="My tool"/>
+          <!-- <skill :tags="user.tags.edges" title="My tool"/> -->
       </div>
       <div class="card">
         <card title="Posted Camp"/>
@@ -32,7 +33,7 @@
 
 <script>
 import userGql from '~/graphql/query/user.gql'
-
+import MypageHeader from '~/components/mypage-header.vue';
 import card from '~/components/card.vue';
 import skill from '~/components/skill.vue';
 import AccountHeader from '~/components/account-header.vue';
@@ -41,23 +42,23 @@ import Footer from '~/layouts/Footer.vue';
 
 export default {
   components: {
-    AccountHeader,
+    MypageHeader,
     card,
     skill,
     Header,
     Footer
   },
-  asyncData (context) {
-    return context.app.apolloProvider.defaultClient.query({
-      query: userGql,
-      variables: {
-        id: context.params.id
-        }
-      }).then(({ data }) => {
-        // do what you want with data
-        return { user: data.user }
-      })
-  }
+  // asyncData (context) {
+  //   return context.app.apolloProvider.defaultClient.query({
+  //     query: userGql,
+  //     variables: {
+  //       id: context.params.id
+  //       }
+  //     }).then(({ data }) => {
+  //       // do what you want with data
+  //       return { user: data.user }
+  //     })
+  // }
 }
 </script>
 

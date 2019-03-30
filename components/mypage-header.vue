@@ -2,20 +2,6 @@
   <div class="account">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="account_header">
-      <!-- <div class="create_eyecatch">
-        <div class="upimg" v-show="uploadedHeader" :style="{ 'background-image': 'url(' + uploadedHeader + ')' }"></div>
-        <label for="eyecatch_form">
-          <div class="img" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
-            <label for="icon_form" >
-              <div class="">
-                <div class="icon" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
-              </div>
-            </label>
-            <input type="file" id="icon_form" v-on:change="onFileChange">
-          </div>
-        </label>
-        <input type="file" id="eyecatch_form" v-on:change="onFileChange">
-      </div> -->
       <div class="current_img":class="{normal : editing}">
         <div class="header_img">
         </div>

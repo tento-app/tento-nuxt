@@ -7,24 +7,14 @@
         <!-- <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" /> -->
         <MypageHeader />
       </div>
-      <div class="skill_container">
-          <!-- <skill :tags="user.tags.edges" title="My tool"/> -->
+      <div class="skill_container" >
+          <skill :tags="user.tags.edges" title="スキル"/>
       </div>
       <div class="card">
-        <card title="Posted Camp"/>
-
-        <!-- <div class="empty" v-if="!card">
-          <div class="img">
-            <img src="~/static/flow02-min.png" alt="">
-          </div>
-          <div class="text">
-            <p>自分のやりたいことをみんなにシェアしよう！！</p>
-            <nuxt-link to="/create" class="btn_priority">New Camp</nuxt-link>
-          </div>
-        </div> -->
+        <card title="Posted Camp" :projects="host_projects"/>
       </div>
       <div class="card">
-        <card title="Joined Camp"/>
+        <card title="Joined Camp" :projects="join_projects"/>
       </div>
     </div>
     <Footer />
@@ -32,6 +22,8 @@
 </template>
 
 <script>
+import MypageGql from '~/graphql/query/mypage.gql'
+
 import userGql from '~/graphql/query/user.gql'
 import MypageHeader from '~/components/mypage-header.vue';
 import card from '~/components/card.vue';
@@ -48,17 +40,45 @@ export default {
     Header,
     Footer
   },
-  // asyncData (context) {
-  //   return context.app.apolloProvider.defaultClient.query({
-  //     query: userGql,
-  //     variables: {
-  //       id: context.params.id
-  //       }
-  //     }).then(({ data }) => {
-  //       // do what you want with data
-  //       return { user: data.user }
-  //     })
-  // }
+  data() {
+    return {
+          user: null,
+          host_projects: null,
+          join_projects: null,
+    }
+  },
+  computed: {
+      ...mapState('user',['token'])
+  },
+  mounted: function () {
+     this.$apollo.query({
+      query: MypageGql,
+      variables: {
+        token: this.token,
+      }
+    }).then(({ data }) => {
+          // do what you want with data
+          this.user= data.viewer
+          this.host_projects= data.hostProjects.edges
+          this.join_projects=data.joinProjects.edges
+
+        })
+  },
+  asyncData (context) {
+    // return context.app.apolloProvider.defaultClient.query({
+    //   query: MypageGql,
+    //   variables: {
+    //     token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJleHAiOjE1NTM5NTQ3NjYsIm9yaWdJYXQiOjE1NTM5NTQ0NjZ9.f33dMdQ-Outu9ktKJWB6WWkHT13aUsYn3EJ-AjXvvrI",
+    //     }
+    //   }).then(({ data }) => {
+    //     // do what you want with data
+    //     return {
+    //       user: data.viewer,
+    //       host_projects: data.hostProjects.edges,
+    //       join_projects: data.joinProjects.edges,
+    //       }
+    //   })
+  }
 }
 </script>
 

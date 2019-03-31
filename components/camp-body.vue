@@ -19,6 +19,20 @@
       <div class="camp_body_text">
         <h1 class="camp_body_text_title">{{ title }}</h1>
         <user :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :id="host_user.id" />
+        <div class="camp_member">
+          <h3>このキャンプのメンバー（{{ users.length }}）</h3>
+          <ul>
+            <li v-for="user in users">
+              <div class="member">
+                <div class="member_icon" :style="{ 'background-image' : 'url(https://media.tento.app/' + user.node.logo + ')' }"></div>
+                <div class="member_text">
+                  <p class="member_text_name">{{user.node.username}}</p>
+                  <p class="member_text_position">{{ user.node.username }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
         <div class="">
           <ul class="setting">
             <li>
@@ -32,16 +46,12 @@
             <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               <p>{{ contact }}</p>
             </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <p>{{ users.length }}人</p>
-            </li>
           </ul>
-          <div class="btn_list pc">
+          <!-- <div class="btn_list pc">
             <a :href="twUrl" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
             <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
             <p class="btn_priority ">このキャンプに参加する</p>
-          </div>
+          </div> -->
         </div>
         <div class="camp_body_text_describe">
           <p v-html="text"></p>
@@ -265,8 +275,49 @@ export default {
       margin: 0 auto;
       padding: 40px 30px;
       max-width: 840px;
+      .camp_member {
+        padding: 2rem 0;
+        h3 {
+          font-size: 1rem;
+          color: $black02;
+          margin-bottom: 1rem;
+        }
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          li {
+            cursor: pointer;
+            .member {
+              margin-right: 1rem;
+              margin-bottom: 1rem;
+              width: 100px;
+              &_icon {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 0.5rem;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                background-position: center;
+                background-size: cover;
+              }
+              &_text {
+                text-align: center;
+                &_name {
+                  font-size: 1rem;
+                  font-weight: bold;
+                }
+                &_position {
+                  font-size: 14px;
+                  color: $black02;
+                }
+              }
+            }
+          }
+        }
+      }
       .setting {
-        margin: 1.5rem 0 0;
+        margin: 0;
         border-bottom: $border01;
         padding: 1rem 0;
         display: flex;
@@ -305,7 +356,7 @@ export default {
         color: $black01;
       }
       &_describe{
-        margin-top: 1rem;
+        margin-top: 2rem;
         > p{
           line-height: 3;
           word-break: break-all;
@@ -472,8 +523,49 @@ export default {
       margin: 0 auto;
       padding: 40px 30px;
       max-width: 840px;
+      .camp_member {
+        padding: 2rem 0;
+        h3 {
+          font-size: 1rem;
+          color: $black02;
+          margin-bottom: 1rem;
+        }
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          li {
+            cursor: pointer;
+            .member {
+              margin-right: 1rem;
+              margin-bottom: 1rem;
+              width: 100px;
+              &_icon {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 0.5rem;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                background-position: center;
+                background-size: cover;
+              }
+              &_text {
+                text-align: center;
+                &_name {
+                  font-size: 1rem;
+                  font-weight: bold;
+                }
+                &_position {
+                  font-size: 14px;
+                  color: $black02;
+                }
+              }
+            }
+          }
+        }
+      }
       .setting {
-        margin: 1.5rem 0 0;
+        margin: 0;
         border-bottom: $border01;
         padding: 1rem 0;
         display: flex;
@@ -654,8 +746,47 @@ export default {
       margin: 0 auto;
       padding: 40px 15px;
       max-width: 840px;
+      .camp_member {
+        padding: 2rem 0;
+        h3 {
+          font-size: 1rem;
+          color: $black02;
+          margin-bottom: 1rem;
+        }
+        ul {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          li {
+            cursor: pointer;
+            .member {
+              margin-right: 1rem;
+              margin-bottom: 1rem;
+              width: 80px;
+              &_icon {
+                width: 52px;
+                height: 52px;
+                margin: 0 auto 0.5rem;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+              }
+              &_text {
+                text-align: center;
+                &_name {
+                  font-size: 1rem;
+                  font-weight: bold;
+                }
+                &_position {
+                  font-size: 14px;
+                  color: $black02;
+                }
+              }
+            }
+          }
+        }
+      }
       .setting {
-        margin: 1.5rem 0 0;
+        margin: 0 0;
         border-bottom: $border01;
         padding: 1rem 0;
         align-items: center;

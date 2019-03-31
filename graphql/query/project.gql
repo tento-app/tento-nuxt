@@ -3,16 +3,30 @@ query ($id: ID!){
     name
     content
     header
+    startAt
+    place
+    contact
     user {
       id
       username
       logo
+      position
+      content
     }
     tags{
       edges{
         node{
           id
           name
+        }
+      }
+    }
+    users{
+      edges{
+        node{
+          id
+          username
+          logo
         }
       }
     }

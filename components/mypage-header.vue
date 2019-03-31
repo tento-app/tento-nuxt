@@ -2,20 +2,6 @@
   <div class="account">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="account_header">
-      <!-- <div class="create_eyecatch">
-        <div class="upimg" v-show="uploadedHeader" :style="{ 'background-image': 'url(' + uploadedHeader + ')' }"></div>
-        <label for="eyecatch_form">
-          <div class="img" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
-            <label for="icon_form" >
-              <div class="">
-                <div class="icon" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
-              </div>
-            </label>
-            <input type="file" id="icon_form" v-on:change="onFileChange">
-          </div>
-        </label>
-        <input type="file" id="eyecatch_form" v-on:change="onFileChange">
-      </div> -->
       <div class="current_img":class="{normal : editing}">
         <div class="header_img">
         </div>
@@ -32,12 +18,12 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
               </div>
             </div>
-          </label>
-          <div class="newimg" v-show="uploadedHeader" :style="{ 'background-image': 'url(' + uploadedHeader + ')' }">
-            <div class="cover">
-
+            <div class="newimg" v-show="uploadedHeader" :style="{ 'background-image': 'url(' + uploadedHeader + ')' }">
+              <div class="cover">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
+              </div>
             </div>
-          </div>
+          </label>
           <input type="file" id="eyecatch_form" v-on:change="onFileChange">
         </div>
 
@@ -51,7 +37,7 @@
           </label>
           <div class="newicon" v-show="uploadedIcon" :style="{ 'background-image': 'url(' + uploadedIcon + ')' }">
             <div class="cover">
-
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
             </div>
           </div>
           <input type="file" id="icon_form" v-on:change="onIconChange">
@@ -235,17 +221,10 @@ export default {
               display: flex;
               align-items: center;
               justify-content: center;
+              background-color: $black02;
               svg {
-                stroke:rgba(255,255,255,0);
+                stroke:rgba(255,255,255,1);
                 transition: $transtion01;
-              }
-              &:hover {
-                background-color: $black03;
-                transition: $transtion01;
-                svg {
-                  stroke:rgba(255,255,255,1);
-                  transition: $transtion01;
-                }
               }
             }
           }
@@ -259,12 +238,19 @@ export default {
             box-shadow: $box_shadow04;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
             .cover {
               width: 100%;
               height: 100%;
-              background-color: $black03;
+              transition: $transtion01;
               display: flex;
-              justify-content: flex-end;
+              align-items: center;
+              justify-content: center;
+              background-color: $black02;
+              svg {
+                stroke:rgba(255,255,255,1);
+                transition: $transtion01;
+              }
             }
           }
         }
@@ -292,17 +278,10 @@ export default {
               display: flex;
               align-items: center;
               justify-content: center;
+              background-color: $black02;
               svg {
-                stroke:rgba(255,255,255,0);
+                stroke:rgba(255,255,255,1);
                 transition: $transtion01;
-              }
-              &:hover {
-                background-color: $black03;
-                transition: $transtion01;
-                svg {
-                  stroke:rgba(255,255,255,1);
-                  transition: $transtion01;
-                }
               }
             }
           }
@@ -318,6 +297,21 @@ export default {
             bottom: -120px;
             position: absolute;
             transform: translate(-50%,-50%);
+            overflow: hidden;
+            cursor: pointer;
+            .cover {
+              width: 100%;
+              height: 100%;
+              transition: $transtion01;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $black02;
+              svg {
+                stroke:rgba(255,255,255,1);
+                transition: $transtion01;
+              }
+            }
           }
         }
       }

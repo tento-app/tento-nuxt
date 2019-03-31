@@ -12,7 +12,7 @@
               <p class="profile_contents_wrapper_position">{{ position }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_text">{{ intro }}</p>
+              <p class="profile_contents_wrapper_text">{{ content }}</p>
             </li>
             <nuxt-link :to="{ name: 'user-id' , params: { id: id }}">
               <li class="profile_view_more sub_btn">
@@ -33,12 +33,7 @@ export default {
   components: {
     user
   },
-  props: ['background_img_url','name','position','id'],
-  data(){
-    return{
-      intro:"マーケティング、ウェブコンサルティングのことならお任せください"
-    }
-  }
+  props: ['background_img_url','name','position','id','content']
 }
 </script>
 

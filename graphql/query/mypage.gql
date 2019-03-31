@@ -1,0 +1,48 @@
+query($token: String!){
+  viewer(token:$token) {
+    username
+    logo
+    header
+    position
+    content
+    tags{
+      edges{
+        node{
+          id
+          name
+          logo
+        }
+      }
+    }
+  }
+  hostProjects(token:$token) {
+    edges{
+      node{
+        id
+        thumbnail
+        header
+        name
+        user{
+          id
+          username
+          logo
+        }
+      }
+    }
+  }
+  joinProjects(token:$token) {
+    edges{
+      node{
+        id
+        name
+        thumbnail
+        header
+        user{
+          id
+          username
+          logo
+        }
+      }
+    }
+  }
+}

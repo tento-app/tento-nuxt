@@ -2,6 +2,7 @@ query ($id: ID!){
   user(id: $id){
     username
     content
+    position
     header
     logo
     tags {
@@ -21,6 +22,7 @@ query ($id: ID!){
           header
           user{
             id
+            logo
             username
           }
         }
@@ -32,6 +34,11 @@ query ($id: ID!){
           id
           name
           header
+          user{
+            id
+            username
+            logo
+          }
         }
       }
     }

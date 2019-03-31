@@ -112,6 +112,7 @@ module.exports = () => {
     modules: [,
       '@nuxtjs/apollo',
       'cookie-universal-nuxt',
+      'nuxt-dayjs-module',
     ],
 
     apollo: {

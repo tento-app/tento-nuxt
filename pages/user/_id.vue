@@ -4,26 +4,16 @@
     <Header />
     <div class="main">
       <div class="account_header">
-        <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" />
+        <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" :position="user.position" :intro="user.content"/>
       </div>
       <div class="skill_container">
           <skill :tags="user.tags.edges" title="My tool"/>
       </div>
       <div class="card">
-        <card title="Posted Camp"/>
-
-        <!-- <div class="empty" v-if="!card">
-          <div class="img">
-            <img src="~/static/flow02-min.png" alt="">
-          </div>
-          <div class="text">
-            <p>自分のやりたいことをみんなにシェアしよう！！</p>
-            <nuxt-link to="/create" class="btn_priority">New Camp</nuxt-link>
-          </div>
-        </div> -->
+        <card title="Posted Camp" :projects="host_projects"/>
       </div>
       <div class="card">
-        <card title="Joined Camp"/>
+        <card title="Joined Camp" :projects="join_projects"/>
       </div>
     </div>
     <Footer />
@@ -55,7 +45,11 @@ export default {
         }
       }).then(({ data }) => {
         // do what you want with data
-        return { user: data.user }
+        return {
+          user: data.user,
+          host_projects: data.user.hostProjects.edges,
+          join_projects: data.user.projects.edges,
+          }
       })
   }
 }

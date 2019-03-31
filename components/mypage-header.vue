@@ -278,17 +278,10 @@ export default {
               display: flex;
               align-items: center;
               justify-content: center;
+              background-color: $black03;
               svg {
-                stroke:rgba(255,255,255,0);
+                stroke:rgba(255,255,255,1);
                 transition: $transtion01;
-              }
-              &:hover {
-                background-color: $black03;
-                transition: $transtion01;
-                svg {
-                  stroke:rgba(255,255,255,1);
-                  transition: $transtion01;
-                }
               }
             }
           }

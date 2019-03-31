@@ -23,6 +23,7 @@
 
 <script>
 import MypageGql from '~/graphql/query/mypage.gql'
+import { mapState } from 'vuex'
 
 import userGql from '~/graphql/query/user.gql'
 import MypageHeader from '~/components/mypage-header.vue';

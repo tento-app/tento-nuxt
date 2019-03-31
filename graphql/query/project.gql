@@ -1,5 +1,6 @@
 query ($id: ID!){
   project(id: $id){
+    id
     name
     content
     header

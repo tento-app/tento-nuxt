@@ -4,9 +4,12 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="main">
       <div class="account_edit">
-        <!-- <Card title="Stored Camp" :projects="allLikes"/> -->
-        <div v-for="like in allLikes" v-key="like.node.id">
-            <nuxt-link :to="{ name: 'camp-id' , params: { id: like.node.project.id }}" class="card_link" >
+  <div class="content item">
+    <div class="nav">
+      <h1>保存したキャンプ</h1>
+    </div>
+        <div class="cards_list">
+            <nuxt-link :to="{ name: 'camp-id' , params: { id: like.node.project.id }}" class="card_link" v-for="like in allLikes" :key="like.node.id">
                 <div class="card">
                 <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.node.project.thumbnail + ')' }">
                 </div>
@@ -22,7 +25,7 @@
                 </div>
                 </div>
             </nuxt-link>
-            <button>はずす</button>
+        </div>
         </div>
       </div>
     </div>
@@ -32,6 +35,7 @@
 
 <script>
 import allLikesGql from '~/graphql/query/allLikes.gql'
+import viewerGql from '~/graphql/query/viewer.gql'
 import { mapState } from 'vuex'
 
 import Header from '~/layouts/Header.vue';
@@ -42,6 +46,22 @@ export default {
     Header,
     Footer
   },
+  async fetch (context) {
+    const token = context.app.$cookies.get('cookie-token')
+    context.store.commit('user/setToken', token)
+    context.app.apolloProvider.defaultClient.query({
+        query: viewerGql,
+        variables: {
+            token: token
+        }
+    }).then((result) => {
+        context.store.commit('user/setUsername', result.data.viewer.username)
+        context.store.commit('user/setLogo', result.data.viewer.logo)
+    }).catch((error) => {
+    // errorの場合に実行する処理
+    console.log("失敗")
+    })
+  },
   data() {
     return {
       allLikes: null
@@ -50,18 +70,19 @@ export default {
   computed: {
       ...mapState('user',['token'])
   },
-  mounted: function () {
-     this.$apollo.query({
+  asyncData (context) {
+    return context.app.apolloProvider.defaultClient.query({
       query: allLikesGql,
       variables: {
-        token: this.token,
+        token: context.app.$cookies.get('cookie-token'),
       }
     }).then(({ data }) => {
           // do what you want with data
-            this.allLikes = data.allLikes.edges
-
+          return {
+            allLikes : data.allLikes.edges
+          }
         })
-  },
+  }
 }
 </script>
 

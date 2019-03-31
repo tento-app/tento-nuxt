@@ -8,7 +8,7 @@
         <MypageHeader />
       </div>
       <div class="skill_container" >
-          <skill :tags="user.tags.edges" title="スキル"/>
+          <skill :tags="tags" title="スキル"/>
       </div>
       <div class="card">
         <card title="Posted Camp" :projects="host_projects"/>
@@ -23,6 +23,7 @@
 
 <script>
 import MypageGql from '~/graphql/query/mypage.gql'
+import viewerGql from '~/graphql/query/viewer.gql'
 import { mapState } from 'vuex'
 
 import userGql from '~/graphql/query/user.gql'
@@ -41,9 +42,26 @@ export default {
     Header,
     Footer
   },
+  async fetch (context) {
+    const token = context.app.$cookies.get('cookie-token')
+    context.store.commit('user/setToken', token)
+    context.app.apolloProvider.defaultClient.query({
+        query: viewerGql,
+        variables: {
+            token: token
+        }
+    }).then((result) => {
+        context.store.commit('user/setUsername', result.data.viewer.username)
+        context.store.commit('user/setLogo', result.data.viewer.logo)
+    }).catch((error) => {
+    // errorの場合に実行する処理
+    console.log("失敗")
+    })
+  },
   data() {
     return {
           user: null,
+          tags: null,
           host_projects: null,
           join_projects: null,
     }
@@ -51,34 +69,21 @@ export default {
   computed: {
       ...mapState('user',['token'])
   },
-  mounted: function () {
-     this.$apollo.query({
+  asyncData (context) {
+    return context.app.apolloProvider.defaultClient.query({
       query: MypageGql,
       variables: {
-        token: this.token,
+        token: context.app.$cookies.get('cookie-token'),
       }
     }).then(({ data }) => {
           // do what you want with data
-          this.user= data.viewer
-          this.host_projects= data.hostProjects.edges
-          this.join_projects=data.joinProjects.edges
-
+          return {
+            user: data.viewer,
+            tags:data.viewer.tags.edges,
+            host_projects: data.hostProjects.edges,
+            join_projects:data.joinProjects.edges,
+          }
         })
-  },
-  asyncData (context) {
-    // return context.app.apolloProvider.defaultClient.query({
-    //   query: MypageGql,
-    //   variables: {
-    //     token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJleHAiOjE1NTM5NTQ3NjYsIm9yaWdJYXQiOjE1NTM5NTQ0NjZ9.f33dMdQ-Outu9ktKJWB6WWkHT13aUsYn3EJ-AjXvvrI",
-    //     }
-    //   }).then(({ data }) => {
-    //     // do what you want with data
-    //     return {
-    //       user: data.viewer,
-    //       host_projects: data.hostProjects.edges,
-    //       join_projects: data.joinProjects.edges,
-    //       }
-    //   })
   }
 }
 </script>

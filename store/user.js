@@ -8,6 +8,7 @@ export const state = () => ({
 export const mutations = {
   setToken(state, token) {
      state.token = token;
+     this.$cookies.set('cookie-token', token, {maxAge: 60 * 60 * 24 * 7})
   },
   setUsername(state, username) {
     state.username = username;
@@ -22,5 +23,6 @@ export const actions = {
     this.commit('user/setToken',null);
     this.commit('user/setUsername',null);
     this.commit('user/setLogo',null);
+    this.$cookies.remove('cookie-token')
   }   
 }

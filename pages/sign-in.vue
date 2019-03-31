@@ -59,6 +59,7 @@ export default {
             }).then((result) => {
                 this.setUsername(result.data.viewer.username)
                 this.setLogo(result.data.viewer.logo)
+                this.$router.push('top')
             })
         }).catch((error) => {
             // errorの場合に実行する処理

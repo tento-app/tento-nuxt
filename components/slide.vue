@@ -4,20 +4,36 @@
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-
-        <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
-          <!-- card content-->
-          <div class="slide_item">
-            <div class="slide_item_user">
-              <div class="slide_item_user_img" :style="{ 'background-image': 'url(' + project.node.user.logo + ')' }"></div>
-              <div class="">
-                <p class="slide_item_user_name">{{ project.node.user.username }}</p>
-                <p class="slide_item_user_position">webエンジニア</p>
+        <div class="background" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
+          <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
+            <!-- card content-->
+            <div class="slide_item">
+              <div class="slide_item_user">
+                <div class="slide_item_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+                <div class="">
+                  <p class="slide_item_user_name">{{ project.node.user.username }}</p>
+                  <p class="slide_item_user_position">webエンジニア</p>
+                </div>
               </div>
+              <h4>{{ project.node.name }}</h4>
             </div>
-            <h4>{{ project.node.name }}</h4>
-          </div>
-        </nuxt-link>
+          </nuxt-link>
+        </div>
+        <div class="background" v-if="!project.node.header">
+          <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
+            <!-- card content-->
+            <div class="slide_item">
+              <div class="slide_item_user">
+                <div class="slide_item_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+                <div class="">
+                  <p class="slide_item_user_name">{{ project.node.user.username }}</p>
+                  <p class="slide_item_user_position">webエンジニア</p>
+                </div>
+              </div>
+              <h4>{{ project.node.name }}</h4>
+            </div>
+          </nuxt-link>
+        </div>
       </div>
     </div>
 
@@ -72,16 +88,21 @@ export default {
             font-size: 0;
             box-shadow: $box_shadow_card;
             margin: 0 auto;
-            background-color: $sub_color;
+            background-color: #fff;
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
                     width: 60%;
                     height: 280px;
                     margin: 0 auto;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center;
+                    .background {
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                      background-position: center;
+                      width: 100%;
+                      height: 100%;
+                      background-image: url("../static/header_logo.png");
+                    }
                     a {
                         display: block;
                         width: 100%;
@@ -111,6 +132,8 @@ export default {
                                 height: 50px;
                                 border-radius: 50%;
                                 margin-right: 1rem;
+                                background-color: #fff;
+                                border: $border01;
                             }
                             &_name {
                                 font-size: 14px;
@@ -160,16 +183,21 @@ export default {
             font-size: 0;
             box-shadow: $box_shadow_card;
             margin: 0 auto;
-            background-color: $sub_color;
+            background-color: #fff;
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
                     width: 80%;
                     height: 280px;
                     margin: 0 auto;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center;
+                    .background {
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                      background-position: center;
+                      width: 100%;
+                      height: 100%;
+                      background-image: url("../static/header_logo.png");
+                    }
                     a {
                         display: block;
                         width: 100%;
@@ -245,16 +273,21 @@ export default {
             overflow: hidden;
             font-size: 0;
             margin: 0 auto;
-            background-color: $sub_color;
+            background-color: #fff;
             .swiper-wrapper {
                 .swiper-slide {
                     margin: 0 !important;
                     width: 80%;
                     height: 280px;
                     margin: 0 auto;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center;
+                    .background {
+                      background-repeat: no-repeat;
+                      background-size: cover;
+                      background-position: center;
+                      width: 100%;
+                      height: 100%;
+                      background-image: url("../static/header_logo.png");
+                    }
                     a {
                         display: block;
                         width: 100%;

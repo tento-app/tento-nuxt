@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="camp_body_eyecatch">
-    <div class="camp_body_eyecatch_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+    <div class="camp_body_eyecatch_img" v-if="background_img_url" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+    <div class="camp_body_eyecatch_img" v-if="!background_img_url"></div>
   </div>
 </template>
 
@@ -19,6 +20,8 @@ export default {
   margin: 0 auto;
   padding:30px;
   &_img {
+    background-image: url("../../static/header_logo.png");
+    background-color: #fff;
     height: 280px;
     max-width: 100%;
     border-radius: 12px;

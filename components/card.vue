@@ -6,7 +6,10 @@
     <div class="cards_list">
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
-          <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
+          <div class="card_img" v-if="!project.node.header">
+
+          </div>
+          <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
             <!-- <p
               class="card_img_category"
               :style="{ 'background-color': '#' + project.node.category.color }"
@@ -95,7 +98,8 @@ export default {
         transition: $transtion01;
       }
       &_img {
-        background-image: url("../static/camp_img.jpg");
+        background-image: url("../static/header_logo.png");
+        background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
         height: 130px;
@@ -214,7 +218,8 @@ export default {
           transition: $transtion01;
         }
         &_img {
-          background-image: url("../static/camp_img.jpg");
+          background-image: url("../static/header_logo.png");
+          background-color: #fff;
           border-radius: 12px 12px 0 0;
           width: 100%;
           height: 130px;
@@ -334,7 +339,8 @@ export default {
         transition: $transtion01;
       }
       &_img {
-        background-image: url("../static/camp_img.jpg");
+        background-image: url("../static/header_logo.png");
+        background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
         height: 130px;

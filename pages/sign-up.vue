@@ -18,8 +18,12 @@
           <label for="in-password">パスワード</label>
           <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
         </div>
+        <p class="tos_agreement">[新規アカウント作成]をクリックすることで
+          <nuxt-link to='/terms'>利用規約</nuxt-link>、<nuxt-link to='/privacy'>プライバシーポリシー</nuxt-link>
+          に同意するものとします。
+        </p>
         <div class="button">
-          <button name="button" class="btn_priority" @click="login">ログイン</button>
+          <button name="button" class="btn_priority" @click="login">新規アカウント作成</button>
         </div>
       </div>
 
@@ -91,6 +95,12 @@ export default {
       display: block;
       font-size: 14px;
       font-weight: bold;
+    }
+    .tos_agreement{
+      font-size: 12px;
+      a{
+        text-decoration: underline;
+      }
     }
   }
 </style>

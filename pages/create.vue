@@ -80,7 +80,9 @@
 
               <div class="btn-list">
                 <p @click="closeModal">編集に戻る</p>
-                <button class="btn_priority" type="button" name="button" @click="submit">公開する</button>
+                <button class="btn_priority" type="button" :disabled="processing" name="button" @click="submit" v-on:click="button_disable()">
+                  <p :class="{disactive: processing}">公開する</p>
+                  <p class="processing" :class="{active: processing}">公開中...</p></button>
               </div>
             </div>
           </div>
@@ -138,7 +140,8 @@ export default {
       date: "",
       place: "",
       uploadedImage: "",
-      headerFile: null
+      headerFile: null,
+      processing: false
     };
   },
   computed: {
@@ -167,6 +170,15 @@ export default {
     },
     deleteImage() {
       this.uploadedImage = "";
+    },
+    button_disable: function() {
+        this.processing = true;
+
+        setTimeout(this.enable,2000);
+    },
+    enable:function() {
+        console.log('二重送信防止');
+        this.processing = false;
     },
     submit() {
       console.log({
@@ -201,15 +213,24 @@ export default {
           // errorの場合に実行する処理
           console.log(error);
         });
-    }
-  }
-};
+        }
+      }
+    };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss">
 @import "~/assets/style/_color.scss";
 @import "~/assets/style/base.scss";
 @import "~/assets/style/btn.scss";
+.processing {
+  display: none;
+}
+.active {
+  display: block !important;
+}
+.disactive {
+  display: none !important;
+}
 @media (min-width: 500px) {
   .create {
     .header {
@@ -330,22 +351,22 @@ export default {
     p {
       white-space: pre-line;
       line-height: 1.8;
-      font-size:1.6rem;
+      font-size:1rem;
     }
     h1 {
-      font-size: 2.6rem;
-    }
-    h2 {
-      font-size: 2.4rem;
-    }
-    h3 {
-      font-size: 2.2rem;
-    }
-    h4 {
       font-size: 2rem;
     }
-    h5 {
+    h2 {
       font-size: 1.8rem;
+    }
+    h3 {
+      font-size: 1.6rem;
+    }
+    h4 {
+      font-size: 1.4rem;
+    }
+    h5 {
+      font-size: 1.2rem;
     }
   }
   .medium-editor-container .medium-editor-placeholder::after {
@@ -576,6 +597,9 @@ export default {
         .btn_priority {
           width: 90px;
           text-align: center;
+          p {
+            color: #fff;
+          }
         }
       }
     }

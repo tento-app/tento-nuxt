@@ -4,7 +4,7 @@
         <div class="text">
           <h1 class="camp_body_text_title pc">{{ title }}</h1>
           <div class="btn_list">
-            <a :href="twUrl" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
+            <a :href="twitterUrl()" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
             <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
             <p class="btn_priority ">このキャンプに参加する</p>
           </div>
@@ -78,7 +78,7 @@ export default {
   components: {
     user,
     profile,
-    skill
+    skill,
   },
   props: {
     title: String,
@@ -93,9 +93,11 @@ export default {
   },
   data() {
     return {
-      twUrl : '',
+      url:'https://www.google.com/?hl=ja',
+      twitter_url: "https://twitter.com/intent/tweet?url={0}&text={1}",
       headerActive:false,
       scrollY:0,
+      // url:'https://tento.app' + window.location.pathname
     }
   },
   mounted() {
@@ -120,6 +122,28 @@ export default {
         } else {
           this.headerActive = false
         }
+    },
+    formatByArr(msg) {
+      // フォーマット（引数可変（配列）版）
+      var args = [];
+      for (var i = 1; i < arguments.length; i++) {
+        args[i - 1] = arguments[i];
+      }
+      // URLエンコード
+      args = args.map(x => encodeURIComponent(x));
+      return msg.replace(/\{(\d+)\}/g, function(m, k) {
+        return args[k];
+      });
+    },
+    // それぞれパラメータを埋め込む
+    twitterUrl() {
+      return this.formatByArr(this.twitter_url, this.url, this.title);
+    },
+    hatebuUrl() {
+      return this.formatByArr(this.hatebu_url, this.url, this.title);
+    },
+    pocketUrl() {
+      return this.formatByArr(this.pocket_url, this.url);
     }
   }
   // data() {

@@ -3,7 +3,21 @@
     <Header />
     <div class="main">
       <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
-      <CampBody :title="project.name" :text="project.content" :background_img_url="project.header" :host_user="project.user" :tags="project.tags.edges" :place="project.place" :contact="project.contact" :time="project.startAt" :users="project.users.edges"/>
+      <CampHeader :title="project.name" />
+      <CampEyecatch :background_img_url="project.header"/>
+      <div class="camp_body">
+        <CampInfo :title="project.name" :host_user="project.user" :tags="project.tags.edges" :place="project.place" :contact="project.contact" :time="project.startAt"/>
+        <CampDescripton :text="project.content"/>
+        <!-- <CampBody :title="project.name" :text="project.content" :background_img_url="project.header" :host_user="project.user" :tags="project.tags.edges" :place="project.place" :contact="project.contact" :time="project.startAt" :users="project.users.edges"/> -->
+        <div class="">
+          <div class="skill_component">
+            <skill :tags="tags" title="Required tool"/>
+          </div>
+          <!-- <div class="profile_component">
+          <profile :id="host_user.id"  :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :content="host_user.content"/>
+          </div> -->
+        </div>
+      </div>
       <!-- <div class="">
         <chat />
       </div> -->
@@ -24,6 +38,13 @@ import { mapState } from 'vuex'
 import Header from '~/layouts/Header.vue';
 import Footer from '~/layouts/Footer.vue';
 import CampBody from '~/components/camp-body.vue';
+import CampHeader from '~/components/camp-body/header.vue';
+import CampEyecatch from '~/components/camp-body/eyecatch.vue';
+import CampInfo from '~/components/camp-body/info.vue';
+import CampDescripton from '~/components/camp-body/description.vue';
+import profile from '~/components/profile.vue';
+import skill from '~/components/skill.vue';
+
 import chat from '~/components/chat.vue';
 import { retry } from 'async';
 
@@ -32,7 +53,17 @@ export default {
     Header,
     Footer,
     CampBody,
+    CampHeader,
+    CampEyecatch,
+    CampInfo,
+    CampDescripton,
+    profile,
+    skill,
     chat
+  },
+  props: {
+    tags: Array,
+    users: Array,
   },
   asyncData (context) {
     return context.app.apolloProvider.defaultClient.query({
@@ -135,8 +166,8 @@ export default {
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
 @import '~/assets/style/_color.scss';
-.main {
-
+.camp_body {
+  background-color: #fff;
 }
 
 </style>

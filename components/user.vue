@@ -31,6 +31,7 @@
           height: 52px;
           border-radius: 50%;
           margin-right: 0.5rem;
+          border: $border01;
       }
       &_name {
           font-size: 1rem;

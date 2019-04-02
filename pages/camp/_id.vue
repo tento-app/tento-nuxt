@@ -9,12 +9,12 @@
         <CampInfo :title="project.name" :host_user="project.user" :tags="project.tags.edges" :place="project.place" :contact="project.contact" :time="project.startAt" :project_id="project.id" :users="project.users.edges"/>
         <CampDescripton :text="project.content"/>
         <div class="">
-          <div class="skill_component">
+          <div class="skill_component" v-if="project.tags.edges.length > 0">
             <skill :tags="project.tags.edges" title="Required tool"/>
           </div>
-          <!-- <div class="profile_component">
-          <profile :id="host_user.id"  :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :content="host_user.content"/>
-          </div> -->
+          <div class="profile_component">
+          <profile :host_user="project.user"/>
+          </div>
         </div>
       </div>
     </div>
@@ -95,6 +95,14 @@ export default {
 @import '~/assets/style/_color.scss';
 .camp_body {
   background-color: #fff;
+}
+
+.skill_component {
+  margin: 3rem 0;
+}
+
+.profile_component {
+  padding: 3rem 0;
 }
 
 </style>

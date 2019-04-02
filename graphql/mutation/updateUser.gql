@@ -1,0 +1,7 @@
+mutation($token: String!, $userData: String!){
+  updateUser(token:$token,userData:$userData){
+    user{
+      id
+    }
+  }
+}

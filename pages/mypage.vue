@@ -5,7 +5,7 @@
     <div class="main">
       <div class="account_header">
         <!-- <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" /> -->
-        <MypageHeader />
+        <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
       <div class="skill_container" >
           <skill :tags="tags" title="スキル"/>

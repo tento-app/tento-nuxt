@@ -1,8 +1,10 @@
 <template lang="html">
   <div class="btn_list">
-    <a :href="twitterUrl()" target="_blank"><img src="../../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
-    <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
-    <p class="btn_priority ">このキャンプに参加する</p>
+    <!-- <a :href="twitterUrl()" target="_blank"><img src="../../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a> -->
+    <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
+    <div class="btn_priority "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+     <p>Attend Camp</p>
+   </div>
   </div>
 </template>
 
@@ -46,25 +48,32 @@ export default {
   align-items: center;
   a {
     margin-right: 0.5rem;
-    box-shadow: $box_shadow01;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     img {
-      width: 35px;
+      width: 40px;
     }
   }
   .bookmark {
     cursor: pointer;
-    box-shadow: $box_shadow01;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    margin-right: 0.5rem;
+    border: $border01;
+    &:hover{
+      border: solid 1px #FFC042;
+      transition: $transtion01;
+      svg {
+        transition: $transtion01;
+        fill:#FFC042;
+        stroke: #FFC042;
+      }
+    }
   }
 }
 </style>

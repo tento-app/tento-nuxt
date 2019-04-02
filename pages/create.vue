@@ -592,11 +592,11 @@ export default {
           cursor: pointer;
           color: $black03;
           font-weight: bold;
-          margin-right: auto;
         }
         .btn_priority {
           width: 90px;
           text-align: center;
+          margin-left: auto;
           p {
             color: #fff;
           }

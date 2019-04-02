@@ -80,9 +80,6 @@ export default {
     align-items: center;
     font-size: 14px;
     margin-right: 1rem;
-    p {
-      margin-left: 0.4rem;
-    }
     &:last-child {
       margin-left: auto;
     }

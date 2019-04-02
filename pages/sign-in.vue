@@ -15,7 +15,7 @@
           <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
         </div>
         <div class="button">
-          <button name="button" class="btn_priority" @click="login">ログイン</button>
+          <button name="button" class="btn_priority" @click="login">Sign In</button>
         </div>
       </div>
 
@@ -88,6 +88,8 @@ export default {
       text-align: center;
       border-bottom: solid 0.5px $black03;
       margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      font-size: 1.5rem;
     }
     .button {
       text-align: center;
@@ -95,7 +97,9 @@ export default {
       button {
         width: 100%;
         padding: 0.5rem;
-        font-size: 1rem;
+        max-width: none;
+        margin: 0;
+        background-color: #37AB9D;
       }
     }
     .item {

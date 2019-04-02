@@ -3,8 +3,8 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="main">
-      <slide :projects="swiperProjects"/>
-      <card :projects="allProjects" title="New Camp"/>
+      <slide :projects="entry.data.allProjects.edges.slice(3)"/>
+      <card :projects="entry.data.allProjects.edges" title="New Camp"/>
       <cardLoader @readmore="readmore" />
     </div>
     <Footer />
@@ -45,22 +45,38 @@ export default {
     console.log("失敗")
     })
   },
-  asyncData (context) {
-    return context.app.apolloProvider.defaultClient.query({
+  apollo: {
+    entry: {
       query: allProjectsGql,
       variables: {
         page_size: 6,
         endCursor: "",
-      }
-      }).then(({ data }) => {
-          // do what you want with data
-          return {
-            swiperProjects: data.allProjects.edges.slice(3),
-            allProjects: data.allProjects.edges,
-            endCursor: data.allProjects.pageInfo.endCursor
-            }
-        })
+      },
+      update (data) {
+      console.log(data)
+      // The returned value will update
+      // the vue property 'pingMessage'
+      return { data }
+    },
+      prefetch: true,
+    }
   },
+  // asyncData (context) {
+  //   return context.app.apolloProvider.defaultClient.query({
+  //     query: allProjectsGql,
+  //     variables: {
+  //       page_size: 6,
+  //       endCursor: "",
+  //     }
+  //     }).then(({ data }) => {
+  //         // do what you want with data
+  //         return {
+  //           swiperProjects: data.allProjects.edges.slice(3),
+  //           allProjects: data.allProjects.edges,
+  //           endCursor: data.allProjects.pageInfo.endCursor
+  //           }
+  //       })
+  // },
   methods: {
     readmore: function() {
       this.$apollo.query({

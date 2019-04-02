@@ -112,6 +112,7 @@ export default {
     Header,
     settingModal
   },
+  middleware: 'authenticated',
   asyncData(context) {
     return context.app.apolloProvider.defaultClient
       .query({

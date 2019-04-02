@@ -1,33 +1,37 @@
 @import '_color';
 
 .btn{
-  background-color: #fff;
-  border-radius: 6px;
-  color: $main-color;
-  padding: 12px;
-  box-shadow: $box_shadow01;
-  font-weight: bold;
-  font-size: 12px;
+  background-color: #37AB9D;;
+  border-radius: 3px;
+  color: #fff;
+  padding: 10px;
+  max-width: 135px;
+  font-size: 14px;
   transition: 0.1s;
   text-align: center;
-  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
   cursor: pointer;
   border: none;
-  i{
-    color: $main_color;
-  }
-  &:hover{
-    transition: 0.1s;
-    box-shadow: $box_shadow02;
-  }
-  &:active{
-    box-shadow: $box_shadow03;
-    background-color: #f8f8f8;
-  }
-  &:disabled{
-    box-shadow: none;
-    color: #007369;
-  }
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  // i{
+  //   color: $main_color;
+  // }
+  // &:hover{
+  //   transition: 0.1s;
+  //   box-shadow: $box_shadow02;
+  // }
+  // &:active{
+  //   box-shadow: $box_shadow03;
+  //   background-color: #f8f8f8;
+  // }
+  // &:disabled{
+  //   box-shadow: none;
+  //   color: #007369;
+  // }
 }
 
 .sub_btn{
@@ -48,31 +52,41 @@
 }
 
 .btn_priority{
-  background-color: #F7AF06;
-  border-radius: 6px;
+  background-color: #FFC042  ;
+  border-radius: 3px;
   color: #fff;
-  padding: 12px;
-  box-shadow: $box_shadow01;
-  font-weight: bold;
-  font-size: 12px;
+  padding: 10px;
+  max-width: 135px;
+  font-size: 14px;
   transition: 0.1s;
   text-align: center;
-  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
   cursor: pointer;
   border: none;
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  // border: solid 1px #ECA842;
+  p {
+  }
+  svg {
+    margin-right: 6px;
+    stroke-width:2;
+  }
   i{
     color: $main_color;
   }
   &:hover{
-    transition: 0.1s;
-    box-shadow: $box_shadow02;
+    transition: 0.2s;
+    background-color: #F1B336;
   }
-  &:active{
-    box-shadow: $box_shadow03;
-    background-color: #F7AF06;
-  }
+  // &:active{
+  //   box-shadow: $box_shadow03;
+  //   background-color: #F7AF06;
+  // }
   &:disabled{
-    box-shadow: none;
-    color: #007369;
+    background-color: #F1B336;
   }
 }

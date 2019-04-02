@@ -102,18 +102,7 @@ export default {
           width: 35px;
         }
       }
-      .bookmark {
-        cursor: pointer;
-        box-shadow: $box_shadow01;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        margin-right: 0.5rem;
-      }
+      
     }
   }
 }

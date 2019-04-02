@@ -27,7 +27,9 @@
           <div class="img">
             <img src="../static/feature01-min.png" alt="">
           </div>
-          <nuxt-link to="/top" class='btn_priority'>一覧を見る</nuxt-link>
+          <div class="button">
+            <nuxt-link to="/top" class='btn_priority'>一覧を見る</nuxt-link>
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +116,9 @@ export default {
     background-color: $backround_color01;
   }
   .empty {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 30px;
     text-align: center;
     padding-bottom: 5rem;
     h3 {
@@ -121,10 +126,16 @@ export default {
       color: $black02;
     }
     .img {
-      width: 300px;
+      max-width: 300px;
       margin: 0 auto 2rem;
       img {
         width: 100%;
+      }
+    }
+    .button {
+      text-align: center;
+      a {
+        margin: 0 auto;
       }
     }
 

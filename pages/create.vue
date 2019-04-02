@@ -45,12 +45,13 @@
       <div class="modal-container">
         <div class="setting-modal">
           <div class="">
-            <h3>公開設定(任意)</h3>
+            <h3>公開設定</h3>
             <div  class="form">
               <div class="item">
                 <label for="">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                   <p>スキル</p>
+                  <span class="option">任意</span>
                 </label>
                 <Multiselect v-model="tags" :options="multiselectoptions" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" :preselect-first="false" :max-height="200">
                 </Multiselect>
@@ -59,6 +60,7 @@
                 <label for="">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
                   <p>開催場所</p>
+                  <span>必須</span>
                 </label>
                 <input type="text" v-model="place" placeholder="Tentoキャンパス学食">
               </div>
@@ -66,14 +68,16 @@
                 <label for="">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                   <p>開催日時</p>
+                  <span>必須</span>
                 </label>
                 <!-- <input type="datetime-local" name="" v-model="inputData2"> -->
-                <datetime v-model="date"></datetime>
+                <datetime v-model="date" type="datetime"></datetime>
               </div>
               <div class="item">
                 <label for="">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   <p>連絡先</p>
+                  <span>必須</span>
                 </label>
                 <input type="text" v-model="contact" placeholder="tento@example.com">
               </div>
@@ -524,10 +528,26 @@ export default {
   }
 }
 </style>
-<style lang="scss"scoped>
+<style lang="scss">
 @import "~/assets/style/_color.scss";
 @import "~/assets/style/base.scss";
 @import "~/assets/style/btn.scss";
+
+.vdatetime-popup__header {
+  background-color: $main_color;
+}
+
+.vdatetime-calendar__month__day--selected > span > span, .vdatetime-calendar__month__day--selected:hover > span > span {
+  background-color: $main_color;
+}
+
+.vdatetime-popup__actions__button {
+  color: $main_color;
+}
+
+.vdatetime-time-picker__item--selected {
+  color: $main_color;
+}
 
 @media (min-width: 500px) {
 
@@ -575,6 +595,18 @@ export default {
           p {
             margin-left: 5px;
           }
+          span {
+            font-size: 9px;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #FF3131;
+            padding: 4px 6px;
+            font-weight: lighter;
+            margin-left: 0.5rem;
+          }
+          .option {
+            background-color: $main_color;
+          }
         }
         input {
           width: 100%;
@@ -592,11 +624,11 @@ export default {
           cursor: pointer;
           color: $black03;
           font-weight: bold;
-          margin-right: auto;
         }
         .btn_priority {
           width: 90px;
           text-align: center;
+          margin-left: auto;
           p {
             color: #fff;
           }
@@ -651,6 +683,18 @@ export default {
           p {
             margin-left: 5px;
           }
+          span {
+            font-size: 9px;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #FF3131;
+            padding: 4px 6px;
+            font-weight: lighter;
+            margin-left: 0.5rem;
+          }
+          .option {
+            background-color: $main_color;
+          }
         }
         input {
           width: 100%;
@@ -668,11 +712,14 @@ export default {
           cursor: pointer;
           color: $black03;
           font-weight: bold;
-          margin-right: auto;
         }
         .btn_priority {
           width: 90px;
           text-align: center;
+          margin-left: auto;
+          p {
+            color: #fff;
+          }
         }
       }
     }

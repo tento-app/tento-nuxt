@@ -8,20 +8,20 @@
       <div class="left">
         <nuxt-link to="/sign-in" v-if="!username">
           <div class="sign-in　submit btn">
-            <p>ログイン</p>
+            <p>Sign In</p>
           </div>
         </nuxt-link>
         <nuxt-link to="sign-up" v-if="!username">
-          <div class="sign-in　submit btn_priority">
-            <p>新規アカウント作成</p>
+          <div class="sign-up　submit btn_priority">
+            <p>Sign Up</p>
           </div>
         </nuxt-link>
         <div class="account" id="account" @click="openModal" v-else :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
           <headerModal v-if="showModal" :hostname='username' />
         </div>
-        <nuxt-link to="/create" v-if="username">
-          <div class="submit btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a496" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <nuxt-link to="/create" v-if="username" class="pc">
+          <div class="submit btn_priority">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             <p>New Camp</p>
           </div>
         </nuxt-link>
@@ -120,9 +120,6 @@ export default {
           display: flex;
           align-items: center;
           margin-left: 0.8rem;
-          p {
-            margin-left: 6px;
-          }
         }
       }
     }
@@ -189,14 +186,6 @@ export default {
           padding: 0;
           color: $main_color;
         }
-        .submit {
-          display: flex;
-          align-items: center;
-          margin-left: 0.8rem;
-          p {
-            margin-left: 6px;
-          }
-        }
       }
     }
   }
@@ -204,6 +193,9 @@ export default {
 
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .pc {
+    display: none;
+  }
   header {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
@@ -262,14 +254,6 @@ export default {
           padding: 0;
           color: $main_color;
           font-size: 17px
-        }
-        .submit {
-          display: none;
-          align-items: center;
-          margin-left: 0.8rem;
-          p {
-            margin-left: 6px;
-          }
         }
       }
     }

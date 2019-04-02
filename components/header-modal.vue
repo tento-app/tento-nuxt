@@ -54,6 +54,9 @@ export default {
 <style lang="scss" scoped>
 @import '~/assets/style/_color.scss';
 @media (min-width:840px) {
+.sp {
+  display: none;
+}
 .account_menu {
   z-index: 999;
   text-align: left;

@@ -23,7 +23,7 @@
           に同意するものとします。
         </p>
         <div class="button">
-          <button name="button" class="btn_priority" @click="login">新規アカウント作成</button>
+          <button name="button" class="btn_priority" @click="login">Sign Up</button>
         </div>
       </div>
 
@@ -61,9 +61,10 @@ export default {
     padding: 2rem 3rem;
     h1 {
       text-align: center;
-      font-size: 1.25rem;
       border-bottom: solid 0.5px $black03;
       margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      font-size: 1.4rem;
     }
     .button {
       text-align: center;
@@ -71,7 +72,8 @@ export default {
       button {
         width: 100%;
         padding: 0.5rem;
-        font-size: 1rem;
+        margin: 0;
+        max-width: none;
       }
     }
     .item {

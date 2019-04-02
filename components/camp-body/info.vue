@@ -4,7 +4,7 @@
       <div class="camp_setting">
         <h1 class="camp_body_text_title">{{ title }}</h1>
         <user :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :id="host_user.id" />
-        <!-- <CampMember :users='users'/> -->
+        <CampMember :users="users"/>
         <div class="">
           <ul class="setting">
             <li v-if="place">
@@ -19,14 +19,9 @@
               <p>{{ contact }}</p>
             </li>
             <li>
-              <joinbtn :title ='title'/>
+              <joinbtn :title ='title' :project_id="project_id" />
             </li>
           </ul>
-          <!-- <div class="btn_list pc">
-          <a :href="twUrl" target="_blank"><img src="../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a>
-          <p class="bookmark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
-          <p class="btn_priority ">このキャンプに参加する</p>
-        </div> -->
         </div>
       </div>
     </div>
@@ -38,6 +33,7 @@
 import CampMember from '~/components/camp-body/member.vue';
 import joinbtn from '~/components/camp-body/joinbtn.vue';
 import user from '~/components/user.vue';
+import { StringDecoder } from 'string_decoder';
 export default {
   components :{
     CampMember,
@@ -45,6 +41,7 @@ export default {
     joinbtn
   },
   props: {
+    project_id: String,
     title: String,
     place: String,
     time: String,

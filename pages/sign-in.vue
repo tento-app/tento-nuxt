@@ -14,6 +14,9 @@
           <label for="in-password">パスワード</label>
           <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
         </div>
+        <p class="tos_agreement">
+          新規アカウント作成の方は<nuxt-link to='/sign-up'>こちら</nuxt-link>から
+        </p>
         <div class="button">
           <button name="button" class="btn_priority" @click="login">Sign In</button>
         </div>
@@ -123,6 +126,12 @@ export default {
       display: block;
       font-size: 14px;
       font-weight: bold;
+    }
+  }
+  .tos_agreement{
+    font-size: 12px;
+    a{
+      text-decoration: underline;
     }
   }
 </style>

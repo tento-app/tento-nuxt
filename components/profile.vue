@@ -2,19 +2,19 @@
 <div class="content profile">
     <div class="profile_contents">
       <div class="profile_contents_user">
-        <div class="profile_contents_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+        <div class="profile_contents_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + host_user.logo + ')' }"></div>
         <div class="profile_contents_wrapper">
           <ul>
             <li>
-              <p class="profile_contents_wrapper_name">{{ name }}</p>
+              <p class="profile_contents_wrapper_name">{{ host_user.username }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_position">{{ position }}</p>
+              <p class="profile_contents_wrapper_position">{{ host_user.position }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_text">{{ content }}</p>
+              <p class="profile_contents_wrapper_text">{{ host_user.content }}</p>
             </li>
-            <nuxt-link :to="{ name: 'user-id' , params: { id: id }}">
+            <nuxt-link :to="{ name: 'user-id' , params: { id: host_user.id }}">
               <li class="profile_view_more sub_btn">
                 <p>View page</p>
               </li>
@@ -33,7 +33,10 @@ export default {
   components: {
     user
   },
-  props: ['background_img_url','name','position','id','content']
+  // props: ['background_img_url','name','position','id','content']
+  props : {
+    host_user:Object
+  }
 }
 </script>
 
@@ -61,6 +64,7 @@ export default {
         height: 62px;
         border-radius: 50%;
         margin-right: 1rem;
+        border: $border01;
       }
       &_wrapper{
         &_name{

@@ -45,7 +45,7 @@ export default {
     Header,
     Footer
   },
-    middleware: 'authenticated',
+  middleware: 'authenticated',
   data() {
     return {
       allLikes: null

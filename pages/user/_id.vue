@@ -9,10 +9,10 @@
       <div class="skill_container">
           <skill :tags="user.tags.edges" title="My tool"/>
       </div>
-      <div class="card">
+      <div class="card" v-if="host_projects.length > 0">
         <card title="Posted Camp" :projects="host_projects"/>
       </div>
-      <div class="card">
+      <div class="card" v-if="join_projects.length > 0">
         <card title="Joined Camp" :projects="join_projects"/>
       </div>
     </div>
@@ -65,6 +65,9 @@ export default {
     padding: 80px 0;
     margin-top: 80px;
     background-color: $backround_color01;
+  }
+  .card {
+    padding: 1rem 0 2rem;
   }
   .empty {
     text-align: center;

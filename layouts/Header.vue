@@ -16,7 +16,10 @@
             <p>Sign Up</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
+        <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
+          <headerModal v-if="showModal" :hostname='username' />
+        </div>
+        <div class="account empty" id="account" @click="openModal" v-if="!logo && username">
           <headerModal v-if="showModal" :hostname='username' />
         </div>
         <nuxt-link to="/create" v-if="username" class="pc">
@@ -85,14 +88,17 @@ export default {
         display: flex;
         align-items: center;
         margin-left: auto;
+        .empty {
+          background-image: url('../static/icon_empty.png');
+        }
         .account {
           background-size: cover;
           background-position: center;
-          margin-left: 0.8rem;
+          margin-right: 0.5rem;
           font-size: 0;
           padding: 0;
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
           cursor: pointer;
@@ -119,7 +125,7 @@ export default {
         .submit {
           display: flex;
           align-items: center;
-          margin-left: 0.8rem;
+          margin-right: 0.5rem;
         }
       }
     }

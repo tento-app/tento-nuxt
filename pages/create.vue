@@ -62,7 +62,7 @@
                   <p>開催場所</p>
                   <span>必須</span>
                 </label>
-                <input type="text" v-model="place" placeholder="Tentoキャンパス学食">
+                <input type="text" v-model="place" placeholder="" required>
               </div>
               <div class="item">
                 <label for="">
@@ -71,7 +71,7 @@
                   <span>必須</span>
                 </label>
                 <!-- <input type="datetime-local" name="" v-model="inputData2"> -->
-                <datetime v-model="date" type="datetime"></datetime>
+                <datetime v-model="date" type="datetime" required></datetime>
               </div>
               <div class="item">
                 <label for="">
@@ -79,7 +79,7 @@
                   <p>連絡先</p>
                   <span>必須</span>
                 </label>
-                <input type="text" v-model="contact" placeholder="tento@example.com">
+                <input type="text" v-model="contact" placeholder="" required>
               </div>
 
               <div class="btn-list">

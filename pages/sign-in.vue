@@ -6,14 +6,20 @@
         <h1>ログイン</h1>
         <div class="img">
         </div>
-        <div class="item">
-          <label for="in-id">ユーザーID</label>
-          <input type="text" name="" value="" id="in-id" v-model="in_identification" v-bind:class="{error : in_identificationerror}">
-        </div>
-        <div class="item">
-          <label for="in-password">パスワード</label>
-          <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
-        </div>
+        <form class="">
+          <div class="item">
+            <label for="in-id">メールアドレス</label>
+            <input type="email" name="" value="" id="in-id" v-model="in_identification">
+          </div>
+          <div class="item">
+            <label for="in-password">パスワード</label>
+            <input type="password" name="" value="" id="in-password" v-model="in_password">
+          </div>
+
+        </form>
+        <p class="tos_agreement">
+          新規アカウント作成の方は<nuxt-link to='/sign-up'>こちら</nuxt-link>から
+        </p>
         <div class="button">
           <button name="button" class="btn_priority" @click="login">Sign In</button>
         </div>
@@ -33,6 +39,12 @@ import loginGql from '~/graphql/mutation/login.gql'
 import viewerGql from '~/graphql/query/viewer.gql'
 
 export default {
+  data() {
+    return {
+      in_password:'',
+      in_identification:''
+    }
+  },
   components: {
     Header,
     Footer
@@ -54,6 +66,8 @@ export default {
             }
         }).then((result) => {
             // 成功した場合に実行する処理（200OKのレスポンスの場合）
+            // console.log("Wellcome to Tento")
+            // console.log(result)
             this.setToken(result.data.authToken.token)
             this.$apollo.query({
                 query: viewerGql,
@@ -127,6 +141,12 @@ export default {
       display: block;
       font-size: 14px;
       font-weight: bold;
+    }
+  }
+  .tos_agreement{
+    font-size: 12px;
+    a{
+      text-decoration: underline;
     }
   }
 </style>

@@ -30,7 +30,7 @@ export default {
     Header,
     Footer,
   },
-  middleware: 'authenticated',
+  middleware: 'noauthenticated',
   data () {
     return {
       data: null

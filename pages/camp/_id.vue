@@ -102,7 +102,7 @@ export default {
         return { project: data.project }
       })
   },
-  middleware: 'authenticated',
+  middleware: 'noauthenticated',
   computed: {
       ...mapState('user',['token']),
       ...mapState('button',['like','classLike','join','classJoin']),

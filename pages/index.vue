@@ -166,6 +166,7 @@ import Footer from '~/layouts/Footer.vue';
 import allProjectsGql from '~/graphql/query/allProjects.gql'
 
 export default {
+  middleware: 'noauthenticated',
   components: {
     card,
     Header,

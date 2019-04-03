@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import statusGql from '~/graphql/mutation/statusProject.gql'
 import likedGql from '~/graphql/mutation/liked.gql'
 import unlikedGql from '~/graphql/mutation/unliked.gql'
 import joinGql from '~/graphql/mutation/joinProject.gql'
@@ -39,21 +38,6 @@ export default {
   computed: {
       ...mapState('user',['token']),
       ...mapState('button',['like','classLike','join','classJoin']),
-  },
-  mounted: function () {
-     this.$apollo.mutate({
-      mutation: statusGql,
-      variables: {
-        project_id: this.project_id,
-        token: this.token,
-      }
-    }).then(({ data }) => {
-          // do what you want with data
-          this.$store.commit('button/setLike',  data.isLiked.isLiked)
-          this.$store.commit('button/setClassLike',  data.isLiked.isLiked)
-          this.$store.commit('button/setJoin',  data.isJoined.isJoined)
-          this.$store.commit('button/setClassJoin',  data.isJoined.isJoined)
-        })
   },
   methods :{
     ...mapMutations('button',['setLike','setClassLike','setJoin','setClassJoin']),

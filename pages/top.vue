@@ -50,7 +50,6 @@ export default {
   //   }
   // },
   asyncData (context) {
-    console.log('top asyncData')
     return context.app.apolloProvider.defaultClient.query({
       query: allProjectsGql,
       variables: {
@@ -64,7 +63,7 @@ export default {
             endCursor: data.allProjects.pageInfo.endCursor
             }
       }).catch((e) => {
-      error({ statusCode: 404, message: 'ページが見つかりません' })
+        context.error({ statusCode: 404, message: 'ページが見つかりません' })
     })
   },
   methods: {

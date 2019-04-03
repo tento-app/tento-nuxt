@@ -21,7 +21,6 @@ export default () => {
   const link = middlewareLink.concat(httpLink)
   console.log('apollo default')
   return {
-    ssrMode: true,
     link,
     cache: new InMemoryCache(),
     connectToDevTools: true,

@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import statusGql from '~/graphql/mutation/statusProject.gql'
 import projectGql from '~/graphql/query/project.gql'
 import viewerGql from '~/graphql/query/viewer.gql'
 import { mapState } from 'vuex'
@@ -57,8 +58,22 @@ export default {
     tags: Array,
     users: Array,
   },
+  fetch(context){
+         context.app.apolloProvider.defaultClient.mutate({
+      mutation: statusGql,
+      variables: {
+        project_id: context.params.id,
+        token: context.app.$cookies.get('cookie-token'),
+      }
+    }).then(({ data }) => {
+          // do what you want with data
+          context.store.commit('button/setLike',  data.isLiked.isLiked)
+          context.store.commit('button/setClassLike',  data.isLiked.isLiked)
+          context.store.commit('button/setJoin',  data.isJoined.isJoined)
+          context.store.commit('button/setClassJoin',  data.isJoined.isJoined)
+        })
+  },
   asyncData (context) {
-    console.log('camp/_id')
     return context.app.apolloProvider.defaultClient.query({
       query: projectGql,
       variables: {

@@ -49,6 +49,12 @@ export default {
     Header,
     Footer
   },
+  data(){
+    return {
+      in_passworderror:"",
+      in_identificationerror:""
+    }
+  },
   methods: {
     ...mapMutations('user',['setToken','setUsername','setLogo']),
     login: function () {
@@ -60,8 +66,8 @@ export default {
             }
         }).then((result) => {
             // 成功した場合に実行する処理（200OKのレスポンスの場合）
-            console.log("Wellcome to Tento")
-            console.log(result)
+            // console.log("Wellcome to Tento")
+            // console.log(result)
             this.setToken(result.data.authToken.token)
             this.$apollo.query({
                 query: viewerGql,

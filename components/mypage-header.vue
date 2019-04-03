@@ -2,10 +2,10 @@
   <div class="account">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="account_header">
-      <div class="current_img":class="{normal : editing}">
-        <div class="header_img">
+      <div class="current_img":class="{normal : editing}" >
+        <div class="header_img" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
         </div>
-        <div class="icon_img">
+        <div class="icon_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }">
 
         </div>
       </div>
@@ -29,7 +29,7 @@
 
         <div class="edit_icon">
           <label for="icon_form">
-            <div class="icon" v-show="!uploadedIcon" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
+            <div class="icon" v-show="!uploadedIcon" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }">
               <div class="cover">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
               </div>
@@ -49,7 +49,7 @@
           <div class="item">
             <div class="name">
               <div class="name">
-                {{name}}
+                {{ username }}
               </div>
               <div class="edititem" v-on:click="edittoggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
@@ -57,33 +57,33 @@
             </div>
           </div>
           <div class="item">
-            <p class="position">{{ myposition }}</p>
+            <p class="position">{{ position }}</p>
           </div>
           <div class="item">
-            <p class="intro">{{ myintro }}</p>
+            <p class="intro">{{ content }}</p>
           </div>
 
         </div>
         <div class="account_header_text_link" :class="{normal : !editing}">
           <div class="form">
             <div class="item">
-              <input type="text" name="" value="" maxlength='12' placeholder="てんと一郎" v-model="name">
+              <input type="text" maxlength='12' placeholder="てんと一郎" v-model.trim="usernameUpdate" v-on:change="usernameInput">
               <!-- <p class="count">{{ name.length }}/12</p> -->
-              <p class="count">{{ nameCount }}/12</p>
+              <p class="count">{{ usernameUpdate.length }}/12</p>
             </div>
             <div class="item">
-              <input type="text" name="" value="" maxlength='20' placeholder="デザイナー" v-model="myposition">
-              <p class="count">{{ positionCount }}/20</p>
+              <input type="text" maxlength='20' placeholder="デザイナー" v-model="positionUpdate" v-on:change="positionInput">
+              <p class="count">{{ positionUpdate.length }}/20</p>
             </div>
             <div class="item">
-              <textarea name="name" rows="8" cols="80" maxlength='160' placeholder="簡単な自己紹介を記入してください" v-model="myintro"></textarea>
-              <p class="count">{{ introCount }}/160</p>
+              <textarea rows="8" cols="80" maxlength='160' placeholder="簡単な自己紹介を記入してください" v-model="contentUpdate" v-on:change="contentInput"></textarea>
+              <p class="count">{{ contentUpdate.length }}/160</p>
             </div>
           </div>
         </div>
         <div class="btn_list" :class="{normal : !editing}">
           <p v-on:click="edittoggle">キャンセル</p>
-          <p class="btn_priority">保存</p>
+          <button @click="submit" class="btn_priority" type="button" name="button">保存する</button>
         </div>
       </div>
     </div>
@@ -91,32 +91,47 @@
 </template>
 
 <script type="text/javascript">
+import { mapState,mapMutations } from 'vuex'
+import updateUserGql from "~/graphql/mutation/updateUser.gql";
+
+
 export default {
-  props:['username','position','header','logo','intro','edit'],
+  props:{
+    username: String,
+    position: String,
+    content: String,
+    header: String,
+    logo: String
+  },
   data(){
     return{
       errors:[],
-      name:"Oswald",
-      myposition:"デザイナー",
-      myintro:"デザインならお任せください",
       editing : false,
       error : false,
       uploadedHeader: "",
       uploadedIcon: "",
+      headerEdited:false,
+      headerUpdate:null,
+      logoEdited:false,
+      logoUpdate:null,
+      usernameEdited:false,
+      usernameUpdate:"",
+      contentEdited:false,
+      contentUpdate:"",
+      positionEdited:false,
+      positionUpdate:"",
     }
   },
+  mounted(){
+    this.usernameUpdate = this.username
+    this.positionUpdate = this.position
+    this.contentUpdate = this.content
+  },
   computed: {
-        positionCount() {
-          return this.myposition.length;
-        },
-        introCount() {
-          return this.myintro.length;
-        },
-        nameCount() {
-            return this.name.length;
-        },
-    },
+        ...mapState('user',['token']),
+  },
   methods :{
+    ...mapMutations('user',['setToken']),
     edittoggle() {
       if (this.editing) {
         this.editing = false
@@ -126,12 +141,14 @@ export default {
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
-      this.headerFile = files[0]
+      this.headerUpdate = files[0]
+      this.headerEdited = true
       this.createHeader(files[0]);
     },
     onIconChange(e) {
       let files = e.target.files || e.dataTransfer.files;
-      this.iconFile = files[0]
+      this.logoUpdate = files[0]
+      this.logoEdited = true
       this.createIcon(files[0]);
     },
     // アップロードした画像を表示
@@ -155,8 +172,45 @@ export default {
     deleteHeader() {
       this.uploadedIcon = "";
     },
-  }
-}
+    usernameInput: function (event) {
+      this.usernameEdited = true
+      // this.usernameUpdate = event.target.value
+    },
+    positionInput: function (event) {
+      this.positionEdited = true
+    },
+    contentInput: function (event) {
+      this.contentEdited = true
+    },
+    createUserData(){
+      let user_data = {}
+      if (this.usernameEdited) user_data.username = this.usernameUpdate
+      if (this.positionEdited) user_data.position = this.positionUpdate
+      if (this.contentEdited) user_data.content = this.contentUpdate
+      if (this.headerEdited) user_data.header = this.headerUpdate
+      if (this.logoEdited) user_data.logo = this.logoUpdate
+      return user_data
+    },
+    submit() {
+      // console.log(this.createUserData());
+      return this.$apollo.mutate({
+        mutation: updateUserGql,
+        variables: {
+          token: this.token,
+          userData: this.createUserData()
+        }
+      })
+      .then(result => {
+        // 成功した場合に実行する処理（200OKのレスポンスの場合）
+        this.$router.push('/user/'+result.data.updateUser.user.id)
+      })
+      .catch(error => {
+        // errorの場合に実行する処理
+        console.log(error);
+      });
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -172,7 +226,7 @@ export default {
       .current_img {
         position: relative;
         .header_img {
-          background-image: url('../static/camp_img.jpg') !important;
+          // background-image: url('../static/camp_img.jpg') !important;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
@@ -183,7 +237,7 @@ export default {
           overflow: hidden;
         }
         .icon_img {
-          background-image: url('../static/camp_img.jpg') !important;
+          // background-image: url('../static/camp_img.jpg') !important;
           background-color: #fff;
           background-position: center;
           background-size: cover;
@@ -204,7 +258,7 @@ export default {
         }
         .edit_header {
           .img {
-            background-image: url('../static/camp_img.jpg') !important;
+            // background-image: url('../static/camp_img.jpg') !important;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -257,7 +311,7 @@ export default {
         .edit_icon {
           position: relative;
           .icon {
-            background-image: url('../static/camp_img.jpg') !important;
+            // background-image: url('../static/camp_img.jpg') !important;
             background-color: #fff;
             background-position: center;
             background-size: cover;

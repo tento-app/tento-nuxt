@@ -14,8 +14,7 @@ export default {
 
 <style lang="scss">
 .camp_body_text_describe{
-  margin: 0 auto;
-  margin-top: 2rem;
+  margin: 2rem auto 3rem;
   max-width: 840px;
   padding: 0 30px;
 

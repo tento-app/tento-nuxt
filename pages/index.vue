@@ -21,7 +21,9 @@
                 <p>学生による、学生のための、学生交流サイト</p>
               </div>
               <div class="newaccount">
-                <a class="btn_priority">新規アカウント作成</a>
+                <nuxt-link to='/sign-up' class='btn_priority'>
+                  新規アカウント作成
+                </nuxt-link>
               </div>
             </div>
             <div class="img">
@@ -33,7 +35,7 @@
         <div class="feature">
           <div class="text pc">
             <h2>Tentoとは？</h2>
-            <p>Tentoとは学生のみが利用する学生求人サイトです。<br>あなたの興味のあることや、やりたいことをみんなでシェアして取り組める!<br>あなたが発信すればかなうアクティブサービス！</p>
+            <p>Tentoとは学生のみが利用する学生求人サイトです。<br>あなたの興味のあることや、やりたいことをみんなでシェアして取り組める!<br>イベント開催告知から開発メンバー募集までなんでもあり！</p>
           </div>
           <div class="text md">
             <h2>Tento feature</h2>
@@ -44,7 +46,7 @@
                 <img src="~/static/feature01-min.png" alt="">
               </div>
               <h3>好みの募集がすぐ見つかる</h3>
-              <p>テキストが入りますテキストが入りますテキストが入ります</p>
+              <p>スキルや人気のCampが一覧からすぐ見つけられます。</p>
             </div>
             <div class="feature_content_item item02">
               <div class="img">
@@ -142,7 +144,9 @@
             </div>
             <div class="text">
               <h4>集まろう！<br>学生の新しいコミュニティー</h4>
-              <p class="btn_priority">さあ始めよう</p>
+              <div class="link-cover">
+                <nuxt-link to='/sign-up' class="btn_priority">さあ始めよう！</nuxt-link>
+              </div>
             </div>
           </div>
 
@@ -390,6 +394,12 @@ export default {
         font-weight: bold;
         font-size: 1.6rem;
         margin-bottom: 1rem;
+      }
+      .link-cover {
+        text-align: center;
+        a {
+          margin: 0 auto;
+        }
       }
     }
   }

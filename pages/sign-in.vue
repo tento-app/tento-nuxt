@@ -39,6 +39,12 @@ import loginGql from '~/graphql/mutation/login.gql'
 import viewerGql from '~/graphql/query/viewer.gql'
 
 export default {
+  data() {
+    return {
+      in_password:'',
+      in_identification:''
+    }
+  },
   components: {
     Header,
     Footer
@@ -54,7 +60,7 @@ export default {
             }
         }).then((result) => {
             // 成功した場合に実行する処理（200OKのレスポンスの場合）
-            console.log("成功")
+            console.log("Wellcome to Tento")
             console.log(result)
             this.setToken(result.data.authToken.token)
             this.$apollo.query({

@@ -88,11 +88,11 @@ export default {
         .account {
           background-size: cover;
           background-position: center;
-          margin-left: 0.8rem;
+          margin-right: 0.5rem;
           font-size: 0;
           padding: 0;
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
           cursor: pointer;
@@ -119,7 +119,7 @@ export default {
         .submit {
           display: flex;
           align-items: center;
-          margin-left: 0.8rem;
+          margin-right: 0.5rem;
         }
       }
     }

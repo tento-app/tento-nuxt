@@ -37,6 +37,12 @@ export default {
     Header,
     Footer
   },
+  data(){
+    return {
+      in_passworderror:"",
+      in_identificationerror:""
+    }
+  },
   methods: {
     ...mapMutations('user',['setToken','setUsername','setLogo']),
     login: function () {

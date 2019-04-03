@@ -75,18 +75,18 @@ export default {
   // },
   mounted(){
     this.$apollo.mutate({
-      mutation: statusGql,
-      variables: {
-        project_id: this.$route.params.id,
-        token: this.$cookies.get('cookie-token'),
-      }
-    }).then(({ data }) => {
+        mutation: statusGql,
+        variables: {
+          project_id: this.$route.params.id,
+          token: this.$cookies.get('cookie-token'),
+        }
+      }).then(({ data }) => {
           // do what you want with data
           this.$store.commit('button/setLike',  data.isLiked.isLiked)
           this.$store.commit('button/setClassLike',  data.isLiked.isLiked)
           this.$store.commit('button/setJoin',  data.isJoined.isJoined)
           this.$store.commit('button/setClassJoin',  data.isJoined.isJoined)
-        })
+      })
   },
   asyncData (context) {
     return context.app.apolloProvider.defaultClient.query({

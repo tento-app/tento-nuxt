@@ -1,8 +1,13 @@
 <template lang="html">
   <div class="account">
     <div class="account_header">
-      <div class="img" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
-        <div class="icon" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
+      <div class="img" v-if="header" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
+        <div class="icon" v-if="logo" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
+        <div class="icon empty_icon" v-if="!logo"></div>
+      </div>
+      <div class="img empty" v-if="!header">
+        <div class="icon" v-if="logo" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
+        <div class="icon empty_icon" v-if="!logo"></div>
       </div>
       <div class="account_header_text">
         <div class="account_header_text_link">
@@ -31,8 +36,14 @@ export default {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
-    padding: 80px 0 0;
+    padding: 80px 30px 0;
     &_header{
+      .empty {
+        background-image: url('../static/header_logo.png');
+      }
+      .empty_icon {
+        background-image: url('../static/icon_empty.png');
+      }
       .img{
         background-position: center;
         background-repeat: no-repeat;
@@ -41,19 +52,19 @@ export default {
         height: 280px;
         border-radius: 12px;
         position: relative;
+        box-shadow: $box_shadow02;
         .icon{
           background-color: #fff;
           background-position: center;
           background-size: cover;
           width: 120px;
           height: 120px;
-          border: solid 3px $main-color;
+          border: solid 3px $black04;
           border-radius: 50%;
           position: absolute;
           transform: translate(-50%,-50%);
           left: 50%;
           bottom: -120px;
-          box-shadow: &$box_shadow01;
         }
       }
       &_text{

@@ -102,7 +102,7 @@ export default {
           width: 35px;
         }
       }
-      
+
     }
   }
 }

@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import statusGql from '~/graphql/mutation/statusProject.gql'
 import projectGql from '~/graphql/query/project.gql'
 import viewerGql from '~/graphql/query/viewer.gql'
 import { mapState } from 'vuex'
@@ -57,21 +58,35 @@ export default {
     tags: Array,
     users: Array,
   },
-  async fetch (context) {
-    const token = context.app.$cookies.get('cookie-token')
-    context.store.commit('user/setToken', token)
-    context.app.apolloProvider.defaultClient.query({
-        query: viewerGql,
-        variables: {
-            token: token
-        }
-    }).then((result) => {
-        context.store.commit('user/setUsername', result.data.viewer.username)
-        context.store.commit('user/setLogo', result.data.viewer.logo)
-    }).catch((error) => {
-    // errorの場合に実行する処理
-    console.log("失敗")
-    })
+  // fetch(context){
+  //        context.app.apolloProvider.defaultClient.mutate({
+  //     mutation: statusGql,
+  //     variables: {
+  //       project_id: context.params.id,
+  //       token: context.app.$cookies.get('cookie-token'),
+  //     }
+  //   }).then(({ data }) => {
+  //         // do what you want with data
+  //         context.store.commit('button/setLike',  data.isLiked.isLiked)
+  //         context.store.commit('button/setClassLike',  data.isLiked.isLiked)
+  //         context.store.commit('button/setJoin',  data.isJoined.isJoined)
+  //         context.store.commit('button/setClassJoin',  data.isJoined.isJoined)
+  //       })
+  // },
+  mounted(){
+    this.$apollo.mutate({
+      mutation: statusGql,
+      variables: {
+        project_id: this.$route.params.id,
+        token: this.$cookies.get('cookie-token'),
+      }
+    }).then(({ data }) => {
+          // do what you want with data
+          this.$store.commit('button/setLike',  data.isLiked.isLiked)
+          this.$store.commit('button/setClassLike',  data.isLiked.isLiked)
+          this.$store.commit('button/setJoin',  data.isJoined.isJoined)
+          this.$store.commit('button/setClassJoin',  data.isJoined.isJoined)
+        })
   },
   asyncData (context) {
     return context.app.apolloProvider.defaultClient.query({
@@ -81,11 +96,16 @@ export default {
         }
       }).then(({ data }) => {
         // do what you want with data
+        if(!data.project){
+          return context.error({ statusCode: 404, message: 'ページが見つかりません' })
+        }
         return { project: data.project }
       })
   },
+  middleware: 'authenticated',
   computed: {
       ...mapState('user',['token']),
+      ...mapState('button',['like','classLike','join','classJoin']),
   },
 }
 </script>

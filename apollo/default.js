@@ -19,6 +19,7 @@ export default () => {
     return forward(operation)
   })
   const link = middlewareLink.concat(httpLink)
+  // console.log('apollo default')
   return {
     link,
     cache: new InMemoryCache(),

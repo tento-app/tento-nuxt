@@ -54,8 +54,6 @@ export default {
             }
         }).then((result) => {
             // 成功した場合に実行する処理（200OKのレスポンスの場合）
-            console.log("成功")
-            console.log(result)
             this.setToken(result.data.authToken.token)
             this.$apollo.query({
                 query: viewerGql,

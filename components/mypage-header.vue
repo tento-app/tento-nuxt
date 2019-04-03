@@ -67,17 +67,17 @@
         <div class="account_header_text_link" :class="{normal : !editing}">
           <div class="form">
             <div class="item">
-              <input type="text" name="" maxlength='12' placeholder="てんと一郎" v-model.trim="username">
+              <input type="text" maxlength='12' placeholder="てんと一郎" v-model.trim="usernameUpdate" v-on:change="usernameInput">
               <!-- <p class="count">{{ name.length }}/12</p> -->
-              <p class="count">{{ username.length }}/12</p>
+              <p class="count">{{ usernameUpdate.length }}/12</p>
             </div>
             <div class="item">
-              <input type="text" name="" maxlength='20' placeholder="デザイナー" v-model="position">
-              <p class="count">{{ positionCount }}/20</p>
+              <input type="text" maxlength='20' placeholder="デザイナー" v-model="positionUpdate" v-on:change="positionInput">
+              <p class="count">{{ positionUpdate.length }}/20</p>
             </div>
             <div class="item">
-              <textarea name="name" rows="8" cols="80" maxlength='160' placeholder="簡単な自己紹介を記入してください" v-model="content"></textarea>
-              <p class="count">{{ introCount }}/160</p>
+              <textarea rows="8" cols="80" maxlength='160' placeholder="簡単な自己紹介を記入してください" v-model="contentUpdate" v-on:change="contentInput"></textarea>
+              <p class="count">{{ contentUpdate.length }}/160</p>
             </div>
           </div>
         </div>
@@ -96,23 +96,13 @@ import updateUserGql from "~/graphql/mutation/updateUser.gql";
 
 
 export default {
-  props:['username','position','content','header','logo','intro','edit'],
-  // asyncData(context) {
-  //   return context.app.apolloProvider.defaultClient
-  //     .query({
-  //       query: mypageGql,
-  //       variables: {}
-  //     })
-  //     .then(({ data }) => {
-  //       // do what you want with data
-  //       return {
-  //         multiselectoptions: data.allTags.edges.map(function (value) {
-  //             return value.node.name
-  //           })
-  //       };
-  //     });
-  // },
-
+  props:{
+    username: String,
+    position: String,
+    content: String,
+    header: String,
+    logo: String
+  },
   data(){
     return{
       errors:[],
@@ -120,23 +110,26 @@ export default {
       error : false,
       uploadedHeader: "",
       uploadedIcon: "",
-      updatesername:"",
-      updatecontent:'',
-      updateposition:''
+      headerEdited:false,
+      headerUpdate:null,
+      logoEdited:false,
+      logoUpdate:null,
+      usernameEdited:false,
+      usernameUpdate:"",
+      contentEdited:false,
+      contentUpdate:"",
+      positionEdited:false,
+      positionUpdate:"",
     }
+  },
+  mounted(){
+    this.usernameUpdate = this.username
+    this.positionUpdate = this.position
+    this.contentUpdate = this.content
   },
   computed: {
         ...mapState('user',['token']),
-        positionCount() {
-          return this.position.length;
-        },
-        introCount() {
-          return this.content.length;
-        },
-        nameCount() {
-            return this.username.length;
-        },
-    },
+  },
   methods :{
     ...mapMutations('user',['setToken']),
     edittoggle() {
@@ -148,12 +141,14 @@ export default {
     },
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
-      this.headerFile = files[0]
+      this.headerUpdate = files[0]
+      this.headerEdited = true
       this.createHeader(files[0]);
     },
     onIconChange(e) {
       let files = e.target.files || e.dataTransfer.files;
-      this.iconFile = files[0]
+      this.logoUpdate = files[0]
+      this.logoEdited = true
       this.createIcon(files[0]);
     },
     // アップロードした画像を表示
@@ -177,30 +172,37 @@ export default {
     deleteHeader() {
       this.uploadedIcon = "";
     },
+    usernameInput: function (event) {
+      this.usernameEdited = true
+      // this.usernameUpdate = event.target.value
+    },
+    positionInput: function (event) {
+      this.positionEdited = true
+    },
+    contentInput: function (event) {
+      this.contentEdited = true
+    },
+    createUserData(){
+      let user_data = {}
+      if (this.usernameEdited) user_data.username = this.usernameUpdate
+      if (this.positionEdited) user_data.position = this.positionUpdate
+      if (this.contentEdited) user_data.content = this.contentUpdate
+      if (this.headerEdited) user_data.header = this.headerUpdate
+      if (this.logoEdited) user_data.logo = this.logoUpdate
+      return user_data
+    },
     submit() {
-      console.log({
-        username: this.username,
-        position: this.position,
-        content: this.content,
-        uploadedHeader: this.header,
-        uploadedIcon: this.logo
-      });
+      // console.log(this.createUserData());
       return this.$apollo.mutate({
         mutation: updateUserGql,
         variables: {
           token: this.token,
-          userData: {
-            username: this.username,
-            position: this.position,
-            content: this.content,
-            uploadedHeader: this.header,
-            uploadedIcon: this.logo
-          }
+          userData: this.createUserData()
         }
       })
       .then(result => {
         // 成功した場合に実行する処理（200OKのレスポンスの場合）
-        this.$router.push('/camp/'+result.data.updateUser.user.id)
+        this.$router.push('/user/'+result.data.updateUser.user.id)
       })
       .catch(error => {
         // errorの場合に実行する処理

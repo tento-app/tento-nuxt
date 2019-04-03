@@ -9,13 +9,13 @@ export const mutations = {
     setLike(state,bool){
         state.like = bool
     },
-    setClassLike(State,bool){
+    setClassLike(state,bool){
         state.classLike  = bool
     },
     setJoin(state,bool){
         state.join  = bool
     },
-    setClassJoin(State,bool){
+    setClassJoin(state,bool){
         state.classJoin  = bool
     },
 };

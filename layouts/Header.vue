@@ -16,10 +16,10 @@
             <p>Sign Up</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal" v-else v-if="logo" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
+        <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
           <headerModal v-if="showModal" :hostname='username' />
         </div>
-        <div class="account empty" id="account" @click="openModal" v-else v-if="!logo">
+        <div class="account empty" id="account" @click="openModal" v-if="!logo && username">
           <headerModal v-if="showModal" :hostname='username' />
         </div>
         <nuxt-link to="/create" v-if="username" class="pc">

@@ -8,22 +8,22 @@
         </div>
         <div class="item">
           <label for="in-id">メールアドレス</label>
-          <input type="text" name="" value="" id="in-id" v-model="in_identification" v-bind:class="{error : in_identificationerror}">
+          <input type="text" name="" value="" id="in-id">
         </div>
         <div class="item">
           <label for="in-id">ユーザーID</label>
-          <input type="text" name="" value="" id="in-id" v-model="in_identification" v-bind:class="{error : in_identificationerror}">
+          <input type="text" name="" value="" id="in-id">
         </div>
         <div class="item">
           <label for="in-password">パスワード</label>
-          <input type="password" name="" value="" id="in-password" v-model="in_password" v-bind:class="{error : in_passworderror}">
+          <input type="password" name="" value="" id="in-password" >
         </div>
         <p class="tos_agreement">[新規アカウント作成]をクリックすることで
           <nuxt-link to='/terms'>利用規約</nuxt-link>、<nuxt-link to='/privacy'>プライバシーポリシー</nuxt-link>
           に同意するものとします。
         </p>
         <div class="button">
-          <button name="button" class="btn_priority" @click="login">Sign Up</button>
+          <button name="button" class="btn_priority" @click="">Sign Up</button>
         </div>
       </div>
 

@@ -66,6 +66,9 @@ export default {
     margin-top: 80px;
     background-color: $backround_color01;
   }
+  .card {
+    padding: 1rem 0 2rem;
+  }
   .empty {
     text-align: center;
     padding-bottom: 5rem;

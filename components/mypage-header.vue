@@ -34,12 +34,12 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
               </div>
             </div>
-          </label>
-          <div class="newicon" v-show="uploadedIcon" :style="{ 'background-image': 'url(' + uploadedIcon + ')' }">
-            <div class="cover">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
+            <div class="newicon" v-show="uploadedIcon" :style="{ 'background-image': 'url(' + uploadedIcon + ')' }">
+              <div class="cover">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
+              </div>
             </div>
-          </div>
+          </label>
           <input type="file" id="icon_form" v-on:change="onIconChange">
         </div>
       </div>
@@ -215,6 +215,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/assets/style/_color.scss";
+@media (min-width:500px) {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
@@ -465,4 +466,257 @@ export default {
       }
     }
   }
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .account{
+    max-width: 840px;
+    margin: 0px auto 0;
+    padding: 0px 0 40px;
+    .normal {
+      display: none !important;
+    }
+    &_header{
+      .current_img {
+        position: relative;
+        .header_img {
+          // background-image: url('../static/camp_img.jpg') !important;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 180px;
+          overflow: hidden;
+        }
+        .icon_img {
+          // background-image: url('../static/camp_img.jpg') !important;
+          background-color: #fff;
+          background-position: center;
+          background-size: cover;
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
+          border: solid 3px $main-color;
+          left: 50%;
+          bottom: -110px;
+          position: absolute;
+          transform: translate(-50%,-50%);
+          overflow: hidden;
+        }
+      }
+      .edit_img {
+        input {
+          display: none;
+        }
+        .edit_header {
+          .img {
+            // background-image: url('../static/camp_img.jpg') !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 180px;
+            box-shadow: $box_shadow04;
+            overflow: hidden;
+            cursor: pointer;
+            .cover {
+              width: 100%;
+              height: 100%;
+              transition: $transtion01;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $black02;
+              svg {
+                stroke:rgba(255,255,255,1);
+                transition: $transtion01;
+              }
+            }
+          }
+          .newimg {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            .cover {
+              width: 100%;
+              height: 100%;
+              transition: $transtion01;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $black02;
+              svg {
+                stroke:rgba(255,255,255,1);
+                transition: $transtion01;
+              }
+            }
+          }
+        }
+        .edit_icon {
+          position: relative;
+          .icon {
+            // background-image: url('../static/camp_img.jpg') !important;
+            background-color: #fff;
+            background-position: center;
+            background-size: cover;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: solid 3px $main-color;
+            left: 50%;
+            bottom: -110px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            overflow: hidden;
+            cursor: pointer;
+            .cover {
+              width: 100%;
+              height: 100%;
+              transition: $transtion01;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $black02;
+              svg {
+                stroke:rgba(255,255,255,1);
+                transition: $transtion01;
+              }
+            }
+          }
+          .newicon {
+            background-color: #fff;
+            background-position: center;
+            background-size: cover;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: solid 3px $main-color;
+            left: 50%;
+            bottom: -110px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            overflow: hidden;
+            cursor: pointer;
+            .cover {
+              width: 100%;
+              height: 100%;
+              transition: $transtion01;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $black02;
+              svg {
+                stroke:rgba(255,255,255,1);
+                transition: $transtion01;
+              }
+            }
+          }
+        }
+      }
+      &_text{
+        margin-top: 4.5rem;
+        text-align: center;
+        padding: 0 15px;
+        .result {
+          .item {
+            .name {
+              position: relative;
+              font-size: 1.8rem;
+              font-weight: bold;
+              display: inline-block;
+              .edititem {
+                position: absolute;
+                top: 2px;
+                right: -30px;
+                cursor: pointer;
+              }
+            }
+            .position {
+              color: $black02;
+              font-size: 1rem;
+            }
+          }
+        }
+        &_link {
+          .form {
+            .item {
+              margin-bottom: 1rem;
+              position: relative;
+              max-width: 400px;
+              .count {
+                bottom: 8px;
+                right: 10px;
+                position: absolute;
+                font-weight: lighter;
+                color: #ccc;
+              }
+              input{
+                background-color: #fafafa;
+                border: #cacaca solid 1px;
+                border-radius: 4px;
+                font-size: 16px;
+                padding: 0.4rem;
+                font-weight: bold;
+                box-sizing: border-box;
+                width: 100%;
+                &::placeholder{
+                  font-weight: normal;
+                  color: #ddd;
+                  font-size: 14px;
+                }
+              }
+              textarea{
+                background-color: #fafafa;
+                border: #cacaca solid 1px;
+                border-radius: 4px;
+                font-size: 16px;
+                padding: 0.4rem;
+                font-weight: bold;
+                box-sizing: border-box;
+                max-width: 100%;
+                &::placeholder{
+                  font-weight: normal;
+                  color: #ddd;
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+        .btn_list {
+          max-width: 400px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 0;
+          .btn_priority {
+            margin: 0;
+          }
+          p {
+            &:first-child{
+              font-weight: bold;
+              color: $black02;
+              cursor: pointer;
+              margin-right: 1rem;
+            }
+            &:last-child{
+              font-weight: bold;
+              padding: 0.6rem 1.5rem;
+              margin-left: 1rem;
+              font-size: 1rem;
+              cursor: pointer;
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
 </style>

@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/assets/style/_color.scss";
+@media (min-width:500px) {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
@@ -92,4 +93,64 @@ export default {
       }
     }
   }
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .account{
+    max-width: 840px;
+    margin: 0px auto 0;
+    &_header{
+      .empty {
+        background-image: url('../static/header_logo.png');
+      }
+      .empty_icon {
+        background-image: url('../static/icon_empty.png');
+      }
+      .img{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 180px;
+        position: relative;
+        .icon{
+          background-color: #fff;
+          background-position: center;
+          background-size: cover;
+          width:110px;
+          height: 110px;
+          border: solid 3px $black04;
+          border-radius: 50%;
+          position: absolute;
+          transform: translate(-50%,-50%);
+          left: 50%;
+          bottom: -110px;
+        }
+      }
+      &_text{
+        margin-top: 4.5rem;
+        text-align: center;
+        &_link {
+          justify-content: center;
+          display: flex;
+        }
+        .name{
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 1;
+        }
+        .position{
+          font-size: 14px;
+          color: #ccc;
+        }
+        .intro{
+          margin: 0.5rem auto 0;
+          text-align: left;
+          max-width: 300px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
 </style>

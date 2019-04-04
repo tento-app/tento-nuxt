@@ -69,6 +69,12 @@ body{
     }
   }
   @media screen and (min-width: 0px) and (max-width: 500px) {
-
+    .content{
+      margin: 0px auto 0;
+      &.item{
+        margin-top: 80px;
+        padding:0 15px;
+      }
+    }
   }
 }

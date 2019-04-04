@@ -3,14 +3,18 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="main">
-      <div class="card">
-        <cardEdit title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
-        <div class="empty_posted empty" v-if="host_projects.length < 1">
-          <h3>投稿したキャンプがありません...</h3>
-          <div class="img">
-            <img src="flow02-min.png" alt="">
+      <div class="mycard">
+        <div class="mycard">
+          <cardEdit title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
+        </div>
+        <div class="mycard">
+          <div class="empty_posted empty" v-if="host_projects.length < 1">
+            <h3>投稿したキャンプがありません...</h3>
+            <div class="img">
+              <img src="flow02-min.png" alt="">
+            </div>
+            <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
           </div>
-          <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
         </div>
       </div>
       </div>
@@ -63,6 +67,9 @@ export default {
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
 
+.content {
+  margin: 5rem 0;
+}
 .main{
   // background-color: #fff;
   .skill_container{

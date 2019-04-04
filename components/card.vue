@@ -1,5 +1,5 @@
 <template id="">
-  <div class="content item">
+  <div class="content">
     <div class="nav">
       <h1>{{ title }}</h1>
       <div class="link">
@@ -30,6 +30,7 @@
           </div>
         </div>
       </nuxt-link>
+      <p class="search_num">{{projects.length}}</p>
     </div>
   </div>
 </template>
@@ -46,7 +47,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/assets/style/_color.scss";
+.search_num {
+  display: none;
+}
 @media (min-width: 840px) {
+  .content {
+    padding: 0 30px;
+  }
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
@@ -179,6 +186,9 @@ export default {
   }
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
+  .content {
+    padding: 0 30px;
+  }
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
@@ -306,6 +316,9 @@ export default {
   }
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .content {
+    padding: 0 15px;
+  }
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;

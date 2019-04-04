@@ -6,22 +6,55 @@
       <p class="bookmark" @click="doLike()" v-if="!classLike"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
       <p class="bookmark liked" @click="doUnlike()" v-if="classLike"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></p>
 
-      <div class="btn_priority" @click="doJoin()" v-if="!classJoin">
+      <div class="btn_priority" @click="doJoin()" v-if="!classJoin" v-on:click="checkJoinfeedback">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         <p>Campに参加</p>
       </div>
-      <div class="btn_priority joined" @click="doUnjoin()" v-if="classJoin">
+      <div class="btn_priority joined" v-if="classJoin" v-on:click="checkcancellfeedback">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         <p>参加中</p>
       </div>
+
+      <div class="feedback" :class="{ join_feedback : joinFeedback}">
+        <div class="feedback_cover">
+          <div class="feedback_content">
+            <h3>Well come to this Camp!</h3>
+            <div class="img">
+              <img src="../../static/wellcome.svg" alt="">
+            </div>
+            <div class="">
+              <p class="btn_priority" v-on:click="clearJoinfeedback">OK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback" :class="{ cancell_feedback : cancellFeedback}">
+        <div class="feedback_cover">
+          <div class="feedback_content">
+            <h3>参加を取りやめますか？</h3>
+            <div class="img">
+              <img src="../../static/question.svg" alt="">
+            </div>
+            <div class="btn_list">
+              <p v-on:click="clearcancellfeedback">キャンセル</p>
+              <p class="btn_priority" @click="doUnjoin()" v-on:click="clearcancellfeedback">OK</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+
+
 
     <div class="btn_list sp">
       <!-- <a :href="twitterUrl()" target="_blank"><img src="../../static/Twitter_Social_Icon_Circle_Color.svg" alt=""> </a> -->
-      <div class="btn_priority" @click="doJoin()" v-if="!classJoin">
+      <div class="btn_priority" @click="doJoin()" v-if="!classJoin" v-on:click="checkJoinfeedback">
         <p>Campに参加</p>
       </div>
-      <div class="btn_priority joined" @click="doUnjoin()" v-if="classJoin">
+      <div class="btn_priority joined" v-if="classJoin" v-on:click="checkcancellfeedback">
         <p>参加中</p>
       </div>
 
@@ -29,9 +62,37 @@
         マイリストに保存
       </p>
       <p class="bookmark liked" @click="doUnlike()" v-if="classLike">
-        保存中
+        保存済み
       </p>
 
+      <div class="feedback" :class="{ join_feedback : joinFeedback}">
+        <div class="feedback_cover">
+          <div class="feedback_content">
+            <h3>Well come to this Camp!</h3>
+            <div class="img">
+              <img src="../../static/wellcome.svg" alt="">
+            </div>
+            <div class="">
+              <p class="btn_priority" v-on:click="clearJoinfeedback">OK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback" :class="{ cancell_feedback : cancellFeedback}">
+        <div class="feedback_cover">
+          <div class="feedback_content">
+            <h3>参加を取りやめますか？</h3>
+            <div class="img">
+              <img src="../../static/question.svg" alt="">
+            </div>
+            <div class="btn_list">
+              <p v-on:click="clearcancellfeedback">キャンセル</p>
+              <p class="btn_priority" @click="doUnjoin()" v-on:click="clearcancellfeedback">OK</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -53,6 +114,8 @@ export default {
     return {
       url:'https://www.google.com/?hl=ja',
       twitter_url: "https://twitter.com/intent/tweet?url={0}&text={1}",
+      joinFeedback:false,
+      cancellFeedback:false,
     }
   },
   computed: {
@@ -60,6 +123,18 @@ export default {
       ...mapState('button',['like','classLike','join','classJoin']),
   },
   methods :{
+    clearJoinfeedback() {
+      this.joinFeedback=false
+    },
+    checkJoinfeedback() {
+      this.joinFeedback=true
+    },
+    clearcancellfeedback() {
+      this.cancellFeedback=false
+    },
+    checkcancellfeedback() {
+      this.cancellFeedback=true
+    },
     ...mapMutations('button',['setLike','setClassLike','setJoin','setClassJoin']),
     formatByArr(msg) {
       // フォーマット（引数可変（配列）版）
@@ -143,7 +218,85 @@ export default {
 
 <style lang="scss">
 @import '~/assets/style/_color.scss';
+@keyframes scalein01 {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 @media (min-width:500px) {
+  .feedback {
+    display: none;
+    .feedback_cover {
+      z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $black02;
+      .feedback_content {
+        animation: scalein01 0.5s ease-in 0s;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        h3 {
+          text-align: center;
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+        .img {
+          max-width: 200px;
+          margin: 0 auto;
+          img {
+            width: 100%;
+          }
+        }
+        .btn_priority {
+          margin: 1rem auto 0;
+        }
+        .btn_list {
+          margin-top: 1.5rem;
+          p {
+            cursor: pointer;
+          }
+          .btn_priority {
+            margin: 0;
+            margin-left: auto;
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .join_feedback {
+    display: block;
+  }
+
+  .cancell_feedback {
+    display: block;
+  }
+
+  // body {
+  //   overflow: hidden;
+  // }
+
+
+
   .sp {
     display: none !important;
   }
@@ -210,6 +363,67 @@ export default {
 }
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .feedback {
+    display: none;
+    .feedback_cover {
+      z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $black02;
+      .feedback_content {
+        animation: scalein01 0.5s ease-in 0s;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        h3 {
+          text-align: center;
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+        .img {
+          max-width: 250px;
+          margin: 0 auto;
+          img {
+            width: 100%;
+          }
+        }
+        .btn_priority {
+          margin: 1rem auto 0;
+        }
+        .btn_list {
+          margin-top: 1.5rem;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          p {
+            cursor: pointer;
+          }
+          .btn_priority {
+            margin: 0;
+            margin-left: auto;
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .join_feedback {
+    display: block;
+  }
+
+  .cancell_feedback {
+    display: block;
+  }
+
   .pc {
     display: none !important;
   }

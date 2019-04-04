@@ -3,7 +3,7 @@ import viewerGql from '~/graphql/query/viewer.gql'
 export default function (context) {
     // ユーザが認証されていない場合
     if (!context.app.$cookies.get('cookie-token')) {
-      return context.redirect('/sign-in')
+      return context.redirect('/user/login')
     }
     const token = context.app.$cookies.get('cookie-token')
     context.store.commit('user/setToken', token)

@@ -18,7 +18,7 @@
       <h1>An error occurred</h1>
       <p>{{ error.message }}</p>
     </div>
-    <nuxt-link to="/" class="btn_priority">Home page</nuxt-link>
+    <a href="/" class="btn_priority">Home page</a>
   </div>
     <!-- <Footer /> -->
   </section>

@@ -21,7 +21,7 @@
                 <p>学生による、学生のための、学生交流サイト</p>
               </div>
               <div class="newaccount">
-                <nuxt-link to='/sign-up' class='btn_priority'>
+                <nuxt-link to='/user/create' class='btn_priority'>
                   新規アカウント作成
                 </nuxt-link>
               </div>
@@ -145,7 +145,7 @@
             <div class="text">
               <h4>集まろう！<br>学生の新しいコミュニティー</h4>
               <div class="link-cover">
-                <nuxt-link to='/sign-up' class="btn_priority">さあ始めよう！</nuxt-link>
+                <nuxt-link to='/user/create' class="btn_priority">さあ始めよう！</nuxt-link>
               </div>
             </div>
           </div>

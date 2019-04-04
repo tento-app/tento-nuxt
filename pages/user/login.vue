@@ -18,7 +18,7 @@
 
         </form>
         <p class="tos_agreement">
-          新規アカウント作成の方は<nuxt-link to='/sign-up'>こちら</nuxt-link>から
+          新規アカウント作成の方は<nuxt-link to='/user/create'>こちら</nuxt-link>から
         </p>
         <div class="button">
           <button name="button" class="btn_priority" @click="login">Sign In</button>

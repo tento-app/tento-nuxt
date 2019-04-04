@@ -11,19 +11,19 @@
           <skill :tags="tags" title="スキル" :editable="true"/>
       </div>
       <div class="card">
-        <card title="Posted Camp" :projects="host_projects"/>
+        <card title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
         <div class="empty_posted empty" v-if="host_projects.length < 1">
-          <h3>投稿したcampがありません...</h3>
+          <h3>投稿したキャンプがありません...</h3>
           <div class="img">
             <img src="flow02-min.png" alt="">
           </div>
-          <nuxt-link to="/create" class='btn_priority'>キャンプを投稿</nuxt-link>
+          <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
         </div>
       </div>
       <div class="card">
-        <card title="Joined Camp" :projects="join_projects"/>
+        <card title="参加したキャンプ" :projects="join_projects"/>
         <div class="empty_posted empty" v-if="join_projects.length < 1">
-          <h3>参加したcampがありません...</h3>
+          <h3>参加したキャンプがありません...</h3>
           <div class="img">
             <img src="feature01-min.png" alt="">
           </div>

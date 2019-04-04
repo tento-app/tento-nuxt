@@ -1,5 +1,5 @@
 <template id="">
-  <div class="content item">
+  <div class="cover">
     <div class="nav">
       <h1>{{ title }}</h1>
     </div>
@@ -7,14 +7,8 @@
       <div class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
           <div class="card_img" v-if="!project.node.header">
-              <button>非公開にする</button>
-                <button>終了する</button>
-                <button>編集</button>
           </div>
           <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-            <button>非公開にする</button>
-            <button>終了する</button>
-            <button>編集</button>
             <!-- <p class="card_img_category" >公開中 開催中</p> -->
           </div>
           <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" >
@@ -29,6 +23,11 @@
             </div>
             </div>
           </nuxt-link>
+        </div>
+        <div class="button_list">
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></p>
         </div>
       </div>
     </div>
@@ -50,7 +49,7 @@ export default {
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 0 30px;
+    padding: 3rem 30px 0;
     h1{
       text-align: center;
       margin-bottom: 1rem;
@@ -90,8 +89,21 @@ export default {
     }
     .card_link {
       width: 31.5%;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       transition: $transtion01;
+      .button_list {
+        box-shadow: $box_shadow_card;
+        background-color: #fff;
+        margin-top: 1rem;
+        padding:1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 12px;
+        p {
+          cursor: pointer;
+        }
+      }
     }
     .card {
       border-radius: 12px;
@@ -213,6 +225,19 @@ export default {
       margin-bottom: 2rem;
       transition: $transtion01;
       display: block;
+      .button_list {
+        box-shadow: $box_shadow_card;
+        background-color: #fff;
+        margin-top: 1rem;
+        padding:1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 12px;
+        p {
+          cursor: pointer;
+        }
+      }
       .card {
         border-radius: 12px;
         box-shadow: $box_shadow_card;
@@ -325,6 +350,7 @@ export default {
   }
   .cards_list {
     max-width: 840px;
+    padding: 0 15px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -333,6 +359,19 @@ export default {
       width: 100%;
       margin-bottom: 2rem;
       transition: $transtion01;
+      .button_list {
+        box-shadow: $box_shadow_card;
+        background-color: #fff;
+        margin-top: 1rem;
+        padding:1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 12px;
+        p {
+          cursor: pointer;
+        }
+      }
     }
     .card {
       border-radius: 12px;

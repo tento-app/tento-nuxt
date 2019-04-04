@@ -16,14 +16,20 @@
     "apollo-cache-inmemory": "1.4.2",
     "apollo-client": "2.0.0",
     "apollo-link-http": "^1.5.11",
+    "apollo-upload-client": "^10.0.0",
     "cookie-universal-nuxt": "^2.0.14",
     "cross-env": "^5.2.0",
     "graphql": "0.11.3",
     "graphql-tag": "^2.10.1",
     "js-cookie": "^2.2.0",
+    "luxon": "^1.12.0",
     "nuxt": "^2.4.0",
+    "nuxt-dayjs-module": "^0.1.2",
     "vue-awesome-swiper": "^3.1.3",
-    "vue2-content-editor": "https://github.com/tui2tone/vue2-medium-editor"
+    "vue-datetime": "^1.0.0-beta.10",
+    "vue-multiselect": "^2.1.4",
+    "vue2-content-editor": "https://github.com/tui2tone/vue2-medium-editor",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
     "node-sass": "^4.11.0",

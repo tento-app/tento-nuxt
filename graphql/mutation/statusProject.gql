@@ -1,0 +1,8 @@
+mutation($token: String!, $project_id: String!){
+  isJoined(token:$token,projectId:$project_id){
+    isJoined
+  }
+  isLiked(token:$token,projectId:$project_id){
+    isLiked
+  }
+}

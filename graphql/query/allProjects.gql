@@ -6,15 +6,10 @@ query($page_size: Int, $endCursor: String!){
         header
         name
         user{
+          id
           username
           logo
-        }
-        tags{
-          edges{
-            node{
-              name
-            }
-          }
+          position
         }
       }
     }

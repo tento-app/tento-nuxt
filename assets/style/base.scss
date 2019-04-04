@@ -1,12 +1,12 @@
 @import "~/assets/style/_color.scss";
 body{
   background-color: $backround_color01;
-  padding: 67.4px 0 0;
+  padding: 61.5px 0 0;
   margin: 0;
-  color: #555;
-  font-family: "Noto Sans JP",'Rubik','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+  color: #1f1f1f;
+  font-family: 'Rubik', 'Noto Sans JP', sans-serif;
   input,textarea,select,button{
-    font-family: "Noto Sans JP",'Rubik','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+    font-family: 'Rubik', 'Noto Sans JP', sans-serif;
   }
 
   .content{
@@ -69,6 +69,12 @@ body{
     }
   }
   @media screen and (min-width: 0px) and (max-width: 500px) {
-
+    .content{
+      margin: 0px auto 0;
+      &.item{
+        margin-top: 80px;
+        padding:0 15px;
+      }
+    }
   }
 }

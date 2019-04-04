@@ -1,0 +1,20 @@
+query($token: String!){
+  allLikes(token:$token){
+    edges{
+      node{
+        id
+        project{
+          id
+          name
+          thumbnail
+          user{
+            id
+            username
+            logo
+            position
+          }
+        }
+      }
+    }
+  }
+}

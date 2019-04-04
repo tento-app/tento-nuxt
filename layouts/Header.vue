@@ -5,18 +5,32 @@
       <nuxt-link to='/top' class="logo">
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
+      <!-- <nuxt-link to="/user">
+          <p>User</p>
+      </nuxt-link> -->
       <div class="left">
-        <nuxt-link to="login" v-if="!username">
+        <nuxt-link to="/camp" class="search_icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </nuxt-link>
+        <nuxt-link to="/user/login" v-if="!username">
           <div class="sign-in　submit btn">
-            <p>ログイン/新規アカウント</p>
+            <p>Sign In</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal" v-else :style="{ 'background-image': 'url(' + logo + ')' }">
-          <headerModal v-if="showModal" />
+        <nuxt-link to="/user/create" v-if="!username">
+          <div class="sign-up　submit btn_priority">
+            <p>Sign Up</p>
+          </div>
+        </nuxt-link>
+        <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
+          <headerModal v-if="showModal" :hostname='username' />
         </div>
-        <nuxt-link to="/create">
-          <div class="submit btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00a496" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <div class="account empty" id="account" @click="openModal" v-if="!logo && username">
+          <headerModal v-if="showModal" :hostname='username' />
+        </div>
+        <nuxt-link to="/camp/create" v-if="username" class="pc">
+          <div class="submit btn_priority">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             <p>New Camp</p>
           </div>
         </nuxt-link>
@@ -80,20 +94,25 @@ export default {
         display: flex;
         align-items: center;
         margin-left: auto;
+        .search_icon {
+          margin-right: 1rem;
+        }
+        .empty {
+          background-image: url('../static/icon_empty.png');
+        }
         .account {
-          background-color: $sub_color;
-          background-image: url("../static/icon.jpg");
           background-size: cover;
           background-position: center;
-          margin-left: 0.8rem;
+          margin-right: 1rem;
           font-size: 0;
           padding: 0;
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
           cursor: pointer;
           box-sizing: border-box;
+          border: solid 0.5px $black03;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;
@@ -115,10 +134,7 @@ export default {
         .submit {
           display: flex;
           align-items: center;
-          margin-left: 0.8rem;
-          p {
-            margin-left: 6px;
-          }
+          margin-right: 0.5rem;
         }
       }
     }
@@ -152,18 +168,24 @@ export default {
         display: flex;
         align-items: center;
         margin-left: auto;
+        .search_icon {
+          margin-right: 1rem;
+        }
+        .empty {
+          background-image: url('../static/icon_empty.png');
+        }
         .account {
-          background-image: url("../static/icon.jpg");
           background-size: cover;
           background-position: center;
-          margin-left: 0.8rem;
+          margin-right: 1rem;
           font-size: 0;
           padding: 0;
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
           box-shadow: $box_shadow01;
+          border: solid 0.5px $black03;
           cursor: pointer;
           box-sizing: border-box;
           &:hover {
@@ -184,14 +206,6 @@ export default {
           padding: 0;
           color: $main_color;
         }
-        .submit {
-          display: flex;
-          align-items: center;
-          margin-left: 0.8rem;
-          p {
-            margin-left: 6px;
-          }
-        }
       }
     }
   }
@@ -199,6 +213,9 @@ export default {
 
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .pc {
+    display: none;
+  }
   header {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
@@ -210,7 +227,7 @@ export default {
     top: 0;
     .content {
       max-width: 840px;
-      padding: 0 30px;
+      padding: 0 15px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -238,6 +255,7 @@ export default {
           box-shadow: $box_shadow01;
           cursor: pointer;
           box-sizing: border-box;
+          border: solid 0.5px $black03;
           &:hover {
             transition: $transtion01;
             box-shadow: $box_shadow02;
@@ -256,14 +274,6 @@ export default {
           padding: 0;
           color: $main_color;
           font-size: 17px
-        }
-        .submit {
-          display: none;
-          align-items: center;
-          margin-left: 0.8rem;
-          p {
-            margin-left: 6px;
-          }
         }
       }
     }

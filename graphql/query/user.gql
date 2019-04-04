@@ -1,0 +1,47 @@
+query ($id: ID!){
+  user(id: $id){
+    id
+    username
+    content
+    position
+    header
+    logo
+    tags {
+      edges{
+        node{
+          id
+          name
+          logo
+        }
+      }
+    }
+    projects{
+      edges {
+        node {
+          id
+          name
+          header
+          user{
+            id
+            logo
+            username
+          }
+        }
+      }
+    }
+    hostProjects{
+      edges{
+        node{
+          id
+          name
+          header
+          user{
+            id
+            username
+            logo
+          }
+        }
+      }
+    }
+  }
+}

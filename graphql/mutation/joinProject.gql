@@ -1,0 +1,5 @@
+mutation($token: String!, $project_id: String!){
+  joinProject(token:$token,projectId:$project_id){
+    success
+  }
+}

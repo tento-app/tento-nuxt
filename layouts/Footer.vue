@@ -7,35 +7,32 @@
     <ul>
       <h5 class="sp_left">About</h5>
       <div class="sp_right">
-        <a href="#">
+        <nuxt-link to='/'>
           <li>About Tento</li>
-        </a>
-        <a href="#">
+        </nuxt-link>
+        <a href='https://ark-cg.com/' target="_blank">
           <li>About Us</li>
         </a>
-        <a href="#">
+        <nuxt-link to='/faq'>
           <li>Q & A</li>
-        </a>
+        </nuxt-link>
       </div>
     </ul>
     <ul>
       <h5 class="sp_left">Links</h5>
       <div class="sp_right">
-        <a href="#">
+        <nuxt-link to='/privacy'>
           <li>Privacy</li>
-        </a>
-        <a href="#">
+        </nuxt-link>
+        <nuxt-link to='/terms'>
           <li>Terms</li>
-        </a>
+        </nuxt-link>
       </div>
     </ul>
     <ul>
       <h5 class="sp_left">Contact</h5>
       <div class="sp_right">
-        <a href="#">
-          <li>E-mail</li>
-        </a>
-        <a href="https://twitter.com/tento_app">
+        <a href="https://twitter.com/tento_app" target="_blank">
           <li>Twitter</li>
         </a>
       </div>
@@ -79,7 +76,6 @@
                     margin-right: 4rem;
                     margin-bottom: 0.4rem;
                     font-size: 16px;
-                    font-weight: bold;
                     color: #ccc;
                 }
             }
@@ -113,7 +109,6 @@
                     margin-right: 4rem;
                     margin-bottom: 0.4rem;
                     font-size: 16px;
-                    font-weight: bold;
                     color: #ccc;
                 }
             }
@@ -149,7 +144,6 @@
           font-size: 16px;
           margin-bottom: 8px;
           letter-spacing: 0.4px;
-          font-weight: bold;
         }
       }
     }

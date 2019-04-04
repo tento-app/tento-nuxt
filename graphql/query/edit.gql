@@ -1,0 +1,19 @@
+query($token: String!){
+  hostProjects(token:$token) {
+    edges{
+      node{
+        id
+        thumbnail
+        header
+        name
+        isOpen
+        isPublic
+        user{
+          id
+          username
+          logo
+        }
+      }
+    }
+  }
+}

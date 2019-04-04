@@ -1,12 +1,12 @@
 <template>
-    <div class="card_loader">
+    <div class="card_loader" @click="$emit('readmore')">
         <div class="sub_btn more">
             <p>Read More</p>
         </div>
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss"scoped>
 @import "~/assets/style/_color.scss";
 @media (min-width: 840px) {
   .card_loader {

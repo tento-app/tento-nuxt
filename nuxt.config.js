@@ -88,9 +88,22 @@ module.exports = () => {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [
-      { src: '~/plugins/swiper.js', ssr: false },
-      { src: '~/plugins/medium-editor', ssr: false },
+    plugins: [{
+        src: '~/plugins/swiper.js',
+        ssr: false
+      },
+      {
+        src: '~/plugins/medium-editor',
+        ssr: false
+      },
+      {
+        src: '~/plugins/multiselect',
+        ssr: false
+      },
+      {
+        src: '~/plugins/datetime',
+        ssr: false
+      },
     ],
 
     /*
@@ -99,12 +112,13 @@ module.exports = () => {
     modules: [,
       '@nuxtjs/apollo',
       'cookie-universal-nuxt',
+      'nuxt-dayjs-module',
     ],
 
     apollo: {
       includeNodeModules: true,
       clientConfigs: {
-        default: '~/apollo/client-configs/default.js'
+        default: '~/plugins/apollo'
       }
     },
     /*

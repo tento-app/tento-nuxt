@@ -2,19 +2,19 @@
 <div class="content profile">
     <div class="profile_contents">
       <div class="profile_contents_user">
-        <div class="profile_contents_img" :style="{ 'background-image': 'url(' + background_img + ')' }"></div>
+        <div class="profile_contents_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + host_user.logo + ')' }"></div>
         <div class="profile_contents_wrapper">
           <ul>
             <li>
-              <p class="profile_contents_wrapper_name">{{ name }}</p>
+              <p class="profile_contents_wrapper_name">{{ host_user.username }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_position">{{ position }}</p>
+              <p class="profile_contents_wrapper_position">{{ host_user.position }}</p>
             </li>
             <li>
-              <p class="profile_contents_wrapper_text">{{ intro }}</p>
+              <p class="profile_contents_wrapper_text">{{ host_user.content }}</p>
             </li>
-            <nuxt-link to="/account">
+            <nuxt-link :to="{ name: 'user-id' , params: { id: host_user.id }}">
               <li class="profile_view_more sub_btn">
                 <p>View page</p>
               </li>
@@ -33,18 +33,14 @@ export default {
   components: {
     user
   },
-  data(){
-    return{
-      icon:"",
-      name:"ジョージハリスン",
-      position:"マーケター",
-      intro:"マーケティング、ウェブコンサルティングのことならお任せください"
-    }
+  // props: ['background_img_url','name','position','id','content']
+  props : {
+    host_user:Object
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~/assets/style/_color.scss';
 @media (min-width:840px){
   .profile{
@@ -68,6 +64,7 @@ export default {
         height: 62px;
         border-radius: 50%;
         margin-right: 1rem;
+        border: $border01;
       }
       &_wrapper{
         &_name{

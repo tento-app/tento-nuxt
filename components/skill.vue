@@ -1,38 +1,16 @@
 <template id="">
   <div class="" id="skill">
-    <h1>Needs tool</h1>
+    <h1>{{title}}</h1>
     <div class="skill">
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
+
+      <div class="skill_item" v-for="tag in tags" :key="tag.node.id">
+        <div class="img">
+          <img v-bind:src="'https://media.tento.app/' + encodeURI(tag.node.logo)" alt="">
+        </div>
+        <p>{{ tag.node.name }}</p>
       </div>
 
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item">
-        <div class="skill_item_img" :style="{ 'background-image': 'url(' + skil_img + ')' }"></div>
-        <p>{{ skill_name }}</p>
-      </div>
-
-      <div class="skill_item skill_add" @click="isShowModal">
+      <div class="skill_item skill_add" v-if="editable" @click="isShowModal">
         <div class=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></div>
         <p>スキルを追加</p>
       </div>
@@ -56,15 +34,23 @@ export default {
  },
  data(){
    return{
-     skil_img:"icon.png",
+     skil_img:"/tag/css.svg",
      skill_name:"adobe XD"
    }
+ },
+ props: {
+    tags: Array,
+    title:String,
+    editable: {
+      type: Boolean,
+      default: false // これを追加
+    }
  }
 }
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import '~/assets/style/_color.scss';
 
 @media (min-width:840px) {
@@ -75,6 +61,8 @@ export default {
       color: $black01;
       margin-bottom: 1rem;
       padding:0 30px;
+      text-align: center;
+      font-size: 2rem;
     }
   }
   .skill{
@@ -106,18 +94,17 @@ export default {
       min-width: 32%;
       display: flex;
       align-items: center;
-      &_img{
-        min-width: 40px;
-        height: 40px;
-        margin: 1rem;
-        background-image: url("../static/icon.png");
-        background-position: center;
-        background-repeat: no-repeat;
+      .img {
+        padding: 1rem;
+        img {
+          width: 40px;
+          height: 40px;
+        }
       }
       p{
         font-weight: bold;
         width: 100%;
-        font-size: 14px;
+        font-size: 1.2rem;
         padding: 1rem 0;
         margin-right: 1rem;
         border-left: $border01;
@@ -134,9 +121,6 @@ export default {
         background-position: center;
         background-repeat: no-repeat;
       }
-      p{
-
-      }
     }
   }
 }
@@ -146,8 +130,13 @@ export default {
     margin: 0 auto;
     padding: 0 30px;
     h1{
+      max-width: 840px;
+      margin: 0 auto;
       color: $black01;
       margin-bottom: 1rem;
+      padding:0 30px;
+      text-align: center;
+      font-size: 2rem;
     }
   }
   .skill{
@@ -171,17 +160,16 @@ export default {
       text-align: center;
       margin:0.5rem 0;
       width: 30%;
-      &_img{
-        width: 70px;
-        height: 70px;
-        margin: 1.5rem auto;
-        background-image: url("../static/icon.png");
-        background-position: center;
-        background-repeat: no-repeat;
+      .img {
+        padding: 1rem;
+        img {
+          width: 70px;
+          height: 70px;
+        }
       }
       p{
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 1.2rem;
         border-top: solid 0.5px #eaeaea;
         padding: 1rem
       }
@@ -213,8 +201,13 @@ export default {
     margin: 0 auto;
     padding: 0 10px;
     h1{
+      max-width: 840px;
+      margin: 0 auto;
       color: $black01;
       margin-bottom: 1rem;
+      padding:0 30px;
+      text-align: center;
+      font-size: 1.2rem;
     }
   }
   .skill{
@@ -232,18 +225,17 @@ export default {
       padding: 0rem;
       text-align: center;
       margin:0.5rem 0;
-      width: 48%;
-      &_img{
-        width: 70px;
-        height: 70px;
-        margin: 1.5rem auto;
-        background-image: url("../static/icon.png");
-        background-position: center;
-        background-repeat: no-repeat;
+      width: 31.5%;
+      .img {
+        padding: 1rem;
+        img {
+          width: 50px;
+          height: 50px;
+        }
       }
       p{
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 14px;
         border-top: solid 0.5px #eaeaea;
         padding: 1rem
       }

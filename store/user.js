@@ -1,7 +1,7 @@
 export const state = () => ({
   username: null,
-  name: null,
   logo: null,
+  token: null,
 });
 
 export const mutations = {
@@ -17,9 +17,10 @@ export const mutations = {
 };
 
 export const actions = {
-  logout(state) {
-    this.commit('user/setToken',null);
-    this.commit('user/setUsername',null);
-    this.commit('user/setLogo',null);
+  logout(context) {
+    context.commit('setToken',null)
+    context.commit('setUsername',null)
+    context.commit('setLogo',null)
+    context.app.$cookies.remove('cookie-token')
   }   
 }

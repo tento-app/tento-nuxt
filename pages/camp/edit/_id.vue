@@ -105,7 +105,7 @@ import { mapState,mapMutations } from 'vuex'
 import Header from "~/layouts/Header.vue";
 import settingModal from "~/components/open-setting-modal.vue";
 
-import createProjectGql from "~/graphql/mutation/createProject.gql";
+import editProjectGql from "~/graphql/query/editProject.gql";
 import allTagsGql from "~/graphql/query/allTags.gql";
 export default {
   components: {
@@ -116,8 +116,10 @@ export default {
   asyncData(context) {
     return context.app.apolloProvider.defaultClient
       .query({
-        query: allTagsGql,
-        variables: {}
+        query: editProjectGql,
+        variables: {
+            id: context.params.id
+        }
       })
       .then(({ data }) => {
         // do what you want with data

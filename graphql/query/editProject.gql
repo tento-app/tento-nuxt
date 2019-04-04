@@ -1,0 +1,31 @@
+query ($id: ID!){
+  project(id: $id){
+    id
+    name
+    content
+    header
+    startAt
+    place
+    contact
+    user {
+      username
+    }
+    tags{
+      edges{
+        node{
+          id
+          name
+          logo
+        }
+      }
+    }
+  }
+  allTags{
+    edges{
+      node{
+        id
+        name
+      }
+    }
+  }
+}

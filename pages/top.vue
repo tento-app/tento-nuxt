@@ -4,7 +4,9 @@
     <Header />
     <div class="main">
       <slide :projects="swiperProjects"/>
-      <card :projects="allProjects" title="New Camp"/>
+      <div class="card_content">
+        <card :projects="allProjects" title="New Camp"/>
+      </div>
       <!-- <slide :projects="entry.data.allProjects.edges.slice(3)"/>
       <card :projects="entry.data.allProjects.edges" title="New Camp"/> -->
       <cardLoader @readmore="readmore" />
@@ -92,6 +94,9 @@ export default {
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
 
+.card_content {
+  margin: 5rem 0 0;
+}
 
 
 </style>

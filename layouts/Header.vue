@@ -5,13 +5,13 @@
       <nuxt-link to='/top' class="logo">
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
-      <nuxt-link to="/camp">
-          <p>Camp</p>
-      </nuxt-link>
-      <nuxt-link to="/user">
+      <!-- <nuxt-link to="/user">
           <p>User</p>
-      </nuxt-link>
+      </nuxt-link> -->
       <div class="left">
+        <nuxt-link to="/camp" class="search_icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </nuxt-link>
         <nuxt-link to="/user/login" v-if="!username">
           <div class="sign-in　submit btn">
             <p>Sign In</p>
@@ -94,13 +94,16 @@ export default {
         display: flex;
         align-items: center;
         margin-left: auto;
+        .search_icon {
+          margin-right: 1rem;
+        }
         .empty {
           background-image: url('../static/icon_empty.png');
         }
         .account {
           background-size: cover;
           background-position: center;
-          margin-right: 0.5rem;
+          margin-right: 1rem;
           font-size: 0;
           padding: 0;
           width: 40px;
@@ -165,13 +168,16 @@ export default {
         display: flex;
         align-items: center;
         margin-left: auto;
+        .search_icon {
+          margin-right: 1rem;
+        }
         .empty {
           background-image: url('../static/icon_empty.png');
         }
         .account {
           background-size: cover;
           background-position: center;
-          margin-right: 0.5rem;
+          margin-right: 1rem;
           font-size: 0;
           padding: 0;
           width: 40px;

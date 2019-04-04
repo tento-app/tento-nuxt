@@ -3,8 +3,12 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="main">
-        <input v-model="search" placeholder="検索する" type="text" @keyup.enter="say" @keypress="setCanMessageSubmit">
-        <card :projects="allProjects"/>
+      <div class="search">
+        <input v-model="search" placeholder="フリーワード検索" type="text" @keyup.enter="say" @keypress="setCanMessageSubmit">
+      </div>
+      <div class="card_content">
+        <card :projects="allProjects" :title='search +"の検索結果"'/>
+      </div>
         <cardLoader v-if="endCursor" @readmore="readmore" />
     </div>
     <Footer />
@@ -101,9 +105,39 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
+@import '~/assets/style/_color.scss';
+
+.search_num {
+  display: block;
+}
+
+.item {
+  margin: 0 auto;
+}
+
+.nav {
+  display: none;
+}
+
+.search {
+  display: flex;
+  max-width: 840px;
+  margin: 3rem auto 0;
+  padding: 0 30px;
+  input {
+    margin-left: auto;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid $black03;
+    font-size: 1rem;
+    padding: 0.2rem 0.2rem 0.5rem;
+    background-color: transparent;
+  }
+}
+
 
 
 

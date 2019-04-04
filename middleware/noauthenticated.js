@@ -4,12 +4,11 @@ export default function (context) {
     // ユーザが認証されてホームページにリダイレクトされた場合
     if (context.app.$cookies.get('cookie-token')) {
         console.log('token found')
-        const token = context.app.$cookies.get('cookie-token')
-      context.store.commit('user/setToken', token)
+      context.store.commit('user/setToken', context.app.$cookies.get('cookie-token'))
       context.app.apolloProvider.defaultClient.query({
           query: viewerGql,
           variables: {
-              token: token
+              token: context.app.$cookies.get('cookie-token')
           }
       }).then((result) => {
           context.store.commit('user/setUsername', result.data.viewer.username)

@@ -5,12 +5,11 @@ export default function (context) {
     if (!context.app.$cookies.get('cookie-token')) {
       return context.redirect('/user/login')
     }
-    const token = context.app.$cookies.get('cookie-token')
-    context.store.commit('user/setToken', token)
+    context.store.commit('user/setToken', context.app.$cookies.get('cookie-token'))
     context.app.apolloProvider.defaultClient.query({
         query: viewerGql,
         variables: {
-            token: token
+            token: context.app.$cookies.get('cookie-token')
         }
     }).then((result) => {
         context.store.commit('user/setUsername', result.data.viewer.username)

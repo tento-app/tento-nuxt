@@ -12,7 +12,7 @@
 
         <div class="create_eyecatch">
           <div class="create_eyecatch_content">
-            <div class="img" v-show="uploadedImage" :style="{ 'background-image': 'url(' + uploadedImage + ')' }">
+            <div class="img" v-show="uploadedImage" :style="{ 'background-image': 'url(https://media.tento.app/' + uploadedImage + ')' }">
               <p v-on:click="deleteImage">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </p>
@@ -38,7 +38,7 @@
       <div class="create_body">
         <div class="create_body_content">
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
-          <medium-editor v-model='content' :options='options' />
+          <medium-editor v-model="content" :options="options" :prefill="defaultValue" />
         </div>
           <div class="modal-mask"  v-if="showModal">
     <div class="modal-wrapper">
@@ -85,8 +85,8 @@
               <div class="btn-list">
                 <p @click="closeModal">編集に戻る</p>
                 <button class="btn_priority" type="button" :disabled="processing" name="button" @click="submit" v-on:click="button_disable()">
-                  <p :class="{disactive: processing}">公開する</p>
-                  <p class="processing" :class="{active: processing}">公開中...</p></button>
+                  <p :class="{disactive: processing}">更新する</p>
+                  <p class="processing" :class="{active: processing}">更新中...</p></button>
               </div>
             </div>
           </div>
@@ -106,13 +106,14 @@ import Header from "~/layouts/Header.vue";
 import settingModal from "~/components/open-setting-modal.vue";
 
 import editProjectGql from "~/graphql/query/editProject.gql";
+import updateProjectGql from "~/graphql/mutation/updateProject.gql";
 import allTagsGql from "~/graphql/query/allTags.gql";
 export default {
+  middleware: 'authenticated',
   components: {
     Header,
     settingModal
   },
-  middleware: 'authenticated',
   asyncData(context) {
     return context.app.apolloProvider.defaultClient
       .query({
@@ -123,30 +124,33 @@ export default {
       })
       .then(({ data }) => {
         // do what you want with data
+        const now_tags = data.project.tags.edges.map(function (value) { return value.node.name })
+        const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
         return {
-          multiselectoptions: data.allTags.edges.map(function (value) {
-              return value.node.name
-            })
+            name: data.project.name,
+            content: data.project.content,
+            defaultValue: data.project.content,
+            contact: data.project.contact,
+            place: data.project.place,
+            uploadedImage: data.project.header,
+            dafault_uploadedImage: data.project.header,
+            date: data.project.startAt,
+            tags: now_tags,
+            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
         };
       });
   },
   data() {
     return {
       showModal: false,
-      options: {
-        placeholder: {
-          text: "本文：Camp内容について記そう！！",
-          autoLink: true
-        },
+        options: {
+          placeholder: {
+            text: "本文：Camp内容について記そう！！",
+            autoLink: true
+          },
         uploadUrl: "https://imgur.com/upload"
       },
-      name: "",
-      content: "",
-      contact: "",
-      tags: [],
-      date: "",
-      place: "",
-      uploadedImage: "",
+      headerEdited:false,
       headerFile: null,
       processing: false
     };
@@ -165,6 +169,7 @@ export default {
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       this.headerFile = files[0]
+      this.headerEdited = true
       this.createImage(files[0]);
     },
     // アップロードした画像を表示
@@ -176,7 +181,8 @@ export default {
       reader.readAsDataURL(file);
     },
     deleteImage() {
-      this.uploadedImage = "";
+      this.headerEdited = false
+      this.uploadedImage = dafault_uploadedImage ? dafault_uploadedImage : ""
     },
     button_disable: function() {
         this.processing = true;
@@ -187,34 +193,29 @@ export default {
         console.log('二重送信防止');
         this.processing = false;
     },
+    createProjectInput(){
+      let ProjectInput = {}
+      ProjectInput.name = this.name
+      ProjectInput.content = this.content
+      if(this.headerEdited) ProjectInput.header = this.headerFile
+      ProjectInput.tags = this.tags
+      ProjectInput.startat = this.date
+      ProjectInput.contact = this.contact
+      ProjectInput.place = this.place
+      return ProjectInput
+    },
     submit() {
-      console.log({
-        name: this.name,
-        content: this.content,
-        content: this.contact,
-        tags: this.tags,
-        startat: this.date,
-        place: this.place,
-        header: this.headerFile
-      });
-     return this.$apollo.mutate({
-          mutation: createProjectGql,
+     this.$apollo.mutate({
+          mutation: updateProjectGql,
           variables: {
             token: this.token,
-            ProjectInput: {
-              name: this.name,
-              content: this.content,
-              contact: this.contact,
-              tags: this.tags,
-              startat: this.date,
-              place: this.place,
-              header: this.headerFile
-            }
+            project_id: this.$route.params.id,
+            ProjectInput: this.createProjectInput()
           }
         })
         .then(result => {
           // 成功した場合に実行する処理（200OKのレスポンスの場合）
-          this.$router.push('/camp/'+result.data.createProject.project.id)
+          this.$router.push('/camp/'+result.data.updateProject.project.id)
         })
         .catch(error => {
           // errorの場合に実行する処理

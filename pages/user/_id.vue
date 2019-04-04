@@ -10,10 +10,10 @@
           <skill :tags="user.tags.edges" title="My tool"/>
       </div>
       <div class="card" v-if="host_projects.length > 0">
-        <card title="Posted Camp" :projects="host_projects.reverse()"/>
+        <card title="Posted Camp" :projects="host_projects"/>
       </div>
       <div class="card" v-if="join_projects.length > 0">
-        <card title="Joined Camp" :projects="join_projects.reverse()"/>
+        <card title="Joined Camp" :projects="join_projects"/>
       </div>
     </div>
     <Footer />
@@ -48,8 +48,8 @@ export default {
         // do what you want with data
         return {
           user: data.user,
-          host_projects: data.user.hostProjects.edges,
-          join_projects: data.user.projects.edges,
+          host_projects: data.user.hostProjects.edges.reverse(),
+          join_projects: data.user.projects.edges.reverse(),
           }
       })
   }

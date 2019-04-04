@@ -8,6 +8,7 @@
         </div>
         <joinbtn :title ='title' :project_id="project_id" class='sp'/>
         <CampMember :users="users" class='pc'/>
+
         <div class="select sp">
           <div class="select_header">
             <div class="" v-on:click="selectmember" :class="{ info_toggle : info_select }">
@@ -39,6 +40,7 @@
             <CampMember :users="users"/>
           </div>
         </div>
+        
         <div class="">
           <ul class="setting pc">
             <li v-if="place">

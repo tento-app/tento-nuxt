@@ -11,7 +11,7 @@
         <h1>404 Page not found</h1>
         <p>おっと！該当するページが見つからなかった</p>
         <p>リロードするとなおるかもなぁ...</p>
-        <!-- <p>{{ error.message }}</p> -->
+        <a @click="reload">リロードする</a>
       </div>
     </div>
     <div class="" v-else>
@@ -33,7 +33,12 @@ export default {
     Header,
     Footer,
   },
-  props:['error']
+  props:['error'],
+  methods: {
+    reload: function() {
+      this.$router.go(this.$route.fullPath)
+    }
+  }
 }
 </script>
 <style lang='scss' scoped>

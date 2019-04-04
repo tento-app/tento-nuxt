@@ -1,0 +1,22 @@
+query($page_size: Int, $endCursor: String!, $name_Icontains: String, $content_Icontains: String, $contact_Icontains: String, $tags_Name_In: String, $startAt_Gte: DateTime, $startAt_Lte: DateTime, $isOpen: Boolean){
+  allProjects(first:$page_size, after: $endCursor, name_Icontains:$name_Icontains, content_Icontains:$content_Icontains, contact_Icontains:$contact_Icontains,tags_Name_In:$tags_Name_In,startAt_Gte:$startAt_Gte, startAt_Lte:$startAt_Lte, isOpen:$isOpen){
+    edges{
+      node{
+        id
+        header
+        name
+        user{
+          username
+          logo
+          position
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+}
+}

@@ -80,6 +80,8 @@ export default {
             this.allProjects.push(project)
           })
           this.endCursor = data.allProjects.pageInfo.endCursor
+        }).catch((e) => {
+          this.$router.go(this.$route.fullPath)
         })
     }
   }

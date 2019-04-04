@@ -42,6 +42,7 @@ import chat from '~/components/chat.vue';
 import { retry } from 'async';
 
 export default {
+  middleware: 'noauthenticated',
   components: {
     Header,
     Footer,
@@ -102,7 +103,6 @@ export default {
         return { project: data.project }
       })
   },
-  middleware: 'noauthenticated',
   computed: {
       ...mapState('user',['token']),
       ...mapState('button',['like','classLike','join','classJoin']),

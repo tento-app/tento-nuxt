@@ -17,6 +17,6 @@ export default function (context) {
         context.store.commit('user/setLogo', result.data.viewer.logo)
     }).catch((error) => {
     // errorの場合に実行する処理
-    console.log("失敗")
+        console.log(error)
     })
   }

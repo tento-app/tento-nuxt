@@ -11,7 +11,7 @@
           <skill :tags="tags" title="スキル" :editable="true"/>
       </div>
       <div class="card">
-        <card title="Posted Camp" :projects="host_projects"/>
+        <cardEdit title="Posted Camp" :projects="host_projects"/>
         <div class="empty_posted empty" v-if="host_projects.length < 1">
           <h3>投稿したcampがありません...</h3>
           <div class="img">
@@ -42,6 +42,7 @@ import MypageGql from '~/graphql/query/mypage.gql'
 import { mapState } from 'vuex'
 
 import MypageHeader from '~/components/mypage-header.vue';
+import cardEdit from '~/components/card-edit.vue';
 import card from '~/components/card.vue';
 import skill from '~/components/skill.vue';
 import AccountHeader from '~/components/account-header.vue';
@@ -51,6 +52,7 @@ import Footer from '~/layouts/Footer.vue';
 export default {
   components: {
     MypageHeader,
+    cardEdit,
     card,
     skill,
     Header,

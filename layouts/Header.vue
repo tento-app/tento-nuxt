@@ -159,15 +159,17 @@ export default {
         display: flex;
         align-items: center;
         margin-left: auto;
+        .empty {
+          background-image: url('../static/icon_empty.png');
+        }
         .account {
-          background-image: url("../static/icon.jpg");
           background-size: cover;
           background-position: center;
-          margin-left: 0.8rem;
+          margin-right: 0.5rem;
           font-size: 0;
           padding: 0;
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           box-shadow: $box_shadow01;
           box-shadow: $box_shadow01;
@@ -213,7 +215,7 @@ export default {
     top: 0;
     .content {
       max-width: 840px;
-      padding: 0 30px;
+      padding: 0 15px;
       margin: 0 auto;
       display: flex;
       align-items: center;

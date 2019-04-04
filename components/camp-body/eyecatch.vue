@@ -15,22 +15,44 @@ export default {
 
 <style lang="scss">
 @import '~/assets/style/_color.scss';
-.camp_body_eyecatch{
-  max-width: 840px;
-  margin: 0 auto;
-  padding:30px;
-  &_img {
-    background-image: url("../../static/header_logo.png");
-    background-color: #fff;
-    height: 280px;
-    max-width: 100%;
-    border-radius: 12px;
-    position: relative;
-    width: 100%;
-    box-shadow: $box_shadow04;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+@media (min-width:500px) {
+  .camp_body_eyecatch{
+    max-width: 840px;
+    margin: 0 auto;
+    padding:30px;
+    &_img {
+      background-image: url("../../static/header_logo.png");
+      background-color: #fff;
+      height: 280px;
+      max-width: 100%;
+      border-radius: 12px;
+      position: relative;
+      width: 100%;
+      box-shadow: $box_shadow04;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .camp_body_eyecatch{
+    max-width: 840px;
+    margin: 0 auto;
+    &_img {
+      background-image: url("../../static/header_logo.png");
+      background-color: #fff;
+      height: 180px;
+      max-width: 100%;
+      position: relative;
+      width: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
 }
 </style>

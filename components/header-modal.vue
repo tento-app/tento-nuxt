@@ -144,7 +144,7 @@ export default {
       border-radius: 8px;
       padding: 0 0 1rem;
       font-weight: normal;
-      .header {
+      .postheader {
         width: 100%;
         padding: 1rem;
         border-bottom: $border01;
@@ -155,6 +155,7 @@ export default {
           font-size: 1rem;
           font-weight: bold;
           color: $black01;
+          display: block;
         }
         .id {
           font-size: 0.75rem;
@@ -162,11 +163,11 @@ export default {
         }
       }
       li {
-        font-size: 14px;
-        padding: 6px 12px;
+        font-size: 12px;
+        padding: 10px 12px;
         display: flex;
         align-items: center;
-        margin: 0.3rem 0;
+        margin:  0;
         p {
           margin-left: 0.5rem;
         }
@@ -194,11 +195,11 @@ export default {
     &:before{
       content: "";
       position: absolute;
-      top: -26px;
-      left: 80%;
+      top: -20px;
+      left: 90%;
       margin-left: -15px;
-      border: 13px solid transparent;
-      border-bottom: 13px solid #fff;
+      border: 10px solid transparent;
+      border-bottom: 10px solid #fff;
     }
     ul {
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -206,7 +207,7 @@ export default {
       border-radius: 8px;
       padding: 0rem 0 1rem;
       font-weight: normal;
-      .header {
+      .postheader {
         width: 100%;
         padding: 1rem;
         border-bottom: $border01;
@@ -217,6 +218,7 @@ export default {
           font-size: 1rem;
           font-weight: bold;
           color: $black01;
+          display: block;
         }
         .id {
           font-size: 0.75rem;
@@ -224,11 +226,11 @@ export default {
         }
       }
       li {
-        font-size: 14px;
-        padding: 6px 12px;
+        font-size: 12px;
+        padding: 10px 12px;
         display: flex;
         align-items: center;
-        margin: 0.3rem 0;
+        margin:  0;
         p {
           margin-left: 0.5rem;
         }

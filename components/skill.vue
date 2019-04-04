@@ -130,8 +130,13 @@ export default {
     margin: 0 auto;
     padding: 0 30px;
     h1{
+      max-width: 840px;
+      margin: 0 auto;
       color: $black01;
       margin-bottom: 1rem;
+      padding:0 30px;
+      text-align: center;
+      font-size: 2rem;
     }
   }
   .skill{
@@ -196,8 +201,13 @@ export default {
     margin: 0 auto;
     padding: 0 10px;
     h1{
+      max-width: 840px;
+      margin: 0 auto;
       color: $black01;
       margin-bottom: 1rem;
+      padding:0 30px;
+      text-align: center;
+      font-size: 1.2rem;
     }
   }
   .skill{
@@ -215,17 +225,17 @@ export default {
       padding: 0rem;
       text-align: center;
       margin:0.5rem 0;
-      width: 48%;
+      width: 31.5%;
       .img {
         padding: 1rem;
         img {
-          width: 70px;
-          height: 70px;
+          width: 50px;
+          height: 50px;
         }
       }
       p{
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 14px;
         border-top: solid 0.5px #eaeaea;
         padding: 1rem
       }

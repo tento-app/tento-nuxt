@@ -4,7 +4,7 @@
     <div class="abstract_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
     <div class="">
       <p class="abstract_user_name">{{ name }}</p>
-      <p class="abstract_user_position">{{ position }}</p>
+      <p class="abstract_user_position pc">{{ position }}</p>
     </div>
   </div>
 </nuxt-link>
@@ -73,6 +73,9 @@
 }
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .pc {
+    display: none;
+  }
   .abstract_user {
       display: flex;
       align-items: center;
@@ -85,11 +88,11 @@
           height: 36px;
           border-radius: 50%;
           margin-right: 0.5rem;
+          border: $border01;
       }
       &_name {
-          font-size: 1rem;
-          color: $black01;
-          font-weight: bold;
+          font-size: 0.8rem;
+          color: $black02;
       }
       &_position {
           font-size: 14px;

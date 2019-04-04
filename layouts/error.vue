@@ -11,14 +11,14 @@
         <h1>404 Page not found</h1>
         <p>おっと！該当するページが見つからなかった</p>
         <p>リロードするとなおるかもなぁ...</p>
-        <!-- <p>{{ error.message }}</p> -->
+        <a @click="reload">リロードする</a>
       </div>
     </div>
     <div class="" v-else>
       <h1>An error occurred</h1>
       <p>{{ error.message }}</p>
     </div>
-    <nuxt-link to="/" class="btn_priority">Home page</nuxt-link>
+    <a href="/" class="btn_priority">Home page</a>
   </div>
     <!-- <Footer /> -->
   </section>
@@ -33,7 +33,12 @@ export default {
     Header,
     Footer,
   },
-  props:['error']
+  props:['error'],
+  methods: {
+    reload: function() {
+      this.$router.go(this.$route.fullPath)
+    }
+  }
 }
 </script>
 <style lang='scss' scoped>

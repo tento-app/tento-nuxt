@@ -4,25 +4,33 @@
       <h1>{{ title }}</h1>
     </div>
     <div class="cards_list">
-        <div v-for="like in likes" v-key="like.node.id">
-            <nuxt-link :to="{ name: 'camp-id' , params: { id: like.project.id }}" class="card_link" >
-                <div class="card">
-                <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.project.header + ')' }">
-                </div>
-                <div class="card_txt">
-                    <h4>{{ like.project.name }}</h4>
-                    <div class="card_txt_user">
-                    <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.project.user.logo + ')' }"></div>
-                    <div class>
-                        <p class="card_txt_user_name">{{ like.project.user.username }}</p>
-                        <p class="card_txt_user_position">{{like.project.user.position}}</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </nuxt-link>
-            <button>はずす</button>
+      <div class="card_link" v-for="project in projects" :key="project.node.id">
+        <div class="card">
+          <div class="card_img" v-if="!project.node.header">
+              <button>非公開にする</button>
+                <button>終了する</button>
+                <button>編集</button>
+          </div>
+          <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
+            <button>非公開にする</button>
+            <button>終了する</button>
+            <button>編集</button>
+            <!-- <p class="card_img_category" >公開中 開催中</p> -->
+          </div>
+          <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" >
+              <div class="card_txt">
+            <h4>{{ project.node.name }}</h4>
+            <div class="card_txt_user">
+              <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+              <div class>
+                <p class="card_txt_user_name">{{ project.node.user.username }}</p>
+                <p class="card_txt_user_position">{{ project.node.user.position }}</p>
+              </div>
+            </div>
+            </div>
+          </nuxt-link>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +38,7 @@
 <script>
 export default {
   props: {
-    likes: Array,
+    projects: Array,
     title: String,
   }
 }
@@ -94,7 +102,8 @@ export default {
         transition: $transtion01;
       }
       &_img {
-        background-image: url("../static/camp_img.jpg");
+        background-image: url("../static/header_logo.png");
+        background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
         height: 130px;
@@ -213,7 +222,8 @@ export default {
           transition: $transtion01;
         }
         &_img {
-          background-image: url("../static/camp_img.jpg");
+          background-image: url("../static/header_logo.png");
+          background-color: #fff;
           border-radius: 12px 12px 0 0;
           width: 100%;
           height: 130px;
@@ -333,7 +343,8 @@ export default {
         transition: $transtion01;
       }
       &_img {
-        background-image: url("../static/camp_img.jpg");
+        background-image: url("../static/header_logo.png");
+        background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
         height: 130px;

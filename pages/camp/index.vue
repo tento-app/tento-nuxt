@@ -3,21 +3,18 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="main">
-      <slide :projects="swiperProjects"/>
-      <card :projects="allProjects" title="New Camp"/>
-      <!-- <slide :projects="entry.data.allProjects.edges.slice(3)"/>
-      <card :projects="entry.data.allProjects.edges" title="New Camp"/> -->
-      <cardLoader @readmore="readmore" />
+        <input v-model="search" placeholder="検索する" type="text" @keyup.enter="say" @keypress="setCanMessageSubmit">
+        <card :projects="allProjects"/>
+        <cardLoader v-if="endCursor" @readmore="readmore" />
     </div>
     <Footer />
   </section>
 </template>
 
 <script>
-import allProjectsGql from '~/graphql/query/allProjects.gql'
+import searchProjectsGql from '~/graphql/query/searchProjects.gql'
 
 import cardLoader from '~/components/card_loader.vue';
-import slide from '~/components/slide.vue';
 import card from '~/components/card.vue';
 import Header from '~/layouts/Header.vue';
 import Footer from '~/layouts/Footer.vue';
@@ -26,53 +23,46 @@ export default {
   components: {
     card,
     cardLoader,
-    slide,
     Header,
     Footer,
   },
   middleware: 'noauthenticated',
   data () {
     return {
-      data: null
+      tags:[],
+      options:[],
+      data: null,
+      search: "",
+      canMessageSubmit: false
     }
   },
-  // apollo: {
-  //   entry: {
-  //     query: allProjectsGql,
-  //     variables: {
-  //       page_size: 6,
-  //       endCursor: "",
-  //     },
-  //     update (data) {
-  //     return { data }
-  //   },
-  //     prefetch: true,
-  //   }
-  // },
   asyncData (context) {
     return context.app.apolloProvider.defaultClient.query({
-      query: allProjectsGql,
+      query: searchProjectsGql,
       variables: {
         page_size: 6,
         endCursor: "",
+        // startAt_Gte: "1900-11-11T11:11:11+11:11",
+        // startAt_Lte:"9999-12-23T11:23:23+23:23"
       }
       }).then(({ data }) => {
           return {
-            swiperProjects: data.allProjects.edges.slice(3),
             allProjects: data.allProjects.edges,
             endCursor: data.allProjects.pageInfo.endCursor
             }
       }).catch((e) => {
+        console.log(e)
         context.error({ statusCode: 404, message: 'ページが見つかりません' })
     })
   },
   methods: {
     readmore: function() {
       this.$apollo.query({
-      query: allProjectsGql,
+      query: searchProjectsGql,
       variables: {
         page_size: 6,
         endCursor: this.endCursor,
+        name_Icontains: this.search
       }
       }).then(({ data }) => {
           // do what you want with data
@@ -80,10 +70,33 @@ export default {
             this.allProjects.push(project)
           })
           this.endCursor = data.allProjects.pageInfo.endCursor
-        }).catch((e) => {
-          this.$router.go(this.$route.fullPath)
         })
-    }
+    },
+    setCanMessageSubmit() {
+      this.canMessageSubmit = true
+    },
+    say: function() {
+      if (!this.canMessageSubmit) {
+        return
+      }
+
+      this.$apollo.query({
+      query: searchProjectsGql,
+      variables: {
+        page_size: 6,
+        endCursor: "",
+        name_Icontains: this.search
+      }
+      }).then(({ data }) => {
+          // do what you want with data
+          console.log(data)
+          this.allProjects = data.allProjects.edges
+          this.endCursor = data.allProjects.pageInfo.endCursor
+        })
+
+      this.message = ''
+      this.canMessageSubmit = false
+    },
   }
 }
 </script>

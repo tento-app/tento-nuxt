@@ -10,10 +10,10 @@
           <skill :tags="user.tags.edges" title="My tool"/>
       </div>
       <div class="card" v-if="host_projects.length > 0">
-        <card title="Posted Camp" :projects="host_projects"/>
+        <card title="Posted Camp" :projects="host_projects.reverse()"/>
       </div>
       <div class="card" v-if="join_projects.length > 0">
-        <card title="Joined Camp" :projects="join_projects"/>
+        <card title="Joined Camp" :projects="join_projects.reverse()"/>
       </div>
     </div>
     <Footer />

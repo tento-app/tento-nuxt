@@ -5,13 +5,19 @@
       <nuxt-link to='/top' class="logo">
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
+      <nuxt-link to="/camp">
+          <p>Camp</p>
+      </nuxt-link>
+      <nuxt-link to="/user">
+          <p>User</p>
+      </nuxt-link>
       <div class="left">
-        <nuxt-link to="/sign-in" v-if="!username">
+        <nuxt-link to="/user/login" v-if="!username">
           <div class="sign-in　submit btn">
             <p>Sign In</p>
           </div>
         </nuxt-link>
-        <nuxt-link to="sign-up" v-if="!username">
+        <nuxt-link to="/user/create" v-if="!username">
           <div class="sign-up　submit btn_priority">
             <p>Sign Up</p>
           </div>

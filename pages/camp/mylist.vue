@@ -138,7 +138,7 @@ export default {
         transition: $transtion01;
       }
       &_img {
-        background-image: url("../static/camp_img.jpg");
+        background-image: url("/camp_img.jpg");
         border-radius: 12px 12px 0 0;
         width: 100%;
         height: 130px;
@@ -257,7 +257,7 @@ export default {
           transition: $transtion01;
         }
         &_img {
-          background-image: url("../static/camp_img.jpg");
+          background-image: url("/camp_img.jpg");
           border-radius: 12px 12px 0 0;
           width: 100%;
           height: 130px;
@@ -377,7 +377,7 @@ export default {
         transition: $transtion01;
       }
       &_img {
-        background-image: url("../static/camp_img.jpg");
+        background-image: url("/camp_img.jpg");
         border-radius: 12px 12px 0 0;
         width: 100%;
         height: 130px;
@@ -423,7 +423,7 @@ export default {
           display: flex;
           align-items: center;
           &_img {
-            background-image: url("../static/icon.jpg");
+            background-image: url("/icon.jpg");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;

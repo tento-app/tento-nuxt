@@ -3,7 +3,7 @@ import viewerGql from '~/graphql/query/viewer.gql'
 export default function (context) {
     // ユーザが認証されていない場合
     if (!context.app.$cookies.get('cookie-token')) {
-      return context.redirect('/sign-in')
+      return context.redirect('/user/login')
     }
     const token = context.app.$cookies.get('cookie-token')
     context.store.commit('user/setToken', token)
@@ -17,6 +17,6 @@ export default function (context) {
         context.store.commit('user/setLogo', result.data.viewer.logo)
     }).catch((error) => {
     // errorの場合に実行する処理
-    console.log("失敗")
+        console.log(error)
     })
   }

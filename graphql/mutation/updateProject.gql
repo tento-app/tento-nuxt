@@ -1,7 +1,7 @@
 mutation($token: String!,$project_id: String!, $ProjectInput: ProjectInput!) {
     updateProject(token:$token,projectId:$project_id,projectData:$ProjectInput){
         project{
-            name
+            id
         }
     }
 }

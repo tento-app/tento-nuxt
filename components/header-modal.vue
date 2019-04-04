@@ -29,16 +29,14 @@
 </template>
 
 <script>
-import { mapState,mapMutations } from 'vuex'
+import { mapState,mapMutations, mapActions  } from 'vuex'
 export default {
     computed: {
         ...mapState('user',['username'])
     },
     methods: {
         ...mapMutations('user',['setToken','setUsername','setLogo']),
-        logout: function (){
-          this.$store.dispatch('user/logout');
-        },
+        ...mapActions('user',['logout']),
     },
     props: {
       hostname:String

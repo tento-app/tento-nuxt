@@ -2,7 +2,9 @@
   <div class="content item">
     <div class="nav">
       <h1>{{ title }}</h1>
-      <nuxt-link v-if="edit" to="/camp/edit"><h3>編集ページへ</h3></nuxt-link>
+      <div class="link">
+        <nuxt-link v-if="edit" to="/camp/edit" class="sub_btn"><p>編集ページへ</p></nuxt-link>
+      </div>
     </div>
     <div class="cards_list">
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
@@ -49,6 +51,12 @@ export default {
     max-width: 840px;
     margin: 0 auto 3rem;
     padding: 0 30px;
+    .link {
+      display: flex;
+      a {
+        margin-left: auto;
+      }
+    }
     h1{
       text-align: center;
       margin-bottom: 1rem;
@@ -175,6 +183,12 @@ export default {
     max-width: 840px;
     margin: 0 auto 3rem;
     padding: 0 30px;
+    .link {
+      display: flex;
+      a {
+        margin-left: auto;
+      }
+    }
     h1{
       text-align: center;
       margin-bottom: 1rem;
@@ -295,6 +309,12 @@ export default {
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
+    .link {
+      display: flex;
+      a {
+        margin-left: auto;
+      }
+    }
     h1{
       text-align: center;
       margin-bottom: 1rem;

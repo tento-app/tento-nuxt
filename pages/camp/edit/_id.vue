@@ -12,7 +12,7 @@
 
         <div class="create_eyecatch">
           <div class="create_eyecatch_content">
-            <div class="img" v-show="uploadedImage" :style="{ 'background-image': 'url(' + uploadedImage + ')' }">
+            <div class="img" v-show="uploadedImage" :style="{ 'background-image': 'url(https://media.tento.app/' + uploadedImage + ')' }">
               <p v-on:click="deleteImage">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </p>
@@ -85,8 +85,8 @@
               <div class="btn-list">
                 <p @click="closeModal">編集に戻る</p>
                 <button class="btn_priority" type="button" :disabled="processing" name="button" @click="submit" v-on:click="button_disable()">
-                  <p :class="{disactive: processing}">公開する</p>
-                  <p class="processing" :class="{active: processing}">公開中...</p></button>
+                  <p :class="{disactive: processing}">更新する</p>
+                  <p class="processing" :class="{active: processing}">更新中...</p></button>
               </div>
             </div>
           </div>
@@ -121,10 +121,17 @@ export default {
       })
       .then(({ data }) => {
         // do what you want with data
+        const now_tags = data.project.tags.edges.map(function (value) { return value.node.name })
+        const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
         return {
-          multiselectoptions: data.allTags.edges.map(function (value) {
-              return value.node.name
-            })
+            name: data.project.name,
+            content: data.project.content,
+            contact: data.project.contact,
+            place: data.project.place,
+            uploadedImage: data.project.header,
+            date: data.project.date,
+            tags: now_tags,
+            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
         };
       });
   },
@@ -138,13 +145,6 @@ export default {
         },
         uploadUrl: "https://imgur.com/upload"
       },
-      name: "",
-      content: "",
-      contact: "",
-      tags: [],
-      date: "",
-      place: "",
-      uploadedImage: "",
       headerFile: null,
       processing: false
     };

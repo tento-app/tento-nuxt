@@ -59,35 +59,23 @@ export default {
     tags: Array,
     users: Array,
   },
-  // fetch(context){
-  //        context.app.apolloProvider.defaultClient.mutate({
-  //     mutation: statusGql,
-  //     variables: {
-  //       project_id: context.params.id,
-  //       token: context.app.$cookies.get('cookie-token'),
-  //     }
-  //   }).then(({ data }) => {
-  //         // do what you want with data
-  //         context.store.commit('button/setLike',  data.isLiked.isLiked)
-  //         context.store.commit('button/setClassLike',  data.isLiked.isLiked)
-  //         context.store.commit('button/setJoin',  data.isJoined.isJoined)
-  //         context.store.commit('button/setClassJoin',  data.isJoined.isJoined)
-  //       })
-  // },
-  mounted(){
-    this.$apollo.mutate({
+  fetch(context){
+    if(context.app.$cookies.get('cookie-token')){
+
+    context.app.apolloProvider.defaultClient.mutate({
         mutation: statusGql,
         variables: {
-          project_id: this.$route.params.id,
-          token: this.$cookies.get('cookie-token'),
+          project_id: context.params.id,
+          token: context.app.$cookies.get('cookie-token'),
         }
       }).then(({ data }) => {
           // do what you want with data
-          this.$store.commit('button/setLike',  data.isLiked.isLiked)
-          this.$store.commit('button/setClassLike',  data.isLiked.isLiked)
-          this.$store.commit('button/setJoin',  data.isJoined.isJoined)
-          this.$store.commit('button/setClassJoin',  data.isJoined.isJoined)
+          context.store.commit('button/setLike',  data.isLiked.isLiked)
+          context.store.commit('button/setClassLike',  data.isLiked.isLiked)
+          context.store.commit('button/setJoin',  data.isJoined.isJoined)
+          context.store.commit('button/setClassJoin',  data.isJoined.isJoined)
       })
+    }
   },
   asyncData (context) {
     return context.app.apolloProvider.defaultClient.query({

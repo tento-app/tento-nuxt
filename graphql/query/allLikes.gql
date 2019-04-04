@@ -8,6 +8,7 @@ query($token: String!){
           name
           thumbnail
           user{
+            id
             username
             logo
             position

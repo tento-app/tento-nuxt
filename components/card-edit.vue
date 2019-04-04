@@ -17,7 +17,7 @@
             <button>編集</button>
             <!-- <p class="card_img_category" >公開中 開催中</p> -->
           </div>
-          <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" >
+          <nuxt-link :to="{ name: 'camp-edit-id' , params: { id: project.node.id }}" >
               <div class="card_txt">
             <h4>{{ project.node.name }}</h4>
             <div class="card_txt_user">

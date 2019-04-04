@@ -5,7 +5,7 @@
     <div class="main">
       <div class="card">
         <cardEdit title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
-        <div class="empty_posted empty" v-if="host_projects.length < 1">
+        <div class="empty_posted empty" v-if="!host_projects">
           <h3>投稿したキャンプがありません...</h3>
           <div class="img">
             <img src="flow02-min.png" alt="">

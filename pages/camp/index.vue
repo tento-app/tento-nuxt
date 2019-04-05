@@ -6,8 +6,14 @@
       <div class="search">
         <input v-model="search" placeholder="フリーワード検索" type="text" @keyup.enter="say" @keypress="setCanMessageSubmit">
       </div>
-      <div class="card_content">
-        <card :projects="allProjects" :title='search +"の検索結果"'/>
+      <div class="card_search">
+        <card :projects="allProjects" :title='search +"の検索結果"' :hit_num='allProjects.length'/>
+        <div class="result" v-if="allProjects.length < 1">
+          <div class="img">
+            <img src="../../static/question.svg" alt="">
+          </div>
+          <p>検索結果がありませんでした</p>
+        </div>
       </div>
         <cardLoader v-if="endCursor" @readmore="readmore" />
     </div>
@@ -110,6 +116,10 @@ export default {
 @import '~/assets/style/btn.scss';
 @import '~/assets/style/_color.scss';
 
+.main {
+  margin: 0 0 5rem;
+}
+
 .search_num {
   display: block;
 }
@@ -118,9 +128,6 @@ export default {
   margin: 0 auto;
 }
 
-.nav {
-  display: none;
-}
 
 .search {
   display: flex;
@@ -135,6 +142,23 @@ export default {
     font-size: 1rem;
     padding: 0.2rem 0.2rem 0.5rem;
     background-color: transparent;
+  }
+}
+
+.result {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 30px;
+  .img {
+    max-width: 300px;
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+  }
+  p {
+    text-align: center;
+    font-weight: bold;
   }
 }
 

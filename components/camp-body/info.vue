@@ -6,7 +6,7 @@
         <div class="user">
           <user :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :id="host_user.id" />
         </div>
-        <joinbtn :title ='title' :project_id="project_id" class='sp'/>
+        <joinbtn :title ='title' :project_id="project_id" class='sp' v-if="username"/>
         <CampMember :users="users" class='pc'/>
 
         <div class="select sp">
@@ -32,7 +32,7 @@
                 <p>{{ contact }}</p>
               </li>
               <li class='pc'>
-                <joinbtn :title ='title' :project_id="project_id" />
+                <joinbtn :title ='title' :project_id="project_id" v-if="username"/>
               </li>
             </ul>
           </div>
@@ -55,7 +55,7 @@
               <p>{{ contact }}</p>
             </li>
             <li class='pc'>
-              <joinbtn :title ='title' :project_id="project_id" />
+              <joinbtn :title ='title' :project_id="project_id" v-if="username"/>
             </li>
           </ul>
         </div>
@@ -66,11 +66,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import CampMember from '~/components/camp-body/member.vue';
 import joinbtn from '~/components/camp-body/joinbtn.vue';
 import user from '~/components/user.vue';
 import { StringDecoder } from 'string_decoder';
 export default {
+  computed: {
+      ...mapState('user',['username','logo'])
+  },
   components :{
     CampMember,
     user,

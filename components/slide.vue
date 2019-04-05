@@ -278,7 +278,7 @@ export default {
                 .swiper-slide {
                     margin: 0 !important;
                     width: 80%;
-                    height: 280px;
+                    height: 200px;
                     margin: 0 auto;
                     .background {
                       background-repeat: no-repeat;

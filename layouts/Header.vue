@@ -14,12 +14,12 @@
         </nuxt-link>
         <nuxt-link to="/user/login" v-if="!username">
           <div class="sign-in　submit btn">
-            <p>Sign In</p>
+            <p>ログイン</p>
           </div>
         </nuxt-link>
         <nuxt-link to="/user/create" v-if="!username">
           <div class="sign-up　submit btn_priority">
-            <p>Sign Up</p>
+            <p>アカウント作成</p>
           </div>
         </nuxt-link>
         <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >

@@ -84,8 +84,8 @@
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
-          width: 36px;
-          height: 36px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
           margin-right: 0.5rem;
           border: $border01;

@@ -3,7 +3,7 @@
       <div class="create">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
         <div class="header">
-          <nuxt-link to='/top' class="left">
+          <nuxt-link to='/camp/edit' class="left">
             <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             <p>投稿終了</p>
           </nuxt-link>

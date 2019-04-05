@@ -119,14 +119,14 @@ export default {
           background-image: url('../../static/icon_empty.png');
         }
         .member {
-          margin-right: 1rem;
+          margin-right: 0.8rem;
           position: relative;
           & :hover + .member_text {
             display: none !important;
           }
           &_icon {
-            width: 36px;
-            height:36px;
+            width: 50px;
+            height:50px;
             margin: 0 auto;
             border-radius: 50%;
             background-color: #f0f0f0;

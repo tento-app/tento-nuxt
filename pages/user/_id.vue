@@ -12,9 +12,9 @@
       <div class="card" v-if="host_projects.length > 0">
         <card title="Posted Camp" :projects="host_projects"/>
       </div>
-      <div class="card" v-if="join_projects.length > 0">
+      <!-- <div class="card" v-if="join_projects.length > 0">
         <card title="Joined Camp" :projects="join_projects"/>
-      </div>
+      </div> -->
     </div>
     <Footer />
   </section>
@@ -69,7 +69,7 @@ export default {
   }
   .card {
     padding: 1rem 0 2rem;
-    margin: 5rem 0;
+    margin: 5rem 0 0;
   }
   .empty {
     text-align: center;

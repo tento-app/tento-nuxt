@@ -40,7 +40,7 @@
             <CampMember :users="users"/>
           </div>
         </div>
-        
+
         <div class="">
           <ul class="setting pc">
             <li v-if="place">
@@ -153,7 +153,7 @@ export default {
     h1{
       margin-bottom: 15px;
       color: $black01;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       padding: 0 15px;
     }
     .user {

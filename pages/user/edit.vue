@@ -20,7 +20,7 @@
           <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
         </div>
       </div>
-      <div class="card">
+      <div class="card background">
         <card title="参加したキャンプ" :projects="join_projects"/>
         <div class="empty_posted empty" v-if="join_projects.length < 1">
           <h3>参加したキャンプがありません...</h3>
@@ -122,6 +122,16 @@ export default {
       }
     }
 
+  }
+  .card {
+    padding: 2.5rem 15px;
+    padding-bottom: 2rem;
+    .content {
+      padding: 0;
+    }
+  }
+  .background {
+    background-color: $backround_color01;
   }
 }
 

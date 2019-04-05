@@ -113,4 +113,10 @@ export default {
   padding: 3rem 0;
 }
 
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  body {
+    padding-bottom: 52.67px;
+  }
+}
+
 </style>

@@ -146,10 +146,16 @@ export default {
     max-width: 840px;
     margin: 0 auto;
     transition: 0.3s;
+    &:before{
+      content:"";
+      display: block;
+      width:32%;
+      order:1;
+    }
     &:after{
       content:"";
       display: block;
-      width:30%;
+      width:32%;
     }
     &_item{
       transition: $transtion01;
@@ -159,7 +165,7 @@ export default {
       padding: 0rem;
       text-align: center;
       margin:0.5rem 0;
-      width: 30%;
+      width: 32%;
       .img {
         padding: 1rem;
         img {
@@ -217,6 +223,17 @@ export default {
     max-width: 840px;
     margin: 0 auto;
     transition: 0.3s;
+    &:before{
+      content:"";
+      display: block;
+      width:32%;
+      order:1;
+    }
+    &:after{
+      content:"";
+      display: block;
+      width:32%;
+    }
     &_item{
       transition: $transtion01;
       background-color: #fff;
@@ -225,7 +242,7 @@ export default {
       padding: 0rem;
       text-align: center;
       margin:0.5rem 0;
-      width: 31.5%;
+      width: 32%;
       .img {
         padding: 1rem;
         img {

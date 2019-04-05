@@ -409,8 +409,9 @@ export default {
       &_content {
         max-width: 840px;
         margin: 0rem auto;
-        padding: 1rem 15px;
+        padding: 0 0 1rem;
         label {
+          margin: 1rem 15px;
           cursor: pointer;
           font-size: 14px;
           border-radius: 99px;
@@ -424,12 +425,10 @@ export default {
           display: none;
         }
         .img {
-          height: 280px;
+          height: 180px;
           max-width: 100%;
-          border-radius: 12px;
           position: relative;
           width: 100%;
-          box-shadow: $box_shadow04;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
@@ -530,9 +529,26 @@ export default {
 }
 </style>
 <style lang="scss">
+
 @import "~/assets/style/_color.scss";
 @import "~/assets/style/base.scss";
 @import "~/assets/style/btn.scss";
+
+@keyframes slidein01 {
+  0% {
+    transform: translate(0px,100vh);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translate(0px,20vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0px,0px);
+    opacity: 1;
+  }
+}
 
 .vdatetime-popup__header {
   background-color: $main_color;
@@ -549,6 +565,8 @@ export default {
 .vdatetime-time-picker__item--selected {
   color: $main_color;
 }
+
+
 
 @media (min-width: 500px) {
 
@@ -641,6 +659,7 @@ export default {
 
 @media screen and (min-width: 0px) and (max-width: 500px) {
   .modal-mask {
+    animation: slidein01 0.3s ease-in 0s;
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -724,6 +743,34 @@ export default {
         }
       }
     }
+  }
+  .medium-editor-container {
+    p {
+      white-space: pre-line;
+      line-height: 1.8;
+      font-size:1rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+    h4 {
+      font-size: 1.4rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
+  }
+  .medium-editor-container .medium-editor-placeholder::after {
+    white-space: pre-wrap;
+  }
+  .medium-editor-container .insert-image-container {
+    display: none;
   }
 }
 </style>

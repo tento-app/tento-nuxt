@@ -245,7 +245,7 @@ export default {
           width: 120px;
           height: 120px;
           border-radius: 50%;
-          border: solid 3px $main-color;
+          border: solid 3px $black03;
           left: 50%;
           bottom: -120px;
           position: absolute;

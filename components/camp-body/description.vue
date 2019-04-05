@@ -25,7 +25,7 @@ export default {
       margin-bottom: 1rem;
     }
     > p{
-      line-height: 3;
+      line-height: 1.4;
       word-break: break-all;
       white-space: pre-line;
       > p {
@@ -33,18 +33,23 @@ export default {
       }
       h1 {
         font-size: 2rem;
+        margin: 1.2rem 0;
       }
       h2 {
         font-size: 1.8rem;
+        margin: 1.2rem 0;
       }
       h3 {
         font-size: 1.6rem;
+        margin: 1.2rem 0;
       }
       h4 {
         font-size: 1.4rem;
+        margin: 1.2rem 0;
       }
       h5 {
         font-size: 1.2rem;
+        margin: 1.2rem 0;
       }
     }
   }
@@ -62,26 +67,26 @@ export default {
     }
 
     > p{
-      line-height: 3;
+      line-height: 1.4;
       word-break: break-all;
       white-space: pre-line;
       > p {
         line-height: 1.8
       }
       h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       h2 {
-        font-size: 1.8rem;
-      }
-      h3 {
-        font-size: 1.6rem;
-      }
-      h4 {
         font-size: 1.4rem;
       }
-      h5 {
+      h3 {
+        font-size: 1.3rem;
+      }
+      h4 {
         font-size: 1.2rem;
+      }
+      h5 {
+        font-size: 1.1rem;
       }
     }
   }

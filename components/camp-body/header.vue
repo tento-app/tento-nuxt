@@ -2,16 +2,20 @@
   <div class="campheader" v-bind:class="{ active: headerActive }">
     <div class="text">
       <h1 class="camp_body_text_title pc">{{ title }}</h1>
-      <joinbtn :title ="title"/>
+      <joinbtn :title ="title" v-if="username"/>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import joinbtn from '~/components/camp-body/joinbtn.vue';
 export default {
   components :{
     joinbtn
+  },
+  computed: {
+      ...mapState('user',['username','logo'])
   },
   props: {
     title :String
@@ -148,7 +152,6 @@ export default {
     position: relative;
     background-color: rgba(250, 250, 250, 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 0.9rem 0;
     z-index: 4;
     position: fixed;
     width: 100%;
@@ -157,7 +160,6 @@ export default {
     .text {
       max-width: 840px;
       margin: 0 auto;
-      padding: 0px 15px;
       display: flex;
       align-items: center;
       h1 {
@@ -185,7 +187,7 @@ export default {
           padding: 10px;
           margin: 0;
           font-size: 14px;
-          border-radius: 4px;
+          border-radius: 0px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -196,6 +198,8 @@ export default {
           max-width: 100%;
           width: 50%;
           margin-bottom: 0;
+          padding: 1rem;
+          border-radius: 0;
         }
 
 

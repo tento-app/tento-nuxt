@@ -2,6 +2,11 @@
   <div class="content">
     <div class="nav">
       <h1>{{ title }}</h1>
+      <div v-if="hit_num" class="hit_num">
+        <p>
+          <span>{{hit_num}}</span>件ヒット
+        </p>
+      </div>
       <div class="link">
         <nuxt-link v-if="edit" to="/camp/edit" class="sub_btn"><p>編集ページへ</p></nuxt-link>
       </div>
@@ -40,7 +45,8 @@ export default {
   props: {
     projects: Array,
     title: String,
-    edit: Boolean
+    edit: Boolean,
+    hit_num:Number,
   }
 }
 </script>
@@ -51,6 +57,17 @@ export default {
   display: none;
 }
 @media (min-width: 840px) {
+  .hit_num {
+    display: flex;
+    p {
+      margin-left: auto;
+    }
+    span {
+      font-weight: bold;
+      color: $main_color;
+      font-size: 2rem;
+    }
+  }
   .content {
     padding: 0 30px;
   }
@@ -317,7 +334,7 @@ export default {
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
   .content {
-    padding: 0 15px;
+    padding: 0 20px;
   }
   .nav{
     max-width: 840px;
@@ -331,7 +348,7 @@ export default {
     h1{
       text-align: center;
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #1f1f1f;
     }
     &_item{
@@ -378,7 +395,7 @@ export default {
         background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
-        height: 130px;
+        height: 180px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -428,7 +445,7 @@ export default {
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            margin-right: 1rem;
+            margin-right: 0.5rem;
             border: solid 0.5px $black03;
           }
           &_name {

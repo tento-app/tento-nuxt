@@ -28,14 +28,14 @@
             </div>
             <div class="img">
               <img src="~/static/eyecatch-min.png" alt="">
-              <p class="md">Tentoとは学生のみが利用する学生求人サイトです。<br>あなたの興味のあることや、やりたいことをみんなでシェアして取り組める!<br>あなたが発信すればかなうアクティブサービス！</p>
+              <p class="md">Tentoとは学生の利用する学生求人サイトです。<br>あなたの興味のあることや、やりたいことをみんなでシェアして取り組める!<br>イベント開催告知から開発メンバー募集までなんでもあり！</p>
             </div>
           </div>
         </div>
         <div class="feature">
           <div class="text pc">
             <h2>Tentoとは？</h2>
-            <p>Tentoとは学生のみが利用する学生求人サイトです。<br>あなたの興味のあることや、やりたいことをみんなでシェアして取り組める!<br>イベント開催告知から開発メンバー募集までなんでもあり！</p>
+            <p>Tentoとは学生のみが利用する学生求人サイトです。<br>あなたの興味のあるこや、やりたいことをみんなでシェアして取り組める!<br>イベント開催告知から開発メンバー募集までなんでもあり！</p>
           </div>
           <div class="text md">
             <h2>Tento feature</h2>
@@ -46,21 +46,21 @@
                 <img src="~/static/feature01-min.png" alt="">
               </div>
               <h3>好みの募集がすぐ見つかる</h3>
-              <p>スキルや人気のCampが一覧からすぐ見つけられます。</p>
+              <p>スキルや人気のCampが一覧から<br class='sp'/>すぐ見つけられます。</p>
             </div>
             <div class="feature_content_item item02">
               <div class="img">
                 <img src="~/static/feature02-min.png" alt="">
               </div>
               <h3>必要なスキルを掲載</h3>
-              <p>キャンプで求められている担当、役割の指標となります。</p>
+              <p>キャンプで求められている<br class='sp'/>担当、役割の指標となります。</p>
             </div>
             <div class="feature_content_item item03">
               <div class="img">
                 <img src="~/static/feature03-min.png" alt="">
               </div>
               <h3>参加後の連絡を楽に</h3>
-              <p>Camp内にメッセージを設けることでのちの連絡を面倒を軽減しました。</p>
+              <p>Camp内にメッセージを設けることで<br class='sp'/>のちの連絡を面倒を軽減しました。</p>
             </div>
           </div>
         </div>
@@ -377,8 +377,8 @@ export default {
         }
       }
     }
-    .card {
-      margin-bottom: 3rem;
+    .camp {
+      padding: 5rem 0;
     }
     .bottom_cta {
       max-width: 840px;
@@ -428,12 +428,13 @@ export default {
         .img {
           margin-left: auto;
           width: 100%;
+          text-align: center;
           p {
-            font-weight: bold;
             margin-top: 1rem;
+            text-align: left;
           }
           img {
-            width: 100%;
+            width: 70%;
           }
         }
         .text {
@@ -458,7 +459,7 @@ export default {
       .feature {
         margin: 0 auto;
         max-width: 840px;
-        padding: 5rem 15px;
+        padding: 5rem 40px;
         .text {
           text-align: center;
           margin-bottom: 3rem;
@@ -511,19 +512,20 @@ export default {
             text-align: center;
             max-width: 400px;
             margin: 0 auto;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             .img {
               display: flex;
               align-items: center;
               justify-content: center;
-              height: 220px;
+              height: 200px;
             }
             img {
               width: 50%;
             }
             h3 {
               font-size: 16px;
-              margin-top: 1.2rem;
+              margin-top: 0rem;
+              margin-bottom: 0.5rem;
             }
           }
         }
@@ -533,7 +535,7 @@ export default {
         margin: 0 auto;
         h2 {
           text-align: center;
-          margin-bottom: 5rem;
+          margin-bottom: 3rem;
           font-size: 2rem;
         }
         .deco {
@@ -551,7 +553,6 @@ export default {
               font-size: 5rem;
               color: $main_color;
               font-weight: bold;
-              margin-bottom: 1rem;
             }
           }
           .img {
@@ -559,7 +560,7 @@ export default {
             margin: 0 auto;
             text-align: center;
             img {
-              width: 80%;
+              width: 60%;
             }
           }
           .text {
@@ -577,10 +578,12 @@ export default {
           }
         }
       }
+      .camp {
+        padding: 5rem 0;
+      }
       .bottom_cta {
         max-width: 840px;
         margin:0 auto;
-        padding: 5rem 30px;
         text-align: center;
         .img {
           width: 140px;
@@ -591,8 +594,11 @@ export default {
         }
         h4 {
           font-weight: bold;
-          font-size: 1.4rem;
+          font-size: 1rem;
           margin-bottom: 1rem;
+        }
+        .btn_priority {
+          margin: 0 auto;
         }
       }
     }

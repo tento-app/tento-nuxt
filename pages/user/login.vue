@@ -1,5 +1,6 @@
 <template lang="html">
   <section>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="background">
       <div class="sign-in">
@@ -21,7 +22,7 @@
           新規アカウント作成の方は<nuxt-link to='/user/create'>こちら</nuxt-link>から
         </p>
         <div class="button">
-          <button name="button" class="btn_priority" @click="login">Sign In</button>
+          <button name="button" class="btn_priority" @click="login">ログイン</button>
         </div>
       </div>
 
@@ -131,6 +132,7 @@ export default {
       width: 100%;
       box-sizing: border-box;
       margin-top: 0.2rem;
+      border-radius: 0;
       &::placeholder{
         font-weight: normal;
         color: #ddd;

@@ -9,17 +9,17 @@
           <p>User</p>
       </nuxt-link> -->
       <div class="left">
-        <nuxt-link to="/camp" class="search_icon">
+        <nuxt-link to="/camp" class="search_icon" v-if="username">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </nuxt-link>
         <nuxt-link to="/user/login" v-if="!username">
           <div class="sign-in　submit btn">
-            <p>Sign In</p>
+            <p>ログイン</p>
           </div>
         </nuxt-link>
         <nuxt-link to="/user/create" v-if="!username">
           <div class="sign-up　submit btn_priority">
-            <p>Sign Up</p>
+            <p>アカウント作成</p>
           </div>
         </nuxt-link>
         <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >

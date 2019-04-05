@@ -224,7 +224,7 @@ export default {
         }
       }
       li {
-        font-size: 12px;
+        font-size: 14px;
         padding: 10px 12px;
         display: flex;
         align-items: center;

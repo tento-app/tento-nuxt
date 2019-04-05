@@ -59,6 +59,10 @@ export default {
     tags: Array,
     users: Array,
   },
+  data() {
+    return {
+    }
+  },
   fetch(context){
     if(context.app.$cookies.get('cookie-token')){
 
@@ -88,13 +92,41 @@ export default {
         if(!data.project){
           return context.error({ statusCode: 404, message: 'ページが見つかりません' })
         }
-        return { project: data.project }
+        return {
+          project: data.project,
+          meta: {
+            title: data.project.name + ' - Tento',
+            description: '集まろう！ 学生の新しいコミュニティー',
+            type: 'site',
+            url: 'https://nuxt.tento.app/camp/'+ data.project.id,
+            image: 'https://media.tento.app/'+ encodeURI(data.project.header),
+            card:'summary_large_image',
+            site:'@tento_app',
+            creator:'@tento_app',
+          },
+        }
       })
   },
   computed: {
       ...mapState('user',['token']),
       ...mapState('button',['like','classLike','join','classJoin']),
   },
+  head () {
+    return {
+      title: this.meta.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.meta.description },
+        { hid: 'og:type', property: 'og:type', content: this.meta.type },
+        { hid: 'og:title', property: 'og:title', content: this.meta.title },
+        { hid: 'og:description', property: 'og:description', content: this.meta.description },
+        { hid: 'og:url', property: 'og:url', content: this.meta.url },
+        { hid: 'og:image', property: 'og:image', content: this.meta.image },
+        { hid: 'twitter:card', property: 'twitter:card', content: this.meta.card },
+        { hid: 'twitter:site', property: 'twitter:site', content: this.meta.site },
+        { hid: 'twitter:creator', property: 'twitter:creator', content: this.meta.creator },
+      ],
+    }
+  }
 }
 </script>
 <style lang='scss' scoped>
@@ -111,6 +143,12 @@ export default {
 
 .profile_component {
   padding: 3rem 0;
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  body {
+    padding-bottom: 52.67px;
+  }
 }
 
 </style>

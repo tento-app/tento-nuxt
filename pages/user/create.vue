@@ -1,5 +1,6 @@
 <template lang="html">
   <section>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="background">
       <div class="sign-in">
@@ -23,7 +24,7 @@
           に同意するものとします。
         </p>
         <div class="button">
-          <button name="button" class="btn_priority" @click="">Sign Up</button>
+          <button name="button" class="btn_priority" @click="">新規アカウント作成</button>
         </div>
       </div>
 
@@ -87,6 +88,7 @@ export default {
       width: 100%;
       box-sizing: border-box;
       margin-top: 0.2rem;
+      border-radius: 0;
       &::placeholder{
         font-weight: normal;
         color: #ddd;

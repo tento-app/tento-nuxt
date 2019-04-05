@@ -170,22 +170,25 @@ export default {
         height: 52px;
         border-radius: 50%;
         margin-right: 1rem;
+        border: $border01;
       }
       &_wrapper{
         &_name{
           font-size: 14px;
           font-weight: bold;
+          margin-bottom: 0.25rem;
         }
         &_position {
-          font-size: 12px;
+          font-size: 14px;
           color: #ccc;
+          margin-bottom: 0.25rem;
         }
         &_text{
-          font-size: 12px;
+          font-size: 14px;
           color: #555555;
         }
         .profile_view_more{
-          margin: 6px 0;
+          margin: 1rem 0 0;
           p {
             font-size: 12px;
             display: flex;

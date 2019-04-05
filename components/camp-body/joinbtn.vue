@@ -429,7 +429,7 @@ export default {
   }
   .btn_list {
     padding: 0 15px;
-    margin: 1.5rem 0 1rem;
+    margin: 1.5rem 0 0;
     a {
       margin-right: 0.5rem;
       width: 40px;
@@ -450,11 +450,12 @@ export default {
       align-items: center;
       justify-content: center;
       background-color: #fff;
-      border: $border01;
+      border: solid 1px $main_color;
+      color: $main_color;
     }
     .btn_priority {
       max-width: 100%;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
     }
 
 

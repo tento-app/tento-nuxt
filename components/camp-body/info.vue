@@ -6,7 +6,7 @@
         <div class="user">
           <user :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :id="host_user.id" />
         </div>
-        <joinbtn :title ='title' :project_id="project_id" class='sp'/>
+        <joinbtn :title ='title' :project_id="project_id" class='sp' v-if="username"/>
         <CampMember :users="users" class='pc'/>
 
         <div class="select sp">
@@ -32,7 +32,7 @@
                 <p>{{ contact }}</p>
               </li>
               <li class='pc'>
-                <joinbtn :title ='title' :project_id="project_id" />
+                <joinbtn :title ='title' :project_id="project_id" v-if="username"/>
               </li>
             </ul>
           </div>
@@ -40,7 +40,7 @@
             <CampMember :users="users"/>
           </div>
         </div>
-        
+
         <div class="">
           <ul class="setting pc">
             <li v-if="place">
@@ -55,7 +55,7 @@
               <p>{{ contact }}</p>
             </li>
             <li class='pc'>
-              <joinbtn :title ='title' :project_id="project_id" />
+              <joinbtn :title ='title' :project_id="project_id" v-if="username"/>
             </li>
           </ul>
         </div>
@@ -66,11 +66,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import CampMember from '~/components/camp-body/member.vue';
 import joinbtn from '~/components/camp-body/joinbtn.vue';
 import user from '~/components/user.vue';
 import { StringDecoder } from 'string_decoder';
 export default {
+  computed: {
+      ...mapState('user',['username','logo'])
+  },
   components :{
     CampMember,
     user,
@@ -153,7 +158,7 @@ export default {
     h1{
       margin-bottom: 15px;
       color: $black01;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       padding: 0 15px;
     }
     .user {

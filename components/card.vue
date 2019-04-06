@@ -14,14 +14,10 @@
     <div class="cards_list">
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
-          <div class="card_img" v-if="!project.node.header">
-
-          </div>
-          <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-            <!-- <p
-              class="card_img_category"
-              :style="{ 'background-color': '#' + project.node.category.color }"
-            >{{ project.node.category.name }}</p> -->
+          <!-- <div class="card_img" v-if="!project.node.header"></div>
+          <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }"></div> -->
+          <div class="card_src_img">
+            <img :src="'https://media.tento.app/' + project.node.thumbnail" style='width:100%;' alt="">
           </div>
           <div class="card_txt">
             <h4>{{ project.node.name }}</h4>
@@ -127,9 +123,18 @@ export default {
       border-radius: 12px;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        line-height: 0;
+        background-color: #fff;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
@@ -256,9 +261,17 @@ export default {
         border-radius: 12px;
         box-shadow: $box_shadow_card;
         transition: $transtion01;
+        overflow: hidden;
         &:hover {
           box-shadow: $box_shadow_card_hover;
           transition: $transtion01;
+        }
+        &_src_img {
+          background-color: #fff;
+          line-height: 0;
+          img {
+            width: 100%;
+          }
         }
         &_img {
           background-image: url("../static/header_logo.png");
@@ -334,7 +347,7 @@ export default {
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
   .content {
-    padding: 0 20px;
+    padding: 0 15px;
   }
   .nav{
     max-width: 840px;
@@ -386,9 +399,17 @@ export default {
       border-radius: 12px;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        line-height: 0;
+        background-color: #fff;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");

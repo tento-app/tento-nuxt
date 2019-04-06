@@ -22,6 +22,10 @@
 <script>
 import { mapState,mapMutations } from 'vuex'
 import SkillModal from '~/components/skill-modal.vue';
+
+import allTagsGql from "~/graphql/query/allTags.gql";
+import MypageGql from '~/graphql/query/mypage.gql';
+
 export default {
  components: {
    SkillModal

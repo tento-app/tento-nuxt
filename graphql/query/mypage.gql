@@ -46,4 +46,12 @@ query($token: String!){
       }
     }
   }
+  allTags{
+    edges{
+      node{
+        id
+        name
+      }
+    }
+  }
 }

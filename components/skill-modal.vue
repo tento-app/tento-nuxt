@@ -27,7 +27,9 @@
 
 <script type="text/javascript">
 import { mapMutations } from 'vuex'
+
 import allTagsGql from "~/graphql/query/allTags.gql";
+import MypageGql from '~/graphql/query/mypage.gql';
 
 export default {
  methods: {

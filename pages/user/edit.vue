@@ -39,7 +39,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import MypageGql from '~/graphql/query/mypage.gql'
+import MypageGql from '~/graphql/query/mypage.gql';
 import allTagsGql from "~/graphql/query/allTags.gql";
 
 import MypageHeader from '~/components/mypage-header.vue';
@@ -75,7 +75,6 @@ export default {
       variables: {
         token: context.app.$cookies.get('cookie-token'),
         id: context.params.id
-
       }
     }).then(({ data }) => {
           // do what you want with data
@@ -88,6 +87,7 @@ export default {
             join_projects:data.joinProjects.edges,
             multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
           }
+          console.log(data);
         })
   }
 }

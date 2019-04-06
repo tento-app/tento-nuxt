@@ -25,9 +25,28 @@
           </div>
         </nuxt-link>
         <div class="button_list">
-          <nuxt-link :to="{ name: 'camp-edit-id' , params: { id: project.node.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg></nuxt-link>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg></p>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></p>
+          <nuxt-link :to="{ name: 'camp-edit-id' , params: { id: project.node.id }}">
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+            </div>
+          </nuxt-link>
+          <a>
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+            </div>
+          </a>
+          <a>
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+          </a>
+
+          <!-- <div class="">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg></p>
+          </div>
+          <div class="">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></p>
+          </div> -->
         </div>
       </div>
     </div>
@@ -89,24 +108,32 @@ export default {
     }
     .card_link {
       width: 31.5%;
-      margin-bottom: 3rem;
       transition: $transtion01;
+      margin-bottom: 3rem;
       .button_list {
-        box-shadow: $box_shadow_card;
+        border-top: solid 1px $black04;
         background-color: #fff;
-        margin-top: 1rem;
-        padding:1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-radius: 12px;
-        p {
+        border-radius:0 0 12px 12px;
+        padding: 0.5rem 0;
+        a {
           cursor: pointer;
+          width: 33%;
+          text-align: center;
+          padding: 0.5rem 0;
+          &:nth-child(2) {
+            border-left: solid 1px $black04;
+            border-right: solid 1px $black04;
+          }
+          p {
+          }
         }
       }
     }
     .card {
-      border-radius: 12px;
+      border-radius: 12px 12px 0 0;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
       &:hover {
@@ -142,7 +169,7 @@ export default {
         }
       }
       &_txt {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0px;
         background-color: #fff;
         padding: 1rem;
         overflow: hidden;

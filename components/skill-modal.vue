@@ -9,13 +9,8 @@
               <h3>Skill</h3>
             </div>
             <p>あなたのスキルを追加しましょう。</p>
-            <div class="input">
-              <input type="text" name="" value="" autocomplete="on" list="skill-list">
-              <datalist id="skill-list">
-                <option value="html">html</option>
-                <option value="css">css</option>
-                <option value="js">js</option>
-              </datalist>
+            <Multiselect v-model="tags" :options="multiselectoptions" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" :preselect-first="false" :max-height="200">
+            </Multiselect>
             </div>
 
             <div class="skill_modal_btn">
@@ -32,10 +27,14 @@
 
 <script type="text/javascript">
 import { mapMutations } from 'vuex'
+import allTagsGql from "~/graphql/query/allTags.gql";
 
 export default {
  methods: {
-    ...mapMutations('skill_modal',['isShowModal'])
+    ...mapMutations('skill_modal',['isShowModal']),
+ },
+ props: {
+   multiselectoptions:Array
  }
 }
 

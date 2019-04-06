@@ -8,11 +8,11 @@
         <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
       <div class="skill_container" >
-          <skill :tags="tags" title="スキル" :editable="true"/>
+          <skill :tags="tags" title="スキル" :editable="true" :options='multiselectoptions'/>
       </div>
       <div class="card">
         <card title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
-        <div class="empty_posted empty" v-if="host_projects.length < 1">
+        <div class="empty_posted empty" v-if="!host_projects">
           <h3>投稿したキャンプがありません...</h3>
           <div class="img">
             <img src="flow02-min.png" alt="">
@@ -22,7 +22,7 @@
       </div>
       <div class="card">
         <card title="参加したキャンプ" :projects="join_projects"/>
-        <div class="empty_posted empty" v-if="join_projects.length < 1">
+        <div class="empty_posted empty" v-if="!join_projects">
           <h3>参加したキャンプがありません...</h3>
           <div class="img">
             <img src="feature01-min.png" alt="">
@@ -38,8 +38,9 @@
 </template>
 
 <script>
-import MypageGql from '~/graphql/query/mypage.gql'
 import { mapState } from 'vuex'
+import MypageGql from '~/graphql/query/mypage.gql'
+import allTagsGql from "~/graphql/query/allTags.gql";
 
 import MypageHeader from '~/components/mypage-header.vue';
 import card from '~/components/card.vue';
@@ -73,14 +74,19 @@ export default {
       query: MypageGql,
       variables: {
         token: context.app.$cookies.get('cookie-token'),
+        id: context.params.id
+
       }
     }).then(({ data }) => {
           // do what you want with data
+          const now_tags = data.viewer.tags.edges.map(function (value) { return value.node.name })
+          const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
           return {
             user: data.viewer,
             tags:data.viewer.tags.edges,
             host_projects: data.hostProjects.edges,
             join_projects:data.joinProjects.edges,
+            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
           }
         })
   }

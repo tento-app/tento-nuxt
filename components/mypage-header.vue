@@ -68,7 +68,6 @@
           <div class="form">
             <div class="item">
               <input type="text" maxlength='12' placeholder="てんと一郎" v-model.trim="usernameUpdate" v-on:change="usernameInput">
-              <!-- <p class="count">{{ name.length }}/12</p> -->
               <p class="count">{{ usernameUpdate.length }}/12</p>
             </div>
             <div class="item">

@@ -15,7 +15,7 @@
         <p>スキルを追加</p>
       </div>
     </div>
-  <SkillModal v-if="showModal" ref="skillmodal"/>
+  <SkillModal v-if="showModal" ref="skillmodal" :multiselectoptions='multiselectoptions'/>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
  props: {
     tags: Array,
     title:String,
+    multiselectoptions:Array,
     editable: {
       type: Boolean,
       default: false // これを追加

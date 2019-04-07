@@ -98,7 +98,7 @@ export default {
             title: data.project.name + ' - Tento',
             description: '集まろう！ 学生の新しいコミュニティー',
             type: 'site',
-            url: 'https://nuxt.tento.app/camp/'+ data.project.id,
+            url: 'https://tento.app/camp/'+ data.project.id,
             image: 'https://media.tento.app/'+ encodeURI(data.project.header),
             card:'summary_large_image',
             site:'@tento_app',

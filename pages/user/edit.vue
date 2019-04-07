@@ -8,10 +8,10 @@
         <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
       <div class="skill_container" >
-          <skill :tags="tags" title="スキル" :editable="true"/>
+          <skill :tags="tags" title="Skills" :editable="true"/>
       </div>
       <div class="card">
-        <card title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
+        <card title="Opened Camp" :projects="host_projects" :edit="true"/>
         <div class="empty_posted empty" v-if="host_projects.length < 1">
           <h3>投稿したキャンプがありません...</h3>
           <div class="img">
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="card background">
-        <card title="参加したキャンプ" :projects="join_projects"/>
+        <card title="Joined Camp" :projects="join_projects"/>
         <div class="empty_posted empty" v-if="join_projects.length < 1">
           <h3>参加したキャンプがありません...</h3>
           <div class="img">
@@ -95,7 +95,6 @@ export default {
   background-color: #fff;
   .skill_container{
     padding: 80px 0;
-    margin-top: 80px;
     background-color: $backround_color01;
   }
   .empty {
@@ -124,8 +123,7 @@ export default {
 
   }
   .card {
-    padding: 2.5rem 15px;
-    padding-bottom: 2rem;
+    padding: 5rem 15px;
     .content {
       padding: 0;
     }

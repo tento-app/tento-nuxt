@@ -37,7 +37,7 @@ export default {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
-    padding: 80px 30px 0;
+    padding: 80px 30px 5rem;
     &_header{
       .empty {
         background-image: url('../static/header_logo.png');
@@ -99,6 +99,7 @@ export default {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
+    padding-bottom: 5rem;
     &_header{
       .empty {
         background-image: url('../static/header_logo.png');

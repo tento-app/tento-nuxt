@@ -38,6 +38,8 @@
 
 <script>
 import createUserGql from "~/graphql/mutation/createUser.gql";
+import loginGql from '~/graphql/mutation/login.gql'
+import { mapState,mapMutations } from 'vuex'
 
 import Card from '~/components/card.vue';
 import Header from '~/layouts/Header.vue';
@@ -59,6 +61,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('user',['setToken','setUsername','setLogo']),
     createuser: function(){
       this.$apollo.mutate({
         mutation: createUserGql,
@@ -75,17 +78,31 @@ export default {
       })
       .then(result => {
         // 成功した場合に実行する処理（200OKのレスポンスの場合）
-        this.$router.push('/user/login')
+        this.$apollo.mutate({
+            mutation: loginGql,
+            variables: {
+                username: this.email,
+                password: this.password,
+            }
+        }).then((result) => {
+            // 成功した場合に実行する処理（200OKのレスポンスの場合
+          this.setUsername(this.username)
+          this.setToken(result.data.authToken.token)
+          this.$router.push('/user/edit')
+        }).catch((error) => {
+              console.log(error)
+        })
       })
       .catch(error => {
         // errorの場合に実行する処理
         if ( String(error).match(/username/)) {
-        //usernameが使われてた場合の処理
-        alert('そのユーザーIDは既に使われているぞ！')
+          //usernameが使われてた場合の処理
+          alert('そのユーザーIDは既に使われているぞ！')
         } else if ( String(error).match(/users_user_email_243f6e77_uniq/)) {
-        //メアドが使われてた場合の処理
-        alert('そのメールアドレスは既に使われているぞ！')
+          //メアドが使われてた場合の処理
+          alert('そのメールアドレスは既に使われているぞ！')
         } else {
+          alert('作成失敗した！\nサポートに連絡してみてね！')
           console.log(error)
         }
       });

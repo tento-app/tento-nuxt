@@ -15,9 +15,11 @@
         <div class="empty_posted empty" v-if="host_projects.length < 1">
           <h3>投稿したキャンプがありません...</h3>
           <div class="img">
-            <img src="flow02-min.png" alt="">
+            <img src="../../static/404_01.svg" alt="">
           </div>
-          <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
+          <div class="button">
+            <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
+          </div>
         </div>
       </div>
       <div class="card background">
@@ -28,7 +30,7 @@
             <img src="feature01-min.png" alt="">
           </div>
           <div class="button">
-            <nuxt-link to="/top" class='btn_priority'>一覧を見る</nuxt-link>
+            <nuxt-link to="/camp" class='btn_priority'>一覧を見る</nuxt-link>
           </div>
         </div>
       </div>

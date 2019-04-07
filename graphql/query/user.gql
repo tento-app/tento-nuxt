@@ -21,6 +21,7 @@ query ($id: ID!){
           id
           name
           header
+          thumbnail
           user{
             id
             logo
@@ -35,6 +36,7 @@ query ($id: ID!){
           id
           name
           header
+          thumbnail
           user{
             id
             username

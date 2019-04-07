@@ -1,30 +1,22 @@
 <template id="">
-  <div class="content">
+  <div class="">
     <div class="nav">
       <h1>{{ title }}</h1>
-      <div v-if="hit_num" class="hit_num">
-        <p>
-          <span>{{hit_num}}</span>件ヒット
-        </p>
-      </div>
       <div class="link">
-        <nuxt-link v-if="edit" to="/camp/edit" class="sub_btn"><p>編集ページへ</p></nuxt-link>
+        <nuxt-link v-if="edit" to="/camp/edit" class="sub_btn pc"><p>編集ページへ</p></nuxt-link>
+        <nuxt-link v-if="edit" to="/camp/edit" class="sp edit_icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg></nuxt-link>
       </div>
     </div>
     <div class="cards_list">
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
-          <div class="card_img" v-if="!project.node.header">
-
-          </div>
-          <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-            <!-- <p
-              class="card_img_category"
-              :style="{ 'background-color': '#' + project.node.category.color }"
-            >{{ project.node.category.name }}</p> -->
+          <div class="card_img" v-if="!project.node.thumbnail"></div>
+          <!-- <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }"></div> -->
+          <div class="card_src_img" v-if="project.node.thumbnail">
+            <img :src="'https://media.tento.app/' + project.node.thumbnail" style='width:100%;' alt="">
           </div>
           <div class="card_txt">
-            <h4>{{ project.node.name }}</h4>
+            <h4 v-html="project.node.name"></h4>
             <div class="card_txt_user">
               <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
               <div class>
@@ -46,7 +38,6 @@ export default {
     projects: Array,
     title: String,
     edit: Boolean,
-    hit_num:Number,
   }
 }
 </script>
@@ -57,24 +48,12 @@ export default {
   display: none;
 }
 @media (min-width: 840px) {
-  .hit_num {
-    display: flex;
-    p {
-      margin-left: auto;
-    }
-    span {
-      font-weight: bold;
-      color: $main_color;
-      font-size: 2rem;
-    }
-  }
   .content {
     padding: 0 30px;
   }
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 0 30px;
     .link {
       display: flex;
       a {
@@ -83,7 +62,6 @@ export default {
     }
     h1{
       text-align: center;
-      margin-bottom: 1rem;
       font-size: 2rem;
       color: #1f1f1f;
     }
@@ -127,36 +105,37 @@ export default {
       border-radius: 12px;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
+      position: relative;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        line-height: 0;
+        background-color: #fff;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
         background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
-        height: 130px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
         align-items: flex-end;
-        &_category {
-          font-size: 10px;
-          padding: 8px;
-          text-align: center;
-          min-width: 57px;
-          color: #fff;
-          &.event {
-            background-color: #007d98;
-          }
-          &.develop {
-            background-color: #f49e1b;
-          }
-          &.join {
-            background-color: #ff4b4b;
-          }
+        display: block;
+        &:before {
+          content:"";
+          display: block;
+          width: 100%;
+          padding-top: 59.6%;
+          border-bottom: solid 1px $black04;
         }
       }
       &_txt {
@@ -166,7 +145,7 @@ export default {
         overflow: hidden;
         h4 {
           font-weight: bold;
-          font-size: 14px;
+          font-size: 17px;
           color: #333;
           max-height: 60px;
           min-height: 45px;
@@ -209,7 +188,6 @@ export default {
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 0 30px;
     .link {
       display: flex;
       a {
@@ -218,7 +196,6 @@ export default {
     }
     h1{
       text-align: center;
-      margin-bottom: 1rem;
       font-size: 2rem;
       color: #1f1f1f;
     }
@@ -247,6 +224,7 @@ export default {
     flex-flow: row wrap;
     justify-content: space-between;
     margin: 0 auto;
+    padding: 0 30px;
     .card_link {
       width: 48.1%;
       margin-bottom: 2rem;
@@ -256,36 +234,36 @@ export default {
         border-radius: 12px;
         box-shadow: $box_shadow_card;
         transition: $transtion01;
+        overflow: hidden;
         &:hover {
           box-shadow: $box_shadow_card_hover;
           transition: $transtion01;
+        }
+        &_src_img {
+          background-color: #fff;
+          line-height: 0;
+          border-bottom: solid 1px $black04;
+          img {
+            width: 100%;
+          }
         }
         &_img {
           background-image: url("../static/header_logo.png");
           background-color: #fff;
           border-radius: 12px 12px 0 0;
           width: 100%;
-          height: 130px;
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
           display: flex;
           align-items: flex-end;
-          &_category {
-            font-size: 10px;
-            padding: 8px;
-            text-align: center;
-            min-width: 57px;
-            color: #fff;
-            &.event {
-              background-color: #007d98;
-            }
-            &.develop {
-              background-color: #f49e1b;
-            }
-            &.join {
-              background-color: #ff4b4b;
-            }
+          display: block;
+          &:before {
+            content:"";
+            display: block;
+            padding-top: 59.6%;
+            border-bottom: solid 1px $black04;
+            width: 100%;
           }
         }
         &_txt {
@@ -295,7 +273,7 @@ export default {
           overflow: hidden;
           h4 {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 17px;
             color: #333;
             max-height: 60px;
             min-height: 45px;
@@ -334,9 +312,12 @@ export default {
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
   .content {
-    padding: 0 20px;
+    padding: 0 15px;
   }
   .nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 840px;
     margin: 0 auto 3rem;
     .link {
@@ -344,10 +325,15 @@ export default {
       a {
         margin-left: auto;
       }
+      .edit_icon {
+        margin-left: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
     h1{
       text-align: center;
-      margin-bottom: 1rem;
       font-size: 1.8rem;
       color: #1f1f1f;
     }
@@ -376,6 +362,7 @@ export default {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    padding: 0 15px;
     margin: 0 auto;
     .card_link {
       width: 100%;
@@ -386,36 +373,36 @@ export default {
       border-radius: 12px;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        line-height: 0;
+        background-color: #fff;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
         background-color: #fff;
         border-radius: 12px 12px 0 0;
         width: 100%;
-        height: 180px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
         align-items: flex-end;
-        &_category {
-          font-size: 10px;
-          padding: 8px;
-          text-align: center;
-          min-width: 57px;
-          color: #fff;
-          &.event {
-            background-color: #007d98;
-          }
-          &.develop {
-            background-color: #f49e1b;
-          }
-          &.join {
-            background-color: #ff4b4b;
-          }
+        display: block;
+        &:before {
+          content:"";
+          display: block;
+          padding-top: 59.6%;
+          border-bottom: solid 1px $black04;
+          width: 100%;
         }
       }
       &_txt {
@@ -425,7 +412,7 @@ export default {
         overflow: hidden;
         h4 {
           font-weight: bold;
-          font-size: 16px;
+          font-size: 17px;
           color: #333;
           max-height: 60px;
           overflow: hidden;

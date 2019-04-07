@@ -1,5 +1,5 @@
 <template id="">
-  <div class="cover">
+  <div class="content item">
     <div class="nav">
       <h1>{{ title }}</h1>
     </div>
@@ -7,13 +7,13 @@
       <div class="card_link" v-for="project in projects" :key="project.node.id">
         <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" >
           <div class="card">
-            <div class="card_img" v-if="!project.node.header">
-            </div>
-            <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-              <!-- <p class="card_img_category" >公開中 開催中</p> -->
+            <!-- <div class="card_img" v-if="!project.node.header"></div>
+            <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }"></div> -->
+            <div class="card_src_img">
+              <img :src="'https://media.tento.app/' + project.node.thumbnail" style='width:100%;' alt="">
             </div>
             <div class="card_txt">
-              <h4>{{ project.node.name }}</h4>
+              <h4 v-html='project.node.name'></h4>
               <div class="card_txt_user">
                 <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
                   <div class>
@@ -25,9 +25,28 @@
           </div>
         </nuxt-link>
         <div class="button_list">
-          <nuxt-link :to="{ name: 'camp-edit-id' , params: { id: project.node.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg></nuxt-link>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg></p>
-          <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></p>
+          <nuxt-link :to="{ name: 'camp-edit-id' , params: { id: project.node.id }}">
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+            </div>
+          </nuxt-link>
+          <a>
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+            </div>
+          </a>
+          <a>
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+          </a>
+
+          <!-- <div class="">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg></p>
+          </div>
+          <div class="">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></p>
+          </div> -->
         </div>
       </div>
     </div>
@@ -49,7 +68,7 @@ export default {
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 3rem 30px 0;
+    padding: 0rem 30px 0;
     h1{
       text-align: center;
       margin-bottom: 1rem;
@@ -89,29 +108,46 @@ export default {
     }
     .card_link {
       width: 31.5%;
-      margin-bottom: 3rem;
       transition: $transtion01;
+      margin-bottom: 3rem;
       .button_list {
-        box-shadow: $box_shadow_card;
+        border-top: solid 1px $black04;
         background-color: #fff;
-        margin-top: 1rem;
-        padding:1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-radius: 12px;
-        p {
+        border-radius:0 0 12px 12px;
+        padding: 0.5rem 0;
+        a {
           cursor: pointer;
+          width: 33%;
+          text-align: center;
+          padding: 0.5rem 0;
+          &:nth-child(2) {
+            border-left: solid 1px $black04;
+            border-right: solid 1px $black04;
+          }
+          p {
+          }
         }
       }
     }
     .card {
-      border-radius: 12px;
+      border-radius: 12px 12px 0 0;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        background-color: #fff;
+        line-height: 0;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
@@ -142,7 +178,7 @@ export default {
         }
       }
       &_txt {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0px;
         background-color: #fff;
         padding: 1rem;
         overflow: hidden;
@@ -185,13 +221,20 @@ export default {
   }
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
+  .content {
+    padding: 0 30px;
+  }
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 0 30px;
+    .link {
+      display: flex;
+      a {
+        margin-left: auto;
+      }
+    }
     h1{
       text-align: center;
-      margin-bottom: 1rem;
       font-size: 2rem;
       color: #1f1f1f;
     }
@@ -226,25 +269,42 @@ export default {
       transition: $transtion01;
       display: block;
       .button_list {
-        box-shadow: $box_shadow_card;
+        border-top: solid 1px $black04;
         background-color: #fff;
-        margin-top: 1rem;
-        padding:1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-radius: 12px;
-        p {
+        border-radius:0 0 12px 12px;
+        padding: 0.5rem 0;
+        a {
           cursor: pointer;
+          width: 33%;
+          text-align: center;
+          padding: 0.5rem 0;
+          &:nth-child(2) {
+            border-left: solid 1px $black04;
+            border-right: solid 1px $black04;
+          }
+          p {
+          }
         }
       }
       .card {
         border-radius: 12px;
         box-shadow: $box_shadow_card;
         transition: $transtion01;
+        overflow: hidden;
         &:hover {
           box-shadow: $box_shadow_card_hover;
           transition: $transtion01;
+        }
+        &_src_img {
+          background-color: #fff;
+          line-height: 0;
+          border-bottom: solid 1px $black04;
+          img {
+            width: 100%;
+          }
         }
         &_img {
           background-image: url("../static/header_logo.png");
@@ -325,7 +385,7 @@ export default {
     h1{
       text-align: center;
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #1f1f1f;
     }
     &_item{
@@ -350,7 +410,6 @@ export default {
   }
   .cards_list {
     max-width: 840px;
-    padding: 0 15px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -360,26 +419,43 @@ export default {
       margin-bottom: 2rem;
       transition: $transtion01;
       .button_list {
-        box-shadow: $box_shadow_card;
+        border-top: solid 1px $black04;
         background-color: #fff;
-        margin-top: 1rem;
-        padding:1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-radius: 12px;
-        p {
+        border-radius:0 0 12px 12px;
+        padding: 0.5rem 0;
+        a {
           cursor: pointer;
+          width: 33%;
+          text-align: center;
+          padding: 0.5rem 0;
+          &:nth-child(2) {
+            border-left: solid 1px $black04;
+            border-right: solid 1px $black04;
+          }
+          p {
+          }
         }
       }
     }
     .card {
-      border-radius: 12px;
+      border-radius:12px 12px 0 0;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        background-color: #fff;
+        line-height: 0;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
@@ -410,7 +486,7 @@ export default {
         }
       }
       &_txt {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0 ;
         background-color: #fff;
         padding: 1rem;
         overflow: hidden;

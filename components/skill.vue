@@ -59,7 +59,7 @@ export default {
       max-width: 840px;
       margin: 0 auto;
       color: $black01;
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
       padding:0 30px;
       text-align: center;
       font-size: 2rem;
@@ -213,7 +213,7 @@ export default {
       margin-bottom: 1rem;
       padding:0 30px;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.8rem;
     }
   }
   .skill{

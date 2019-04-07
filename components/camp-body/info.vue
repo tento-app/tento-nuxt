@@ -2,7 +2,7 @@
   <section>
     <div class="camp_setting_background">
       <div class="camp_setting">
-        <h1 class="camp_body_text_title">{{ title }}</h1>
+        <h1 class="camp_body_text_title" v-html="title"></h1>
         <div class="user">
           <user :background_img_url="host_user.logo" :name="host_user.username" :position="host_user.position" :id="host_user.id" />
         </div>

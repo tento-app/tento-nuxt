@@ -3,30 +3,33 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="background">
+
+      <form @submit.prevent="createuser">
       <div class="sign-in">
         <h1>新規アカウント作成</h1>
         <div class="img">
         </div>
         <div class="item">
-          <label for="in-id">メールアドレス</label>
-          <input type="text" name="" value="" id="in-id">
+          <label for="in-id">ユーザーID</label>
+          <input type="text" id="in-id" pattern="^[0-9A-Za-z]+$" title="半角英数字がいい！" v-model="username" required>
         </div>
         <div class="item">
-          <label for="in-id">ユーザーID</label>
-          <input type="text" name="" value="" id="in-id">
+          <label for="in-email">メールアドレス</label>
+          <input type="email" id="in-email" v-model="email" required>
         </div>
         <div class="item">
           <label for="in-password">パスワード</label>
-          <input type="password" name="" value="" id="in-password" >
+          <input type="password" id="in-password" v-model="password" required>
         </div>
         <p class="tos_agreement">[新規アカウント作成]をクリックすることで
           <nuxt-link to='/terms'>利用規約</nuxt-link>、<nuxt-link to='/privacy'>プライバシーポリシー</nuxt-link>
           に同意するものとします。
         </p>
         <div class="button">
-          <button name="button" class="btn_priority" @click="">新規アカウント作成</button>
+          <button name="submit" class="btn_priority">新規アカウント作成</button>
         </div>
       </div>
+      </form>
 
     </div>
 
@@ -34,6 +37,10 @@
 </template>
 
 <script>
+import createUserGql from "~/graphql/mutation/createUser.gql";
+import loginGql from '~/graphql/mutation/login.gql'
+import { mapState,mapMutations } from 'vuex'
+
 import Card from '~/components/card.vue';
 import Header from '~/layouts/Header.vue';
 import Footer from '~/layouts/Footer.vue';
@@ -42,6 +49,64 @@ export default {
     Card,
     Header,
     Footer
+  },
+  data() {
+    return {
+      username: "",
+      email:"",
+      password:"",
+      position:"",
+      content:"",
+      url:"",
+    }
+  },
+  methods: {
+    ...mapMutations('user',['setToken','setUsername','setLogo']),
+    createuser: function(){
+      this.$apollo.mutate({
+        mutation: createUserGql,
+        variables: {
+          userData: {
+            username: this.username,
+            email: this.email,
+            password:this.password,
+            position: this.position,
+            content: this.content,
+            url: this.url,
+          }
+        }
+      })
+      .then(result => {
+        // 成功した場合に実行する処理（200OKのレスポンスの場合）
+        this.$apollo.mutate({
+            mutation: loginGql,
+            variables: {
+                username: this.email,
+                password: this.password,
+            }
+        }).then((result) => {
+            // 成功した場合に実行する処理（200OKのレスポンスの場合
+          this.setUsername(this.username)
+          this.setToken(result.data.authToken.token)
+          this.$router.push('/user/edit')
+        }).catch((error) => {
+              console.log(error)
+        })
+      })
+      .catch(error => {
+        // errorの場合に実行する処理
+        if ( String(error).match(/username/)) {
+          //usernameが使われてた場合の処理
+          alert('そのユーザーIDは既に使われているぞ！')
+        } else if ( String(error).match(/users_user_email_243f6e77_uniq/)) {
+          //メアドが使われてた場合の処理
+          alert('そのメールアドレスは既に使われているぞ！')
+        } else {
+          alert('作成失敗した！\nサポートに連絡してみてね！')
+          console.log(error)
+        }
+      });
+    }
   }
 }
 </script>

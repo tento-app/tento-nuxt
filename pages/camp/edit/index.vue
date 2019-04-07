@@ -5,7 +5,7 @@
     <div class="main">
       <div class="mycard">
         <div class="mycard">
-          <cardEdit title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
+          <cardEdit title="Edit Camp" :projects="host_projects" :edit="true"/>
         </div>
         <div class="mycard">
           <div class="empty_posted empty" v-if="host_projects.length < 1">

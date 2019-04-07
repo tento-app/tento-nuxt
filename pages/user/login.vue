@@ -9,12 +9,12 @@
         </div>
         <form class="">
           <div class="item">
-            <label for="in-id">メールアドレス</label>
-            <input type="email" name="" value="" id="in-id" v-model="in_identification">
+            <label for="in-email">メールアドレス</label>
+            <input type="email" id="in-mail" v-model="in_identification">
           </div>
           <div class="item">
             <label for="in-password">パスワード</label>
-            <input type="password" name="" value="" id="in-password" v-model="in_password">
+            <input type="password" id="in-password" v-model="in_password">
           </div>
 
         </form>
@@ -43,18 +43,14 @@ export default {
   data() {
     return {
       in_password:'',
-      in_identification:''
+      in_identification:'',
+      in_passworderror:"",
+      in_identificationerror:""
     }
   },
   components: {
     Header,
     Footer
-  },
-  data(){
-    return {
-      in_passworderror:"",
-      in_identificationerror:""
-    }
   },
   methods: {
     ...mapMutations('user',['setToken','setUsername','setLogo']),
@@ -81,8 +77,13 @@ export default {
                 this.$router.push('/top')
             })
         }).catch((error) => {
-            // errorの場合に実行する処理
-            console.log("失敗")
+            // errorの場合に実行する処理// errorの場合に実行する処理
+            if ( String(error).match(/Please, enter valid credentials/)) {
+            //usernameが使われてた場合の処理
+            alert('どちらかは知りませんが間違ってますよ...\nほんとに登録したんですか？')
+            } else {
+              console.log(error)
+            }
         })
     }
   }

@@ -113,6 +113,9 @@ module.exports = () => {
       '@nuxtjs/apollo',
       'cookie-universal-nuxt',
       'nuxt-dayjs-module',
+      '@nuxtjs/google-analytics', {
+        id: 'UA-129505564-2'
+      }
     ],
 
     apollo: {

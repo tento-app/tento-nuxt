@@ -4,6 +4,7 @@ query ($id: ID!){
     name
     content
     header
+    thumbnail
     startAt
     place
     contact

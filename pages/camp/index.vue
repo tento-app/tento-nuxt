@@ -3,11 +3,16 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <Header />
     <div class="main">
-      <div class="search">
-        <input v-model="search" placeholder="フリーワード検索" type="text" @keyup.enter="say" @keypress="setCanMessageSubmit">
+      <div class="search_cover">
+        <div class="search">
+          <input v-model="search" placeholder="フリーワード検索" type="text" @keyup.enter="say" @keypress="setCanMessageSubmit">
+          <div class="hit_num">
+            <p><span>{{ allProjects.length }}</span>件ヒット</p>
+          </div>
+        </div>
       </div>
       <div class="card_search">
-        <card :projects="allProjects" :title='search +"の検索結果"' :hit_num='allProjects.length'/>
+        <card :projects="allProjects" :hit_num='allProjects.length'/>
         <div class="result" v-if="allProjects.length < 1">
           <div class="img">
             <img src="../../static/question.svg" alt="">
@@ -116,6 +121,7 @@ export default {
 @import '~/assets/style/btn.scss';
 @import '~/assets/style/_color.scss';
 
+@media (min-width: 500px) {
 .main {
   margin: 0 0 5rem;
 }
@@ -128,20 +134,41 @@ export default {
   margin: 0 auto;
 }
 
-
-.search {
-  display: flex;
+.search_cover {
   max-width: 840px;
   margin: 3rem auto 0;
   padding: 0 30px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background-color: #fff;
   input {
-    margin-left: auto;
     outline: 0;
     border: 0;
     border-bottom: 1px solid $black03;
-    font-size: 1rem;
+    font-size: 14px;;
     padding: 0.2rem 0.2rem 0.5rem;
+    border-radius: 0;
     background-color: transparent;
+  }
+  .hit_num {
+    margin-left: auto;
+    display: flex;
+    p {
+      background-color: $black04;
+      margin-left: auto;
+      padding: 0.5rem 1rem;
+      border-radius: 99px;
+      font-size: 14px;
+    }
+    span {
+      font-weight: bold;
+      color: $main_color;
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -162,7 +189,75 @@ export default {
   }
 }
 
+}
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .main {
+    margin: 0 0 5rem;
+  }
 
+  .search_num {
+    display: block;
+  }
+
+  .item {
+    margin: 0 auto;
+  }
+
+  .search_cover {
+    max-width: 840px;
+    margin: 3rem auto 0;
+    padding: 0 15px;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: #fff;
+    input {
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid $black03;
+      font-size: 14px;;
+      padding: 0.2rem 0.2rem 0.5rem;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    .hit_num {
+      margin-left: auto;
+      display: flex;
+      p {
+        background-color: $black04;
+        margin-left: auto;
+        padding: 0.5rem 1rem;
+        border-radius: 99px;
+        font-size: 14px;
+      }
+      span {
+        font-weight: bold;
+        color: $main_color;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .result {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 30px;
+    .img {
+      max-width: 300px;
+      margin: 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+    p {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
 
 
 </style>

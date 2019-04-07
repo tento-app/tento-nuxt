@@ -6,12 +6,14 @@
       <div class="account_edit">
   <div class="content item">
     <div class="nav">
-      <h1>保存したキャンプ</h1>
+      <h1>Store Camp</h1>
     </div>
         <div class="cards_list">
             <nuxt-link :to="{ name: 'camp-id' , params: { id: like.node.project.id }}" class="card_link" v-for="like in allLikes" :key="like.node.id">
                 <div class="card">
-                <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.node.project.thumbnail + ')' }">
+                <!-- <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.node.project.thumbnail + ')' }"></div> -->
+                <div class="card_src_img">
+                  <img :src="'https://media.tento.app/' + like.node.project.thumbnail" style='width:100%;' alt="">
                 </div>
                 <div class="card_txt">
                     <h4>{{ like.node.project.name }}</h4>
@@ -133,9 +135,18 @@ export default {
       border-radius: 12px;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        line-height: 0;
+        background-color: #fff;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("/camp_img.jpg");
@@ -252,9 +263,18 @@ export default {
         border-radius: 12px;
         box-shadow: $box_shadow_card;
         transition: $transtion01;
+        overflow: hidden;
         &:hover {
           box-shadow: $box_shadow_card_hover;
           transition: $transtion01;
+        }
+        &_src_img {
+          line-height: 0;
+          background-color: #fff;
+          border-bottom: solid 1px $black04;
+          img {
+            width: 100%;
+          }
         }
         &_img {
           background-image: url("/camp_img.jpg");
@@ -334,7 +354,7 @@ export default {
     h1{
       text-align: center;
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #1f1f1f;
     }
     &_item{
@@ -372,9 +392,18 @@ export default {
       border-radius: 12px;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        line-height: 0;
+        background-color: #fff;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("/camp_img.jpg");

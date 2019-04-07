@@ -1,5 +1,5 @@
 <template id="">
-  <div class="cover">
+  <div class="content item">
     <div class="nav">
       <h1>{{ title }}</h1>
     </div>
@@ -7,10 +7,10 @@
       <div class="card_link" v-for="project in projects" :key="project.node.id">
         <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" >
           <div class="card">
-            <div class="card_img" v-if="!project.node.header">
-            </div>
-            <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-              <!-- <p class="card_img_category" >公開中 開催中</p> -->
+            <!-- <div class="card_img" v-if="!project.node.header"></div>
+            <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }"></div> -->
+            <div class="card_src_img">
+              <img :src="'https://media.tento.app/' + project.node.thumbnail" style='width:100%;' alt="">
             </div>
             <div class="card_txt">
               <h4>{{ project.node.name }}</h4>
@@ -68,7 +68,7 @@ export default {
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 3rem 30px 0;
+    padding: 0rem 30px 0;
     h1{
       text-align: center;
       margin-bottom: 1rem;
@@ -136,9 +136,18 @@ export default {
       border-radius: 12px 12px 0 0;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        background-color: #fff;
+        line-height: 0;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
@@ -212,13 +221,20 @@ export default {
   }
 }
 @media screen and (min-width: 500px) and (max-width: 840px) {
+  .content {
+    padding: 0 30px;
+  }
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 0 30px;
+    .link {
+      display: flex;
+      a {
+        margin-left: auto;
+      }
+    }
     h1{
       text-align: center;
-      margin-bottom: 1rem;
       font-size: 2rem;
       color: #1f1f1f;
     }
@@ -253,25 +269,42 @@ export default {
       transition: $transtion01;
       display: block;
       .button_list {
-        box-shadow: $box_shadow_card;
+        border-top: solid 1px $black04;
         background-color: #fff;
-        margin-top: 1rem;
-        padding:1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-radius: 12px;
-        p {
+        border-radius:0 0 12px 12px;
+        padding: 0.5rem 0;
+        a {
           cursor: pointer;
+          width: 33%;
+          text-align: center;
+          padding: 0.5rem 0;
+          &:nth-child(2) {
+            border-left: solid 1px $black04;
+            border-right: solid 1px $black04;
+          }
+          p {
+          }
         }
       }
       .card {
         border-radius: 12px;
         box-shadow: $box_shadow_card;
         transition: $transtion01;
+        overflow: hidden;
         &:hover {
           box-shadow: $box_shadow_card_hover;
           transition: $transtion01;
+        }
+        &_src_img {
+          background-color: #fff;
+          line-height: 0;
+          border-bottom: solid 1px $black04;
+          img {
+            width: 100%;
+          }
         }
         &_img {
           background-image: url("../static/header_logo.png");
@@ -352,7 +385,7 @@ export default {
     h1{
       text-align: center;
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #1f1f1f;
     }
     &_item{
@@ -377,7 +410,6 @@ export default {
   }
   .cards_list {
     max-width: 840px;
-    padding: 0 15px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -387,26 +419,43 @@ export default {
       margin-bottom: 2rem;
       transition: $transtion01;
       .button_list {
-        box-shadow: $box_shadow_card;
+        border-top: solid 1px $black04;
         background-color: #fff;
-        margin-top: 1rem;
-        padding:1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-radius: 12px;
-        p {
+        border-radius:0 0 12px 12px;
+        padding: 0.5rem 0;
+        a {
           cursor: pointer;
+          width: 33%;
+          text-align: center;
+          padding: 0.5rem 0;
+          &:nth-child(2) {
+            border-left: solid 1px $black04;
+            border-right: solid 1px $black04;
+          }
+          p {
+          }
         }
       }
     }
     .card {
-      border-radius: 12px;
+      border-radius:12px 12px 0 0;
       box-shadow: $box_shadow_card;
       transition: $transtion01;
+      overflow: hidden;
       &:hover {
         box-shadow: $box_shadow_card_hover;
         transition: $transtion01;
+      }
+      &_src_img {
+        background-color: #fff;
+        line-height: 0;
+        border-bottom: solid 1px $black04;
+        img {
+          width: 100%;
+        }
       }
       &_img {
         background-image: url("../static/header_logo.png");
@@ -437,7 +486,7 @@ export default {
         }
       }
       &_txt {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0 ;
         background-color: #fff;
         padding: 1rem;
         overflow: hidden;

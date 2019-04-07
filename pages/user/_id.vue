@@ -6,11 +6,11 @@
       <div class="account_header">
         <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" :position="user.position" :intro="user.content"/>
       </div>
-      <div class="skill_container">
-          <skill :tags="user.tags.edges" title="My tool"/>
+      <div class="skill_container" v-if="user.tags.edges.length > 0">
+          <skill :tags="user.tags.edges" title="Skills"/>
       </div>
       <div class="card" v-if="host_projects.length > 0">
-        <card title="Posted Camp" :projects="host_projects"/>
+        <card title="Opened Camp" :projects="host_projects"/>
       </div>
       <!-- <div class="card" v-if="join_projects.length > 0">
         <card title="Joined Camp" :projects="join_projects"/>
@@ -64,7 +64,6 @@ export default {
   background-color: #fff;
   .skill_container{
     padding: 80px 0;
-    margin-top: 80px;
     background-color: $backround_color01;
   }
   .card {

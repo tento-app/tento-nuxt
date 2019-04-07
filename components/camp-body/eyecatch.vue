@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="camp_body_eyecatch">
-    <div class="camp_body_eyecatch_img" v-if="background_img_url" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+    <!-- <div class="camp_body_eyecatch_img" v-if="background_img_url" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div> -->
+    <img :src="'https://media.tento.app/' + background_img_url" alt="">
     <div class="camp_body_eyecatch_img" v-if="!background_img_url"></div>
   </div>
 </template>
@@ -21,6 +22,12 @@ export default {
     max-width: 840px;
     margin: 0 auto;
     padding:30px;
+    line-height: 0;
+    img {
+      width: 100%;
+      box-shadow: $box_shadow04;
+      border-radius: 12px;
+    }
     &_img {
       background-image: url("../../static/header_logo.png");
       background-color: #fff;
@@ -42,6 +49,12 @@ export default {
   .camp_body_eyecatch{
     max-width: 840px;
     margin: 0 auto;
+    line-height: 0;
+    border-bottom: 1px solid $black04;
+    img {
+      width: 100%;
+      background-color: #fff;
+    }
     &_img {
       background-image: url("../../static/header_logo.png");
       background-color: #fff;

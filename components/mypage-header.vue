@@ -219,7 +219,7 @@ export default {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
-    padding: 80px 30px 0;
+    padding: 80px 30px 5rem;
     .normal {
       display: none !important;
     }
@@ -472,7 +472,7 @@ export default {
   .account{
     max-width: 840px;
     margin: 0px auto 0;
-    padding: 0px 0 40px;
+    padding: 0px 0 5rem;
     .normal {
       display: none !important;
     }
@@ -496,7 +496,7 @@ export default {
           width: 110px;
           height: 110px;
           border-radius: 50%;
-          border: solid 3px $main-color;
+          border: solid 3px $black03;
           left: 50%;
           bottom: -110px;
           position: absolute;

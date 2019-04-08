@@ -5,6 +5,9 @@
     <div class="main">
       <div class="mycard">
         <div class="mycard">
+          <div class="button_list">
+            <nuxt-link to='/user/edit' class="sub_btn">マイページに戻る</nuxt-link>
+          </div>
           <cardEdit title="Edit Camp" :projects="host_projects" :edit="true"/>
         </div>
         <div class="mycard">
@@ -69,15 +72,15 @@ export default {
 @import '~/assets/style/base.scss';
 @import '~/assets/style/btn.scss';
 
-.content {
-  margin: 5rem 0;
+.mycard {
+  margin: 2rem 0;
 }
 .main{
   // background-color: #fff;
-  .skill_container{
-    padding: 80px 0;
-    margin-top: 80px;
-    background-color: $backround_color01;
+  .button_list {
+    margin: 0 auto 2rem;
+    max-width: 840px;
+    padding: 0 30px;
   }
   .empty {
     max-width: 840px;

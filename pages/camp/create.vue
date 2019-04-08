@@ -38,6 +38,12 @@
       <div class="create_body">
         <div class="create_body_content">
           <!-- <textarea name="name" rows="8" cols="80" placeholder="本文を記入してください"></textarea> -->
+          <div class="help">
+            <p>？</p>
+            <div class="img">
+              <img src="~/static/nav.gif" alt="">
+            </div>
+          </div>
           <medium-editor v-model='content' :options='options' />
         </div>
           <div class="modal-mask"  v-if="showModal">
@@ -134,7 +140,6 @@ export default {
       options: {
         placeholder: {
           text: "本文：Camp内容について記そう！！",
-          autoLink: true
         },
         uploadUrl: "https://imgur.com/upload"
       },
@@ -308,7 +313,7 @@ export default {
       &_content {
         max-width: 840px;
         margin: 0 auto;
-        padding: 3rem 30px 5rem;
+        padding: 3rem 30px 0rem;
         p {
           margin-bottom: 1.5rem;
           font-size: 14px;
@@ -340,6 +345,41 @@ export default {
         margin: 2rem auto 0;
         padding: 0 30px;
         color: $black01;
+        .help {
+          position: relative;
+          padding: 1rem 0 0;
+          p {
+            background-color: $black04;
+            color: $main_color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            &:hover + .img {
+              display: block;
+            }
+          }
+          .img {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left:60px;
+            z-index: 10;
+            transform: translate(0%,-50%);
+            width: 200px;
+            padding: 0.1rem;
+            background-color: $main_color;
+            font-size: 0;
+            img {
+              width: 100%;
+            }
+          }
+        }
         // textarea{
         //   width: 100%;
         //   box-sizing: border-box;
@@ -486,6 +526,42 @@ export default {
         margin: 2rem auto 0;
         padding: 0 15px;
         color: $black01;
+        .help {
+          position: relative;
+          padding: 1rem 0 0;
+          display: none;
+          p {
+            background-color: $black04;
+            color: $main_color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            &:hover + .img {
+              display: block;
+            }
+          }
+          .img {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left:60px;
+            z-index: 10;
+            transform: translate(0%,-50%);
+            width: 200px;
+            padding: 0.1rem;
+            background-color: $main_color;
+            font-size: 0;
+            img {
+              width: 100%;
+            }
+          }
+        }
         // textarea{
         //   width: 100%;
         //   box-sizing: border-box;

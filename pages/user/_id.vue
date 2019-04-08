@@ -50,8 +50,35 @@ export default {
           user: data.user,
           host_projects: data.user.hostProjects.edges.reverse(),
           join_projects: data.user.projects.edges.reverse(),
+          
+          meta: {
+            title: data.user.name + ' - Tento',
+            description: '集まろう！ 学生の新しいコミュニティー',
+            type: 'article',
+            url: 'https://tento.app/user/'+ data.user.id,
+            image: 'https://media.tento.app/'+ encodeURI(data.user.header),
+            card:'summary_large_image',
+            site:'@tento_app',
+            creator:'@tento_app',
+          },
           }
       })
+  },
+  head () {
+    return {
+      title: this.meta.title,
+      meta: [
+        { hid: 'description', name: 'description', content: this.meta.description },
+        { hid: 'og:type', property: 'og:type', content: this.meta.type },
+        { hid: 'og:title', property: 'og:title', content: this.meta.title },
+        { hid: 'og:description', property: 'og:description', content: this.meta.description },
+        { hid: 'og:url', property: 'og:url', content: this.meta.url },
+        { hid: 'og:image', property: 'og:image', content: this.meta.image },
+        { hid: 'twitter:card', property: 'twitter:card', content: this.meta.card },
+        { hid: 'twitter:site', property: 'twitter:site', content: this.meta.site },
+        { hid: 'twitter:creator', property: 'twitter:creator', content: this.meta.creator },
+      ],
+    }
   }
 }
 </script>

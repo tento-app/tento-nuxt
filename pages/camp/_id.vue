@@ -97,7 +97,7 @@ export default {
           meta: {
             title: data.project.name + ' - Tento',
             description: '集まろう！ 学生の新しいコミュニティー',
-            type: 'site',
+            type: 'article',
             url: 'https://tento.app/camp/'+ data.project.id,
             image: 'https://media.tento.app/'+ encodeURI(data.project.header),
             card:'summary_large_image',

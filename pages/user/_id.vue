@@ -54,7 +54,7 @@ export default {
             title: data.user.name + ' - Tento',
             description: '集まろう！ 学生の新しいコミュニティー',
             type: 'article',
-            url: 'https://tento.app/user/'+ data.user.id,
+            url: this.baseUrl + '/user/'+ data.user.id,
             image: 'https://media.tento.app/'+ encodeURI(data.user.header),
             card:'summary_large_image',
             site:'@tento_app',

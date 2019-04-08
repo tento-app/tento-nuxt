@@ -7,7 +7,7 @@ module.exports = () => {
     env: {
       baseTitle: 'Tento - 集まろう！ 学生の新しいコミュニティー',
       baseDesc: 'Tentoとは学生のみが利用する学生求人サイトです。あなたの興味のあるこや、やりたいことをみんなでシェアして取り組める!イベント開催告知から開発メンバー募集までなんでもあり！',
-      baseUrl: 'https://tento.app/',
+      baseUrl: 'https://tento.app',
       baseOgp: 'sns.png',
     },
 

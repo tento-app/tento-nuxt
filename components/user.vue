@@ -1,7 +1,8 @@
 <template id="">
 <nuxt-link :to="{ name: 'user-id' , params: { id: id }}">
   <div class="abstract_user">
-    <div class="abstract_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+    <div class="abstract_user_img" v-if="background_img_url" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+    <div class="abstract_user_img" v-if="!background_img_url"></div>
     <div class="">
       <p class="abstract_user_name">{{ name }}</p>
       <p class="abstract_user_position pc">{{ position }}</p>
@@ -23,7 +24,7 @@
       display: flex;
       align-items: center;
       &_img {
-          // background-image: url("../static/icon.jpg");
+          background-image: url("../static/icon_empty.png");
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -50,7 +51,7 @@
       display: flex;
       align-items: center;
       &_img {
-          background-image: url("../static/icon.jpg");
+          background-image: url("../static/icon_empty.png");
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -80,7 +81,7 @@
       display: flex;
       align-items: center;
       &_img {
-          background-image: url("../static/icon.jpg");
+          background-image: url("../static/icon_empty.png");
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;

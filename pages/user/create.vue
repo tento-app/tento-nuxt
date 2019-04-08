@@ -11,7 +11,8 @@
         </div>
         <div class="item">
           <label for="in-id">ユーザーID</label>
-          <input type="text" id="in-id" pattern="^[0-9A-Za-z]+$" title="半角英数字がいい！" v-model="username" required>
+          <input type="text" id="in-id" pattern="^[0-9A-Za-z]+$" title="半角英数字で入力してください" v-model="username" required maxlength="12">
+          <p class="count">{{ username.length }}/12</p>
         </div>
         <div class="item">
           <label for="in-email">メールアドレス</label>
@@ -144,6 +145,14 @@ export default {
     }
     .item {
       margin: 0 0 1.2rem;
+      position: relative;
+    }
+    .count {
+      bottom: 5px;
+      right: 10px;
+      position: absolute;
+      font-weight: lighter;
+      color: #ccc;
     }
     input{
       border: 0;

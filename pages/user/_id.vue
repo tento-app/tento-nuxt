@@ -50,7 +50,6 @@ export default {
           user: data.user,
           host_projects: data.user.hostProjects.edges.reverse(),
           join_projects: data.user.projects.edges.reverse(),
-          
           meta: {
             title: data.user.name + ' - Tento',
             description: '集まろう！ 学生の新しいコミュニティー',

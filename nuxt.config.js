@@ -15,7 +15,7 @@ module.exports = () => {
      ** Headers of the page
      */
     head: {
-      title: 'Tento',
+      title: this.baseTitle,
       meta: [{
           charset: 'utf-8'
         },
@@ -115,13 +115,13 @@ module.exports = () => {
     /*
      ** Nuxt.js modules
      */
-    modules: [,
+    modules: [
       '@nuxtjs/apollo',
       'cookie-universal-nuxt',
       'nuxt-dayjs-module',
-      '@nuxtjs/google-analytics', {
-        id: 'UA-129505564-2'
-      }
+      ['@nuxtjs/google-analytics', {
+        id: 'paste your id here'
+      }]
     ],
 
     apollo: {

@@ -7,9 +7,9 @@
         <!-- <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" /> -->
         <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
-      <div class="skill_container" >
-          <skill :tags="tags" title="Skills" :editable="true"/>
-      </div>
+      <!-- <div class="skill_container" >
+        <skill :tags="tags" title="Skills" :editable="false"/>
+      </div> -->
       <div class="card">
         <card title="Opened Camp" :projects="host_projects" :edit="true"/>
         <div class="empty_posted empty" v-if="host_projects.length < 1">

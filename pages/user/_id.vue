@@ -51,10 +51,10 @@ export default {
           host_projects: data.user.hostProjects.edges.reverse(),
           join_projects: data.user.projects.edges.reverse(),
           meta: {
-            title: data.user.name + ' - Tento',
+            title: data.user.username + ' - Tento',
             description: '集まろう！ 学生の新しいコミュニティー',
             type: 'article',
-            url: this.baseUrl + '/user/'+ data.user.id,
+            url: process.env.baseUrl + '/user/'+ data.user.id,
             image: 'https://media.tento.app/'+ encodeURI(data.user.header),
             card:'summary_large_image',
             site:'@tento_app',

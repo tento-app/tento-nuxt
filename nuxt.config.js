@@ -4,12 +4,18 @@ module.exports = () => {
 
   return {
     mode: 'universal',
+    env: {
+      baseTitle: 'Tento - 集まろう！ 学生の新しいコミュニティー',
+      baseDesc: 'Tentoとは学生のみが利用する学生求人サイトです。あなたの興味のあるこや、やりたいことをみんなでシェアして取り組める!イベント開催告知から開発メンバー募集までなんでもあり！',
+      baseUrl: 'https://tento.app',
+      baseOgp: 'sns.png',
+    },
 
     /*
      ** Headers of the page
      */
     head: {
-      title: 'Tento',
+      title: this.baseTitle,
       meta: [{
           charset: 'utf-8'
         },
@@ -20,12 +26,12 @@ module.exports = () => {
         {
           hid: 'description',
           name: 'description',
-          content: '新たな学生コミュニティ'
+          content: this.baseDesc
         },
         {
           hid: 'og:site_name',
           property: 'og:site_name',
-          content: 'Tento'
+          content: this.baseTitle
         },
         {
           hid: 'og:type',
@@ -35,22 +41,22 @@ module.exports = () => {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://tento.app'
+          content: this.baseUrl
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'Tento'
+          content: this.baseTitle
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: '新たな学生コミュニティ'
+          content: this.baseDesc
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: '/logo.png'
+          content: this.baseOgp
         },
         // Twitter
         {
@@ -109,10 +115,13 @@ module.exports = () => {
     /*
      ** Nuxt.js modules
      */
-    modules: [,
+    modules: [
       '@nuxtjs/apollo',
       'cookie-universal-nuxt',
       'nuxt-dayjs-module',
+      ['@nuxtjs/google-analytics', {
+        id: 'paste your id here'
+      }]
     ],
 
     apollo: {

@@ -18,7 +18,8 @@
           <div class="card_txt">
             <h4 v-html="project.node.name"></h4>
             <div class="card_txt_user">
-              <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+              <div class="card_txt_user_img" v-if="project.node.user.logo" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+              <div class="card_txt_user_img" v-if="!project.node.user.logo"></div>
               <div class>
                 <p class="card_txt_user_name">{{ project.node.user.username }}</p>
                 <p class="card_txt_user_position">{{ project.node.user.position }}</p>
@@ -48,6 +49,9 @@ export default {
   display: none;
 }
 @media (min-width: 840px) {
+  .sp {
+    display: none;
+  }
   .content {
     padding: 0 30px;
   }
@@ -159,6 +163,7 @@ export default {
           display: flex;
           align-items: center;
           &_img {
+            background-image: url("../static/icon_empty.png");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -287,6 +292,7 @@ export default {
             display: flex;
             align-items: center;
             &_img {
+              background-image: url("../static/icon_empty.png");
               background-position: center;
               background-size: cover;
               background-repeat: no-repeat;
@@ -311,6 +317,9 @@ export default {
   }
 }
 @media screen and (min-width: 0px) and (max-width: 500px) {
+  .pc {
+    display: none !important;
+  }
   .content {
     padding: 0 15px;
   }
@@ -425,7 +434,7 @@ export default {
           display: flex;
           align-items: center;
           &_img {
-            background-image: url("../static/icon.jpg");
+            background-image: url("../static/icon_empty.png");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;

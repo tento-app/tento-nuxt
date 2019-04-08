@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.0-rc4",
+    "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/pwa": "^2.6.0",
     "apollo-cache-inmemory": "1.4.2",
     "apollo-client": "2.0.0",

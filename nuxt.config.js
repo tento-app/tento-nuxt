@@ -3,8 +3,8 @@ module.exports = () => {
   const pkg = require('./package')
   const baseTitle = 'Tento - 集まろう！ 学生の新しいコミュニティー'
   const baseDesc = 'Tentoとは学生のみが利用する学生求人サイトです。あなたの興味のあるこや、やりたいことをみんなでシェアして取り組める!イベント開催告知から開発メンバー募集までなんでもあり！'
-  const baseUrl = 'https =//tento.app'
-  const baseOgp = 'sns.png'
+  const baseUrl = 'https://tento.app'
+  const baseOgp = 'https://tento.app/sns.png'
 
   return {
     mode: 'universal',

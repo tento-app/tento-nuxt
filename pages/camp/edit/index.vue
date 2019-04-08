@@ -11,9 +11,11 @@
           <div class="empty_posted empty" v-if="host_projects.length < 1">
             <h3>投稿したキャンプがありません...</h3>
             <div class="img">
-              <img src="flow02-min.png" alt="">
+              <img src="~/~/static/flow02-min.png" alt="">
             </div>
-            <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
+            <div class="button">
+              <nuxt-link to="/camp/create" class='btn_priority'>キャンプを投稿</nuxt-link>
+            </div>
           </div>
         </div>
       </div>
@@ -96,11 +98,11 @@ export default {
     }
     .button {
       text-align: center;
-      a {
-        margin: 0 auto;
-      }
     }
 
+  }
+  .btn_priority {
+    margin: 0 auto;
   }
 }
 

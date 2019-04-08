@@ -13,7 +13,7 @@
             <skill :tags="project.tags.edges" title="Required tool"/>
           </div>
           <div class="profile_component">
-          <profile :host_user="project.user"/>
+          <profile :host_user="project.user" :url_id="project.id"/>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <template id="">
-  <div class="content item">
+  <div class="">
     <div class="nav">
       <h1>{{ title }}</h1>
     </div>

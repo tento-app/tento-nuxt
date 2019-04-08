@@ -48,7 +48,7 @@
             <p>タグ、スキルを追加してほしい！</p>
           </div>
           <div class="ans">
-            <p>タグ、スキルの追加リクエストは<nuxt-link to="/">こちら</nuxt-link>よりお願いいたします。</p>
+            <p>タグ、スキルの追加リクエストは<a href="https://twitter.com/tento_app" target="blank">こちら</a>よりお願いいたします。</p>
           </div>
         </div>
 
@@ -58,7 +58,7 @@
             <p>退会はできますか？</p>
           </div>
           <div class="ans">
-            <p>できます。<br><nuxt-link to="/">こちら</nuxt-link>よりご連絡ください。</p>
+            <p>できます。<br><a href="https://twitter.com/tento_app" target="blank">こちら</a>よりご連絡ください。</p>
           </div>
         </div>
 

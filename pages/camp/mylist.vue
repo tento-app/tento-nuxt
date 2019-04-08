@@ -28,6 +28,15 @@
                 </div>
             </nuxt-link>
         </div>
+        <div class="empty_posted empty" v-if="allLikes < 1">
+          <h3>保存したキャンプがありません...</h3>
+          <div class="img">
+            <img src="../../static/404_01.svg" alt="">
+          </div>
+          <div class="button">
+            <nuxt-link to="/camp/" class='btn_priority'>キャンプ一覧</nuxt-link>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -113,6 +122,31 @@ export default {
         }
       }
     }
+  }
+  .empty {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 30px;
+    text-align: center;
+    padding-bottom: 5rem;
+    h3 {
+      margin-bottom: 3rem;
+      color: $black02;
+    }
+    .img {
+      max-width: 300px;
+      margin: 0 auto 2rem;
+      img {
+        width: 100%;
+      }
+    }
+    .button {
+      text-align: center;
+      a {
+        margin: 0 auto;
+      }
+    }
+
   }
   .cards_list {
     padding: 0 30px;
@@ -247,6 +281,31 @@ export default {
         }
       }
     }
+  }
+  .empty {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 30px;
+    text-align: center;
+    padding-bottom: 5rem;
+    h3 {
+      margin-bottom: 3rem;
+      color: $black02;
+    }
+    .img {
+      max-width: 300px;
+      margin: 0 auto 2rem;
+      img {
+        width: 100%;
+      }
+    }
+    .button {
+      text-align: center;
+      a {
+        margin: 0 auto;
+      }
+    }
+
   }
   .cards_list {
     max-width: 840px;

@@ -33,26 +33,6 @@ import MypageGql from '~/graphql/query/mypage.gql';
 import updateUsertGql from "~/graphql/mutation/updateUser.gql";;
 
 export default {
-  asyncData (context) {
-    return context.app.apolloProvider.defaultClient.query({
-      query: MypageGql,
-      variables: {
-        token: context.app.$cookies.get('cookie-token'),
-        id: context.params.id
-      }
-    }).then(({ data }) => {
-          // do what you want with data
-          const now_tags = data.viewer.tags.edges.map(function (value) { return value.node.name })
-          const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
-          return {
-            user: data.viewer,
-            host_projects: data.hostProjects.edges,
-            join_projects:data.joinProjects.edges,
-            tags: now_tags,
-            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
-          }
-        })
-  },
   computed: {
       ...mapState('user',['token'])
   },
@@ -68,6 +48,7 @@ export default {
         mutation: updateUsertGql,
         variables: {
           token: this.token,
+          user_id:this.$route.params.id,
           userData: this.createSkilIlnput()
         }
       })
@@ -82,7 +63,8 @@ export default {
     },
  },
  props: {
-   multiselectoptions:Array
+   multiselectoptions:Array,
+   tags:Array
  }
 }
 

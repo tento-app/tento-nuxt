@@ -39,6 +39,7 @@ import loginGql from '~/graphql/mutation/login.gql'
 import viewerGql from '~/graphql/query/viewer.gql'
 
 export default {
+  middleware: 'noauthenticated',
   data() {
     return {
       in_password:'',

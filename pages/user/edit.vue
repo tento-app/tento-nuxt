@@ -8,7 +8,7 @@
         <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
       <div class="skill_container" >
-          <skill :tags="tags" title="スキル" :editable="true" :options='multiselectoptions'/>
+            <skill :tags="tags" title="スキル" :editable="true" :options="multiselectoptions"/>
       </div>
       <div class="card">
         <card title="投稿したキャンプ" :projects="host_projects" :edit="true"/>
@@ -82,8 +82,8 @@ export default {
           const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
           return {
             user: data.viewer,
-            tags:data.viewer.tags.edges,
             host_projects: data.hostProjects.edges,
+            tags: now_tags,
             join_projects:data.joinProjects.edges,
             multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
           }

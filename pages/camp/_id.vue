@@ -64,13 +64,13 @@ export default {
     }
   },
   fetch(context){
-    if(context.app.$cookies.get('cookie-token')){
+    if(context.app.$cookies.get('cookie-token', { path: '/'})){
 
     context.app.apolloProvider.defaultClient.mutate({
         mutation: statusGql,
         variables: {
           project_id: context.params.id,
-          token: context.app.$cookies.get('cookie-token'),
+          token: context.app.$cookies.get('cookie-token', { path: '/'}),
         }
       }).then(({ data }) => {
           // do what you want with data

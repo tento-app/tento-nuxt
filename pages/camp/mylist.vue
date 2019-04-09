@@ -69,7 +69,7 @@ export default {
     return context.app.apolloProvider.defaultClient.query({
       query: allLikesGql,
       variables: {
-        token: context.app.$cookies.get('cookie-token'),
+        token: context.app.$cookies.get('cookie-token', { path: '/'}),
       }
     }).then(({ data }) => {
           // do what you want with data

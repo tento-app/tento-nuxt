@@ -15,7 +15,7 @@
 
             <div class="skill_modal_btn">
               <p @click="isShowModal">キャンセル</p>
-              <button type="button" @click="isShowModal" name="button" class="btn">追加する</button>
+              <button type="button" @click="submit" name="button" class="btn">追加する</button>
             </div>
           </div>
         </div>
@@ -26,14 +26,60 @@
 
 
 <script type="text/javascript">
-import { mapMutations } from 'vuex'
+import { mapState,mapMutations } from 'vuex'
 
 import allTagsGql from "~/graphql/query/allTags.gql";
 import MypageGql from '~/graphql/query/mypage.gql';
+import updateUsertGql from "~/graphql/mutation/updateUser.gql";;
 
 export default {
+  asyncData (context) {
+    return context.app.apolloProvider.defaultClient.query({
+      query: MypageGql,
+      variables: {
+        token: context.app.$cookies.get('cookie-token'),
+        id: context.params.id
+      }
+    }).then(({ data }) => {
+          // do what you want with data
+          const now_tags = data.viewer.tags.edges.map(function (value) { return value.node.name })
+          const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
+          return {
+            user: data.viewer,
+            host_projects: data.hostProjects.edges,
+            join_projects:data.joinProjects.edges,
+            tags: now_tags,
+            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
+          }
+        })
+  },
+  computed: {
+      ...mapState('user',['token'])
+  },
  methods: {
     ...mapMutations('skill_modal',['isShowModal']),
+    createSkilIlnput(){
+      let SkillInput = {}
+      SkillInput.tags = this.tags
+      return SkillInput
+    },
+    submit() {
+      this.$apollo.mutate({
+        mutation: updateUsertGql,
+        variables: {
+          token: this.token,
+          userData: this.createSkilIlnput()
+        }
+      })
+      .then(result => {
+        // 成功した場合に実行する処理（200OKのレスポンスの場合）
+        this.$router.push('/user/edit/')
+      })
+      .catch(error => {
+        // errorの場合に実行する処理
+        console.log(error);
+      });
+    },
  },
  props: {
    multiselectoptions:Array

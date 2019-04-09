@@ -15,7 +15,7 @@
         <p>スキルを追加</p>
       </div>
     </div>
-  <SkillModal v-if="showModal" ref="skillmodal" :multiselectoptions='multiselectoptions'/>
+  <SkillModal v-if="showModal" ref="skillmodal" :multiselectoptions='options'/>
   </div>
 </template>
 
@@ -34,7 +34,13 @@ export default {
     ...mapState('skill_modal',['showModal'])
   },
  methods: {
-    ...mapMutations('skill_modal',['isShowModal'])
+    ...mapMutations('skill_modal',['isShowModal']),
+    openModal(item) {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
  },
  data(){
    return{
@@ -45,7 +51,7 @@ export default {
  props: {
     tags: Array,
     title:String,
-    multiselectoptions:Array,
+    options:Array,
     editable: {
       type: Boolean,
       default: false // これを追加

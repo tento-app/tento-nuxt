@@ -87,7 +87,6 @@ export default {
             join_projects:data.joinProjects.edges,
             multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
           }
-          console.log(data);
         })
   }
 }

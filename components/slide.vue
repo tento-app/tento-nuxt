@@ -3,8 +3,8 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
-        <div class="background" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }">
+      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.thumbnail + ')' }">
+        <div class="background" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.thumbnail + ')' }">
           <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
             <!-- card content-->
             <div class="slide_item">
@@ -66,6 +66,12 @@ export default {
                 navigation: {
                   nextEl: '.swiper-button-next',
                   prevEl: '.swiper-button-prev'
+                },
+                breakpoints: {
+                  500: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                  }
                 }
             }
         }

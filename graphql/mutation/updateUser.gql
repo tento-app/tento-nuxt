@@ -1,5 +1,5 @@
-mutation($token: String!,$userData: UpdateUserInput!,$userSkill:Object!){
-  updateUser(token:$token,userData:$userData,userSkill:$userSkill){
+mutation($token: String!,$userData: UpdateUserInput!){
+  updateUser(token:$token,userData:$userData){
     user{
       id
     }

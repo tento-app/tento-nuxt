@@ -61,7 +61,7 @@ export default {
         variables: {
           token: this.token,
           // user_id:this.$route.params.id,
-          userSkill: this.createSkilIlnput()
+          userData: this.createSkilIlnput()
         }
       })
       .then(result => {

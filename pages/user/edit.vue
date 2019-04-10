@@ -7,9 +7,9 @@
         <!-- <AccountHeader :edit="false" :username="user.username" :header="user.header" :logo="user.logo" /> -->
         <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
-      <!-- <div class="skill_container" >
-        <skill :tags="tags" title="Skills" :editable="false"/>
-      </div> -->
+      <div class="skill_container" >
+        <skill :tags="tags" title="スキル" :editable="true" :options="multiselectoptions" :now_tags='now_tags'/>
+      </div>
       <div class="card">
         <card title="Opened Camp" :projects="host_projects" :edit="true"/>
         <div class="empty_posted empty" v-if="host_projects.length < 1">
@@ -42,6 +42,7 @@
 <script>
 import MypageGql from '~/graphql/query/mypage.gql'
 import { mapState } from 'vuex'
+import allTagsGql from "~/graphql/query/allTags.gql";
 
 import MypageHeader from '~/components/mypage-header.vue';
 import card from '~/components/card.vue';
@@ -78,11 +79,15 @@ export default {
       }
     }).then(({ data }) => {
           // do what you want with data
+          const now_tags = data.viewer.tags.edges.map(function (value) { return value.node.name })
+          const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
           return {
             user: data.viewer,
             tags:data.viewer.tags.edges,
             host_projects: data.hostProjects.edges,
             join_projects:data.joinProjects.edges,
+            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item)),
+            now_tags:data.viewer.tags.edges.map(function (value) { return value.node.name })
           }
         })
   }

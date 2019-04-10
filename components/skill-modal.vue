@@ -26,8 +26,6 @@
 <script type="text/javascript">
 import { mapState,mapMutations } from 'vuex'
 
-import allTagsGql from "~/graphql/query/allTags.gql";
-import MypageGql from '~/graphql/query/mypage.gql';
 import updateUsertGql from "~/graphql/mutation/updateUser.gql";
 
 export default {
@@ -49,10 +47,9 @@ export default {
  methods: {
     ...mapMutations('skill_modal',['isShowModal']),
     ...mapMutations('user',['setToken']),
-    // ...mapMutations('user',['setToken']),
     createSkilIlnput(){
       let SkillInput = {}
-      SkillInput.tags = this.new_tags
+      SkillInput.tags = this.tagsUpdate
       return SkillInput
     },
     submit() {
@@ -60,7 +57,6 @@ export default {
         mutation: updateUsertGql,
         variables: {
           token: this.token,
-          // user_id:this.$route.params.id,
           userData: this.createSkilIlnput()
         }
       })

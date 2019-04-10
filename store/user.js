@@ -22,6 +22,6 @@ export const actions = {
     context.commit('setToken',null)
     context.commit('setUsername',null)
     context.commit('setLogo',null)
-    this.$cookies.remove('cookie-token')
+    this.$cookies.remove('cookie-token', { path: '/'})
   }   
 }

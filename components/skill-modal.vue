@@ -9,18 +9,11 @@
               <h3>Skill</h3>
             </div>
             <p>あなたのスキルを追加しましょう。</p>
-            <div class="input">
-              <input type="text" name="" value="" autocomplete="on" list="skill-list">
-              <datalist id="skill-list">
-                <option value="html">html</option>
-                <option value="css">css</option>
-                <option value="js">js</option>
-              </datalist>
-            </div>
+            <Multiselect v-model="now_tags" :options="multiselectoptions" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" :preselect-first="false" :max-height="200"></Multiselect>
 
             <div class="skill_modal_btn">
               <p @click="isShowModal">キャンセル</p>
-              <button type="button" @click="isShowModal" name="button" class="btn">追加する</button>
+              <button type="button" @click="submit" name="button" class="btn">追加する</button>
             </div>
           </div>
         </div>
@@ -31,11 +24,71 @@
 
 
 <script type="text/javascript">
-import { mapMutations } from 'vuex'
+import { mapState,mapMutations } from 'vuex'
+
+import allTagsGql from "~/graphql/query/allTags.gql";
+import MypageGql from '~/graphql/query/mypage.gql';
+import updateUsertGql from "~/graphql/mutation/updateUser.gql";
 
 export default {
+  asyncData(context) {
+    return context.app.apolloProvider.defaultClient
+      .query({
+        query: MypageGql,
+        variables: {
+            id: context.params.id
+        }
+      })
+      .then(({ data }) => {
+        // do what you want with data
+        const now_tags = data.project.tags.edges.map(function (value) { return value.node.name })
+        const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
+        return {
+            name: data.project.name,
+            content: data.project.content,
+            defaultValue: data.project.content,
+            contact: data.project.contact,
+            place: data.project.place,
+            uploadedImage: data.project.header,
+            dafault_uploadedImage: data.project.header,
+            date: data.project.startAt,
+            tags: now_tags,
+            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
+        };
+      });
+  },
+  computed: {
+      ...mapState('user',['token'])
+  },
  methods: {
-    ...mapMutations('skill_modal',['isShowModal'])
+    ...mapMutations('skill_modal',['isShowModal']),
+    createSkilIlnput(){
+      let SkillInput = {}
+      SkillInput.tags = this.now_tags
+      return SkillInput
+    },
+    submit() {
+      this.$apollo.mutate({
+        mutation: updateUsertGql,
+        variables: {
+          token: this.token,
+          user_id:this.$route.params.id,
+          userData: this.createSkilIlnput()
+        }
+      })
+      .then(result => {
+        // 成功した場合に実行する処理（200OKのレスポンスの場合）
+        this.$router.push('/user/edit/')
+      })
+      .catch(error => {
+        // errorの場合に実行する処理
+        console.log(error);
+      });
+    },
+ },
+ props: {
+   multiselectoptions:Array,
+   now_tags:Array
  }
 }
 

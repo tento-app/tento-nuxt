@@ -62,12 +62,11 @@ export default {
       })
       .then(result => {
         // 成功した場合に実行する処理（200OKのレスポンスの場合）
-        this.$router.push('/user/edit/')
+        this.$router.go()
       })
       .catch(error => {
         // errorの場合に実行する処理
         console.log(error);
-        this.$router.push('/user/edit/')
       });
     },
  },

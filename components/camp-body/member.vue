@@ -15,15 +15,30 @@
           </div>
         </nuxt-link>
       </li>
+      <!-- <li>
+        <nuxt-link to="/user/edit">
+          <div class="member">
+            <div class="member_icon" v-if="logo" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }"></div>
+            <div class="member_icon empty_icon" v-if="!logo"></div>
+            <div class="member_text">
+              <p class="member_text_name">{{ username }}</p>
+            </div>
+          </div>
+        </nuxt-link>
+      </li> -->
     </ul>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     users:Array,
   },
+  computed: {
+      ...mapState('user',['username','logo'])
+  }
 }
 </script>
 

@@ -53,7 +53,7 @@ export default {
       return SkillInput
     },
     submit() {
-      this.$apollo.mutate({
+      return this.$apollo.mutate({
         mutation: updateUsertGql,
         variables: {
           token: this.token,
@@ -67,6 +67,7 @@ export default {
       .catch(error => {
         // errorの場合に実行する処理
         console.log(error);
+        this.$router.push('/user/edit/')
       });
     },
  },

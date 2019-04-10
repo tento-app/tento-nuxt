@@ -10,18 +10,22 @@
         <p>{{ tag.node.name }}</p>
       </div>
 
-      <div class="skill_item skill_add" v-if="editable" @click="isShowModal">
+      <div class="skill_item skill_add"  @click="isShowModal">
         <div class=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></div>
         <p>スキルを追加</p>
       </div>
     </div>
-  <SkillModal v-if="showModal" ref="skillmodal"/>
+  <SkillModal v-if="showModal" ref="skillmodal" :multiselectoptions='options' :now_tags="now_tags"/>
   </div>
 </template>
 
 <script>
 import { mapState,mapMutations } from 'vuex'
 import SkillModal from '~/components/skill-modal.vue';
+
+import allTagsGql from "~/graphql/query/allTags.gql";
+import MypageGql from '~/graphql/query/mypage.gql';
+
 export default {
  components: {
    SkillModal
@@ -30,7 +34,13 @@ export default {
     ...mapState('skill_modal',['showModal'])
   },
  methods: {
-    ...mapMutations('skill_modal',['isShowModal'])
+    ...mapMutations('skill_modal',['isShowModal']),
+    openModal(item) {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
  },
  data(){
    return{
@@ -39,8 +49,10 @@ export default {
    }
  },
  props: {
+    now_tags: Array,
     tags: Array,
     title:String,
+    options:Array,
     editable: {
       type: Boolean,
       default: false // これを追加

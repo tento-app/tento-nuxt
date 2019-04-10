@@ -391,6 +391,11 @@ export default {
               color: $black02;
               font-size: 1rem;
             }
+            .intro {
+              max-width: 400px;
+              margin: 0.5rem auto 0;
+              text-align: left;
+            }
           }
         }
         &_link {
@@ -487,6 +492,7 @@ export default {
           width: 100%;
           height: 180px;
           overflow: hidden;
+          border-bottom: $border01;
         }
         .icon_img {
           // background-image: url('../static/camp_img.jpg') !important;

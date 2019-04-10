@@ -1,16 +1,7 @@
-mutation($token: String!,$user_id: String!, $userData: UpdateUserInput!){
-  updateUser(token:$token,userId:$user_id,userData:$userData){
+mutation($token: String!,$userData: UpdateUserInput!,$userSkill:Object!){
+  updateUser(token:$token,userData:$userData,userSkill:$userSkill){
     user{
       id
-      tags{
-        edges{
-          node{
-            id
-            name
-            logo
-          }
-        }
-      }
     }
   }
 }

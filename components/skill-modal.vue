@@ -9,7 +9,7 @@
               <h3>Skill</h3>
             </div>
             <p>あなたのスキルを追加しましょう。</p>
-            <Multiselect v-model="now_tags" :options="multiselectoptions" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" :preselect-first="false" :max-height="200"></Multiselect>
+            <Multiselect v-model="tagsUpdate" :options="multiselectoptions" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" :preselect-first="false" :max-height="200"></Multiselect>
 
             <div class="skill_modal_btn">
               <p @click="isShowModal">キャンセル</p>
@@ -31,40 +31,28 @@ import MypageGql from '~/graphql/query/mypage.gql';
 import updateUsertGql from "~/graphql/mutation/updateUser.gql";
 
 export default {
-  asyncData(context) {
-    return context.app.apolloProvider.defaultClient
-      .query({
-        query: MypageGql,
-        variables: {
-            id: context.params.id
-        }
-      })
-      .then(({ data }) => {
-        // do what you want with data
-        const now_tags = data.project.tags.edges.map(function (value) { return value.node.name })
-        const all_tags = data.allTags.edges.map(function (value) { return value.node.name })
-        return {
-            name: data.project.name,
-            content: data.project.content,
-            defaultValue: data.project.content,
-            contact: data.project.contact,
-            place: data.project.place,
-            uploadedImage: data.project.header,
-            dafault_uploadedImage: data.project.header,
-            date: data.project.startAt,
-            tags: now_tags,
-            multiselectoptions: now_tags.concat(all_tags).filter(item => !now_tags.includes(item) || !all_tags.includes(item))
-        };
-      });
+  props: {
+    multiselectoptions:Array,
+    now_tags:Array
+  },
+  data() {
+    return {
+      tagsUpdate:{}
+    }
+  },
+  mounted() {
+    this.tagsUpdate = this.now_tags
   },
   computed: {
       ...mapState('user',['token'])
   },
  methods: {
     ...mapMutations('skill_modal',['isShowModal']),
+    ...mapMutations('user',['setToken']),
+    // ...mapMutations('user',['setToken']),
     createSkilIlnput(){
       let SkillInput = {}
-      SkillInput.tags = this.now_tags
+      SkillInput.tags = this.new_tags
       return SkillInput
     },
     submit() {
@@ -72,8 +60,8 @@ export default {
         mutation: updateUsertGql,
         variables: {
           token: this.token,
-          user_id:this.$route.params.id,
-          userData: this.createSkilIlnput()
+          // user_id:this.$route.params.id,
+          userSkill: this.createSkilIlnput()
         }
       })
       .then(result => {
@@ -86,10 +74,6 @@ export default {
       });
     },
  },
- props: {
-   multiselectoptions:Array,
-   now_tags:Array
- }
 }
 
 </script>

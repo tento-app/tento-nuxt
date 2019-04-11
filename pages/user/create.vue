@@ -10,7 +10,7 @@
         <div class="img">
         </div>
         <div class="item">
-          <label for="in-id">ユーザーID</label>
+          <label for="in-id">ユーザーID <span>*半角英数字</span></label>
           <input type="text" id="in-id" pattern="^[0-9A-Za-z]+$" title="半角英数字で入力してください" v-model="username" required maxlength="12">
           <p class="count">{{ username.length }}/12</p>
         </div>
@@ -19,7 +19,7 @@
           <input type="email" id="in-email" v-model="email" required>
         </div>
         <div class="item">
-          <label for="in-password">パスワード</label>
+          <label for="in-password">パスワード<span>*6文字以上</span></label>
           <input type="password" id="in-password" v-model="password" required>
         </div>
         <p class="tos_agreement">[新規アカウント作成]をクリックすることで
@@ -179,6 +179,12 @@ export default {
       display: block;
       font-size: 14px;
       font-weight: bold;
+      span {
+        font-size: 12px;
+        color: $black02;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+      }
     }
     .tos_agreement{
       font-size: 12px;

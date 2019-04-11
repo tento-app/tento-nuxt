@@ -8,7 +8,7 @@
         <MypageHeader :logo="user.logo" :username="user.username" :position="user.position" :content="user.content" :header="user.header"/>
       </div>
       <div class="skill_container" >
-        <skill :tags="tags" title="スキル" :editable="true" :options="multiselectoptions" :now_tags='now_tags'/>
+        <skill :tags="tags" title="My skills" :editable="true" :options="multiselectoptions" :now_tags='now_tags' :edit="true"/>
       </div>
       <div class="card">
         <card title="Opened Camp" :projects="host_projects" :edit="true"/>

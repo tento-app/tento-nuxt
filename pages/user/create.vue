@@ -96,12 +96,18 @@ export default {
       })
       .catch(error => {
         // errorの場合に実行する処理
-        if ( String(error).match(/username/)) {
+        if ( String(error).match(/for key 'username/)) {
           //usernameが使われてた場合の処理
           alert('そのユーザーIDは既に使われているぞ！')
-        } else if ( String(error).match(/users_user_email_243f6e77_uniq/)) {
+        } else if ( String(error).match(/for key 'users_user_email/)) {
           //メアドが使われてた場合の処理
           alert('そのメールアドレスは既に使われているぞ！')
+        } else if ( String(error).match(/username_error/)) {
+          alert('ユーザー名が正しくありません\n半角英数字_が使えます')
+        } else if ( String(error).match(/password_error/)) {
+          alert('パスワードが正しくありません\n半角英数字記号が使えます')
+        } else if ( String(error).match(/email_error/)) {
+          alert('正しいメールアドレスですか？')
         } else {
           alert('作成失敗した！\nサポートに連絡してみてね！')
           console.log(error)

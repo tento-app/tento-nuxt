@@ -32,12 +32,12 @@
           </nuxt-link>
           <a>
             <div class="">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
             </div>
           </a>
           <a>
             <div class="">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="transparent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
           </a>
 
@@ -68,7 +68,6 @@ export default {
   .nav{
     max-width: 840px;
     margin: 0 auto 3rem;
-    padding: 0rem 30px 0;
     h1{
       text-align: center;
       margin-bottom: 1rem;
@@ -95,7 +94,6 @@ export default {
     }
   }
   .cards_list {
-    padding: 0 30px;
     max-width: 840px;
     display: flex;
     flex-flow: row wrap;
@@ -290,7 +288,7 @@ export default {
         }
       }
       .card {
-        border-radius: 12px;
+        border-radius: 12px 12px 0 0;
         box-shadow: $box_shadow_card;
         transition: $transtion01;
         overflow: hidden;
@@ -335,7 +333,7 @@ export default {
           }
         }
         &_txt {
-          border-radius: 0 0 12px 12px;
+          border-radius: 0px ;
           background-color: #fff;
           padding: 1rem;
           overflow: hidden;

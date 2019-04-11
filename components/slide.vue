@@ -15,7 +15,7 @@
                   <p class="slide_item_user_position">webエンジニア</p>
                 </div>
               </div>
-              <h4 v-html="project.node.name"></h4>
+              <h4>{{project.node.name}}</h4>
             </div>
           </nuxt-link>
         </div>
@@ -30,7 +30,7 @@
                   <p class="slide_item_user_position">webエンジニア</p>
                 </div>
               </div>
-              <h4 v-html="project.node.name"></h4>
+              <h4>{{project.node.name}}</h4>
             </div>
           </nuxt-link>
         </div>

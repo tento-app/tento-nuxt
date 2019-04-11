@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="camp_body_text_describe">
-    <h3 class="title">キャンププラン</h3>
+    <h3 class="newText">キャンププラン</h3>
     <p v-html="text"></p>
   </div>
 </template>
@@ -9,6 +9,16 @@
 export default {
   props : {
     text: String,
+  },
+  data() {
+    return {
+      newText:this.text
+    }
+  },
+  methods :{
+    sanitizeText() {
+        this.newText = this.$sanitize(this.text)
+    }
   }
 }
 </script>

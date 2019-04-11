@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="campheader" v-bind:class="{ active: headerActive }">
     <div class="text">
-      <h1 class="camp_body_text_title pc" v-html='title'></h1>
+      <h1 class="camp_body_text_title pc">{{title}}</h1>
       <joinbtn :title ="title" v-if="username"/>
     </div>
   </div>

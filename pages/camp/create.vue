@@ -190,29 +190,23 @@ export default {
         console.log('二重送信防止');
         this.processing = false;
     },
+    createProjectObj() {
+      let project = {}
+      if (this.name.length > 0){ project.name = this.name}
+      if (this.name.content > 0){ project.content = this.content}
+      project.header = this.headerFile
+      project.contact = this.contact
+      project.tags = this.tags
+      project.startat = this.date
+      project.place = this.place
+      return project
+    },
     submit() {
-      console.log({
-        name: this.name,
-        content: this.content,
-        content: this.contact,
-        tags: this.tags,
-        startat: this.date,
-        place: this.place,
-        header: this.headerFile
-      });
      return this.$apollo.mutate({
           mutation: createProjectGql,
           variables: {
             token: this.token,
-            ProjectInput: {
-              name: this.name,
-              content: this.content,
-              contact: this.contact,
-              tags: this.tags,
-              startat: this.date,
-              place: this.place,
-              header: this.headerFile
-            }
+            ProjectInput: this.createProjectObj()
           }
         })
         .then(result => {
@@ -222,6 +216,7 @@ export default {
         .catch(error => {
           // errorの場合に実行する処理
           console.log(error);
+          alert('作成失敗した！\nサポートに連絡してみてね！')
         });
         }
       }

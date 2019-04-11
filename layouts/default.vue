@@ -31,6 +31,7 @@ body{
   padding: 67.4px 0 0;
   margin: 0;
   color: #1f1f1f;
+  position: relative;
   font-family: 'Rubik', 'Noto Sans JP', sans-serif;
   input,textarea,select,button{
     font-family: 'Rubik', 'Noto Sans JP', sans-serif;

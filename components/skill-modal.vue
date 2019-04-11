@@ -9,18 +9,11 @@
               <h3>Skill</h3>
             </div>
             <p>あなたのスキルを追加しましょう。</p>
-            <div class="input">
-              <input type="text" name="" value="" autocomplete="on" list="skill-list">
-              <datalist id="skill-list">
-                <option value="html">html</option>
-                <option value="css">css</option>
-                <option value="js">js</option>
-              </datalist>
-            </div>
+            <Multiselect v-model="tagsUpdate" :options="multiselectoptions" :multiple="true" :hide-selected="true" :searchable="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="スキルを選ぼう" :preselect-first="false" :max-height="200"></Multiselect>
 
             <div class="skill_modal_btn">
               <p @click="isShowModal">キャンセル</p>
-              <button type="button" @click="isShowModal" name="button" class="btn">追加する</button>
+              <button type="button" @click="submit" name="button" class="btn">追加する</button>
             </div>
           </div>
         </div>
@@ -31,12 +24,52 @@
 
 
 <script type="text/javascript">
-import { mapMutations } from 'vuex'
+import { mapState,mapMutations } from 'vuex'
+
+import updateUsertGql from "~/graphql/mutation/updateUser.gql";
 
 export default {
+  props: {
+    multiselectoptions:Array,
+    now_tags:Array
+  },
+  data() {
+    return {
+      tagsUpdate:{}
+    }
+  },
+  mounted() {
+    this.tagsUpdate = this.now_tags
+  },
+  computed: {
+      ...mapState('user',['token'])
+  },
  methods: {
-    ...mapMutations('skill_modal',['isShowModal'])
- }
+    ...mapMutations('skill_modal',['isShowModal']),
+    ...mapMutations('user',['setToken']),
+    createSkilIlnput(){
+      let SkillInput = {}
+      SkillInput.tags = this.tagsUpdate
+      return SkillInput
+    },
+    submit() {
+      return this.$apollo.mutate({
+        mutation: updateUsertGql,
+        variables: {
+          token: this.token,
+          userData: this.createSkilIlnput()
+        }
+      })
+      .then(result => {
+        // 成功した場合に実行する処理（200OKのレスポンスの場合）
+        this.$router.go()
+      })
+      .catch(error => {
+        // errorの場合に実行する処理
+        console.log(error);
+      });
+    },
+ },
 }
 
 </script>

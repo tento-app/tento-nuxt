@@ -1,4 +1,4 @@
-mutation($token: String!, $userData: UpdateUserInput!){
+mutation($token: String!,$userData: UpdateUserInput!){
   updateUser(token:$token,userData:$userData){
     user{
       id

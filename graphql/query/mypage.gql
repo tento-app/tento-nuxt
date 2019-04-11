@@ -16,6 +16,14 @@ query($token: String!){
       }
     }
   }
+  allTags{
+    edges{
+      node{
+        id
+        name
+      }
+    }
+  }
   hostProjects(token:$token) {
     edges{
       node{

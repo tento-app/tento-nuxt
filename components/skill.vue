@@ -10,18 +10,22 @@
         <p>{{ tag.node.name }}</p>
       </div>
 
-      <div class="skill_item skill_add" v-if="editable" @click="isShowModal">
-        <div class=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00A496" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg></div>
-        <p>スキルを追加</p>
+      <div class="skill_item skill_add"  @click="isShowModal" v-if="editable">
+        <div class=""><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1" stroke-linecap="square" stroke-linejoin="arcs"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg></div>
+        <p>スキル編集</p>
       </div>
     </div>
-  <SkillModal v-if="showModal" ref="skillmodal"/>
+  <SkillModal v-if="showModal" ref="skillmodal" :multiselectoptions='options' :now_tags="now_tags"/>
   </div>
 </template>
 
 <script>
 import { mapState,mapMutations } from 'vuex'
 import SkillModal from '~/components/skill-modal.vue';
+
+import allTagsGql from "~/graphql/query/allTags.gql";
+import MypageGql from '~/graphql/query/mypage.gql';
+
 export default {
  components: {
    SkillModal
@@ -30,7 +34,13 @@ export default {
     ...mapState('skill_modal',['showModal'])
   },
  methods: {
-    ...mapMutations('skill_modal',['isShowModal'])
+    ...mapMutations('skill_modal',['isShowModal']),
+    openModal(item) {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
  },
  data(){
    return{
@@ -39,8 +49,10 @@ export default {
    }
  },
  props: {
+    now_tags: Array,
     tags: Array,
     title:String,
+    options:Array,
     editable: {
       type: Boolean,
       default: false // これを追加
@@ -102,9 +114,8 @@ export default {
         }
       }
       p{
-        font-weight: bold;
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 1rem;
         padding: 1rem 0;
         margin-right: 1rem;
         border-left: $border01;
@@ -115,11 +126,13 @@ export default {
     &_add {
       cursor: pointer;
       div {
-        width: 40px;
-        height: 40px;
         margin: 1rem;
         background-position: center;
         background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5px;
       }
     }
   }
@@ -161,7 +174,7 @@ export default {
       transition: $transtion01;
       background-color: #fff;
       box-shadow: $box_shadow01;
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 0rem;
       text-align: center;
       margin:0.5rem 0;
@@ -174,8 +187,7 @@ export default {
         }
       }
       p{
-        font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1rem;
         border-top: solid 0.5px #eaeaea;
         padding: 1rem
       }
@@ -184,14 +196,14 @@ export default {
     &_add {
       cursor: pointer;
       div {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         margin: 1.5rem auto;
         background-position: center;
         background-repeat: no-repeat;
         svg {
-          width: 70px;
-          height: 70px;
+          width: 60px;
+          height: 60px;
         }
       }
       p{
@@ -238,7 +250,7 @@ export default {
       transition: $transtion01;
       background-color: #fff;
       box-shadow: $box_shadow01;
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 0rem;
       text-align: center;
       margin:0.5rem 0;
@@ -260,14 +272,14 @@ export default {
     &_add {
       cursor: pointer;
       div {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         margin: 1.5rem auto;
         background-position: center;
         background-repeat: no-repeat;
         svg {
-          width: 70px;
-          height: 70px;
+          width: 60px;
+          height: 60px;
         }
       }
       p{

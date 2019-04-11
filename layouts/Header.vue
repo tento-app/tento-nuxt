@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="content">
-      <div class="layer"></div>
+      <div class="layer" v-on:click="openModal" :class="{show_layer:showModal}"></div>
       <nuxt-link to='/top' class="logo">
         <img src="../static/logo_w.png" alt="">
       </nuxt-link>
@@ -67,6 +67,9 @@ export default {
 <style lang="scss">
 @import '~/assets/style/_color.scss';
 
+.show_layer {
+  display: block !important;
+}
 @media (min-width:840px) {
   header {
     position: relative;
@@ -134,7 +137,6 @@ export default {
         .submit {
           display: flex;
           align-items: center;
-          margin-right: 0.5rem;
         }
       }
     }

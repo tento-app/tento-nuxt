@@ -13,7 +13,7 @@
               <img :src="'https://media.tento.app/' + project.node.thumbnail" style='width:100%;' alt="">
             </div>
             <div class="card_txt">
-              <h4 v-html='project.node.name'></h4>
+              <h4>{{project.node.name}}</h4>
               <div class="card_txt_user">
                 <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
                   <div class>

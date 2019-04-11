@@ -90,9 +90,9 @@
 
               <div class="btn-list">
                 <p @click="closeModal">編集に戻る</p>
-                <button class="btn_priority" type="button" :disabled="processing" name="button" @click="submit" v-on:click="button_disable()">
+                <button class="btn_priority" type="button" :disabled="processing" name="button"  v-on:click="button_disable()">
                   <p :class="{disactive: processing}">公開する</p>
-                  <p class="processing" :class="{active: processing}">公開中...</p></button>
+                  <p class="processing" :class="{active: processing}">投稿しています...</p></button>
               </div>
             </div>
           </div>
@@ -181,38 +181,42 @@ export default {
     deleteImage() {
       this.uploadedImage = "";
     },
+    cheack_data() {
+      if (this.name.length < 1){ alert('タイトルが空白です'); return false } 
+      else if (this.content < 1){ alert('本文が空白です'); return false }
+      else if (this.contact < 1){ alert('連絡先が空白です'); return false }
+      else if (this.date < 1){ alert('開催場所が空白です'); return false }
+      else if (this.place < 1){ alert('開催日時が空白です'); return false }
+      else { return true }
+    },
     button_disable: function() {
-        this.processing = true;
-
+      if (this.cheack_data()){
         setTimeout(this.enable,2000);
+        this.processing = true;
+        this.submit()
+      }
     },
     enable:function() {
         console.log('二重送信防止');
         this.processing = false;
     },
+    createProjectObj() {
+      let project = {}
+      project.name = this.name
+      project.content = this.content
+      project.header = this.headerFile
+      project.tags = this.tags
+      project.contact = this.contact
+      project.startat = this.date
+      project.place = this.place
+      return project
+    },
     submit() {
-      console.log({
-        name: this.name,
-        content: this.content,
-        content: this.contact,
-        tags: this.tags,
-        startat: this.date,
-        place: this.place,
-        header: this.headerFile
-      });
-     return this.$apollo.mutate({
+      this.$apollo.mutate({
           mutation: createProjectGql,
           variables: {
             token: this.token,
-            ProjectInput: {
-              name: this.name,
-              content: this.content,
-              contact: this.contact,
-              tags: this.tags,
-              startat: this.date,
-              place: this.place,
-              header: this.headerFile
-            }
+            ProjectInput: this.createProjectObj()
           }
         })
         .then(result => {
@@ -222,6 +226,7 @@ export default {
         .catch(error => {
           // errorの場合に実行する処理
           console.log(error);
+          alert('作成失敗した！\nサポートに連絡してみて！')
         });
         }
       }

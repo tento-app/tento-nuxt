@@ -124,7 +124,7 @@ module.exports = () => {
       'cookie-universal-nuxt',
       'nuxt-dayjs-module',
       ['@nuxtjs/google-analytics', {
-        id: 'paste your id here'
+        id: 'UA-129505564-2'
       }]
     ],
 

@@ -31,11 +31,11 @@
     "vue-multiselect": "^2.1.4",
     "vue-sanitize": "^0.2.0",
     "vue2-content-editor": "https://github.com/tui2tone/vue2-medium-editor",
-    "weekstart": "^1.0.0"
+    "weekstart": "^1.0.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
-    "node-sass": "^4.11.0",
-    "nodemon": "^1.18.9",
-    "sass-loader": "^7.1.0"
+    "nodemon": "^1.18.9"
   }
 }

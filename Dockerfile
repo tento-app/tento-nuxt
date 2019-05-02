@@ -1,4 +1,4 @@
-FROM node:10
+FROM timbru31/node-alpine-git
 
 ENV NODE_ENV=production
 ENV HOST 0.0.0.0

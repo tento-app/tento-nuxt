@@ -3,9 +3,9 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Rubik" rel="stylesheet">
     <div class="account_header">
       <div class="current_img":class="{normal : editing}" >
-        <div class="header_img" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
+        <div class="header_img" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + header + ')' }">
         </div>
-        <div class="icon_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }">
+        <div class="icon_img" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + logo + ')' }">
 
         </div>
       </div>
@@ -13,7 +13,7 @@
       <div class="edit_img" :class="{normal : !editing}">
         <div class="edit_header">
           <label for="eyecatch_form">
-            <div class="img" v-show="!uploadedHeader" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
+            <div class="img" v-show="!uploadedHeader" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + header + ')' }">
               <div class="cover">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
               </div>
@@ -29,7 +29,7 @@
 
         <div class="edit_icon">
           <label for="icon_form">
-            <div class="icon" v-show="!uploadedIcon" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }">
+            <div class="icon" v-show="!uploadedIcon" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + logo + ')' }">
               <div class="cover">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(2 3)"><path d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z"/><circle cx="10" cy="10" r="4"/></g></svg>
               </div>

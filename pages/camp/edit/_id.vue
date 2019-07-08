@@ -12,7 +12,7 @@
 
         <div class="create_eyecatch">
           <div class="create_eyecatch_content">
-            <div class="img" v-show="uploadedImage" :style="{ 'background-image': 'url(https://media.tento.app/' + uploadedImage + ')' }">
+            <div class="img" v-show="uploadedImage" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + uploadedImage + ')' }">
               <p v-on:click="deleteImage">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </p>

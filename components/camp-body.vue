@@ -12,7 +12,7 @@
       </div>
       <div class="camp_body_eyecatch">
 
-        <div class="camp_body_eyecatch_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+        <div class="camp_body_eyecatch_img" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + background_img_url + ')' }"></div>
       </div>
       <div class="content_text">
 
@@ -24,7 +24,7 @@
           <ul>
             <li v-for="user in users">
               <div class="member">
-                <div class="member_icon" :style="{ 'background-image' : 'url(https://media.tento.app/' + user.node.logo + ')' }"></div>
+                <div class="member_icon" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + user.node.logo + ')' }"></div>
                 <div class="member_text">
                   <p class="member_text_name">{{user.node.username}}</p>
                   <p class="member_text_position">{{ user.node.username }}</p>

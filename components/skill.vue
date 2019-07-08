@@ -5,7 +5,7 @@
 
       <div class="skill_item" v-for="tag in tags" :key="tag.node.id">
         <div class="img">
-          <img v-bind:src="'https://media.tento.app/' + encodeURI(tag.node.logo)" alt="">
+          <img v-bind:src="'https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + encodeURI(tag.node.logo)" alt="">
         </div>
         <p>{{ tag.node.name }}</p>
       </div>

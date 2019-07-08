@@ -1,7 +1,7 @@
 <template id="">
 <nuxt-link :to="{ name: 'user-id' , params: { id: id }}">
   <div class="abstract_user">
-    <div class="abstract_user_img" v-if="background_img_url" :style="{ 'background-image' : 'url(https://media.tento.app/' + background_img_url + ')' }"></div>
+    <div class="abstract_user_img" v-if="background_img_url" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + background_img_url + ')' }"></div>
     <div class="abstract_user_img" v-if="!background_img_url"></div>
     <div class="">
       <p class="abstract_user_name">{{ name }}</p>

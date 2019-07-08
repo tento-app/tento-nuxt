@@ -11,14 +11,14 @@
       <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}" class="card_link" v-for="project in projects" :key="project.node.id">
         <div class="card">
           <div class="card_img" v-if="!project.node.thumbnail"></div>
-          <!-- <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.header + ')' }"></div> -->
+          <!-- <div class="card_img" v-if="project.node.header" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.header + ')' }"></div> -->
           <div class="card_src_img" v-if="project.node.thumbnail">
-            <img :src="'https://media.tento.app/' + project.node.thumbnail" style='width:100%;' alt="">
+            <img :src="'https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.thumbnail" style='width:100%;' alt="">
           </div>
           <div class="card_txt">
             <h4>{{project.node.name}}</h4>
             <div class="card_txt_user">
-              <div class="card_txt_user_img" v-if="project.node.user.logo" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+              <div class="card_txt_user_img" v-if="project.node.user.logo" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.user.logo + ')' }"></div>
               <div class="card_txt_user_img" v-if="!project.node.user.logo"></div>
               <div class>
                 <p class="card_txt_user_name">{{ project.node.user.username }}</p>

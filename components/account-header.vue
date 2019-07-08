@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="account">
     <div class="account_header">
-      <div class="img" v-if="header" :style="{ 'background-image': 'url(https://media.tento.app/' + header + ')' }">
-        <div class="icon" v-if="logo" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
+      <div class="img" v-if="header" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + header + ')' }">
+        <div class="icon" v-if="logo" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + logo + ')' }"></div>
         <div class="icon empty_icon" v-if="!logo"></div>
       </div>
       <div class="img empty" v-if="!header">
-        <div class="icon" v-if="logo" :style="{ 'background-image': 'url(https://media.tento.app/' + logo + ')' }"></div>
+        <div class="icon" v-if="logo" :style="{ 'background-image': 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + logo + ')' }"></div>
         <div class="icon empty_icon" v-if="!logo"></div>
       </div>
       <div class="account_header_text">

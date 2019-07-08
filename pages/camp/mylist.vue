@@ -11,14 +11,14 @@
         <div class="cards_list">
             <nuxt-link :to="{ name: 'camp-id' , params: { id: like.node.project.id }}" class="card_link" v-for="like in allLikes" :key="like.node.id">
                 <div class="card">
-                <!-- <div class="card_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.node.project.thumbnail + ')' }"></div> -->
+                <!-- <div class="card_img" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + like.node.project.thumbnail + ')' }"></div> -->
                 <div class="card_src_img">
-                  <img :src="'https://media.tento.app/' + like.node.project.thumbnail" style='width:100%;' alt="">
+                  <img :src="'https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + like.node.project.thumbnail" style='width:100%;' alt="">
                 </div>
                 <div class="card_txt">
                     <h4>{{ like.node.project.name }}</h4>
                     <div class="card_txt_user">
-                    <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + like.node.project.user.logo + ')' }"></div>
+                    <div class="card_txt_user_img" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + like.node.project.user.logo + ')' }"></div>
                     <div class>
                         <p class="card_txt_user_name">{{ like.node.project.user.username }}</p>
                         <p class="card_txt_user_position">{{like.node.project.user.position}}</p>

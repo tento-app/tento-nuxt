@@ -22,7 +22,7 @@
             <p>アカウント作成</p>
           </div>
         </nuxt-link>
-        <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://media.tento.app/' + logo + ')' }" >
+        <div class="account" id="account" @click="openModal"  v-if="logo && username" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + logo + ')' }" >
           <headerModal v-if="showModal" :hostname='username' />
         </div>
         <div class="account empty" id="account" @click="openModal" v-if="!logo && username">

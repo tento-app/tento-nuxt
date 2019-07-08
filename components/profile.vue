@@ -15,7 +15,7 @@
     <div class="content profile">
       <div class="profile_contents">
         <div class="profile_contents_user">
-          <div class="profile_contents_img" v-if="host_user.logo" :style="{ 'background-image' : 'url(https://media.tento.app/' + host_user.logo + ')' }"></div>
+          <div class="profile_contents_img" v-if="host_user.logo" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + host_user.logo + ')' }"></div>
           <div class="profile_contents_img" v-if="!host_user.logo"></div>
           <div class="profile_contents_wrapper">
             <ul>

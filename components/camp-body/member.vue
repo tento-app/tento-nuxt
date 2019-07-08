@@ -6,7 +6,7 @@
       <li v-for="user in users">
         <nuxt-link :to="{ name: 'user-id' , params: { id: user.node.id }}">
           <div class="member">
-            <div class="member_icon" v-if="user.node.logo" :style="{ 'background-image' : 'url(https://media.tento.app/' + user.node.logo + ')' }"></div>
+            <div class="member_icon" v-if="user.node.logo" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + user.node.logo + ')' }"></div>
             <div class="member_icon empty_icon" v-if="!user.node.logo"></div>
             <div class="member_text">
               <p class="member_text_name">{{user.node.username}}</p>

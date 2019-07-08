@@ -3,13 +3,13 @@
 
   <div class="swiper-container" v-swiper:mySwiper='swiperOption'>
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.thumbnail + ')' }">
-        <div class="background" v-if="project.node.header" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.thumbnail + ')' }">
+      <div class="swiper-slide" v-for="project in projects" :key="project.node.id" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.thumbnail + ')' }">
+        <div class="background" v-if="project.node.header" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.thumbnail + ')' }">
           <nuxt-link :to="{ name: 'camp-id' , params: { id: project.node.id }}">
             <!-- card content-->
             <div class="slide_item">
               <div class="slide_item_user">
-                <div class="slide_item_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+                <div class="slide_item_user_img" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.user.logo + ')' }"></div>
                 <div class="">
                   <p class="slide_item_user_name">{{ project.node.user.username }}</p>
                   <p class="slide_item_user_position">webエンジニア</p>
@@ -24,7 +24,7 @@
             <!-- card content-->
             <div class="slide_item">
               <div class="slide_item_user">
-                <div class="slide_item_user_img" :style="{ 'background-image' : 'url(https://media.tento.app/' + project.node.user.logo + ')' }"></div>
+                <div class="slide_item_user_img" :style="{ 'background-image' : 'url(https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/' + project.node.user.logo + ')' }"></div>
                 <div class="">
                   <p class="slide_item_user_name">{{ project.node.user.username }}</p>
                   <p class="slide_item_user_position">webエンジニア</p>

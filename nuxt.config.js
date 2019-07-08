@@ -9,6 +9,7 @@ module.exports = () => {
   return {
     mode: 'universal',
     env: {
+      baseAPIurl: process.env.TENTO_API_URL || 'http://localhost:8000',
       baseTitle: baseTitle,
       baseDesc: baseDesc,
       baseUrl: baseUrl,

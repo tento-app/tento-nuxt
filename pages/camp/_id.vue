@@ -99,7 +99,7 @@ export default {
             description: '集まろう！ 学生の新しいコミュニティー',
             type: 'article',
             url: process.env.baseUrl + '/camp/'+ data.project.id,
-            image: 'https://media.tento.app/'+ encodeURI(data.project.header),
+            image: 'https://object-storage.tyo2.conoha.io/v1/nc_ac83d3c0bf5f4fb0a05b3e1c0d3164f4/api/'+ encodeURI(data.project.header),
             card:'summary_large_image',
             site:'@tento_app',
             creator:'@tento_app',

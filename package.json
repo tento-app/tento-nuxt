@@ -38,7 +38,7 @@
     "vue-sanitize": "^0.2.0",
     "vue2-content-editor": "https://github.com/tui2tone/vue2-medium-editor",
     "weekstart": "^1.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.1.0"
   },
   "devDependencies": {
